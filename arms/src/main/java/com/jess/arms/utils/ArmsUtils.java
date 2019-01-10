@@ -27,6 +27,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.SpannedString;
+import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
 import android.view.ViewGroup;
@@ -233,8 +234,10 @@ public class ArmsUtils {
         if (mToast == null) {
             mToast = Toast.makeText(context, string, Toast.LENGTH_SHORT);
         }
-        mToast.setText(string);
-        mToast.show();
+        if (!TextUtils.isEmpty(string)) {
+            mToast.setText(string);
+            mToast.show();
+        }
     }
 
     /**

@@ -3,4 +3,15 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="toolbar_main_title_font">#FFFFFFFF</color>
+    <color name="toolbar_main_menu_font">#FFFFFFFF</color>
+    <color name="toolbar_title">#ff000000</color>
+    <color name="toolbar_menu">#6d98fe</color>
+
+    <color name="main_gray">#999999</color>
+    <color name="main_black">#333333</color>
+    <color name="line">#C0C0C0</color>
+
 </resources>

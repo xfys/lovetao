@@ -35,9 +35,6 @@ import com.jess.arms.integration.cache.LruCache;
  * 框架要求框架中的每个 {@link Fragment} 都需要实现此类,以满足规范
  *
  * @see BaseFragment
- * Created by JessYan on 29/04/2017 14:31
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
 public interface IFragment {
@@ -45,7 +42,7 @@ public interface IFragment {
     /**
      * 提供在 {@link Fragment} 生命周期内的缓存容器, 可向此 {@link Fragment} 存取一些必要的数据
      * 此缓存容器和 {@link Fragment} 的生命周期绑定, 如果 {@link Fragment} 在屏幕旋转或者配置更改的情况下
-     * 重新创建, 那此缓存容器中的数据也会被清空, 如果你想避免此种情况请使用 <a href="https://github.com/JessYanCoding/LifecycleModel">LifecycleModel</a>
+     * 重新创建, 那此缓存容器中的数据也会被清空, 如果你想避免此种情况请使用
      *
      * @return like {@link LruCache}
      */

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">爱淘</string>
+    <string name="str_press_again">再按一次返回键关闭程序</string>
 </resources>

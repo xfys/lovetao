@@ -1,6 +1,4 @@
 /*
- * Copyright 2017 JessYan
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -22,10 +20,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.InflateException;
+import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
+import com.jess.arms.R;
 import com.jess.arms.base.delegate.IActivity;
 import com.jess.arms.integration.cache.Cache;
 import com.jess.arms.integration.cache.CacheType;
@@ -33,6 +35,8 @@ import com.jess.arms.integration.lifecycle.ActivityLifecycleable;
 import com.jess.arms.mvp.IPresenter;
 import com.jess.arms.utils.ArmsUtils;
 import com.trello.rxlifecycle2.android.ActivityEvent;
+
+import java.lang.reflect.Method;
 
 import javax.inject.Inject;
 
@@ -51,9 +55,12 @@ import static com.jess.arms.utils.ThirdViewUtil.convertAutoView;
  */
 public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IActivity, ActivityLifecycleable {
     protected final String TAG = this.getClass().getSimpleName();
+
     private final BehaviorSubject<ActivityEvent> mLifecycleSubject = BehaviorSubject.create();
     private Cache<String, Object> mCache;
     private Unbinder mUnbinder;
+    protected Toolbar mToolbar;
+    protected TextView mToolbarTitle;
     @Inject
     @Nullable
     protected P mPresenter;//如果当前页面逻辑简单, Presenter 可以为 null
@@ -95,6 +102,22 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
             e.printStackTrace();
         }
         initData(savedInstanceState);
+        baseInitToolbar();
+    }
+
+    private void baseInitToolbar() {
+        mToolbar = findViewById(R.id.my_toolbar);
+        mToolbarTitle = findViewById(R.id.my_toolbar_title);
+        if (mToolbar != null) {
+            if (getMenuId() != 0) {
+                mToolbar.inflateMenu(getMenuId());
+                setOverflowIconVisible(mToolbar.getMenu());
+                mToolbar.setOnMenuItemClickListener(menuItem -> onOptionsItemSelected(menuItem));
+            }
+            mToolbar.setNavigationIcon(R.mipmap.ic_black_back_arrow);
+            mToolbar.setNavigationOnClickListener(v -> onBackPressed());
+        }
+
     }
 
     @Override
@@ -119,7 +142,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
      */
     @Override
     public boolean useEventBus() {
-        return true;
+        return false;
     }
 
     /**
@@ -130,6 +153,25 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
      */
     @Override
     public boolean useFragment() {
-        return true;
+        return false;
+    }
+
+    protected int getMenuId() {
+        return 0;
+    }
+
+    // 显示出菜单的icon
+    protected void setOverflowIconVisible(Menu menu) {
+        if (menu != null) {
+            if (menu.getClass().getSimpleName().equals("MenuBuilder")) {
+                try {
+                    Method m = menu.getClass().getDeclaredMethod("setOptionalIconsVisible", Boolean.TYPE);
+                    m.setAccessible(true);
+                    m.invoke(menu, true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

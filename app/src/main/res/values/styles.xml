@@ -1,11 +1,35 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowAnimationStyle">@style/Animation_Activity</item>
+    </style>
+
+    <style name="Animation_Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <style name="ToolBarStyle" parent="@style/ThemeOverlay.AppCompat.Dark">
+        <!-- actionMenuTextColor 不能添加android:-->
+        <item name="actionMenuTextColor">@color/toolbar_menu</item>
+        <item name="android:itemBackground">@color/white</item>
+        <item name="android:itemTextAppearance">@style/ToolBarItemTextStyle</item>
+        <item name="android:textColorSecondary">@color/toolbar_menu</item>
+    </style>
+
+    <style name="ToolBarItemTextStyle">
+        <item name="android:textColor">@color/toolbar_menu</item>
+    </style>
+
+    <style name="LaunchTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:background">@mipmap/icon_splash</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>
