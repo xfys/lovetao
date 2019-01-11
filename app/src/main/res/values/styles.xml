@@ -32,4 +32,10 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="GuildeTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:background">@color/white</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>

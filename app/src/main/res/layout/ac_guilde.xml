@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Guild"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <cn.bingoogolapple.bgabanner.BGABanner
+        android:id="@+id/bag_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:banner_indicatorGravity="bottom|center_horizontal"
+        app:banner_pointAutoPlayAble="false"
+        app:banner_pointContainerBackground="@android:color/transparent"
+        app:banner_pointContainerLeftRightPadding="@dimen/dp_3"
+        app:banner_pointTopBottomMargin="@dimen/dp_8" />
 
-</LinearLayout>
+    <View
+        android:id="@+id/v_togo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_80"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="@color/red"
+        android:visibility="gone" />
+
+</RelativeLayout>

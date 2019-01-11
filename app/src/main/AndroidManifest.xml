@@ -29,7 +29,8 @@
         </activity>
         <activity
             android:name=".index.activity.GuildActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/GuildeTheme" />
         <activity
             android:name=".home.activity.MainActivity"
             android:launchMode="singleTask"></activity>

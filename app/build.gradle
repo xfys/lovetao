@@ -74,5 +74,8 @@ dependencies {
     implementation rootProject.ext.dependencies["progressmanager"]
     implementation rootProject.ext.dependencies["retrofit-url-manager"]
     implementation rootProject.ext.dependencies["lifecyclemodel"]
+    //banner+引导图
+    implementation rootProject.ext.dependencies["bga-banner"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
 }
