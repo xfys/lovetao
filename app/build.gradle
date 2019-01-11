@@ -10,7 +10,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
     }
     defaultConfig {
-        applicationId "com.gbanker.gbankerandroid"
+        applicationId "com.inner.lovetao"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
