@@ -33,7 +33,9 @@
             android:theme="@style/GuildeTheme" />
         <activity
             android:name=".home.activity.MainActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask" />
+
+        <activity android:name=".search.activity.SearchActivity" />
     </application>
     <!-- Arms 配置 -->
     <meta-data

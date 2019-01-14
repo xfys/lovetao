@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">爱淘</string>
     <string name="str_press_again">再按一次返回键关闭程序</string>
+    <string name="common_cancel">取消</string>
+    <string name="search_hint">复制‘淘宝标题’查找优惠劵哦～</string>
+    <string name="search_history">历史搜索</string>
+    <string name="search_hot">大家都在搜</string>
+    <string name="search">搜索</string>
 </resources>

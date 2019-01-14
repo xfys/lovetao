@@ -14,5 +14,10 @@
     <color name="main_black">#333333</color>
     <color name="line">#C0C0C0</color>
     <color name="red">#ff0000</color>
+    <color name="color_E83F5C">#E83F5C</color>
+    <color name="color_707477">#707477</color>
+    <color name="color_444444">#444444</color>
+    <color name="color_F8F8F8">#F8F8F8</color>
+    <color name="color_B1B5B8">#B1B5B8</color>
 
 </resources>

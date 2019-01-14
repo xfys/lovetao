@@ -30,19 +30,19 @@ import java.util.List;
  * ================================================
  */
 public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<T>> {
-    protected List<T> mInfos;
+    protected List<T> mData;
     protected OnRecyclerViewItemClickListener mOnItemClickListener = null;
     private BaseHolder<T> mHolder;
 
-    public DefaultAdapter(List<T> infos) {
+    public DefaultAdapter(List<T> data) {
         super();
-        this.mInfos = infos;
+        mData = data;
     }
 
     /**
      * 创建 {@link BaseHolder}
      *
-     * @param parent 父容器
+     * @param parent   父容器
      * @param viewType 布局类型
      * @return {@link BaseHolder}
      */
@@ -54,8 +54,8 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
         mHolder.setOnItemClickListener(new BaseHolder.OnViewClickListener() {
             @Override
             public void onViewClick(View view, int position) {
-                if (mOnItemClickListener != null && mInfos.size() > 0) {
-                    mOnItemClickListener.onItemClick(view, viewType, mInfos.get(position), position);
+                if (mOnItemClickListener != null && mData.size() > 0) {
+                    mOnItemClickListener.onItemClick(view, viewType, mData.get(position), position);
                 }
             }
         });
@@ -70,7 +70,7 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
      */
     @Override
     public void onBindViewHolder(BaseHolder<T> holder, int position) {
-        holder.setData(mInfos.get(position), position);
+        holder.setData(mData.get(position), position);
     }
 
     /**
@@ -80,7 +80,7 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
      */
     @Override
     public int getItemCount() {
-        return mInfos.size();
+        return mData.size();
     }
 
     /**
@@ -89,7 +89,7 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
      * @return 数据集合
      */
     public List<T> getInfos() {
-        return mInfos;
+        return mData;
     }
 
     /**
@@ -99,7 +99,7 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
      * @return 数据
      */
     public T getItem(int position) {
-        return mInfos == null ? null : mInfos.get(position);
+        return mData == null ? null : mData.get(position);
     }
 
     /**
@@ -138,15 +138,17 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
 
     /**
      * item 点击事件
+     *
      * @param <T>
      */
     public interface OnRecyclerViewItemClickListener<T> {
 
         /**
          * item 被点击
-         * @param view 被点击的 {@link View}
+         *
+         * @param view     被点击的 {@link View}
          * @param viewType 布局类型
-         * @param data 数据
+         * @param data     数据
          * @param position 在 RecyclerView 中的位置
          */
         void onItemClick(@NonNull View view, int viewType, @NonNull T data, int position);
@@ -154,6 +156,7 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
 
     /**
      * 设置 item 点击事件
+     *
      * @param listener
      */
     public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {

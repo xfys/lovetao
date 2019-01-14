@@ -49,6 +49,18 @@ android {
         }
     }
     sourceSets {
+        main {
+            jniLibs.srcDir(['libs'])
+            res.srcDirs([
+                    'src/main/res/layout/index',
+                    'src/main/res/layout/home',
+                    'src/main/res/layout/search',
+                    'src/main/res/layout/common',
+                    'src/main/res'
+            ])
+        }
+
+
         dev {
             java {
                 srcDir 'src/java'
@@ -77,5 +89,5 @@ dependencies {
     //banner+引导图
     implementation rootProject.ext.dependencies["bga-banner"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-
+    implementation 'com.google.android:flexbox:0.3.0'
 }

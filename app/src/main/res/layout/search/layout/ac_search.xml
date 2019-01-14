@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dp_18"
+    android:paddingRight="@dimen/dp_18">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_34"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/ac_search_edt"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_30"
+            android:layout_weight="1"
+            android:background="@drawable/shape_ac_search_edt_bg"
+            android:hint="@string/search"
+            android:imeOptions="flagNoExtractUi|actionGo"
+            android:inputType="textNoSuggestions"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5"
+            android:textColor="@color/color_444444"
+            android:textColorHint="@color/color_B1B5B8"
+            android:textSize="@dimen/textSize14" />
+
+        <TextView
+            android:id="@+id/ac_search_tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:text="@string/common_cancel"
+            android:textColor="@color/color_E83F5C"
+            android:textSize="@dimen/textSize15" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:text="@string/search_hint"
+        android:textColor="@color/color_707477"
+        android:textSize="@dimen/textSize12" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_15"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/search_history"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize15" />
+
+        <ImageView
+            android:id="@+id/ac_search_iv_delete"
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="@dimen/dp_10"
+            android:src="@color/color_444444" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ac_search_rcy_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="@string/search_hot"
+        android:textColor="@color/color_444444"
+        android:textSize="@dimen/textSize15" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ac_search_rcy_hot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10" />
+</LinearLayout>
