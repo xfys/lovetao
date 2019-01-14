@@ -24,7 +24,6 @@
 -dontusemixedcaseclassnames # 是否使用大小写混合
 -dontpreverify # 混淆时是否做预校验
 -verbose # 混淆时是否记录日志
--ignorewarnings # 警告忽视
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/* # 混淆时所采用的算法
 -keep public class * extends android.app.Activity # 保持哪些类不被混淆
 -keep public class * extends android.app.Application # 保持哪些类不被混淆
