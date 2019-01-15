@@ -38,4 +38,18 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="MyTablayoutstyle" parent="Base.Widget.Design.TabLayout">
+        <item name="tabBackground">@color/white</item>
+        <item name="tabIndicatorColor">@color/color_E83F5C</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabSelectedTextColor">@color/color_E83F5C</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabMaxWidth">0dp</item>
+        <item name="tabGravity">fill</item>
+        <item name="android:textSize">@dimen/textSize14</item>
+        <item name="android:textColor">@color/color_707477</item>
+    </style>
+
+
 </resources>

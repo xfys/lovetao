@@ -9,4 +9,9 @@
     <string name="main_homepage">首页</string>
     <string name="main_wlfare_service">福利社</string>
     <string name="main_mine">我的</string>
+    <string name="shelves_recommend">推荐</string>
+    <string name="shelves_newest">最新</string>
+    <string name="shelves_sales">销量</string>
+    <string name="shelves_price">价格</string>
+    <string name="shelves_title">今日上新</string>
 </resources>
