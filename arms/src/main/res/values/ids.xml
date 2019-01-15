@@ -2,4 +2,6 @@
 <resources>
     <item name="my_toolbar" type="id" />
     <item name="my_toolbar_title" type="id" />
+    <item name="tabview_id" type="id" />
+    <item name="tabview_fragment_container" type="id" />
 </resources>

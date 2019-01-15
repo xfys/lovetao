@@ -7,13 +7,25 @@ import android.support.annotation.Nullable;
 import com.inner.lovetao.R;
 import com.inner.lovetao.home.mvp.MainContract;
 import com.inner.lovetao.home.mvp.MainPresenter;
+import com.inner.lovetao.tab.fragment.HomePageFragment;
+import com.inner.lovetao.tab.fragment.MineFragment;
+import com.inner.lovetao.tab.fragment.WlfareServiceFragment;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.widget.tabview.TabView;
+import com.jess.arms.widget.tabview.TabViewChild;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.Model, MainContract.View {
 
     private long mExitTime;
+    @BindView(R.id.tab_view)
+    TabView tabView;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -27,7 +39,18 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        List<TabViewChild> tabviewList = new ArrayList<>();
+        TabViewChild homePageChild = new TabViewChild(R.mipmap.icon_home_select, R.mipmap.icon_home_unselect, getString(R.string.main_homepage), new HomePageFragment());
+        TabViewChild wlfareServiceChild = new TabViewChild(R.mipmap.icon_wflare_service_select, R.mipmap.icon_wflare_service_unselect, getString(R.string.main_wlfare_service), new WlfareServiceFragment());
+        TabViewChild mineChild = new TabViewChild(R.mipmap.icon_mine_select, R.mipmap.icon_mine_unselect, getString(R.string.main_mine), new MineFragment());
+        tabviewList.add(homePageChild);
+        tabviewList.add(wlfareServiceChild);
+        tabviewList.add(mineChild);
+        tabView.setTabViewDefaultPosition(0);
+        tabView.setTabViewChild(tabviewList, getSupportFragmentManager());
+        tabView.setOnTabChildClickListener((position, currentImageIcon, currentTextView) -> {
 
+        });
     }
 
     @Override

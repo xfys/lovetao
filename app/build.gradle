@@ -56,6 +56,7 @@ android {
                     'src/main/res/layout/home',
                     'src/main/res/layout/search',
                     'src/main/res/layout/common',
+                    'src/main/res/layout/tabfragment',
                     'src/main/res'
             ])
         }

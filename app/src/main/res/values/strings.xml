@@ -6,4 +6,7 @@
     <string name="search_history">历史搜索</string>
     <string name="search_hot">大家都在搜</string>
     <string name="search">搜索</string>
+    <string name="main_homepage">首页</string>
+    <string name="main_wlfare_service">福利社</string>
+    <string name="main_mine">我的</string>
 </resources>
