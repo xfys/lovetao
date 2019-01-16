@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_34"
+    android:background="@color/color_F8F8F8">
+
+    <LinearLayout
+        android:layout_toLeftOf="@+id/common_price"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/common_recommend"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/textSize14"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:text="@string/shelves_recommend"/>
+
+        <TextView
+            android:id="@+id/common_newest"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/textSize14"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:text="@string/shelves_newest"/>
+
+        <TextView
+            android:id="@+id/common_sales"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/textSize14"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:text="@string/shelves_sales"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/common_price"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/textSize14"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:text="@string/shelves_price"
+        android:drawableRight="@drawable/bga_banner_selector_point_solid"/>
+
+</RelativeLayout>
