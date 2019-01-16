@@ -28,12 +28,16 @@ import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.inner.lovetao.R;
+import com.inner.lovetao.beans.response.search.SearchHistoryItemBean;
+import com.inner.lovetao.beans.response.search.SearchHotItemBean;
 import com.inner.lovetao.search.adapter.SearchHistoryAdapter;
 import com.inner.lovetao.search.adapter.SearchHotAdapter;
 import com.inner.lovetao.search.mvp.SearchContract;
 import com.inner.lovetao.search.mvp.SearchPresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -65,6 +69,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        mPresenter = new SearchPresenter(this, this);
         mEdit.clearFocus();
         FlexboxLayoutManager historyLayoutManager = new FlexboxLayoutManager(this);
         historyLayoutManager.setFlexDirection(FlexDirection.ROW);
@@ -76,12 +81,12 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
         hotLayoutManager.setJustifyContent(JustifyContent.FLEX_START);
         mRcyHistory.setLayoutManager(historyLayoutManager);
         mRcyHot.setLayoutManager(hotLayoutManager);
-//        mHistoryAdapter = new SearchHistoryAdapter(this);
-//        mHotAdapter = new SearchHotAdapter(this);
-//        mRcyHistory.setAdapter(mHistoryAdapter);
-//        mRcyHot.setAdapter(mHotAdapter);
-//        mPresenter.getHistoryData();
-//        mPresenter.getHotData();
+        mHistoryAdapter = new SearchHistoryAdapter(this);
+        mRcyHistory.setAdapter(mHistoryAdapter);
+        mHotAdapter = new SearchHotAdapter(this);
+        mRcyHot.setAdapter(mHotAdapter);
+        mPresenter.getHistoryData();
+        mPresenter.getHotData();
     }
 
     @Override
@@ -101,9 +106,20 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
                 mEdit.setText("");
                 break;
             case R.id.ac_search_iv_delete:
+                mHistoryAdapter.cleanData();
                 break;
             default:
                 break;
         }
+    }
+
+    @Override
+    public void RefreshHistoryData(List<SearchHistoryItemBean> list) {
+        mHistoryAdapter.setData(list);
+    }
+
+    @Override
+    public void RefreshHotData(List<SearchHotItemBean> list) {
+        mHotAdapter.setData(list);
     }
 }

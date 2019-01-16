@@ -15,6 +15,7 @@
  */
 package com.jess.arms.base;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,10 +34,16 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
     protected List<T> mData;
     protected OnRecyclerViewItemClickListener mOnItemClickListener = null;
     private BaseHolder<T> mHolder;
+    protected Context mContext;
 
-    public DefaultAdapter(List<T> data) {
+    public DefaultAdapter(Context context) {
         super();
+        mContext = context;
+    }
+
+    public void setData(List<T> data) {
         mData = data;
+        notifyDataSetChanged();
     }
 
     /**
@@ -80,7 +87,7 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
      */
     @Override
     public int getItemCount() {
-        return mData.size();
+        return mData == null ? 0 : mData.size();
     }
 
     /**

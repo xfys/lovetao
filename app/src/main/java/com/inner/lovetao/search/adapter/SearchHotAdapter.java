@@ -14,10 +14,13 @@ package com.inner.lovetao.search.adapter;
  * 修订日期 :
  */
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import com.inner.lovetao.R;
 import com.inner.lovetao.beans.response.search.SearchHotItemBean;
+import com.inner.lovetao.search.viewholder.SearchHotViewHolder;
 import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;
 
@@ -25,18 +28,18 @@ import java.util.List;
 
 public class SearchHotAdapter extends DefaultAdapter<SearchHotItemBean> {
 
-    public SearchHotAdapter(List<SearchHotItemBean> data) {
-        super(data);
+    public SearchHotAdapter(Context context) {
+        super(context);
     }
 
     @NonNull
     @Override
     public BaseHolder<SearchHotItemBean> getHolder(@NonNull View v, int viewType) {
-        return null;
+        return new SearchHotViewHolder(v);
     }
 
     @Override
     public int getLayoutId(int viewType) {
-        return 0;
+        return R.layout.item_search_hot_layout;
     }
 }

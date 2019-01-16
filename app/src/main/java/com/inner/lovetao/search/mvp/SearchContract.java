@@ -14,12 +14,19 @@ package com.inner.lovetao.search.mvp;
  * 修订日期 :
  */
 
+import com.inner.lovetao.beans.response.search.SearchHistoryItemBean;
+import com.inner.lovetao.beans.response.search.SearchHotItemBean;
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
+
+import java.util.List;
 
 public interface SearchContract {
 
     interface View extends IView {
+        void RefreshHistoryData(List<SearchHistoryItemBean> list);
+
+        void RefreshHotData(List<SearchHotItemBean> list);
 
     }
 

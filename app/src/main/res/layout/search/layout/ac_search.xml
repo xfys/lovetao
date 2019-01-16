@@ -3,15 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/dp_18"
-    android:paddingRight="@dimen/dp_18">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_34"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp_16">
 
         <EditText
             android:id="@+id/ac_search_edt"
@@ -31,8 +30,10 @@
         <TextView
             android:id="@+id/ac_search_tv_cancel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/dp_16"
+            android:gravity="center"
+            android:paddingRight="@dimen/dp_16"
             android:text="@string/common_cancel"
             android:textColor="@color/color_E83F5C"
             android:textSize="@dimen/textSize15" />
@@ -41,7 +42,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_16"
         android:text="@string/search_hint"
         android:textColor="@color/color_707477"
         android:textSize="@dimen/textSize12" />
@@ -49,12 +51,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_15"
-        android:orientation="horizontal">
+        android:layout_marginTop="@dimen/dp_30"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp_16">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_21"
             android:layout_weight="1"
             android:text="@string/search_history"
             android:textColor="@color/color_444444"
@@ -62,8 +65,10 @@
 
         <ImageView
             android:id="@+id/ac_search_iv_delete"
-            android:layout_width="@dimen/dp_10"
+            android:layout_width="@dimen/dp_26"
+            android:layout_gravity="center"
             android:layout_height="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_16"
             android:src="@color/color_444444" />
     </LinearLayout>
 
@@ -71,12 +76,15 @@
         android:id="@+id/ac_search_rcy_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10" />
+        android:layout_marginTop="@dimen/dp_14"
+        android:paddingLeft="@dimen/dp_8"
+        android:paddingRight="@dimen/dp_8" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_54"
+        android:paddingLeft="@dimen/dp_16"
         android:text="@string/search_hot"
         android:textColor="@color/color_444444"
         android:textSize="@dimen/textSize15" />
@@ -85,5 +93,7 @@
         android:id="@+id/ac_search_rcy_hot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10" />
+        android:layout_marginTop="@dimen/dp_14"
+        android:paddingLeft="@dimen/dp_8"
+        android:paddingRight="@dimen/dp_8" />
 </LinearLayout>

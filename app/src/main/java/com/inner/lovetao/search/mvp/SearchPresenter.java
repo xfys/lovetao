@@ -17,7 +17,12 @@ package com.inner.lovetao.search.mvp;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.OnLifecycleEvent;
 
+import com.inner.lovetao.beans.response.search.SearchHistoryItemBean;
+import com.inner.lovetao.beans.response.search.SearchHotItemBean;
 import com.jess.arms.mvp.BasePresenter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchPresenter extends BasePresenter<SearchContract.Model, SearchContract.View> {
 
@@ -31,10 +36,22 @@ public class SearchPresenter extends BasePresenter<SearchContract.Model, SearchC
     }
 
     public void getHistoryData() {
-
+        List<SearchHistoryItemBean> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            SearchHistoryItemBean bean = new SearchHistoryItemBean();
+            bean.setDesc("历史");
+            list.add(bean);
+        }
+        mRootView.RefreshHistoryData(list);
     }
 
     public void getHotData() {
-
+        List<SearchHotItemBean> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            SearchHotItemBean bean = new SearchHotItemBean();
+            bean.setDesc("热搜");
+            list.add(bean);
+        }
+        mRootView.RefreshHotData(list);
     }
 }

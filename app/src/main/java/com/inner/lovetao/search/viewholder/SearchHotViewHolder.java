@@ -16,11 +16,18 @@ package com.inner.lovetao.search.viewholder;
 
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.TextView;
 
+import com.inner.lovetao.R;
 import com.inner.lovetao.beans.response.search.SearchHotItemBean;
 import com.jess.arms.base.BaseHolder;
 
+import butterknife.BindView;
+
 public class SearchHotViewHolder extends BaseHolder<SearchHotItemBean> {
+
+    @BindView(R.id.item_hot_tv)
+    TextView mTvDesc;
 
     public SearchHotViewHolder(View itemView) {
         super(itemView);
@@ -28,6 +35,6 @@ public class SearchHotViewHolder extends BaseHolder<SearchHotItemBean> {
 
     @Override
     public void setData(@NonNull SearchHotItemBean data, int position) {
-
+        mTvDesc.setText(data.getDesc());
     }
 }

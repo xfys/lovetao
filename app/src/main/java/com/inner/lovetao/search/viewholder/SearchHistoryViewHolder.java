@@ -15,12 +15,21 @@ package com.inner.lovetao.search.viewholder;
  */
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
+import com.inner.lovetao.R;
 import com.inner.lovetao.beans.response.search.SearchHistoryItemBean;
 import com.jess.arms.base.BaseHolder;
 
+import butterknife.BindView;
+
 public class SearchHistoryViewHolder extends BaseHolder<SearchHistoryItemBean> {
+
+    @BindView(R.id.item_history_tv)
+    TextView mTvDesc;
+
 
     public SearchHistoryViewHolder(View itemView) {
         super(itemView);
@@ -28,6 +37,6 @@ public class SearchHistoryViewHolder extends BaseHolder<SearchHistoryItemBean> {
 
     @Override
     public void setData(@NonNull SearchHistoryItemBean data, int position) {
-
+        mTvDesc.setText(data.getDesc());
     }
 }

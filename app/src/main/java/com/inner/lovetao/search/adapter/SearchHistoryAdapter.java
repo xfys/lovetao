@@ -14,6 +14,7 @@ package com.inner.lovetao.search.adapter;
  * 修订日期 :
  */
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -27,8 +28,8 @@ import java.util.List;
 
 public class SearchHistoryAdapter extends DefaultAdapter<SearchHistoryItemBean> {
 
-    public SearchHistoryAdapter(List<SearchHistoryItemBean> data) {
-        super(data);
+    public SearchHistoryAdapter(Context context) {
+        super(context);
     }
 
     @NonNull
@@ -40,5 +41,10 @@ public class SearchHistoryAdapter extends DefaultAdapter<SearchHistoryItemBean> 
     @Override
     public int getLayoutId(int viewType) {
         return R.layout.item_search_history_layout;
+    }
+
+    public void cleanData() {
+        mData.clear();
+        notifyDataSetChanged();
     }
 }
