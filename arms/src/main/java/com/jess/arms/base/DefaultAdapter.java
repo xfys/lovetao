@@ -41,6 +41,11 @@ public abstract class DefaultAdapter<T> extends RecyclerView.Adapter<BaseHolder<
         mContext = context;
     }
 
+    public DefaultAdapter(List<T> data) {
+        super();
+        mData = data;
+    }
+
     public void setData(List<T> data) {
         mData = data;
         notifyDataSetChanged();
