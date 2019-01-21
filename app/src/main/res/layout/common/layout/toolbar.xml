@@ -13,7 +13,10 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
+        android:navigationIcon="@mipmap/icon_back"
+        app:navigationIcon="@mipmap/icon_back"
         app:theme="@style/ToolBarStyle">
+
 
         <TextView
             android:id="@id/my_toolbar_title"

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ConfigInfo;
@@ -83,5 +84,13 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     @Override
     public boolean useFragment() {
         return false;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

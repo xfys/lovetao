@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_18"
+        android:layout_marginTop="@dimen/dp_30"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ac_search_result_iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_16"
+            android:src="@mipmap/icon_back" />
+
+        <EditText
+            android:id="@+id/ac_search_result_edt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_27"
+            android:background="@drawable/shape_ac_search_edt_bg"
+            android:hint="@string/search"
+            android:imeOptions="flagNoExtractUi|actionGo"
+            android:inputType="textNoSuggestions"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5"
+            android:textColor="@color/color_444444"
+            android:textColorHint="@color/color_B1B5B8"
+            android:textSize="@dimen/textSize14" />
+    </LinearLayout>
+
+    <include layout="@layout/rank_shelves" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ac_search_result_rcy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/ac_search_result_empty_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/icon_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_14"
+            android:text="@string/search_result_empty"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14" />
+    </LinearLayout>
+</LinearLayout>
