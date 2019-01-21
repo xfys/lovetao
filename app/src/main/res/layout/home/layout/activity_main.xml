@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +10,15 @@
     <com.jess.arms.widget.tabview.TabView
         android:id="@+id/tab_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:imageViewTextViewMargin="@dimen/dp_3"
+        app:tab_imageViewHeight="@dimen/dp_20"
+        app:tab_imageViewWidth="@dimen/dp_20"
+        app:tab_lineBackgroundColor="@color/color_DFDFDF"
+        app:tab_lineHeight="@dimen/px_1"
+        app:tab_tabViewHeight="@dimen/dp_50"
+        app:tab_textViewSelColor="@color/color_E83F5C"
+        app:tab_textViewSize="@dimen/textSize10"
+        app:tab_textViewUnSelColor="@color/color_B1B5B8" />
 
 </LinearLayout>

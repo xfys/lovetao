@@ -39,7 +39,6 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
         new Handler() {
         }.postDelayed(() -> {
             if (TextUtils.isEmpty(DataHelper.getStringSF(this, ConfigInfo.FIRST_INSTALL))) {
-                DataHelper.setStringSF(this, ConfigInfo.FIRST_INSTALL, ConfigInfo.FIRST_INSTALL);
                 toGuild();
             } else {
                 toMain();

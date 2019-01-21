@@ -11,16 +11,26 @@
         app:banner_indicatorGravity="bottom|center_horizontal"
         app:banner_pointAutoPlayAble="false"
         app:banner_pointContainerBackground="@android:color/transparent"
-        app:banner_pointContainerLeftRightPadding="@dimen/dp_3"
-        app:banner_pointTopBottomMargin="@dimen/dp_8" />
+        app:banner_pointContainerLeftRightPadding="@dimen/dp_11"
+        app:banner_pointDrawable="@drawable/selector_guilde_banner_indicator"
+        app:banner_pointTopBottomMargin="@dimen/dp_83" />
 
-    <View
+    <TextView
         android:id="@+id/v_togo"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_80"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_40"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:background="@color/red"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="77dp"
+        android:background="@mipmap/icon_guilde_btn"
+        android:gravity="center"
+        android:paddingLeft="@dimen/dp_14"
+        android:paddingTop="@dimen/dp_9"
+        android:paddingRight="@dimen/dp_14"
+        android:paddingBottom="@dimen/dp_12"
+        android:text="开启省钱之旅"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize16"
         android:visibility="gone" />
 
 </RelativeLayout>
