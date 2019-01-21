@@ -13,6 +13,8 @@
         <attr name="tab_textViewSize" format="dimension" />
         <attr name="tab_imageViewWidth" format="dimension" />
         <attr name="tab_imageViewHeight" format="dimension" />
+        <attr name="tab_lineHeight" format="dimension" />
+        <attr name="tab_lineBackgroundColor" format="reference|color" />
         <attr name="tab_tabViewGravity">
             <flag name="top" value="0x30" />
             <flag name="bottom" value="0x50" />

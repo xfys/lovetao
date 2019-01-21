@@ -9,3 +9,7 @@ d85d28ecb19c338338c9d06c755c7aa7
 
 # 切图地址
 https://modao.cc/app/v2SSCdXkdXtLs1YP2weZKZDvqwLzN2c
+
+#颜色命名
+color_色值
+#drawable命名

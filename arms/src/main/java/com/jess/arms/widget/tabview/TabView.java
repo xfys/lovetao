@@ -72,6 +72,10 @@ public class TabView extends RelativeLayout {
      * which tabchild to show,default is 0
      */
     private int mTabViewDefaultPosition = 0;
+    //线高度 默认1dp
+    private int lineHeight;
+    //线颜色 默认 DFDFDF
+    private int mLineColor;
     private LinearLayout tabview;
     private List<Integer> unselectedIconList;
     private FrameLayout mFragmentContainer;
@@ -79,6 +83,7 @@ public class TabView extends RelativeLayout {
     private Fragment mFragments[];
     private int index = 0;
     private int currentTabIndex;
+    private View line;
 
     public TabView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
@@ -97,12 +102,13 @@ public class TabView extends RelativeLayout {
         mTextViewSelColor = Color.rgb(252, 88, 17);
         mTextViewUnSelColor = Color.rgb(129, 130, 149);
         mTabViewBackgroundColor = Color.rgb(255, 255, 255);
+        mLineColor = Color.rgb(223, 223, 223);
         mTabViewHeight = ArmsUtils.dip2px(context, 52);
         mImageViewTextViewMargin = ArmsUtils.dip2px(context, 2);
         mTextViewSize = ArmsUtils.sp2px(context, 14);
         mImageViewWidth = ArmsUtils.dip2px(context, 30);
         mImageViewHeight = ArmsUtils.dip2px(context, 30);
-
+        lineHeight = ArmsUtils.dip2px(context, 1);
     }
 
 
@@ -136,7 +142,10 @@ public class TabView extends RelativeLayout {
             mTabViewGravity = typedArray.getInt(attr, mTabViewGravity);
         } else if (attr == R.styleable.TabView_tab_tabViewDefaultPosition) {
             mTabViewDefaultPosition = typedArray.getInteger(attr, mTabViewDefaultPosition);
-
+        } else if (attr == R.styleable.TabView_tab_lineHeight) {
+            lineHeight = typedArray.getDimensionPixelSize(attr, lineHeight);
+        } else if (attr == R.styleable.TabView_tab_lineBackgroundColor) {
+            mLineColor = typedArray.getColor(attr, mLineColor);
         }
     }
 
@@ -144,39 +153,52 @@ public class TabView extends RelativeLayout {
         tabview = new LinearLayout(context);
         tabview.setId(R.id.tabview_id);
 
+        line = new View(context);
+        line.setId(R.id.tabview_line);
+
 
         mFragmentContainer = new FrameLayout(context);
         mFragmentContainer.setId(R.id.tabview_fragment_container);
         LayoutParams fragmentContainerParams = new LayoutParams(RMP, RMP);
+        LayoutParams lineParams = null;
+
+        line.setBackgroundColor(mLineColor);
         LayoutParams tabviewParams = null;
         if (mTabViewGravity == Gravity.BOTTOM) {
             tabviewParams = new LayoutParams(RMP, mTabViewHeight);
+            lineParams = new LayoutParams(RMP, lineHeight);
             tabview.setOrientation(LinearLayout.HORIZONTAL);
             tabviewParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-            fragmentContainerParams.addRule(RelativeLayout.ABOVE, R.id.tabview_id);
+            lineParams.addRule(RelativeLayout.ABOVE, R.id.tabview_id);
+            fragmentContainerParams.addRule(RelativeLayout.ABOVE, R.id.tabview_line);
         } else if (mTabViewGravity == Gravity.LEFT) {
             tabviewParams = new LayoutParams(mTabViewHeight, RMP);
+            lineParams = new LayoutParams(lineHeight, RMP);
             tabview.setOrientation(LinearLayout.VERTICAL);
             tabviewParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-
-            fragmentContainerParams.addRule(RelativeLayout.RIGHT_OF, R.id.tabview_id);
+            lineParams.addRule(RelativeLayout.RIGHT_OF, R.id.tabview_id);
+            fragmentContainerParams.addRule(RelativeLayout.RIGHT_OF, R.id.tabview_line);
         } else if (mTabViewGravity == Gravity.TOP) {
             tabviewParams = new LayoutParams(RMP, mTabViewHeight);
+            lineParams = new LayoutParams(RMP, lineHeight);
             tabview.setOrientation(LinearLayout.HORIZONTAL);
             tabviewParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-            fragmentContainerParams.addRule(RelativeLayout.BELOW, R.id.tabview_id);
+            lineParams.addRule(RelativeLayout.BELOW, R.id.tabview_id);
+            fragmentContainerParams.addRule(RelativeLayout.BELOW, R.id.tabview_line);
         } else if (mTabViewGravity == Gravity.RIGHT) {
             tabviewParams = new LayoutParams(mTabViewHeight, RMP);
+            lineParams = new LayoutParams(lineHeight, RMP);
             tabview.setOrientation(LinearLayout.VERTICAL);
             tabviewParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-
-            fragmentContainerParams.addRule(RelativeLayout.LEFT_OF, R.id.tabview_id);
+            lineParams.addRule(RelativeLayout.LEFT_OF, R.id.tabview_id);
+            fragmentContainerParams.addRule(RelativeLayout.LEFT_OF, R.id.tabview_line);
         }
         tabview.setLayoutParams(tabviewParams);
         tabview.setBackgroundColor(mTabViewBackgroundColor);
-
+        line.setLayoutParams(lineParams);
         mFragmentContainer.setLayoutParams(fragmentContainerParams);
         this.addView(tabview);
+        this.addView(line);
         this.addView(mFragmentContainer);
 
     }
@@ -376,5 +398,24 @@ public class TabView extends RelativeLayout {
         this.mTabViewGravity = gravity;
     }
 
+    public int getLineHeight() {
+        return lineHeight;
+    }
 
+    /**
+     * px
+     *
+     * @param lineHeight
+     */
+    public void setLineHeight(int lineHeight) {
+        this.lineHeight = lineHeight;
+    }
+
+    public int getmLineColor() {
+        return mLineColor;
+    }
+
+    public void setmLineColor(int mLineColor) {
+        this.mLineColor = mLineColor;
+    }
 }

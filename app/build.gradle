@@ -83,7 +83,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':arms')
-
     implementation rootProject.ext.dependencies["eventbus"]
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     implementation rootProject.ext.dependencies["progressmanager"]
@@ -93,4 +92,8 @@ dependencies {
     implementation rootProject.ext.dependencies["bga-banner"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     implementation 'com.google.android:flexbox:0.3.0'
+    //下拉刷新，上拉加载头
+    implementation project(':ptr-lib')
+    //万能Adapter
+    implementation 'com.zhy:base-rvadapter:3.0.3'
 }

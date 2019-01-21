@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ConfigInfo;
 import com.inner.lovetao.home.activity.MainActivity;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.DataHelper;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -42,9 +44,9 @@ public class GuildActivity extends BaseActivity {
     public void initData(@Nullable Bundle savedInstanceState) {
         guildeBanner.setData(null,
                 ImageView.ScaleType.FIT_CENTER,
-                R.drawable.ic_guide_one,
-                R.drawable.ic_guide_two,
-                R.drawable.ic_guide_three);
+                R.mipmap.ic_guide_one,
+                R.mipmap.ic_guide_two,
+                R.mipmap.ic_guide_three);
         guildeBanner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
@@ -58,6 +60,7 @@ public class GuildActivity extends BaseActivity {
                 } else {
                     vTogo.setVisibility(View.GONE);
                 }
+
             }
 
             @Override
@@ -69,6 +72,7 @@ public class GuildActivity extends BaseActivity {
 
     @OnClick({R.id.v_togo})
     public void onClick() {
+        DataHelper.setStringSF(this, ConfigInfo.FIRST_INSTALL, ConfigInfo.FIRST_INSTALL);
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
