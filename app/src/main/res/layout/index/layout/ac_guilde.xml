@@ -28,7 +28,7 @@
         android:paddingTop="@dimen/dp_9"
         android:paddingRight="@dimen/dp_14"
         android:paddingBottom="@dimen/dp_12"
-        android:text="开启省钱之旅"
+        android:text="@string/ac_guilde_btn"
         android:textColor="@color/white"
         android:textSize="@dimen/textSize16"
         android:visibility="gone" />

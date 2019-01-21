@@ -103,6 +103,6 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
      */
     @Override
     public boolean useEventBus() {
-        return true;
+        return false;
     }
 }

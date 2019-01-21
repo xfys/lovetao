@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_search_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:src="@mipmap/icon_home_search_first" />
+
+    <EditText
+        android:id="@+id/edit_home_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_12"
+        android:layout_toLeftOf="@+id/rl_msg"
+        android:layout_toRightOf="@+id/iv_search_icon"
+        android:background="@drawable/shape_home_search_edit_bg"
+        android:drawableLeft="@mipmap/icon_home_search"
+        android:drawablePadding="8dp"
+        android:hint="80%淘宝商品有隐藏劵"
+        android:textColor="@color/main_black"
+        android:textColorHint="@color/color_B1B5B8"
+        android:textSize="@dimen/textSize14" />
+
+    <RelativeLayout
+        android:id="@+id/rl_msg"
+        android:layout_width="@dimen/dp_22"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp_12">
+
+        <ImageView
+            android:id="@+id/iv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_home_msg" />
+
+        <View
+            android:id="@+id/v_msg_have"
+            android:layout_width="@dimen/dp_5"
+            android:layout_height="@dimen/dp_5"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shape_home_fragment_have_msg" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
