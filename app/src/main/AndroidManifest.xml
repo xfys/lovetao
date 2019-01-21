@@ -36,8 +36,10 @@
             android:launchMode="singleTask" />
 
         <activity android:name=".search.activity.SearchActivity" />
+        <activity android:name=".search.activity.SearchResultActivity" />
 
-        <activity android:name=".channel.ui.activity.ShelvesActivity"
+        <activity
+            android:name=".channel.ui.activity.ShelvesActivity"
             android:launchMode="singleTask" />
     </application>
 
