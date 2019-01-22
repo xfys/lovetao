@@ -22,6 +22,7 @@
         android:background="@drawable/shape_home_search_edit_bg"
         android:drawableLeft="@mipmap/icon_home_search"
         android:drawablePadding="8dp"
+        android:focusable="false"
         android:hint="80%淘宝商品有隐藏劵"
         android:textColor="@color/main_black"
         android:textColorHint="@color/color_B1B5B8"

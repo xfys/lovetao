@@ -3,40 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:paddingTop="@dimen/dp_10">
 
-    <android.support.v4.widget.NestedScrollView
+    <include
+        android:id="@+id/head"
+        layout="@layout/home_head_search" />
+
+    <com.jess.arms.widget.tablayout.SlidingTabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/dp_30"
+        android:layout_below="@id/head"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        app:tl_indicator_color="@color/color_E83F5C"
+        app:tl_indicator_gravity="BOTTOM"
+        app:tl_indicator_height="@dimen/dp_3"
+        app:tl_indicator_width="@dimen/dp_10"
+        app:tl_indicator_width_equal_title="false"
+        app:tl_tab_padding="@dimen/dp_10"
+        app:tl_tab_space_equal="false"
+        app:tl_textBold="NONE"
+        app:tl_textSelectColor="@color/color_E83F5C"
+        app:tl_textSelectSize="@dimen/textSize16"
+        app:tl_textUnselectColor="@color/color_707477"
+        app:tl_textUnselectSize="@dimen/textSize14"
+        app:tl_textsize="20sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingTop="16dp">
-
-            <include layout="@layout/home_head_search" />
-
-            <com.jess.arms.widget.tablayout.SlidingTabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/dp_10"
-                app:tl_indicator_height="4dp"
-                app:tl_indicator_width_equal_title="true"
-                app:tl_tab_space_equal="true"
-                app:tl_textBold="BOTH"
-                app:tl_textSelectColor="@color/color_E83F5C"
-                app:tl_textSelectSize="20sp"
-                app:tl_textUnselectColor="@color/color_707477"
-                app:tl_textUnselectSize="17sp"
-                app:tl_textsize="20sp" />
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab_layout" />
 </RelativeLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dp_25">
+
+    <LinearLayout
+        android:id="@+id/ll_product_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <ImageView
+            android:id="@+id/iv_product"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_4"
+            android:layout_weight="2"
+            android:background="@color/red" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:paddingRight="@dimen/dp_15">
+
+            <TextView
+                android:id="@+id/tv_product_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_7"
+                android:textColor="@color/color_444444"
+                android:textSize="@dimen/textSize14"
+                android:textStyle="bold"
+                tools:text="耐克运动鞋复古限量版现实抢购最新款上架…" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_7"
+                android:layout_marginBottom="@dimen/dp_2">
+
+                <TextView
+                    android:id="@+id/tv_product_prise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@color/color_707477"
+                    android:textSize="@dimen/textSize10"
+                    tools:text="淘宝价¥988" />
+
+                <TextView
+                    android:id="@+id/tv_product_already_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/color_707477"
+                    android:textSize="@dimen/textSize10"
+                    tools:text="已抢32478" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2">
+
+                <TextView
+                    android:id="@+id/tv_product_quan_after"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/color_E83F5C"
+                    android:textSize="@dimen/textSize14"
+                    android:textStyle="bold"
+                    tools:text="劵后价¥588" />
+
+                <TextView
+                    android:id="@+id/tv_product_quan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:textColor="@color/color_E83F5C"
+                    android:textSize="@dimen/textSize14"
+                    android:textStyle="bold"
+                    tools:text="¥400元劵" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px_1"
+        android:layout_below="@+id/ll_product_container"
+        android:layout_marginTop="@dimen/dp_25"
+        android:background="@color/color_DFDFDF" />
+
+</RelativeLayout>

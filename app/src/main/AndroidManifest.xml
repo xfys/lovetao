@@ -33,7 +33,8 @@
             android:theme="@style/GuildeTheme" />
         <activity
             android:name=".home.activity.MainActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan" />
 
         <activity android:name=".search.activity.SearchActivity" />
         <activity android:name=".search.activity.SearchResultActivity" />

@@ -16,4 +16,10 @@
     <string name="shelves_price">价格</string>
     <string name="shelves_title">今日上新</string>
     <string name="ac_guilde_btn">开启省钱之旅</string>
+    <string name="home_choice_first_desc">今日上新</string>
+    <string name="home_choice_second_desc">9块9特卖</string>
+    <string name="home_choice_third_desc">大额神劵</string>
+    <string name="home_choice_fourth_desc">邀请收徒</string>
+    <string name="home_choice_five_desc">每日红包</string>
+    <string name="home_choice_smart_choose_desc">精选好物</string>
 </resources>

@@ -58,6 +58,7 @@ android {
                     'src/main/res/layout/common',
                     'src/main/res/layout/shelves',
                     'src/main/res/layout/tabfragment',
+                    'src/main/res/layout/weight',
                     'src/main/res'
             ])
         }
