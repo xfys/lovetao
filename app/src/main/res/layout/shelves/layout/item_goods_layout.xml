@@ -1,44 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_10"
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/item_goods_iv_pic"
+        android:id="@+id/iv_item_goods_pic"
         android:layout_width="match_parent"
         android:layout_height="132dp"
-        android:src="@color/color_444444"/>
+        android:layout_marginBottom="@dimen/dp_13"
+        android:src="@color/color_E83F5C"/>
 
     <TextView
-        android:id="@+id/item_goods_tv_title"
+        android:id="@+id/tv_product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:textColor="@color/color_444444"
         android:textSize="@dimen/textSize14"
-        android:maxLines="2"
-        android:textColor="@color/color_444444"/>
+        android:textStyle="bold"
+        tools:text="耐克运动鞋复古限量版现实抢购最新款上架…" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_2">
 
         <TextView
-            android:id="@+id/item_goods_tv_price"
+            android:id="@+id/tv_product_prise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:textColor="@color/color_707477"
-            android:textSize="@dimen/textSize10"/>
+            android:textSize="@dimen/textSize10"
+            tools:text="淘宝价¥988" />
 
         <TextView
-            android:id="@+id/item_goods_tv_amount"
+            android:id="@+id/tv_product_already_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:textColor="@color/color_707477"
-            android:textSize="@dimen/textSize10"/>
+            android:textSize="@dimen/textSize10"
+            tools:text="已抢32478" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_2">
+
+        <TextView
+            android:id="@+id/tv_product_quan_after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/color_E83F5C"
+            android:textSize="@dimen/textSize14"
+            android:textStyle="bold"
+            tools:text="劵后价¥588" />
+
+        <TextView
+            android:id="@+id/tv_product_quan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="4dp"
+            android:textColor="@color/color_E83F5C"
+            android:textSize="@dimen/textSize14"
+            android:textStyle="bold"
+            tools:text="¥400元劵" />
 
     </RelativeLayout>
 

@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include layout="@layout/toolbar" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/ac_shelves_tabLayout"
+    <com.jess.arms.widget.tablayout.SlidingTabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/MyTablayoutstyle"/>
+        android:layout_height="@dimen/dp_30"
+        android:layout_below="@id/head"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        app:tl_indicator_color="@color/color_E83F5C"
+        app:tl_indicator_gravity="BOTTOM"
+        app:tl_indicator_height="@dimen/dp_3"
+        app:tl_indicator_width="@dimen/dp_10"
+        app:tl_indicator_width_equal_title="false"
+        app:tl_tab_padding="@dimen/dp_10"
+        app:tl_tab_space_equal="false"
+        app:tl_textBold="NONE"
+        app:tl_textSelectColor="@color/color_E83F5C"
+        app:tl_textSelectSize="@dimen/textSize16"
+        app:tl_textUnselectColor="@color/color_707477"
+        app:tl_textUnselectSize="@dimen/textSize14"
+        app:tl_textsize="20sp" />
+
 
     <include layout="@layout/rank_shelves"/>
 

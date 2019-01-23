@@ -1,12 +1,14 @@
 package com.inner.lovetao.tab.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.inner.lovetao.R;
+import com.inner.lovetao.channel.ui.activity.ShelvesActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,6 +51,7 @@ public class RecommendView extends LinearLayout {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_first:
+                context.startActivity(new Intent(context, ShelvesActivity.class));
                 break;
             case R.id.ll_second:
                 break;

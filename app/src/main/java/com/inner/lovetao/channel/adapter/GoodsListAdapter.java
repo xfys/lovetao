@@ -1,5 +1,6 @@
 package com.inner.lovetao.channel.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -9,16 +10,14 @@ import com.inner.lovetao.channel.viewholder.GoodsViewHolder;
 import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;
 
-import java.util.List;
-
 /**
  * Author feihaokui.
  * Date 2019-01-15.
  */
 public class GoodsListAdapter extends DefaultAdapter<GoodsItemModel> {
 
-    public GoodsListAdapter(List<GoodsItemModel> data) {
-        super(data);
+    public GoodsListAdapter(Context context) {
+        super(context);
     }
 
     @NonNull

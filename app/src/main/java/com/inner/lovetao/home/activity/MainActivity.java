@@ -1,8 +1,11 @@
 package com.inner.lovetao.home.activity;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.home.mvp.MainContract;
@@ -13,6 +16,7 @@ import com.inner.lovetao.tab.fragment.WlfareServiceFragment;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.BarUtils;
 import com.jess.arms.widget.tabview.TabView;
 import com.jess.arms.widget.tabview.TabViewChild;
 
@@ -33,6 +37,20 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //透明顶部状态栏
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+        BarUtils.setStatusBarLightMode(this, true);
+    }
+
+    @Override
     public int initView(@Nullable Bundle savedInstanceState) {
         return R.layout.activity_main;
     }
@@ -49,7 +67,17 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         tabView.setTabViewDefaultPosition(0);
         tabView.setTabViewChild(tabviewList, getSupportFragmentManager());
         tabView.setOnTabChildClickListener((position, currentImageIcon, currentTextView) -> {
-
+            switch (position) {
+                case 0:
+                    BarUtils.setStatusBarLightMode(this, true);
+                    break;
+                case 1:
+                    BarUtils.setStatusBarLightMode(this, false);
+                    break;
+                case 2:
+                    BarUtils.setStatusBarLightMode(this, true);
+                    break;
+            }
         });
     }
 
