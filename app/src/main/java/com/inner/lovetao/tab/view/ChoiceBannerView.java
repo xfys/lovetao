@@ -38,15 +38,7 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
         add("https://img.g-banker.com/data/test/banner/MCZHQDCE_20190115231806.jpg");
         add("https://img.g-banker.com/data/test/banner/6IGMAEUF_20190115231825.jpg");
     }};
-    private List<String> tips = new ArrayList<String>() {{
-        add("0");
-        add("1");
-        add("2");
-        add("3");
-        add("4");
-        add("5");
 
-    }};
     private GlideImageLoaderStrategy strategy;
 
     public ChoiceBannerView(Context context) {
@@ -74,7 +66,7 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
     public void setData() {
         banner.setAdapter(this);
         banner.setDelegate(this);
-        banner.setData(R.layout.choice_banner_item_view, imgs, tips);
+        banner.setData(R.layout.choice_banner_item_view, imgs, null);
         banner.getViewPager().setPageMargin(-ArmsUtils.dip2px(context, 33));
     }
 
