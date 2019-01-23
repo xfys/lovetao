@@ -4,12 +4,13 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.LinearLayout;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.inner.lovetao.R;
+import com.jess.arms.di.scope.ActivityScope;
+import com.jess.arms.http.imageloader.glide.GlideImageLoaderStrategy;
+import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 
 import java.util.ArrayList;
@@ -24,7 +25,8 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  * Created by xcz
  * on 2019/1/22.
  */
-public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate<ImageView, String>, BGABanner.Adapter<ImageView, String> {
+@ActivityScope
+public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate<View, String>, BGABanner.Adapter<View, String> {
     @BindView(R.id.banner_indicator)
     BGABanner banner;
     private Context context;
@@ -45,6 +47,7 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
         add("5");
 
     }};
+    private GlideImageLoaderStrategy strategy;
 
     public ChoiceBannerView(Context context) {
         this(context, null);
@@ -65,23 +68,29 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
         this.context = context;
         LayoutInflater.from(context).inflate(R.layout.head_choice_banner, this, true);
         ButterKnife.bind(this);
+        strategy = new GlideImageLoaderStrategy();
     }
 
     public void setData() {
         banner.setAdapter(this);
-        banner.setData(imgs, tips);
+        banner.setDelegate(this);
+        banner.setData(R.layout.choice_banner_item_view, imgs, tips);
+        banner.getViewPager().setPageMargin(-ArmsUtils.dip2px(context, 33));
     }
 
     @Override
-    public void fillBannerItem(BGABanner banner, ImageView itemView, @Nullable String model, int position) {
-        Glide.with(itemView.getContext())
-                .load(model)
-                .apply(new RequestOptions().dontAnimate().centerCrop())
-                .into(itemView);
+    public void fillBannerItem(BGABanner banner, View itemView, @Nullable String model, int position) {
+        strategy.loadImage(context, ImageConfigImpl.builder()
+                .imageRadius(ArmsUtils.dip2px(context, 6))
+                .url(model)
+                .imageView(itemView.findViewById(R.id.iv_banner))
+                .cacheStrategy(0)
+                .isCenterCrop(false)
+                .build());
     }
 
     @Override
-    public void onBannerItemClick(BGABanner banner, ImageView itemView, @Nullable String model, int position) {
+    public void onBannerItemClick(BGABanner banner, View itemView, @Nullable String model, int position) {
         ArmsUtils.makeText(context, "点击了" + position);
     }
 }

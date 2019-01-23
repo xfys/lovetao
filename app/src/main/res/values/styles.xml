@@ -58,9 +58,9 @@
         <!-- 自动轮播的时间间隔 -->
         <item name="banner_pointAutoPlayInterval">4000</item>
         <!-- 指示点容器背景 -->
-        <item name="banner_pointContainerBackground">#44aaaaaa</item>
+        <item name="banner_pointContainerBackground">@android:color/transparent</item>
         <!-- 指示点背景 -->
-        <item name="banner_pointDrawable">@drawable/bga_banner_selector_point_hollow</item>
+        <item name="banner_pointDrawable">@android:color/transparent</item>
         <!-- 指示点容器左右内间距 -->
         <item name="banner_pointContainerLeftRightPadding">10dp</item>
         <!-- 指示点上下外间距 -->
@@ -74,7 +74,7 @@
         <!-- 提示文案的文字大小 -->
         <item name="banner_tipTextSize">10sp</item>
         <!-- 提示文案的文字颜色 -->
-        <item name="banner_tipTextColor">@android:color/white</item>
+        <item name="banner_tipTextColor">@android:color/transparent</item>
         <!-- 加载网络数据时覆盖在BGABanner最上层的占位图 -->
         <item name="banner_placeholderDrawable">@color/main_gray</item>
     </style>

@@ -40,6 +40,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         dev {
+            debuggable true
             matchingFallbacks = ['release', 'debug']
             applicationIdSuffix ".dev"
             zipAlignEnabled true     //Zipalign优化
