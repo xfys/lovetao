@@ -15,6 +15,9 @@ package com.jess.arms.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,6 +28,7 @@ import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jess.arms.R;
@@ -33,7 +37,9 @@ import com.jess.arms.integration.cache.Cache;
 import com.jess.arms.integration.cache.CacheType;
 import com.jess.arms.integration.lifecycle.ActivityLifecycleable;
 import com.jess.arms.mvp.IPresenter;
+import com.jess.arms.utils.AndroidLiuHaiUtils;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.BarUtils;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.lang.reflect.Method;
@@ -103,6 +109,42 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         }
         initData(savedInstanceState);
         baseInitToolbar();
+        baseInitStutarbar();
+    }
+
+    private void baseInitStutarbar(){
+        //透明顶部状态栏
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+        BarUtils.setStatusBarLightMode(this, true);
+    }
+
+
+    /**
+     * 适配刘海屏，包括横竖屏切换
+     */
+    private void initLiuHaiAdapter() {
+        if(mToolbar != null){
+            ViewGroup.LayoutParams layoutParams =  mToolbar.getLayoutParams();
+            ViewGroup.MarginLayoutParams marginParams = null;
+            if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+                marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
+            } else {
+                marginParams = new ViewGroup.MarginLayoutParams(layoutParams);
+            }
+
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                marginParams.topMargin = 0;
+            } else {
+                marginParams.topMargin = AndroidLiuHaiUtils.getNotchScreenHeight(this);
+            }
+            mToolbar.setLayoutParams(marginParams);
+        }
     }
 
     private void baseInitToolbar() {
@@ -117,7 +159,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
             mToolbar.setNavigationIcon(R.mipmap.ic_black_back_arrow);
             mToolbar.setNavigationOnClickListener(v -> onBackPressed());
         }
-
+        initLiuHaiAdapter();
     }
 
     @Override

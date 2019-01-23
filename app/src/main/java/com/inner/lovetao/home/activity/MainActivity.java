@@ -1,11 +1,8 @@
 package com.inner.lovetao.home.activity;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.View;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.home.mvp.MainContract;
@@ -34,20 +31,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
 
-    }
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //透明顶部状态栏
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(option);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
-        BarUtils.setStatusBarLightMode(this, true);
     }
 
     @Override

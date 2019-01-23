@@ -32,18 +32,11 @@ import java.lang.reflect.Method;
 import static android.Manifest.permission.EXPAND_STATUS_BAR;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/09/23
- *     desc  : utils about bar
- * </pre>
+ * ================================================
+ * <p>处理状态栏和导航栏的工具
+ * ================================================
  */
 public final class BarUtils {
-
-    ///////////////////////////////////////////////////////////////////////////
-    // status bar
-    ///////////////////////////////////////////////////////////////////////////
 
     private static final int    DEFAULT_ALPHA = 112;
     private static final String TAG_COLOR     = "TAG_COLOR";
