@@ -43,5 +43,8 @@
             android:name=".channel.ui.activity.ShelvesActivity"
             android:launchMode="singleTask" />
     </application>
-
+    <!--arms 配置-->
+    <meta-data
+        android:name="com.inner.lovetao.net.GlobalConfiguration"
+        android:value="ConfigModule" />
 </manifest>
