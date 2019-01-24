@@ -22,4 +22,8 @@
     <string name="home_choice_fourth_desc">邀请收徒</string>
     <string name="home_choice_five_desc">每日红包</string>
     <string name="home_choice_smart_choose_desc">精选好物</string>
+    <string name="mine_login_unauthorized">未认证支付宝</string>
+    <string name="mine_login_earnings">累计收益</string>
+    <string name="mine_login_withdrawal">已提现</string>
+    <string name="mine_login_not_withdrawal">可提现</string>
 </resources>

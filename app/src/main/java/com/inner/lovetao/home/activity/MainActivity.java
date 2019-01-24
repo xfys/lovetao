@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                     BarUtils.setStatusBarLightMode(this, false);
                     break;
                 case 2:
-                    BarUtils.setStatusBarLightMode(this, true);
+                    BarUtils.setStatusBarLightMode(this, false);
                     break;
             }
         });

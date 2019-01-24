@@ -77,9 +77,6 @@ public class HomePageFragment extends BaseFragment {
 
     }
 
-    /**
-     * 适配刘海屏，包括横竖屏切换
-     */
     private void initLiuHaiAdapter() {
         if(headLayout != null){
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) headLayout.getLayoutParams();
