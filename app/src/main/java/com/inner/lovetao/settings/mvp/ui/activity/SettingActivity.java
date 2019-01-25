@@ -21,7 +21,7 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * Created by xcz
  * on 2019/01/24
  */
-public class SettingActivityActivity extends BaseActivity<SettingActivityPresenter> implements SettingActivityContract.View {
+public class SettingActivity extends BaseActivity<SettingActivityPresenter> implements SettingActivityContract.View {
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {

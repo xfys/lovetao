@@ -44,7 +44,7 @@
         <activity
             android:name=".channel.ui.activity.ShelvesActivity"
             android:launchMode="singleTask" />
-        <activity android:name=".settings.mvp.ui.activity.SettingActivityActivity" />
+        <activity android:name=".settings.mvp.ui.activity.SettingActivity" />
     </application>
 
 </manifest>
