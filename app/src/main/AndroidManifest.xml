@@ -9,6 +9,10 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- arms 配置 -->
+    <meta-data
+        android:name="com.inner.lovetao.net.GlobalConfiguration"
+        android:value="ConfigModule" />
 
     <application
         android:name=".LoveTaoApplication"
@@ -35,16 +39,12 @@
             android:name=".home.activity.MainActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan" />
-
         <activity android:name=".search.activity.SearchActivity" />
         <activity android:name=".search.activity.SearchResultActivity" />
-
         <activity
             android:name=".channel.ui.activity.ShelvesActivity"
             android:launchMode="singleTask" />
+        <activity android:name=".settings.mvp.ui.activity.SettingActivityActivity" />
     </application>
-    <!--arms 配置-->
-    <meta-data
-        android:name="com.inner.lovetao.net.GlobalConfiguration"
-        android:value="ConfigModule" />
+
 </manifest>
