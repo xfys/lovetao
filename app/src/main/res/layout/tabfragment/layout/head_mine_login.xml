@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/icon_mine_bg">
+    android:layout_height="wrap_content"
+    android:background="@mipmap/icon_mine_bg">
 
         <ImageView
             android:id="@+id/iv_photo"
@@ -79,12 +74,13 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_68"
             android:layout_marginLeft="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_150"
+            android:layout_marginTop="@dimen/dp_155"
             android:layout_marginRight="@dimen/dp_16"
             android:orientation="horizontal"
             android:background="@drawable/shape_item_shadow_oval">
 
             <LinearLayout
+                android:id="@+id/ll_accumulated_earnings"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -113,6 +109,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_have_withdrawal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -142,6 +139,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_can_withdrawal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -172,6 +170,4 @@
         </LinearLayout>
 
 
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

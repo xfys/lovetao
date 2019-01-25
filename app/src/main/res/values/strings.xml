@@ -22,8 +22,19 @@
     <string name="home_choice_fourth_desc">邀请收徒</string>
     <string name="home_choice_five_desc">每日红包</string>
     <string name="home_choice_smart_choose_desc">精选好物</string>
+
     <string name="mine_login_unauthorized">未认证支付宝</string>
     <string name="mine_login_earnings">累计收益</string>
     <string name="mine_login_withdrawal">已提现</string>
     <string name="mine_login_not_withdrawal">可提现</string>
+    <string name="mine_earnings">我的收益</string>
+    <string name="mine_order">我的订单</string>
+    <string name="mine_collect">我的收藏</string>
+    <string name="mine_get_volume">领卷指南</string>
+    <string name="mine_disciple">我的徒弟</string>
+    <string name="mine_invite">邀请赚钱</string>
+    <string name="mine_call_service">联系客服</string>
+    <string name="mine_opinion">意见反馈</string>
+    <string name="mine_praise">给个好评</string>
+    <string name="mine_about_us">关于我们</string>
 </resources>
