@@ -85,7 +85,7 @@ public class HomePageFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.edit_home_search:
-                startActivity(new Intent(getActivity(), SettingActivity.class));
+                startActivity(new Intent(getActivity(), SearchActivity.class));
                 break;
         }
 

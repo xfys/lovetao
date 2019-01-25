@@ -3,6 +3,223 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_F8F8F8"
     android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/white"
+        android:padding="@dimen/dp_16">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="头像"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14" />
+
+        <ImageView
+            android:id="@+id/iv_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_12"
+            android:layout_toLeftOf="@+id/iv_arrow"
+            android:src="@mipmap/icon_mine_photo" />
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_setting_arrow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_nike_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_52"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/white"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/settings_nike_name"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14" />
+
+        <TextView
+            android:id="@+id/tv_nike_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_toLeftOf="@id/iv_arrow_nikename"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14"
+            tools:text="小猪佩奇" />
+
+        <ImageView
+            android:id="@+id/iv_arrow_nikename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_12"
+            android:src="@mipmap/icon_setting_arrow" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_DBDBDB" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bind_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_52"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingTop="@dimen/dp_20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/settings_bind_phone"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14" />
+
+        <TextView
+            android:id="@+id/tv_bind_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_toLeftOf="@id/iv_arrow_phone"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14"
+            tools:text="未绑定" />
+
+        <ImageView
+            android:id="@+id/iv_arrow_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_12"
+            android:src="@mipmap/icon_setting_arrow" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_DBDBDB" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bind_alibaba"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_52"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingTop="@dimen/dp_20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/settings_bind_alipay"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14" />
+
+        <TextView
+            android:id="@+id/tv_bind_alipay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_toLeftOf="@id/iv_arrow_alipay"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14"
+            tools:text="1234343" />
+
+        <ImageView
+            android:id="@+id/iv_arrow_alipay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_12"
+            android:src="@mipmap/icon_setting_arrow" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_DBDBDB" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_data_sum"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_52"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingTop="@dimen/dp_20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/settings_clear"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14" />
+
+        <TextView
+            android:id="@+id/tv_data_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_toLeftOf="@id/iv_arrow_clear"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14"
+            tools:text="123M" />
+
+        <ImageView
+            android:id="@+id/iv_arrow_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_12"
+            android:src="@mipmap/icon_setting_arrow" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_27"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="@dimen/dp_27"
+        android:background="@drawable/shape_settings_exit_bg"
+        android:gravity="center"
+        android:padding="@dimen/dp_12"
+        android:text="退出当前账号"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize15" />
 
 </LinearLayout>

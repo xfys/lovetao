@@ -24,6 +24,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.Menu;
@@ -70,6 +71,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Inject
     @Nullable
     protected P mPresenter;//如果当前页面逻辑简单, Presenter 可以为 null
+    private View line;
 
     @NonNull
     @Override
@@ -107,9 +109,9 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
             if (e instanceof InflateException) throw e;
             e.printStackTrace();
         }
-        initData(savedInstanceState);
         baseInitToolbar();
         baseInitStutarbar();
+        initData(savedInstanceState);
     }
 
     private void baseInitStutarbar() {
@@ -150,6 +152,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     private void baseInitToolbar() {
         mToolbar = findViewById(R.id.my_toolbar);
         mToolbarTitle = findViewById(R.id.my_toolbar_title);
+        line = findViewById(R.id.toolbar_line);
         if (mToolbar != null) {
             if (getMenuId() != 0) {
                 mToolbar.inflateMenu(getMenuId());
@@ -158,6 +161,9 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
             }
             mToolbar.setNavigationIcon(R.mipmap.ic_black_back_arrow);
             mToolbar.setNavigationOnClickListener(v -> onBackPressed());
+        }
+        if (mToolbarTitle != null && !TextUtils.isEmpty(getTitle())) {
+            mToolbarTitle.setText(getTitle());
         }
         initLiuHaiAdapter();
     }
@@ -219,5 +225,9 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     protected void setStatusBarMode(boolean lightMode) {
         BarUtils.setStatusBarLightMode(this, lightMode);
+    }
+
+    public View getLine() {
+        return line;
     }
 }

@@ -4,26 +4,60 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.inner.lovetao.R;
+import com.inner.lovetao.home.activity.MainActivity;
 import com.inner.lovetao.settings.di.component.DaggerSettingActivityComponent;
 import com.inner.lovetao.settings.mvp.contract.SettingActivityContract;
 import com.inner.lovetao.settings.mvp.presenter.SettingActivityPresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.DataHelper;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 
 /**
- * desc:
+ * desc:设置页面
  * Created by xcz
  * on 2019/01/24
  */
 public class SettingActivity extends BaseActivity<SettingActivityPresenter> implements SettingActivityContract.View {
+    /**
+     * 头像
+     */
+    @BindView(R.id.iv_head)
+    ImageView ivHead;
+    /**
+     * 昵称
+     */
+    @BindView(R.id.tv_nike_name)
+    TextView nikeName;
+    /**
+     * 手机号
+     */
+    @BindView(R.id.tv_bind_phone_number)
+    TextView bindPhoneNumber;
+    /**
+     * 支付宝账号
+     */
+    @BindView(R.id.tv_bind_alipay)
+    TextView bindAlipay;
+    /**
+     * 缓存大小
+     */
+    @BindView(R.id.tv_data_sum)
+    TextView dataSum;
 
     @Override
+
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         DaggerSettingActivityComponent //如找不到该类,请编译一下项目
                 .builder()
@@ -41,6 +75,33 @@ public class SettingActivity extends BaseActivity<SettingActivityPresenter> impl
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         setStatusBarMode(false);
+        if (getLine() != null) {
+            getLine().setVisibility(View.GONE);
+        }
+        dataSum.setText(DataHelper.bytes2kb(DataHelper.getDirSize(DataHelper.getCacheFile(this))));
+    }
+
+    @OnClick({R.id.rl_head, R.id.rl_nike_name, R.id.rl_bind_phone, R.id.rl_bind_alibaba, R.id.rl_data_sum, R.id.tv_exit})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rl_head:
+                break;
+            case R.id.rl_nike_name:
+                break;
+            case R.id.rl_bind_phone:
+                break;
+            case R.id.rl_bind_alibaba:
+                break;
+            case R.id.rl_data_sum:
+                DataHelper.cleanExternalCache(this);
+                dataSum.setText(DataHelper.bytes2kb(DataHelper.getDirSize(DataHelper.getCacheFile(this))));
+                ArmsUtils.makeText(this, ArmsUtils.getString(this, R.string.settings_clear_su));
+                break;
+            case R.id.tv_exit:
+                startActivity(new Intent(this, MainActivity.class));
+                break;
+        }
+
     }
 
     @Override

@@ -43,8 +43,11 @@
         <activity android:name=".search.activity.SearchResultActivity" />
         <activity
             android:name=".channel.ui.activity.ShelvesActivity"
+            android:label="@string/shelves_title"
             android:launchMode="singleTask" />
-        <activity android:name=".settings.mvp.ui.activity.SettingActivity" />
+        <activity
+            android:name=".settings.mvp.ui.activity.SettingActivity"
+            android:label="@string/settings_set" />
     </application>
 
 </manifest>

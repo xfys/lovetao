@@ -37,4 +37,10 @@
     <string name="mine_opinion">意见反馈</string>
     <string name="mine_praise">给个好评</string>
     <string name="mine_about_us">关于我们</string>
+    <string name="settings_set">设置</string>
+    <string name="settings_nike_name">昵称</string>
+    <string name="settings_bind_phone">手机绑定</string>
+    <string name="settings_bind_alipay">支付宝绑定</string>
+    <string name="settings_clear">清理缓存</string>
+    <string name="settings_clear_su">清理成功</string>
 </resources>
