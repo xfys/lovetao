@@ -112,7 +112,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         baseInitStutarbar();
     }
 
-    private void baseInitStutarbar(){
+    private void baseInitStutarbar() {
         //透明顶部状态栏
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
@@ -121,7 +121,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
             decorView.setSystemUiVisibility(option);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-        BarUtils.setStatusBarLightMode(this, true);
+        setStatusBarMode(true);
     }
 
 
@@ -129,8 +129,8 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
      * 适配刘海屏，包括横竖屏切换
      */
     private void initLiuHaiAdapter() {
-        if(mToolbar != null){
-            ViewGroup.LayoutParams layoutParams =  mToolbar.getLayoutParams();
+        if (mToolbar != null) {
+            ViewGroup.LayoutParams layoutParams = mToolbar.getLayoutParams();
             ViewGroup.MarginLayoutParams marginParams = null;
             if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
                 marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
@@ -215,5 +215,9 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
                 }
             }
         }
+    }
+
+    protected void setStatusBarMode(boolean lightMode) {
+        BarUtils.setStatusBarLightMode(this, lightMode);
     }
 }

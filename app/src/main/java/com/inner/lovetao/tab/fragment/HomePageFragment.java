@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.search.activity.SearchActivity;
+import com.inner.lovetao.settings.mvp.ui.activity.SettingActivity;
 import com.inner.lovetao.tab.tabfragment.ChoiceFragment;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
@@ -84,7 +85,7 @@ public class HomePageFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.edit_home_search:
-                startActivity(new Intent(getActivity(), SearchActivity.class));
+                startActivity(new Intent(getActivity(), SettingActivity.class));
                 break;
         }
 

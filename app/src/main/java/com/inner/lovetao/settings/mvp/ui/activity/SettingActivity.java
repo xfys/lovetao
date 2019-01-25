@@ -40,7 +40,7 @@ public class SettingActivity extends BaseActivity<SettingActivityPresenter> impl
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-
+        setStatusBarMode(false);
     }
 
     @Override
@@ -64,6 +64,7 @@ public class SettingActivity extends BaseActivity<SettingActivityPresenter> impl
         checkNotNull(intent);
         ArmsUtils.startActivity(intent);
     }
+
 
     @Override
     public void killMyself() {
