@@ -13,7 +13,6 @@ import com.inner.lovetao.tab.fragment.WlfareServiceFragment;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import com.jess.arms.utils.BarUtils;
 import com.jess.arms.widget.tabview.TabView;
 import com.jess.arms.widget.tabview.TabViewChild;
 
@@ -52,13 +51,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         tabView.setOnTabChildClickListener((position, currentImageIcon, currentTextView) -> {
             switch (position) {
                 case 0:
-                    BarUtils.setStatusBarLightMode(this, true);
+                    setStatusBarMode(true);
                     break;
                 case 1:
-                    BarUtils.setStatusBarLightMode(this, false);
+                    setStatusBarMode(false);
                     break;
                 case 2:
-                    BarUtils.setStatusBarLightMode(this, false);
+                    setStatusBarMode(false);
                     break;
             }
         });

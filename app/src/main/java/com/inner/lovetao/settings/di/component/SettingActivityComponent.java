@@ -9,7 +9,7 @@ import com.inner.lovetao.settings.di.module.SettingActivityModule;
 import com.inner.lovetao.settings.mvp.contract.SettingActivityContract;
 
 import com.jess.arms.di.scope.ActivityScope;
-import com.inner.lovetao.settings.mvp.ui.activity.SettingActivityActivity;
+import com.inner.lovetao.settings.mvp.ui.activity.SettingActivity;
 
 
 /**
@@ -20,7 +20,7 @@ import com.inner.lovetao.settings.mvp.ui.activity.SettingActivityActivity;
 @ActivityScope
 @Component(modules = SettingActivityModule.class, dependencies = AppComponent.class)
 public interface SettingActivityComponent {
-    void inject(SettingActivityActivity activity);
+    void inject(SettingActivity activity);
 
     @Component.Builder
     interface Builder {

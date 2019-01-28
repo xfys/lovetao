@@ -2,28 +2,66 @@
     <string name="app_name">爱淘优惠券</string>
     <string name="str_press_again">再按一次返回键关闭程序</string>
     <string name="common_cancel">取消</string>
+    <string name="str_confirm">确定</string>
+
     <string name="search_hint">复制‘淘宝标题’查找优惠劵哦～</string>
     <string name="search_history">历史搜索</string>
     <string name="search_hot">大家都在搜</string>
     <string name="search">搜索</string>
     <string name="search_result_empty">没有找到相关的商品</string>
+
     <string name="main_homepage">首页</string>
     <string name="main_wlfare_service">福利社</string>
     <string name="main_mine">我的</string>
+
     <string name="shelves_recommend">推荐</string>
     <string name="shelves_newest">最新</string>
     <string name="shelves_sales">销量</string>
     <string name="shelves_price">价格</string>
     <string name="shelves_title">今日上新</string>
     <string name="ac_guilde_btn">开启省钱之旅</string>
+
     <string name="home_choice_first_desc">今日上新</string>
     <string name="home_choice_second_desc">9块9特卖</string>
     <string name="home_choice_third_desc">大额神劵</string>
     <string name="home_choice_fourth_desc">邀请收徒</string>
     <string name="home_choice_five_desc">每日红包</string>
     <string name="home_choice_smart_choose_desc">精选好物</string>
+
     <string name="mine_login_unauthorized">未认证支付宝</string>
     <string name="mine_login_earnings">累计收益</string>
     <string name="mine_login_withdrawal">已提现</string>
     <string name="mine_login_not_withdrawal">可提现</string>
+    <string name="mine_earnings">我的收益</string>
+    <string name="mine_order">我的订单</string>
+    <string name="mine_collect">我的收藏</string>
+    <string name="mine_get_volume">领卷指南</string>
+    <string name="mine_disciple">我的徒弟</string>
+    <string name="mine_invite">邀请赚钱</string>
+    <string name="mine_call_service">联系客服</string>
+    <string name="mine_opinion">意见反馈</string>
+    <string name="mine_praise">给个好评</string>
+    <string name="mine_about_us">关于我们</string>
+
+    <string name="settings_set">设置</string>
+    <string name="settings_nike_name">昵称</string>
+    <string name="settings_bind_phone">手机绑定</string>
+    <string name="settings_bind_alipay">支付宝绑定</string>
+    <string name="settings_clear">清理缓存</string>
+    <string name="settings_clear_su">清理成功</string>
+
+    <string name="tb_login_desc">搜淘宝劵最高省90%</string>
+    <string name="tb_login">淘宝登录</string>
+    <string name="tb_login_str_desc">登录即表示您同意</string>
+    <string name="tb_login_agreement">《用户服务协议》</string>
+
+    <string name="bind_phone_num_title">绑定手机号</string>
+    <string name="bind_phone_first_step">只差一步，开启能省会赚钱之旅！</string>
+    <string name="bind_phone_input_hint">请输入手机号</string>
+    <string name="bind_phone_input_verfiy">请输入验证码</string>
+    <string name="bind_phone_input_invest_code">请输入邀请码（选填）</string>
+    <string name="bind_phone_get_verfiy_code_desc">获取验证码</string>
+    <string name="bind_phone_verfiy_code_again">重新获取</string>
+
+
 </resources>

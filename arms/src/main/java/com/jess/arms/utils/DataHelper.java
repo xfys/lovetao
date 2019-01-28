@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigDecimal;
 
 /**
  * ================================================
@@ -278,5 +279,36 @@ public class DataHelper {
         String result = out.toString();
         out.close();
         return result;
+    }
+
+    /**
+     * byte(字节)根据长度转成kb(千字节)和mb(兆字节)
+     *
+     * @param bytes
+     * @return
+     */
+    public static String bytes2kb(long bytes) {
+        BigDecimal filesize = new BigDecimal(bytes);
+        BigDecimal megabyte = new BigDecimal(1024 * 1024);
+        float returnValue = filesize.divide(megabyte, 2, BigDecimal.ROUND_UP)
+                .floatValue();
+        if (returnValue > 1)
+            return (returnValue + "MB");
+        BigDecimal kilobyte = new BigDecimal(1024);
+        returnValue = filesize.divide(kilobyte, 2, BigDecimal.ROUND_UP)
+                .floatValue();
+        return (returnValue + "KB");
+    }
+
+    /**
+     * 清除外部cache下的内容(/mnt/sdcard/android/data/com.xxx.xxx/cache)
+     *
+     * @param context
+     */
+    public static void cleanExternalCache(Context context) {
+        if (Environment.getExternalStorageState().equals(
+                Environment.MEDIA_MOUNTED)) {
+            deleteDir(context.getExternalCacheDir());
+        }
     }
 }

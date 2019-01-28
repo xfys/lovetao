@@ -1,28 +1,25 @@
 package com.inner.lovetao.tab.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.inner.lovetao.R;
-import com.inner.lovetao.tab.view.MineAdvertView;
-import com.inner.lovetao.tab.view.MineLoginView;
+import com.inner.lovetao.loginregister.mvp.ui.activity.TBLoginActivityActivity;
+import com.inner.lovetao.settings.mvp.ui.activity.SettingActivity;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
-import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
@@ -33,13 +30,22 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  */
 public class MineFragment extends BaseFragment {
 
-    @BindView(R.id.fm_recyclerView)
-    RecyclerView recyclerView;
     @BindView(R.id.pull_to_refresh_layout)
     PtrFrameLayout ptrFrameLayout;
-
-    private List datas = new ArrayList();
-    private HeaderAndFooterWrapper wrapper;
+    @BindView(R.id.iv_photo)
+    ImageView ivPhoto;
+    @BindView(R.id.tv_mine_name)
+    TextView tvMineName;
+    @BindView(R.id.iv_unauthorized)
+    ImageView ivUnauthorized;
+    @BindView(R.id.tv_unauthorized)
+    TextView tvUnauthorized;
+    @BindView(R.id.ll_accumulated_earnings)
+    LinearLayout mAccumulatedEarnings;
+    @BindView(R.id.ll_have_withdrawal)
+    LinearLayout mHaveWithdrawal;
+    @BindView(R.id.ll_can_withdrawal)
+    LinearLayout mCanWithdrawal;
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
@@ -55,7 +61,7 @@ public class MineFragment extends BaseFragment {
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         initPullToRefresh();
-        initRecycleView();
+
     }
 
     private void initPullToRefresh() {
@@ -72,28 +78,42 @@ public class MineFragment extends BaseFragment {
 
     }
 
-    private void initRecycleView() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        CommonAdapter adapter = new CommonAdapter<Object>(mContext, 0, datas) {
-            @Override
-            protected void convert(ViewHolder holder, Object o, int position) {
-
-            }
-        };
-        wrapper = new HeaderAndFooterWrapper(adapter);
-        MineLoginView mineLoginView = new MineLoginView(mContext);
-        mineLoginView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        MineAdvertView mineAdvertView = new MineAdvertView(mContext);
-        mineAdvertView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        wrapper.addHeaderView(mineLoginView);
-        wrapper.addHeaderView(mineAdvertView);
-        recyclerView.setAdapter(wrapper);
-        wrapper.notifyDataSetChanged();
-    }
 
     @Override
     public void setData(@Nullable Object data) {
 
+    }
+
+
+    @OnClick({R.id.iv_setting, R.id.ll_mine_earnings, R.id.ll_mine_order, R.id.ll_mine_collect, R.id.ll_mine_getVolume, R.id.ll_mine_disciple, R.id.ll_invite_money, R.id.ll_call_service, R.id.ll_suggest, R.id.ll_praise, R.id.ll_about_us, R.id.iv_photo})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_setting:
+                startActivity(new Intent(getActivity(), SettingActivity.class));
+                break;
+            case R.id.ll_mine_earnings:
+                break;
+            case R.id.ll_mine_order:
+                break;
+            case R.id.ll_mine_collect:
+                break;
+            case R.id.ll_mine_getVolume:
+                break;
+            case R.id.ll_mine_disciple:
+                break;
+            case R.id.ll_invite_money:
+                break;
+            case R.id.ll_call_service:
+                break;
+            case R.id.ll_suggest:
+                break;
+            case R.id.ll_praise:
+                break;
+            case R.id.ll_about_us:
+                break;
+            case R.id.iv_photo:
+                startActivity(new Intent(getActivity(), TBLoginActivityActivity.class));
+                break;
+        }
     }
 }

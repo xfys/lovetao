@@ -8,7 +8,7 @@
     <color name="toolbar_main_title_font">#FFFFFFFF</color>
     <color name="toolbar_main_menu_font">#FFFFFFFF</color>
     <color name="toolbar_title">#ff000000</color>
-    <color name="toolbar_menu">#6d98fe</color>
+    <color name="toolbar_menu">#E83F5C</color>
 
     <color name="main_gray">#999999</color>
     <color name="main_black">#333333</color>
@@ -23,4 +23,5 @@
     <color name="color_DFDFDF">#DFDFDF</color>
     <color name="color_EB3025">#EB3025</color>
     <color name="color_666666">#666666</color>
+    <color name="color_DBDBDB">#DBDBDB</color>
 </resources>
