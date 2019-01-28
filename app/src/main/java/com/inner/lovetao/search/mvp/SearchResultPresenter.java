@@ -17,12 +17,8 @@ package com.inner.lovetao.search.mvp;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.OnLifecycleEvent;
 
-import com.inner.lovetao.beans.response.search.SearchHistoryItemBean;
-import com.inner.lovetao.beans.response.search.SearchHotItemBean;
+import com.inner.lovetao.search.mvp.contract.SearchContract;
 import com.jess.arms.mvp.BasePresenter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SearchResultPresenter extends BasePresenter<SearchContract.Model, SearchContract.View> {
 
