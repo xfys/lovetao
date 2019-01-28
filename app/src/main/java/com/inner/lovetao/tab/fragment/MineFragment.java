@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.inner.lovetao.R;
+import com.inner.lovetao.loginregister.mvp.ui.activity.TBLoginActivityActivity;
 import com.inner.lovetao.settings.mvp.ui.activity.SettingActivity;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
@@ -84,7 +85,7 @@ public class MineFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.iv_setting, R.id.ll_mine_earnings, R.id.ll_mine_order, R.id.ll_mine_collect, R.id.ll_mine_getVolume, R.id.ll_mine_disciple, R.id.ll_invite_money, R.id.ll_call_service, R.id.ll_suggest, R.id.ll_praise, R.id.ll_about_us})
+    @OnClick({R.id.iv_setting, R.id.ll_mine_earnings, R.id.ll_mine_order, R.id.ll_mine_collect, R.id.ll_mine_getVolume, R.id.ll_mine_disciple, R.id.ll_invite_money, R.id.ll_call_service, R.id.ll_suggest, R.id.ll_praise, R.id.ll_about_us, R.id.iv_photo})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_setting:
@@ -109,6 +110,9 @@ public class MineFragment extends BaseFragment {
             case R.id.ll_praise:
                 break;
             case R.id.ll_about_us:
+                break;
+            case R.id.iv_photo:
+                startActivity(new Intent(getActivity(), TBLoginActivityActivity.class));
                 break;
         }
     }

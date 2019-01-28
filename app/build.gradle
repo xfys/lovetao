@@ -61,6 +61,7 @@ android {
                     'src/main/res/layout/tabfragment',
                     'src/main/res/layout/weight',
                     'src/main/res/layout/settings',
+                    'src/main/res/layout/login',
                     'src/main/res'
             ])
         }
