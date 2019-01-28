@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.loginregister.mvp.ui.activity.TBLoginActivityActivity;
+import com.inner.lovetao.search.activity.SearchActivity;
 import com.inner.lovetao.settings.mvp.ui.activity.SettingActivity;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
@@ -61,7 +62,7 @@ public class MineFragment extends BaseFragment {
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         initPullToRefresh();
-
+        startActivity(new Intent(getContext(), SearchActivity.class));
     }
 
     private void initPullToRefresh() {

@@ -1,4 +1,4 @@
-package com.inner.lovetao.search.mvp;
+package com.inner.lovetao.search.mvp.presenter;
 
 /*
  *

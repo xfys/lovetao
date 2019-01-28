@@ -34,7 +34,7 @@
             android:layout_marginLeft="@dimen/dp_16"
             android:gravity="center"
             android:paddingRight="@dimen/dp_16"
-            android:text="@string/common_cancel"
+            android:text="@string/search"
             android:textColor="@color/color_E83F5C"
             android:textSize="@dimen/textSize15" />
     </LinearLayout>
@@ -66,10 +66,10 @@
         <ImageView
             android:id="@+id/ac_search_iv_delete"
             android:layout_width="@dimen/dp_26"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_height="@dimen/dp_10"
             android:paddingRight="@dimen/dp_16"
-            android:src="@color/color_444444" />
+            android:src="@mipmap/icon_search_delete" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
