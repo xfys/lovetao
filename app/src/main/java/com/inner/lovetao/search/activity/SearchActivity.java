@@ -32,7 +32,8 @@ import com.inner.lovetao.beans.response.search.SearchHistoryItemBean;
 import com.inner.lovetao.beans.response.search.SearchHotItemBean;
 import com.inner.lovetao.search.adapter.SearchHistoryAdapter;
 import com.inner.lovetao.search.adapter.SearchHotAdapter;
-import com.inner.lovetao.search.mvp.SearchPresenter;
+import com.inner.lovetao.search.di.component.DaggerSearchComponent;
+import com.inner.lovetao.search.mvp.presenter.SearchPresenter;
 import com.inner.lovetao.search.mvp.contract.SearchContract;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
@@ -59,7 +60,12 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
-
+        DaggerSearchComponent //如找不到该类,请编译一下项目
+                .builder()
+                .appComponent(appComponent)
+                .view(this)
+                .build()
+                .inject(this);
     }
 
     @Override
@@ -85,8 +91,8 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
         mRcyHistory.setAdapter(mHistoryAdapter);
         mHotAdapter = new SearchHotAdapter(this);
         mRcyHot.setAdapter(mHotAdapter);
-//        mPresenter.getHistoryData();
-//        mPresenter.getHotData();
+        mPresenter.getHistoryData();
+        mPresenter.getHotData();
     }
 
     @Override

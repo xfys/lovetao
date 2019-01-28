@@ -25,7 +25,7 @@ import android.widget.LinearLayout;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.search.adapter.SearchResultAdapter;
-import com.inner.lovetao.search.mvp.SearchResultPresenter;
+import com.inner.lovetao.search.mvp.presenter.SearchResultPresenter;
 import com.inner.lovetao.search.mvp.contract.SearchResultContract;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;

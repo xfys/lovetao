@@ -1,4 +1,4 @@
-package com.inner.lovetao.search.mvp;
+package com.inner.lovetao.search.mvp.presenter;
 
 /*
  *
@@ -14,26 +14,47 @@ package com.inner.lovetao.search.mvp;
  * 修订日期 :
  */
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.OnLifecycleEvent;
+import android.app.Application;
 
 import com.inner.lovetao.beans.response.search.SearchHistoryItemBean;
 import com.inner.lovetao.beans.response.search.SearchHotItemBean;
 import com.inner.lovetao.search.mvp.contract.SearchContract;
+import com.jess.arms.di.scope.ActivityScope;
+import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+
+@ActivityScope
 public class SearchPresenter extends BasePresenter<SearchContract.Model, SearchContract.View> {
 
-    public SearchPresenter(SearchContract.Model model, SearchContract.View view) {
-        super(model, view);
+    @Inject
+    RxErrorHandler mErrorHandler;
+    @Inject
+    Application mApplication;
+    @Inject
+    ImageLoader mImageLoader;
+    @Inject
+    AppManager mAppManager;
+
+    @Inject
+    public SearchPresenter(SearchContract.Model model, SearchContract.View rootView) {
+        super(model, rootView);
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    void onCreate() {
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.mErrorHandler = null;
+        this.mAppManager = null;
+        this.mImageLoader = null;
+        this.mApplication = null;
     }
 
     public void getHistoryData() {
