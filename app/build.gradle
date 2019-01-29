@@ -39,7 +39,7 @@ android {
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        dev {
+        debug {
             debuggable true
             matchingFallbacks = ['release', 'debug']
             applicationIdSuffix ".dev"
@@ -67,7 +67,7 @@ android {
         }
 
 
-        dev {
+        debug {
             java {
                 srcDir 'src/java'
             }
