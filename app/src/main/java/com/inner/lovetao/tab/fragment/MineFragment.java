@@ -62,7 +62,6 @@ public class MineFragment extends BaseFragment {
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         initPullToRefresh();
-        startActivity(new Intent(getContext(), SearchActivity.class));
     }
 
     private void initPullToRefresh() {

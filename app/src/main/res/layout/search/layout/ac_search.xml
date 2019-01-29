@@ -12,12 +12,22 @@
         android:orientation="horizontal"
         android:paddingLeft="@dimen/dp_16">
 
+        <ImageView
+            android:id="@+id/ac_search_iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:paddingRight="@dimen/dp_10"
+            android:src="@mipmap/icon_back" />
+
         <EditText
             android:id="@+id/ac_search_edt"
             android:layout_width="0dp"
             android:layout_height="@dimen/dp_30"
             android:layout_weight="1"
             android:background="@drawable/shape_ac_search_edt_bg"
+            android:drawableLeft="@mipmap/icon_home_search"
+            android:drawablePadding="@dimen/dp_6"
             android:hint="@string/search"
             android:imeOptions="flagNoExtractUi|actionGo"
             android:inputType="textNoSuggestions"
@@ -28,7 +38,7 @@
             android:textSize="@dimen/textSize14" />
 
         <TextView
-            android:id="@+id/ac_search_tv_cancel"
+            android:id="@+id/ac_search_tv_search"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/dp_16"

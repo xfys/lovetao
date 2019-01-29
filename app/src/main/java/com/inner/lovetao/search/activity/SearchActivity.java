@@ -20,8 +20,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
@@ -33,8 +31,8 @@ import com.inner.lovetao.beans.response.search.SearchHotItemBean;
 import com.inner.lovetao.search.adapter.SearchHistoryAdapter;
 import com.inner.lovetao.search.adapter.SearchHotAdapter;
 import com.inner.lovetao.search.di.component.DaggerSearchComponent;
-import com.inner.lovetao.search.mvp.presenter.SearchPresenter;
 import com.inner.lovetao.search.mvp.contract.SearchContract;
+import com.inner.lovetao.search.mvp.presenter.SearchPresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 
@@ -46,10 +44,6 @@ import butterknife.OnClick;
 public class SearchActivity extends BaseActivity<SearchPresenter> implements SearchContract.Model, SearchContract.View {
     @BindView(R.id.ac_search_edt)
     EditText mEdit;
-    @BindView(R.id.ac_search_tv_cancel)
-    TextView mTvCancel;
-    @BindView(R.id.ac_search_iv_delete)
-    ImageView mIvDelete;
     @BindView(R.id.ac_search_rcy_history)
     RecyclerView mRcyHistory;
     @BindView(R.id.ac_search_rcy_hot)
@@ -75,7 +69,6 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-//        mPresenter = new SearchPresenter(this, this);
         mEdit.clearFocus();
         FlexboxLayoutManager historyLayoutManager = new FlexboxLayoutManager(this);
         historyLayoutManager.setFlexDirection(FlexDirection.ROW);
@@ -105,11 +98,10 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     }
 
-    @OnClick({R.id.ac_search_tv_cancel, R.id.ac_search_iv_delete})
+    @OnClick({R.id.ac_search_tv_search, R.id.ac_search_iv_delete})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ac_search_tv_cancel:
-                mEdit.setText("");
+            case R.id.ac_search_tv_search:// 搜索
                 break;
             case R.id.ac_search_iv_delete:
                 mHistoryAdapter.cleanData();
