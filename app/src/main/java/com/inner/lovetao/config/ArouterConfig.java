@@ -1,7 +1,5 @@
 package com.inner.lovetao.config;
 
-import android.os.Bundle;
-
 /**
  * desc:页面路由配置
  * Created by xcz
