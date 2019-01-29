@@ -1,8 +1,8 @@
-package com.inner.lovetao.di.component;
+package com.inner.lovetao.channel.di.component;
 
 import com.inner.lovetao.channel.contract.ShelvesContract;
 import com.inner.lovetao.channel.ui.activity.ShelvesActivity;
-import com.inner.lovetao.di.module.ShelvesModule;
+import com.inner.lovetao.channel.di.module.ShelvesModule;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.di.scope.ActivityScope;
 

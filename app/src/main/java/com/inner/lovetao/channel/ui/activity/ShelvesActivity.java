@@ -14,7 +14,7 @@ import com.inner.lovetao.R;
 import com.inner.lovetao.channel.contract.ShelvesContract;
 import com.inner.lovetao.channel.presenter.ShelvesPresenter;
 import com.inner.lovetao.channel.ui.fragment.GoodsFragment;
-import com.inner.lovetao.di.component.DaggerShelvesComponent;
+import com.inner.lovetao.channel.di.component.DaggerShelvesComponent;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -53,6 +53,20 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
     ViewPager mShelvesViewpager;
 
     private String[] titles = {"推荐","女装","男装","零食","日用","母婴","数码","美女", "电影", "视频", "电影", "视频"};
+    private ArrayList<Fragment> fragments = new ArrayList<Fragment>(){{
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+        add(new GoodsFragment());
+    }};
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         DaggerShelvesComponent //如找不到该类,请编译一下项目
@@ -70,12 +84,6 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        mToolbarTitle.setText(R.string.shelves_title);
-
-        ArrayList<Fragment> fragments = new ArrayList<>();
-        for (int i = 0; i < titles.length; i++) {
-            fragments.add(new GoodsFragment());
-        }
         tabLayout.setViewPager(mShelvesViewpager, titles, this, fragments);
     }
 

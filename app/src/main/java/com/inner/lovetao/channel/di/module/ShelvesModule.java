@@ -1,4 +1,4 @@
-package com.inner.lovetao.di.module;
+package com.inner.lovetao.channel.di.module;
 
 import com.inner.lovetao.channel.contract.ShelvesContract;
 import com.inner.lovetao.channel.model.ShelvesModel;
