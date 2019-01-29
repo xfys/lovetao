@@ -15,7 +15,7 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
-
+-ignorewarnings
 -optimizationpasses 5
 
 
@@ -46,7 +46,6 @@
 -keepnames class * implements java.io.Serializable
 -keepattributes Signature
 -keep class **.R$* {*;}
--ignorewarnings
 -keepclassmembers class **.R$* {
     public static <fields>;
 }
@@ -238,7 +237,16 @@
 -keep class com.squareup.leakcanary.** { *; }
 
 # Marshmallow removed Notification.setLatestEventInfo()
+#Arouter
 -dontwarn android.app.Notification
+-keep public class com.alibaba.android.arouter.routes.**{*;}
+-keep public class com.alibaba.android.arouter.facade.**{*;}
+-keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
+# 如果使用了 byType 的方式获取 Service，需添加下面规则，保护接口
+-keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
+
+# 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
+# -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
 
 
 

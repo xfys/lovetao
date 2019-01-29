@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
 import com.inner.lovetao.home.mvp.MainContract;
 import com.inner.lovetao.home.mvp.MainPresenter;
+import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.tab.fragment.HomePageFragment;
 import com.inner.lovetao.tab.fragment.MineFragment;
 import com.inner.lovetao.tab.fragment.WlfareServiceFragment;
@@ -21,6 +23,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
+@Route(path = ArouterConfig.AC_MAIN)
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.Model, MainContract.View {
 
     private long mExitTime;

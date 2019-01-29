@@ -1,6 +1,5 @@
 package com.inner.lovetao.loginregister.mvp.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,7 +10,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.UserInfo;
+import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.loginregister.TimeCount;
 import com.inner.lovetao.loginregister.di.component.DaggerBindPhoneActivityComponent;
 import com.inner.lovetao.loginregister.mvp.contract.BindPhoneActivityContract;
@@ -31,7 +35,18 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * Created by xcz
  * on 2019/01/28
  */
-public class BindPhoneActivityActivity extends BaseActivity<BindPhoneActivityPresenter> implements BindPhoneActivityContract.View, TimeCount.CountDownTimerListener {
+@Route(path = ArouterConfig.AC_BIND_PHONE)
+public class BindPhoneActivity extends BaseActivity<BindPhoneActivityPresenter> implements BindPhoneActivityContract.View, TimeCount.CountDownTimerListener {
+    @Autowired(name = "int")
+    public int intNumber;
+    @Autowired(name = "byte")
+    public byte byteNumber;
+    @Autowired(name = "long")
+    public long longNumber;
+    @Autowired(name = "string")
+    public String string;
+    @Autowired(name = "Serializable")
+    public UserInfo userInfo;
     /**
      * 输入的手机号
      */
@@ -59,6 +74,7 @@ public class BindPhoneActivityActivity extends BaseActivity<BindPhoneActivityPre
     TextView tvGetCode;
     private TimeCount timeCount;
 
+
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         DaggerBindPhoneActivityComponent //如找不到该类,请编译一下项目
@@ -81,6 +97,12 @@ public class BindPhoneActivityActivity extends BaseActivity<BindPhoneActivityPre
         }
         timeCount = new TimeCount(60000, 1000);
         initListner();
+        if (userInfo != null) {
+            investCode.setText("" + intNumber + byteNumber + longNumber + string + userInfo.toString());
+        } else {
+            investCode.setText("" + intNumber + byteNumber + longNumber + string);
+        }
+
     }
 
     @Override
@@ -145,6 +167,8 @@ public class BindPhoneActivityActivity extends BaseActivity<BindPhoneActivityPre
                 break;
             //确定
             case R.id.tv_confirm:
+                UserInstance.getInstance().setUserInfo(this, new UserInfo("张三", phoneNumber.getText().toString(), true, verfiyCode.getText().toString()));
+                killMyself();
                 break;
         }
     }
@@ -155,11 +179,6 @@ public class BindPhoneActivityActivity extends BaseActivity<BindPhoneActivityPre
         ArmsUtils.makeText(this, message);
     }
 
-    @Override
-    public void launchActivity(@NonNull Intent intent) {
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
-    }
 
     @Override
     public void killMyself() {

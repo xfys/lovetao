@@ -19,7 +19,6 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".index.activity.SplashActivity"
@@ -56,10 +55,10 @@
             android:label="@string/settings_set"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".loginregister.mvp.ui.activity.TBLoginActivityActivity"
+            android:name=".loginregister.mvp.ui.activity.TBLoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".loginregister.mvp.ui.activity.BindPhoneActivityActivity"
+            android:name=".loginregister.mvp.ui.activity.BindPhoneActivity"
             android:label="@string/bind_phone_num_title"
             android:screenOrientation="portrait" />
     </application>

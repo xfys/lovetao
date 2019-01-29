@@ -1,6 +1,5 @@
 package com.inner.lovetao.tab.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,10 +10,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
-import com.inner.lovetao.loginregister.mvp.ui.activity.TBLoginActivityActivity;
-import com.inner.lovetao.search.activity.SearchActivity;
-import com.inner.lovetao.settings.mvp.ui.activity.SettingActivity;
+import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
@@ -89,7 +87,7 @@ public class MineFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_setting:
-                startActivity(new Intent(getActivity(), SettingActivity.class));
+                ARouter.getInstance().build(ArouterConfig.AC_SETTING).navigation(mContext);
                 break;
             case R.id.ll_mine_earnings:
                 break;
@@ -112,7 +110,7 @@ public class MineFragment extends BaseFragment {
             case R.id.ll_about_us:
                 break;
             case R.id.iv_photo:
-                startActivity(new Intent(getActivity(), TBLoginActivityActivity.class));
+                ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);
                 break;
         }
     }

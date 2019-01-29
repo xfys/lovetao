@@ -15,15 +15,12 @@ import android.widget.RelativeLayout;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.search.activity.SearchActivity;
-import com.inner.lovetao.settings.mvp.ui.activity.SettingActivity;
 import com.inner.lovetao.tab.tabfragment.ChoiceFragment;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.AndroidLiuHaiUtils;
-import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.widget.tablayout.SlidingTabLayout;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import butterknife.BindView;

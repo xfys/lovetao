@@ -33,6 +33,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.jess.arms.R;
 import com.jess.arms.base.delegate.IActivity;
 import com.jess.arms.integration.cache.Cache;
@@ -112,6 +113,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         }
         baseInitToolbar();
         baseInitStutarbar();
+        ARouter.getInstance().inject(this);
         initData(savedInstanceState);
     }
 
@@ -171,7 +173,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     @Override
     protected void onDestroy() {
-        Log.e(TAG,"onDestroy");
+        Log.e(TAG, "onDestroy");
         super.onDestroy();
         if (mUnbinder != null && mUnbinder != Unbinder.EMPTY)
             mUnbinder.unbind();

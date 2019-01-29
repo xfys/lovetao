@@ -1,12 +1,15 @@
 package com.inner.lovetao.loginregister.mvp.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.loginregister.di.component.DaggerTBLoginActivityComponent;
 import com.inner.lovetao.loginregister.mvp.contract.TBLoginActivityContract;
 import com.inner.lovetao.loginregister.mvp.presenter.TBLoginActivityPresenter;
@@ -24,7 +27,12 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * Created by xcz
  * on 2019/01/28
  */
-public class TBLoginActivityActivity extends BaseActivity<TBLoginActivityPresenter> implements TBLoginActivityContract.View {
+@Route(path = ArouterConfig.AC_TB_AUTH)
+public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> implements TBLoginActivityContract.View {
+    public int name = 1;
+    public long age = 2L;
+    public byte skdj = 3;
+    public String kkkk ="sdfsdf";
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -59,7 +67,15 @@ public class TBLoginActivityActivity extends BaseActivity<TBLoginActivityPresent
         switch (view.getId()) {
             //淘宝登录
             case R.id.tv_tb_login:
-                launchActivity(new Intent(this, BindPhoneActivityActivity.class));
+                ARouter.getInstance()
+                        .build(ArouterConfig.AC_BIND_PHONE)
+                        .withByte("byte", skdj)
+                        .withInt("int", name)
+                        .withLong("long", age)
+                        .withString("string", kkkk)
+                        .withSerializable("Serializable", UserInstance.getInstance().getUserInfo(this))
+                        .navigation(this);
+                killMyself();
                 break;
             //用户协议
             case R.id.tv_user_agreement:
@@ -84,11 +100,6 @@ public class TBLoginActivityActivity extends BaseActivity<TBLoginActivityPresent
         ArmsUtils.makeText(this, message);
     }
 
-    @Override
-    public void launchActivity(@NonNull Intent intent) {
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
-    }
 
     @Override
     public void killMyself() {

@@ -15,6 +15,12 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
+        //ARounter 路由框架
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -113,6 +119,9 @@ dependencies {
 
     //test
     api rootProject.ext.dependencies["timber"]
+    //ARouter 路由框架
+    api 'com.alibaba:arouter-api:1.4.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 }
 
 apply from: '../bintray.gradle'

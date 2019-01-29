@@ -3,13 +3,13 @@ package com.inner.lovetao.loginregister.di.component;
 import dagger.BindsInstance;
 import dagger.Component;
 
+import com.inner.lovetao.loginregister.mvp.ui.activity.BindPhoneActivity;
 import com.jess.arms.di.component.AppComponent;
 
 import com.inner.lovetao.loginregister.di.module.BindPhoneActivityModule;
 import com.inner.lovetao.loginregister.mvp.contract.BindPhoneActivityContract;
 
 import com.jess.arms.di.scope.ActivityScope;
-import com.inner.lovetao.loginregister.mvp.ui.activity.BindPhoneActivityActivity;
 
 
 /**
@@ -20,7 +20,7 @@ import com.inner.lovetao.loginregister.mvp.ui.activity.BindPhoneActivityActivity
 @ActivityScope
 @Component(modules = BindPhoneActivityModule.class, dependencies = AppComponent.class)
 public interface BindPhoneActivityComponent {
-    void inject(BindPhoneActivityActivity activity);
+    void inject(BindPhoneActivity activity);
 
     @Component.Builder
     interface Builder {

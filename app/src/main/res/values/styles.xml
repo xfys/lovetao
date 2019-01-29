@@ -38,18 +38,6 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="MyTablayoutstyle" parent="Base.Widget.Design.TabLayout">
-        <item name="tabBackground">@color/white</item>
-        <item name="tabIndicatorColor">@color/color_E83F5C</item>
-        <item name="tabIndicatorHeight">2dp</item>
-        <item name="tabSelectedTextColor">@color/color_E83F5C</item>
-        <item name="tabIndicatorFullWidth">false</item>
-        <item name="tabMode">scrollable</item>
-        <item name="tabMaxWidth">0dp</item>
-        <item name="tabGravity">fill</item>
-        <item name="android:textSize">@dimen/textSize14</item>
-        <item name="android:textColor">@color/color_707477</item>
-    </style>
 
     <style name="BannerDefaultStyle">
         <!-- 自定义属性在styles.xml中不需要命名空间,直接用属性名就可以了 -->
@@ -76,7 +64,7 @@
         <!-- 提示文案的文字颜色 -->
         <item name="banner_tipTextColor">@android:color/transparent</item>
         <!-- 加载网络数据时覆盖在BGABanner最上层的占位图 -->
-        <item name="banner_placeholderDrawable">@color/main_gray</item>
+        <item name="banner_placeholderDrawable">@mipmap/icon_invest_code</item>
     </style>
 
 </resources>

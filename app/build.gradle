@@ -16,6 +16,12 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+        //ARounter 路由框架
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
     signingConfigs {
         release {
@@ -80,13 +86,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':arms')
+    api project(':arms')
     implementation rootProject.ext.dependencies["eventbus"]
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     implementation rootProject.ext.dependencies["progressmanager"]
@@ -97,7 +100,9 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     implementation 'com.google.android:flexbox:0.3.0'
     //下拉刷新，上拉加载头
-    implementation project(':ptr-lib')
+    api project(':ptr-lib')
     //万能Adapter
     implementation 'com.zhy:base-rvadapter:3.0.3'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+
 }

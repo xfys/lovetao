@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/dp_16"
-            android:layout_toLeftOf="@id/iv_arrow_nikename"
+            android:layout_toLeftOf="@+id/iv_arrow_nikename"
             android:textColor="@color/color_444444"
             android:textSize="@dimen/textSize14"
             tools:text="小猪佩奇" />
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/dp_16"
-            android:layout_toLeftOf="@id/iv_arrow_phone"
+            android:layout_toLeftOf="@+id/iv_arrow_phone"
             android:textColor="@color/color_444444"
             android:textSize="@dimen/textSize14"
             tools:text="未绑定" />
@@ -150,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/dp_16"
-            android:layout_toLeftOf="@id/iv_arrow_alipay"
+            android:layout_toLeftOf="@+id/iv_arrow_alipay"
             android:textColor="@color/color_444444"
             android:textSize="@dimen/textSize14"
             tools:text="1234343" />
@@ -193,7 +193,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/dp_16"
-            android:layout_toLeftOf="@id/iv_arrow_clear"
+            android:layout_toLeftOf="@+id/iv_arrow_clear"
             android:textColor="@color/color_444444"
             android:textSize="@dimen/textSize14"
             tools:text="123M" />

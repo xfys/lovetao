@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.home.activity.MainActivity;
 import com.inner.lovetao.settings.di.component.DaggerSettingActivityComponent;
 import com.inner.lovetao.settings.mvp.contract.SettingActivityContract;
@@ -29,6 +31,7 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * Created by xcz
  * on 2019/01/24
  */
+@Route(path = ArouterConfig.AC_SETTING)
 public class SettingActivity extends BaseActivity<SettingActivityPresenter> implements SettingActivityContract.View {
     /**
      * 头像
@@ -118,12 +121,6 @@ public class SettingActivity extends BaseActivity<SettingActivityPresenter> impl
     public void showMessage(@NonNull String message) {
         checkNotNull(message);
         ArmsUtils.snackbarText(message);
-    }
-
-    @Override
-    public void launchActivity(@NonNull Intent intent) {
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
     }
 
 

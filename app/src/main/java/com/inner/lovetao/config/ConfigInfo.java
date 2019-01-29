@@ -7,6 +7,7 @@ package com.inner.lovetao.config;
  */
 public interface ConfigInfo {
     String FIRST_INSTALL = "first_install";
+    String USER_INFO = "user_info";
 
     interface ResponseCode {
         //成功获取数据
