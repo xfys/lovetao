@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                     setStatusBarMode(true);
                     break;
                 case 1:
-                    setStatusBarMode(false);
+                    setStatusBarMode(true);
                     break;
                 case 2:
                     setStatusBarMode(false);

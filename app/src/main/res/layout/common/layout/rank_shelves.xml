@@ -57,6 +57,6 @@
         android:layout_marginLeft="@dimen/dp_16"
         android:layout_marginRight="@dimen/dp_16"
         android:text="@string/shelves_price"
-        android:drawableRight="@drawable/bga_banner_selector_point_solid"/>
+        android:drawableRight="@mipmap/icon_goods_up_and_down"/>
 
 </RelativeLayout>

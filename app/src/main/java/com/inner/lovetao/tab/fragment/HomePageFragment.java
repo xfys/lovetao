@@ -15,15 +15,13 @@ import android.widget.RelativeLayout;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.search.activity.SearchActivity;
-import com.inner.lovetao.settings.mvp.ui.activity.SettingActivity;
+import com.inner.lovetao.tab.tabfragment.CategoryFragment;
 import com.inner.lovetao.tab.tabfragment.ChoiceFragment;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.AndroidLiuHaiUtils;
-import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.widget.tablayout.SlidingTabLayout;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -50,13 +48,13 @@ public class HomePageFragment extends BaseFragment {
     private String[] titles = {"精选", "男装", "女装", "童装", "玩具总动员", "电影", "视频", "剑姬"};
     private ArrayList<Fragment> fragmentList = new ArrayList<Fragment>() {{
         add(new ChoiceFragment());
-        add(new MineFragment());
-        add(new MineFragment());
-        add(new MineFragment());
-        add(new MineFragment());
-        add(new MineFragment());
-        add(new MineFragment());
-        add(new MineFragment());
+        add(new CategoryFragment());
+        add(new CategoryFragment());
+        add(new CategoryFragment());
+        add(new CategoryFragment());
+        add(new CategoryFragment());
+        add(new CategoryFragment());
+        add(new CategoryFragment());
     }};
 
     @Override
