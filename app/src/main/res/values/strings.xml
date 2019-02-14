@@ -72,5 +72,11 @@
     <string name="wlfare_coin_travel">金币兑换</string>
     <string name="wlfare_make_money_center">赚钱中心</string>
 
+    <string name="ac_suggest">意见反馈</string>
+    <string name="suggest_desc">最多不超过200字</string>
+    <string name="suggest_commit">提交</string>
+    <string name="suggest_hint_desc">请输入您的宝贵意见</string>
+    <string name="suggest_toast">请输入您的意见</string>
+
 
 </resources>

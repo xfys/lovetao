@@ -61,6 +61,10 @@
             android:name=".loginregister.mvp.ui.activity.BindPhoneActivity"
             android:label="@string/bind_phone_num_title"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".settings.mvp.ui.activity.SuggestActivity"
+            android:label="@string/ac_suggest"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

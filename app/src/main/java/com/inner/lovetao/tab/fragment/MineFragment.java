@@ -104,6 +104,7 @@ public class MineFragment extends BaseFragment {
             case R.id.ll_call_service:
                 break;
             case R.id.ll_suggest:
+                ARouter.getInstance().build(ArouterConfig.AC_SUGGEST).navigation(mContext);
                 break;
             case R.id.ll_praise:
                 break;

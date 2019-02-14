@@ -16,6 +16,8 @@ public class ArouterConfig {
     public static final String AC_BIND_PHONE = "/settings/mvp/ui/activity/SettingActivity";
     //引导页面
     public static final String AC_GUILD = "/index/activity/GuildActivity";
+    //意见反馈
+    public static final String AC_SUGGEST = "/settings/mvp/ui/activity/SuggestActivity";
 
     public static class Interceptor {
         public static final String LOGIN_INTERCEPT = "login_intercept";
