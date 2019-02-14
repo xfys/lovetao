@@ -18,6 +18,8 @@ public class ArouterConfig {
     public static final String AC_GUILD = "/index/activity/GuildActivity";
     //意见反馈
     public static final String AC_SUGGEST = "/settings/mvp/ui/activity/SuggestActivity";
+    //关于我们
+    public static final String AC_ABOUT_US = "/settings/mvp/ui/activity/AboutUsActivity";
 
     public static class Interceptor {
         public static final String LOGIN_INTERCEPT = "login_intercept";

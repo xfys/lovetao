@@ -109,6 +109,7 @@ public class MineFragment extends BaseFragment {
             case R.id.ll_praise:
                 break;
             case R.id.ll_about_us:
+                ARouter.getInstance().build(ArouterConfig.AC_ABOUT_US).navigation(mContext);
                 break;
             case R.id.iv_photo:
                 ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);

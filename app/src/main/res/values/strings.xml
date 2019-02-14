@@ -77,6 +77,7 @@
     <string name="suggest_commit">提交</string>
     <string name="suggest_hint_desc">请输入您的宝贵意见</string>
     <string name="suggest_toast">请输入您的意见</string>
+    <string name="ac_about_us">关于我们</string>
 
 
 </resources>

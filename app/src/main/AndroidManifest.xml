@@ -65,6 +65,10 @@
             android:name=".settings.mvp.ui.activity.SuggestActivity"
             android:label="@string/ac_suggest"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".settings.mvp.ui.activity.AboutUsActivity"
+            android:label="@string/ac_about_us"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
