@@ -90,6 +90,7 @@ public class MineFragment extends BaseFragment {
                 ARouter.getInstance().build(ArouterConfig.AC_SETTING).navigation(mContext);
                 break;
             case R.id.ll_mine_earnings:
+                ARouter.getInstance().build(ArouterConfig.AC_MINE_EARNING).navigation(mContext);
                 break;
             case R.id.ll_mine_order:
                 break;

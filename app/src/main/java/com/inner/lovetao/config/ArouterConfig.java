@@ -20,6 +20,10 @@ public class ArouterConfig {
     public static final String AC_SUGGEST = "/settings/mvp/ui/activity/SuggestActivity";
     //关于我们
     public static final String AC_ABOUT_US = "/settings/mvp/ui/activity/AboutUsActivity";
+    //今日上新
+    public static final String AC_SHELVES = "/channel/ui/activity/ShelvesActivity";
+    //我的收益
+    public static final String AC_MINE_EARNING = "/mineassets/mvp/ui/activity/EarningsActivity";
 
     public static class Interceptor {
         public static final String LOGIN_INTERCEPT = "login_intercept";

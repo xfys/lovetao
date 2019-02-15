@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/icon_earnings_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="@string/earnings_withdrawal_amount"
+            android:textColor="@color/color_F0B4C1"
+            android:textSize="@dimen/textSize12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_43"
+            android:text="¥230.00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_94"
+            android:text="提现结算中金额:¥120.00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_51"
+            android:background="@mipmap/icon_earnings_rectangle_bg"
+            android:drawableLeft="@mipmap/icon_earnings_detail"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_5"
+            android:text="@string/earnings_withdrawal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="135dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_accumulated_earnings"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:gravity="center"
+                    android:text="@string/mine_login_earnings"
+                    android:textColor="@color/color_F0B4C1"
+                    android:textSize="@dimen/textSize12" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:gravity="center"
+                    android:text="¥21"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSize14" />
+
+            </LinearLayout>
+            
+            <View
+                android:layout_width="1px"
+                android:layout_height="@dimen/dp_25"
+                android:background="@color/white"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:id="@+id/ll_have_withdrawal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:gravity="center"
+                    android:text="@string/earnings_no_account"
+                    android:textColor="@color/color_F0B4C1"
+                    android:textSize="@dimen/textSize12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:gravity="center"
+                    android:text="¥21"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSize14" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="@dimen/dp_25"
+                android:background="@color/white"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:id="@+id/ll_can_withdrawal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:gravity="center"
+                    android:text="@string/earnings_cumulative"
+                    android:textColor="@color/color_F0B4C1"
+                    android:textSize="@dimen/textSize12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:gravity="center"
+                    android:text="¥21"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSize14" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:background="@drawable/shape_item_shadow_oval"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_earnings_today"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"/>
+
+        <TextView
+            android:id="@+id/tv_earnings_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今日"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_6"
+            android:gravity="center"/>
+
+         <LinearLayout
+             android:layout_below="@+id/tv_earnings_today"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="horizontal">
+
+             <LinearLayout
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="1"
+                 android:orientation="vertical"
+                 android:layout_gravity="center_vertical">
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/earnings_today_order"
+                     android:textSize="@dimen/textSize14"
+                     android:textColor="@color/color_707477"
+                     android:layout_gravity="center_horizontal"/>
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="1"
+                     android:textSize="@dimen/textSize14"
+                     android:textColor="@color/color_444444"
+                     android:layout_gravity="center_horizontal"/>
+
+             </LinearLayout>
+
+             <View
+                 android:layout_width="1px"
+                 android:layout_height="@dimen/dp_30"
+                 android:background="@color/color_EEEEEE"
+                 android:layout_gravity="center_vertical"/>
+
+             <LinearLayout
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="1"
+                 android:orientation="vertical"
+                 android:layout_gravity="center_vertical">
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/earnings_order_money"
+                     android:textSize="@dimen/textSize14"
+                     android:textColor="@color/color_707477"
+                     android:layout_gravity="center_horizontal"/>
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="¥123.00"
+                     android:textSize="@dimen/textSize14"
+                     android:textColor="@color/color_444444"
+                     android:layout_gravity="center_horizontal"/>
+
+             </LinearLayout>
+
+         </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:background="@drawable/shape_item_shadow_oval"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_18">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_earnings_mouth"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"/>
+
+        <TextView
+            android:id="@+id/tv_earnings_mouth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="本月"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_6"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_below="@+id/tv_earnings_mouth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/earnings_today_order"
+                    android:textSize="@dimen/textSize14"
+                    android:textColor="@color/color_707477"
+                    android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textSize="@dimen/textSize14"
+                    android:textColor="@color/color_444444"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="@dimen/dp_30"
+                android:background="@color/color_EEEEEE"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/earnings_order_money"
+                    android:textSize="@dimen/textSize14"
+                    android:textColor="@color/color_707477"
+                    android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥123.00"
+                    android:textSize="@dimen/textSize14"
+                    android:textColor="@color/color_444444"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_55"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/dp_18">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_earnings_detail"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/earnings_detail"
+            android:layout_marginLeft="@dimen/dp_35"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_earnings_back"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

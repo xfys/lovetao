@@ -10,11 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
 import com.inner.lovetao.channel.contract.ShelvesContract;
 import com.inner.lovetao.channel.presenter.ShelvesPresenter;
 import com.inner.lovetao.channel.ui.fragment.GoodsFragment;
 import com.inner.lovetao.channel.di.component.DaggerShelvesComponent;
+import com.inner.lovetao.config.ArouterConfig;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -33,6 +35,7 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * <p>
  * Created by feihaokui on 01/14/2019 17:37
  */
+@Route(path = ArouterConfig.AC_SHELVES)
 public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements ShelvesContract.View, ShelvesContract.Model {
 
     @BindView(R.id.my_toolbar_title)

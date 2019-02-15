@@ -79,5 +79,11 @@
     <string name="suggest_toast">请输入您的意见</string>
     <string name="ac_about_us">关于我们</string>
 
-
+    <string name="earnings_withdrawal_amount">可提现金额</string>
+    <string name="earnings_withdrawal">提现</string>
+    <string name="earnings_no_account">尚未到账</string>
+    <string name="earnings_cumulative">累计提现</string>
+    <string name="earnings_today_order">今日下单</string>
+    <string name="earnings_order_money">下单金额</string>
+    <string name="earnings_detail">收益明细</string>
 </resources>

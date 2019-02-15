@@ -69,6 +69,10 @@
             android:name=".settings.mvp.ui.activity.AboutUsActivity"
             android:label="@string/ac_about_us"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".mineassets.mvp.ui.activity.EarningsActivity"
+            android:label="@string/mine_earnings"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
