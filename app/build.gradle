@@ -86,6 +86,19 @@ android {
             }
         }
     }
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == 'release') {
+            variant.outputs.all {
+                def apkName = "lovetao_release_v${defaultConfig.versionName}"
+                outputFileName = apkName + ".apk"
+            }
+        } else {
+            variant.outputs.all {
+                def apkName = "lovetao_dev_v${defaultConfig.versionName}"
+                outputFileName = apkName + ".apk"
+            }
+        }
+    }
 }
 
 dependencies {
@@ -109,9 +122,9 @@ dependencies {
     implementation 'com.zhy:base-rvadapter:3.0.3'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     //淘宝授权
-    implementation ('com.ali.auth.sdk:alibabauth_core:1.4.3@jar')
-    implementation ('com.ali.auth.sdk:alibabauth_ui:1.4.3@aar')
-    implementation ('com.ali.auth.sdk:alibabauth_ext:1.4.3@jar')
+    implementation('com.ali.auth.sdk:alibabauth_core:1.4.3@jar')
+    implementation('com.ali.auth.sdk:alibabauth_ui:1.4.3@aar')
+    implementation('com.ali.auth.sdk:alibabauth_ext:1.4.3@jar')
 
     implementation 'com.taobao.android:securityguardaar3:5.1.81@aar'
     implementation 'com.taobao.android:mtopsdk_allinone_open:1.3.1@jar'
