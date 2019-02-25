@@ -5,17 +5,20 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.ali.auth.third.core.MemberSDK;
+import com.ali.auth.third.core.callback.LoginCallback;
+import com.ali.auth.third.core.model.Session;
+import com.ali.auth.third.login.LoginService;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
-import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.loginregister.di.component.DaggerTBLoginActivityComponent;
 import com.inner.lovetao.loginregister.mvp.contract.TBLoginActivityContract;
 import com.inner.lovetao.loginregister.mvp.presenter.TBLoginActivityPresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.LogUtils;
 
 import butterknife.OnClick;
 
@@ -32,7 +35,7 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
     public int name = 1;
     public long age = 2L;
     public byte skdj = 3;
-    public String kkkk ="sdfsdf";
+    public String kkkk = "sdfsdf";
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -67,21 +70,33 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
         switch (view.getId()) {
             //淘宝登录
             case R.id.tv_tb_login:
-                ARouter.getInstance()
-                        .build(ArouterConfig.AC_BIND_PHONE)
-                        .withByte("byte", skdj)
-                        .withInt("int", name)
-                        .withLong("long", age)
-                        .withString("string", kkkk)
-                        .withSerializable("Serializable", UserInstance.getInstance().getUserInfo(this))
-                        .navigation(this);
-                killMyself();
+                toTBAuth();
                 break;
             //用户协议
             case R.id.tv_user_agreement:
                 break;
         }
 
+    }
+
+    /**
+     * 淘宝授权认证
+     */
+    private void toTBAuth() {
+        LoginService loginService = MemberSDK.getService(LoginService.class);
+        loginService.auth(new LoginCallback() {
+            @Override
+            public void onSuccess(Session session) {
+                showMessage("授权成功");
+                LogUtils.debugInfo("TBAuth--->session:" + session.toString());
+            }
+
+            @Override
+            public void onFailure(int code, String message) {
+                showMessage("授权取消");
+                LogUtils.debugInfo("TBAuth--->code:" + code + ";msg:" + message);
+            }
+        });
     }
 
     @Override

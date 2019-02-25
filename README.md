@@ -36,5 +36,6 @@ color_色值
   # 4. 带参数跳转：  ARouter.getInstance().build(路径).withInt(key,value).withSerializable(key,value).withBundle(key,value).navigation(this);
   
   # 5. 带参数取值    在跳转过去的页面 注解  @Autowired(name = key)    int intNumber;  
+# 淘宝登陆SDK     http://baichuan.taobao.com/docs/doc.htm?spm=a219a.7386653.0.0.6ab6669acgkiTg&docType=1&articleId=107136&previewCode=670FC3B0EF08CC498F6943B01519C2A7
                                                
                                      

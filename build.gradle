@@ -26,6 +26,13 @@ allprojects {
         maven {
             url 'https://dl.google.com/dl/android/maven2'
         }
+        //淘宝授权
+        maven {
+            url "http://repo.baichuan-android.taobao.com/content/groups/BaichuanRepositories/"
+        }
+        maven {
+            url "http://repo.baichuan-android.taobao.com/content/repositories/BaichuanRepo-staged/"
+        }
     }
 }
 
