@@ -11,7 +11,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
-
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
 #-keepattributes SourceFile,LineNumberTable
@@ -77,16 +76,28 @@
 -keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
 # 如果使用了 byType 的方式获取 Service，需添加下面规则，保护接口
 -keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
-
 # 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
 -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
 #淘宝授权
--keep class com.ali.auth.** {*;}
+-keepattributes Signature
+-keep class com.ali.auth.**  {*;}
 -keep class com.taobao.securityjni.** {*;}
 -keep class com.taobao.wireless.security.** {*;}
 -keep class com.ut.secbody.**{*;}
 -keep class com.taobao.dp.**{*;}
 -keep class com.alibaba.wireless.security.**{*;}
+-keep class sun.misc.Unsafe { *; }
+-keep class com.taobao.** {*;}
+-keep class com.alibaba.** {*;}
+-keep class com.alipay.** {*;}
+-dontwarn com.taobao.**
+-dontwarn com.alibaba.**
+-dontwarn com.alipay.**
+-keep class com.ut.** {*;}
+-dontwarn com.ut.**
+-keep class com.ta.** {*;}
+-dontwarn com.ta.**
+-keep class org.json.** {*;}
 #微信分享
 -keep class com.tencent.mm.opensdk.** {*;}
 -keep class com.tencent.wxop.** {*;}

@@ -66,5 +66,23 @@
         <!-- 加载网络数据时覆盖在BGABanner最上层的占位图 -->
         <item name="banner_placeholderDrawable">@mipmap/icon_invest_code</item>
     </style>
+    <!-- 全屏dialog -->
+    <style name="full_screen_dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <style name="gbanker_dialog_anim_from_bottom_to_top" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit_from_bottom</item>
+    </style>
+
+    <style name="gbanker_dialog_anim_from_top_to_bottom" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter_from_top</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit_from_top</item>
+    </style>
 
 </resources>

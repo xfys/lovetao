@@ -43,6 +43,7 @@ android {
     }
     buildTypes {
         release {
+            debuggable true
             zipAlignEnabled true     //Zipalign优化
             minifyEnabled true     //混淆
             signingConfig signingConfigs.release
@@ -78,6 +79,7 @@ android {
                     'src/main/res/layout/settings',
                     'src/main/res/layout/login',
                     'src/main/res/layout/mineassets',
+                    'src/main/res/layout/dialog',
                     'src/main/res'
             ])
         }

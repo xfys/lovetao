@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:weightSum="4">
+
+    <TextView
+        android:id="@+id/tv_share_wx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@mipmap/ic_share_wx"
+        android:drawablePadding="@dimen/dp_8"
+        android:gravity="center"
+        android:text="微信" />
+
+    <TextView
+        android:id="@+id/tv_share_wx_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@mipmap/ic_share_wx_q"
+        android:drawablePadding="@dimen/dp_8"
+        android:gravity="center"
+        android:text="朋友圈" />
+
+    <TextView
+        android:id="@+id/tv_share_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@mipmap/ic_share_qq"
+        android:drawablePadding="@dimen/dp_8"
+        android:gravity="center"
+        android:text="QQ好友" />
+
+    <TextView
+        android:id="@+id/tv_share_weibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@mipmap/ic_share_weibo"
+        android:drawablePadding="@dimen/dp_8"
+        android:gravity="center"
+        android:text="微博" />
+
+</LinearLayout>
