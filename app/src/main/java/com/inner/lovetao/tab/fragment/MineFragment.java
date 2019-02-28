@@ -13,6 +13,10 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.share.ShareParams;
+import com.inner.lovetao.share.ShareType;
+import com.inner.lovetao.share.ShareUtils;
+import com.inner.lovetao.share.WxShareListner;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
@@ -93,6 +97,17 @@ public class MineFragment extends BaseFragment {
                 ARouter.getInstance().build(ArouterConfig.AC_MINE_EARNING).navigation(mContext);
                 break;
             case R.id.ll_mine_order:
+                ShareUtils.getInstance().shareWechat(new ShareParams(ShareType.LINK, "测试", "测试测试", "https://www.baidu.com/"), new WxShareListner() {
+                    @Override
+                    public void onSuccess(Object obj) {
+
+                    }
+
+                    @Override
+                    public void onFailure(int errorCode) {
+
+                    }
+                });
                 break;
             case R.id.ll_mine_collect:
                 break;

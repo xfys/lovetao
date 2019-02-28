@@ -3,6 +3,7 @@ package com.inner.lovetao;
 import com.ali.auth.third.core.MemberSDK;
 import com.ali.auth.third.core.callback.InitResultCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.inner.lovetao.share.ShareUtils;
 import com.jess.arms.base.BaseApplication;
 import com.jess.arms.utils.LogUtils;
 
@@ -17,7 +18,9 @@ public class LoveTaoApplication extends BaseApplication {
         super.onCreate();
         initARouter();
         initTBAuth();
+        initWX();
     }
+
 
     @Override
     public void onTerminate() {
@@ -52,5 +55,12 @@ public class LoveTaoApplication extends BaseApplication {
                 LogUtils.debugInfo("TBAuthInit--->Success");
             }
         });
+    }
+
+    /**
+     * 初始化微信
+     */
+    private void initWX() {
+        ShareUtils.getInstance().regToWx(this);
     }
 }

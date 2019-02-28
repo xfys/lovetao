@@ -1,6 +1,12 @@
 package com.inner.lovetao.utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.PixelFormat;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.NinePatchDrawable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
@@ -8,6 +14,8 @@ import com.jess.arms.base.App;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
+
+import java.io.ByteArrayOutputStream;
 
 /**
  * desc: 图片加载
@@ -54,9 +62,41 @@ public class ImageLoadUtils {
         mImageLoader.loadImage(context, builder.build());
     }
 
+    public static byte[] parseBitmapToBytes(Bitmap bitmap) {
+        byte[] bytes = null;
+
+        if (bitmap != null) {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, bos);
+            bytes = bos.toByteArray();
+        }
+
+        return bytes;
+    }
+
     public static void clear(Context context) {
         AppComponent mAppComponent = ((App) context.getApplicationContext()).getAppComponent();
         ImageLoader mImageLoader = mAppComponent.imageLoader();
         mImageLoader.clear(mAppComponent.application(), ImageConfigImpl.builder().isClearMemory(true).build());
+    }
+
+    public static Bitmap drawable2Bitmap(Drawable drawable) {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        } else if (drawable instanceof NinePatchDrawable) {
+            Bitmap bitmap = Bitmap
+                    .createBitmap(
+                            drawable.getIntrinsicWidth(),
+                            drawable.getIntrinsicHeight(),
+                            drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
+                                    : Bitmap.Config.RGB_565);
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(),
+                    drawable.getIntrinsicHeight());
+            drawable.draw(canvas);
+            return bitmap;
+        } else {
+            return null;
+        }
     }
 }

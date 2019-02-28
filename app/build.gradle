@@ -47,6 +47,9 @@ android {
             minifyEnabled true     //混淆
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "WX_APP_ID", "\"${project.WX_APP_ID}\""
+            buildConfigField "String", "WX_APP_AppSecret", "\"${project.WX_APP_AppSecret}\""
         }
         debug {
             debuggable true
@@ -56,6 +59,9 @@ android {
             minifyEnabled false     //混淆
             signingConfig signingConfigs.dev
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "WX_APP_ID", "\"${project.WX_APP_ID}\""
+            buildConfigField "String", "WX_APP_AppSecret", "\"${project.WX_APP_AppSecret}\""
         }
     }
     sourceSets {
@@ -148,4 +154,6 @@ dependencies {
     implementation 'com.alibaba.sdk.android:alibc_trade_biz:3.1.1.99'
     implementation 'com.alibaba.sdk.android:alibc_trade_sdk:3.1.1.99'
     //##############################################################################
+    //微信分享
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }
