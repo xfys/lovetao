@@ -24,6 +24,8 @@ public class ArouterConfig {
     public static final String AC_SHELVES = "/channel/ui/activity/ShelvesActivity";
     //我的收益
     public static final String AC_MINE_EARNING = "/mineassets/mvp/ui/activity/EarningsActivity";
+    //收益明细
+    public static final String AC_EARNING_DETAIL = "/mineassets/mvp/ui/activity/EarningsDetailActivity";
 
     public static class Interceptor {
         public static final String LOGIN_INTERCEPT = "login_intercept";

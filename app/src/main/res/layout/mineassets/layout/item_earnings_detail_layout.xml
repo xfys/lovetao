@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="@dimen/px_1"
+            android:layout_height="@dimen/dp_8" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="徒弟购物收益"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14" />
+
+        <View
+            android:layout_width="@dimen/px_1"
+            android:layout_height="@dimen/dp_8" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2019-01-12 12:00:00"
+            android:textColor="@color/color_707477"
+            android:textSize="@dimen/textSize12" />
+
+        <View
+            android:layout_width="@dimen/px_1"
+            android:layout_height="@dimen/dp_8" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp_16"
+        android:text="+0.88元"
+        android:textColor="@color/color_E83F5C"
+        android:textSize="@dimen/textSize14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px_1"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_EEEEEE" />
+
+</RelativeLayout>

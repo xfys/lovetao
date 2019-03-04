@@ -8,9 +8,9 @@ import com.jess.arms.mvp.IModel;
  * ================================================
  * Description:
  * <p>
- * Created by feihaokui on 02/15/2019 11:18
+ * Created by feihaokui on 02/18/2019 11:15
  */
-public interface EarningsContract {
+public interface EarningsDetailContract {
     //对于经常使用的关于UI的方法可以定义到IView中,如显示隐藏进度条,和显示文字消息
     interface View extends IView {
 

@@ -21,6 +21,7 @@
             android:textSize="@dimen/textSize12" />
 
         <TextView
+            android:id="@+id/tv_withdraw_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_16"
@@ -30,6 +31,7 @@
             android:textSize="@dimen/textSize24" />
 
         <TextView
+            android:id="@+id/tv_withdrawing_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_16"
@@ -39,6 +41,7 @@
             android:textSize="@dimen/textSize12" />
 
         <TextView
+            android:id="@+id/tv_withdraw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -76,6 +79,7 @@
 
 
                 <TextView
+                    android:id="@+id/tv_total_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -111,6 +115,7 @@
                     android:textSize="@dimen/textSize12" />
 
                 <TextView
+                    android:id="@+id/tv_not_withdrawing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -146,6 +151,7 @@
                     android:textSize="@dimen/textSize12" />
 
                 <TextView
+                    android:id="@+id/tv_total_withdrawal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -208,6 +214,7 @@
                      android:textColor="@color/color_707477"
                      android:layout_gravity="center_horizontal"/>
                  <TextView
+                     android:id="@+id/tv_today_order"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:text="1"
@@ -238,6 +245,7 @@
                      android:textColor="@color/color_707477"
                      android:layout_gravity="center_horizontal"/>
                  <TextView
+                     android:id="@+id/tv_today_money"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:text="¥123.00"
@@ -300,6 +308,7 @@
                     android:textColor="@color/color_707477"
                     android:layout_gravity="center_horizontal"/>
                 <TextView
+                    android:id="@+id/tv_mouth_order"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1"
@@ -330,6 +339,7 @@
                     android:textColor="@color/color_707477"
                     android:layout_gravity="center_horizontal"/>
                 <TextView
+                    android:id="@+id/tv_mouth_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="¥123.00"
@@ -344,6 +354,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_earnings_detail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_55"
         android:background="@color/white"
