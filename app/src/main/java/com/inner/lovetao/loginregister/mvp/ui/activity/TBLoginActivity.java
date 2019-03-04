@@ -75,7 +75,7 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
             //淘宝登录
             case R.id.tv_tb_login:
 //                toTBAuth();
-                mPresenter.getTestData(1);
+//                mPresenter.getTestData(1);
                 break;
             //用户协议
             case R.id.tv_user_agreement:
