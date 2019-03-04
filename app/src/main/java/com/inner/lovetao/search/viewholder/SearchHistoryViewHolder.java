@@ -15,12 +15,11 @@ package com.inner.lovetao.search.viewholder;
  */
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.inner.lovetao.R;
-import com.inner.lovetao.beans.response.search.SearchHistoryItemBean;
+import com.inner.lovetao.search.bean.SearchHistoryItemBean;
 import com.jess.arms.base.BaseHolder;
 
 import butterknife.BindView;

@@ -19,7 +19,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.inner.lovetao.R;
-import com.inner.lovetao.beans.response.search.SearchResultItemBean;
+import com.inner.lovetao.search.bean.SearchResultItemBean;
 import com.inner.lovetao.search.viewholder.SearchResultViewHolder;
 import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;

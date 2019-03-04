@@ -16,8 +16,8 @@ package com.inner.lovetao.search.mvp.presenter;
 
 import android.app.Application;
 
-import com.inner.lovetao.beans.response.search.SearchHistoryItemBean;
-import com.inner.lovetao.beans.response.search.SearchHotItemBean;
+import com.inner.lovetao.search.bean.SearchHistoryItemBean;
+import com.inner.lovetao.search.bean.SearchHotItemBean;
 import com.inner.lovetao.search.mvp.contract.SearchContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;

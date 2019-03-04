@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.inner.lovetao.R;
-import com.inner.lovetao.beans.response.search.SearchHotItemBean;
+import com.inner.lovetao.search.bean.SearchHotItemBean;
 import com.jess.arms.base.BaseHolder;
 
 import butterknife.BindView;

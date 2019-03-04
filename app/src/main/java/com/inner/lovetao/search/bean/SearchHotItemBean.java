@@ -1,4 +1,4 @@
-package com.inner.lovetao.beans.response.search;
+package com.inner.lovetao.search.bean;
 
 /*
  *

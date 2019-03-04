@@ -3,7 +3,7 @@ package com.inner.lovetao.loginregister.mvp.model;
 import android.app.Application;
 
 import com.google.gson.Gson;
-import com.inner.lovetao.TestService;
+import com.inner.lovetao.tab.api.TestService;
 import com.inner.lovetao.loginregister.mvp.contract.TBLoginActivityContract;
 import com.inner.lovetao.core.TaoResponse;
 import com.jess.arms.di.scope.ActivityScope;

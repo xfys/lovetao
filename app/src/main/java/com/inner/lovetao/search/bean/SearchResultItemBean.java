@@ -1,4 +1,4 @@
-package com.inner.lovetao.beans.response.search;
+package com.inner.lovetao.search.bean;
 
 /*
  *
@@ -9,12 +9,12 @@ package com.inner.lovetao.beans.response.search;
  *
  * 创建日期 :2019/1/14      17:41
  *
- * 描 述 :搜索历史ItemBean
+ * 描 述 :搜索结果ItemBean
  *
  * 修订日期 :
  */
 
-public class SearchHistoryItemBean {
+public class SearchResultItemBean {
 
     private String desc;
 

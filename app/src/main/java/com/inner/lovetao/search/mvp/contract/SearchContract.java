@@ -14,8 +14,8 @@ package com.inner.lovetao.search.mvp.contract;
  * 修订日期 :
  */
 
-import com.inner.lovetao.beans.response.search.SearchHistoryItemBean;
-import com.inner.lovetao.beans.response.search.SearchHotItemBean;
+import com.inner.lovetao.search.bean.SearchHistoryItemBean;
+import com.inner.lovetao.search.bean.SearchHotItemBean;
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
 
