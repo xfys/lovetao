@@ -2,7 +2,7 @@ package com.inner.lovetao.mineassets.mvp.presenter;
 
 import android.app.Application;
 
-import com.inner.lovetao.mineassets.mvp.contract.EarningsContract;
+import com.inner.lovetao.mineassets.mvp.contract.EarningsDetailContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
@@ -14,12 +14,13 @@ import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
 
 /**
+ * ================================================
  * Description:
  * <p>
- * Created by feihaokui on 02/15/2019 11:18
+ * Created by feihaokui on 02/18/2019 11:15
  */
 @ActivityScope
-public class EarningsPresenter extends BasePresenter<EarningsContract.Model, EarningsContract.View> {
+public class EarningsDetailPresenter extends BasePresenter<EarningsDetailContract.Model, EarningsDetailContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -30,7 +31,7 @@ public class EarningsPresenter extends BasePresenter<EarningsContract.Model, Ear
     AppManager mAppManager;
 
     @Inject
-    public EarningsPresenter(EarningsContract.Model model, EarningsContract.View rootView) {
+    public EarningsDetailPresenter(EarningsDetailContract.Model model, EarningsDetailContract.View rootView) {
         super(model, rootView);
     }
 

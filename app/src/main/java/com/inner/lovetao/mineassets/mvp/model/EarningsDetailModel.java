@@ -3,7 +3,7 @@ package com.inner.lovetao.mineassets.mvp.model;
 import android.app.Application;
 
 import com.google.gson.Gson;
-import com.inner.lovetao.mineassets.mvp.contract.EarningsContract;
+import com.inner.lovetao.mineassets.mvp.contract.EarningsDetailContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
@@ -12,20 +12,19 @@ import javax.inject.Inject;
 
 
 /**
- * ================================================
  * Description:
  * <p>
- * Created by feihaokui on 02/15/2019 11:18
+ * Created by feihaokui on 02/18/2019 11:15
  */
 @ActivityScope
-public class EarningsModel extends BaseModel implements EarningsContract.Model {
+public class EarningsDetailModel extends BaseModel implements EarningsDetailContract.Model {
     @Inject
     Gson mGson;
     @Inject
     Application mApplication;
 
     @Inject
-    public EarningsModel(IRepositoryManager repositoryManager) {
+    public EarningsDetailModel(IRepositoryManager repositoryManager) {
         super(repositoryManager);
     }
 

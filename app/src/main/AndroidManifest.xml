@@ -78,6 +78,10 @@
             android:label="@string/mine_earnings"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".mineassets.mvp.ui.activity.EarningsDetailActivity"
+            android:label="@string/earnings_detail"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".wxapi.WXEntryActivity"
             android:exported="true"
             android:label="@string/app_name"

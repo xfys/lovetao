@@ -34,6 +34,7 @@ public class LoginInterceptor implements IInterceptor {
                 case ArouterConfig.AC_SHELVES:
                 case ArouterConfig.AC_ABOUT_US:
                 case ArouterConfig.AC_MINE_EARNING:
+                case ArouterConfig.AC_EARNING_DETAIL:
                     callback.onContinue(postcard);
                     break;
                 //默认需要登录
