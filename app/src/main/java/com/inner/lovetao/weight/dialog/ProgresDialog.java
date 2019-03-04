@@ -14,7 +14,7 @@ import com.inner.lovetao.R;
 public class ProgresDialog extends Dialog {
     public ProgresDialog(@NonNull Context context) {
         super(context, R.style.public_dialog_progress);
-        setContentView(R.layout.public_dialog_porgress);
+        setContentView(R.layout.dialog_common_porgress);
         setCanceledOnTouchOutside(false);
     }
 }

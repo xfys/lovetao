@@ -37,7 +37,7 @@ import okhttp3.Request;
  * ================================================
  */
 public class DefaultFormatPrinter implements FormatPrinter {
-    private static final String TAG = "ArmsHttpLog";
+    private static final String TAG = "HttpLog";
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
     private static final String DOUBLE_SEPARATOR = LINE_SEPARATOR + LINE_SEPARATOR;
 

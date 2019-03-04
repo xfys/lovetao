@@ -41,8 +41,8 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
      * 重新请求 token, 并重新执行请求
      *
      * @param httpResult 服务器返回的结果 (已被框架自动转换为字符串)
-     * @param chain {@link Interceptor.Chain}
-     * @param response {@link Response}
+     * @param chain      {@link Interceptor.Chain}
+     * @param response   {@link Response}
      * @return
      */
     @Override
@@ -64,7 +64,7 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
     /**
      * 这里可以在请求服务器之前拿到 {@link Request}, 做一些操作比如给 {@link Request} 统一添加 token 或者 header 以及参数加密等操作
      *
-     * @param chain {@link Interceptor.Chain}
+     * @param chain   {@link Interceptor.Chain}
      * @param request {@link Request}
      * @return
      */
@@ -73,6 +73,13 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
         /* 如果需要再请求服务器之前做一些操作, 则重新返回一个做过操作的的 Request 如增加 Header, 不做操作则直接返回参数 request
         return chain.request().newBuilder().header("token", tokenId)
                               .build(); */
-        return request;
+        return chain.request().newBuilder()
+                .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+                .addHeader("Accept-Encoding", "gzip, deflate")
+                .addHeader("Connection", "keep-alive")
+                .addHeader("Accept", "*/*")
+                .addHeader("Cookie", "add cookies here")
+                .build();
+
     }
 }
