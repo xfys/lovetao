@@ -1,22 +1,6 @@
-/*
- * Copyright 2017 JessYan
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.jess.arms.http.imageloader.glide;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
@@ -32,24 +16,23 @@ import com.bumptech.glide.module.AppGlideModule;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.OkHttpUrlLoader;
 import com.jess.arms.http.imageloader.BaseImageLoaderStrategy;
-import com.jess.arms.utils.DataHelper;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.DataHelper;
 
 import java.io.File;
 import java.io.InputStream;
 
 /**
- * ================================================
- * {@link AppGlideModule} 的默认实现类
- * 用于配置缓存文件夹,切换图片请求框架等操作
- * ================================================
+ * desc:用于配置缓存文件夹,切换图片请求框架等操作
+ * Created by xcz
+ * on 2019/3/4.
  */
 @GlideModule(glideName = "GlideArms")
 public class GlideConfiguration extends AppGlideModule {
     public static final int IMAGE_DISK_CACHE_MAX_SIZE = 100 * 1024 * 1024;//图片缓存文件最大值为100Mb
 
     @Override
-    public void applyOptions(@NonNull Context context, @NonNull GlideBuilder builder) {
+    public void applyOptions(Context context, GlideBuilder builder) {
         final AppComponent appComponent = ArmsUtils.obtainAppComponentFromContext(context);
         builder.setDiskCache(new DiskCache.Factory() {
             @Override
@@ -79,7 +62,7 @@ public class GlideConfiguration extends AppGlideModule {
     }
 
     @Override
-    public void registerComponents(@NonNull Context context, @NonNull Glide glide, @NonNull Registry registry) {
+    public void registerComponents(Context context, Glide glide, Registry registry) {
         //Glide 默认使用 HttpURLConnection 做网络请求,在这切换成 Okhttp 请求
         AppComponent appComponent = ArmsUtils.obtainAppComponentFromContext(context);
         registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(appComponent.okHttpClient()));
@@ -90,3 +73,4 @@ public class GlideConfiguration extends AppGlideModule {
         return false;
     }
 }
+

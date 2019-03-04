@@ -1,4 +1,4 @@
-package com.inner.lovetao.net;
+package com.inner.lovetao.core;
 
 import com.inner.lovetao.config.ConfigInfo;
 
@@ -9,7 +9,7 @@ import com.inner.lovetao.config.ConfigInfo;
  */
 public class TaoResponse<T> {
     private String code;
-    private String msg;
+    private String message;
     private T data;
     private long serverTime;
 
@@ -21,12 +21,12 @@ public class TaoResponse<T> {
         this.code = code;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public T getData() {

@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.inner.lovetao.R;
+import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.http.imageloader.glide.GlideImageLoaderStrategy;
-import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
+import com.jess.arms.http.config.CommonImageConfigImpl;
+import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.utils.ArmsUtils;
 
 import java.util.ArrayList;
@@ -38,8 +39,8 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
         add("https://img.g-banker.com/data/test/banner/MCZHQDCE_20190115231806.jpg");
         add("https://img.g-banker.com/data/test/banner/6IGMAEUF_20190115231825.jpg");
     }};
-
-    private GlideImageLoaderStrategy strategy;
+    private AppComponent mAppComponent;
+    private ImageLoader mImageLoader;
 
     public ChoiceBannerView(Context context) {
         this(context, null);
@@ -60,7 +61,8 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
         this.context = context;
         LayoutInflater.from(context).inflate(R.layout.head_choice_banner, this, true);
         ButterKnife.bind(this);
-        strategy = new GlideImageLoaderStrategy();
+        mAppComponent = ArmsUtils.obtainAppComponentFromContext(context);
+        mImageLoader = mAppComponent.imageLoader();
     }
 
     public void setData() {
@@ -72,13 +74,14 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
 
     @Override
     public void fillBannerItem(BGABanner banner, View itemView, @Nullable String model, int position) {
-        strategy.loadImage(context, ImageConfigImpl.builder()
-                .imageRadius(ArmsUtils.dip2px(context, 6))
-                .url(model)
-                .imageView(itemView.findViewById(R.id.iv_banner))
-                .cacheStrategy(0)
-                .isCenterCrop(false)
-                .build());
+        mImageLoader.loadImage(itemView.getContext(),
+                CommonImageConfigImpl
+                        .builder()
+                        .imageRadius(ArmsUtils.dip2px(context, 6))
+                        .url(model)
+                        .isCropCenter(false)
+                        .imageView(itemView.findViewById(R.id.iv_banner))
+                        .build());
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 JessYan
+ * Copyright 2018 JessYan
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,55 +13,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jess.arms.http.imageloader.glide;
+package com.jess.arms.http.config;
 
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
+import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-import com.jess.arms.http.imageloader.BaseImageLoaderStrategy;
 import com.jess.arms.http.imageloader.ImageConfig;
-import com.jess.arms.http.imageloader.ImageLoader;
 
-/**
- * ================================================
- * 这里存放图片请求的配置信息,可以一直扩展字段,如果外部调用时想让图片加载框架
- * 做一些操作,比如清除缓存或者切换缓存策略,则可以定义一个 int 类型的变量,内部根据 switch(int) 做不同的操作
- * 其他操作同理
- * ================================================
- */
-public class ImageConfigImpl extends ImageConfig {
+
+public class CommonImageConfigImpl extends ImageConfig {
     private int cacheStrategy;//0对应DiskCacheStrategy.all,1对应DiskCacheStrategy.NONE,2对应DiskCacheStrategy.SOURCE,3对应DiskCacheStrategy.RESULT
     private int fallback; //请求 url 为空,则使用此图片作为占位符
-    private int imageRadius;//图片每个圆角的大小
-    private int blurValue;//高斯模糊值, 值越大模糊效果越大
-    /**
-     * @see {@link Builder#transformation(BitmapTransformation)}
-     */
-    @Deprecated
     private BitmapTransformation transformation;//glide用它来改变图形的形状
     private ImageView[] imageViews;
-    private boolean isCrossFade;//是否使用淡入淡出过渡动画
-    private boolean isCenterCrop;//是否将图片剪切为 CenterCrop
-    private boolean isCircle;//是否将图片剪切为圆形
     private boolean isClearMemory;//清理内存缓存
     private boolean isClearDiskCache;//清理本地缓存
+    private Drawable placeholderDrawble;
+    private int resizeX;
+    private boolean isCropCenter;
+    private boolean isCropCircle;
+    private boolean isFitCenter;
+    private DecodeFormat formate;//图片格式
+    private int resizeY;
+    private int imageRadius;//图片每个圆角的大小
+    private int blurValue;//高斯模糊值, 值越大模糊效果越大
+    private boolean isCrossFade;//是否使用淡入淡出过渡动画
 
-    private ImageConfigImpl(Builder builder) {
+    private CommonImageConfigImpl(Builder builder) {
         this.url = builder.url;
         this.imageView = builder.imageView;
         this.placeholder = builder.placeholder;
+        this.placeholderDrawble = builder.placeholderDrawble;
         this.errorPic = builder.errorPic;
         this.fallback = builder.fallback;
         this.cacheStrategy = builder.cacheStrategy;
-        this.imageRadius = builder.imageRadius;
-        this.blurValue = builder.blurValue;
         this.transformation = builder.transformation;
         this.imageViews = builder.imageViews;
-        this.isCrossFade = builder.isCrossFade;
-        this.isCenterCrop = builder.isCenterCrop;
-        this.isCircle = builder.isCircle;
         this.isClearMemory = builder.isClearMemory;
         this.isClearDiskCache = builder.isClearDiskCache;
+        this.resizeX = builder.resizeX;
+        this.resizeY = builder.resizeY;
+        this.isCropCenter = builder.isCropCenter;
+        this.isCropCircle = builder.isCropCircle;
+        this.formate = builder.formate;
+        this.isFitCenter = builder.isFitCenter;
+        this.isCrossFade = builder.isCrossFade;
+        this.imageRadius = builder.imageRadius;
+        this.blurValue = builder.blurValue;
     }
 
     public int getCacheStrategy() {
@@ -88,6 +88,38 @@ public class ImageConfigImpl extends ImageConfig {
         return fallback;
     }
 
+    public Drawable getPlaceHolderDrawble() {
+        return placeholderDrawble;
+    }
+
+    public int getResizeX() {
+        return resizeX;
+    }
+
+    public int getResizeY() {
+        return resizeY;
+    }
+
+    public boolean isCropCenter() {
+        return isCropCenter;
+    }
+
+    public boolean isCropCircle() {
+        return isCropCircle;
+    }
+
+    public DecodeFormat decodeFormate() {
+        return formate;
+    }
+
+    public boolean isFitCenter() {
+        return isFitCenter;
+    }
+
+    public boolean isCrossFade() {
+        return isCrossFade;
+    }
+
     public int getBlurValue() {
         return blurValue;
     }
@@ -104,42 +136,32 @@ public class ImageConfigImpl extends ImageConfig {
         return imageRadius > 0;
     }
 
-    public boolean isCrossFade() {
-        return isCrossFade;
-    }
-
-    public boolean isCenterCrop() {
-        return isCenterCrop;
-    }
-
-    public boolean isCircle() {
-        return isCircle;
-    }
-
     public static Builder builder() {
         return new Builder();
     }
 
+
     public static final class Builder {
+        private int resizeX;
         private String url;
         private ImageView imageView;
         private int placeholder;
+        private Drawable placeholderDrawble;
         private int errorPic;
         private int fallback; //请求 url 为空,则使用此图片作为占位符
         private int cacheStrategy;//0对应DiskCacheStrategy.all,1对应DiskCacheStrategy.NONE,2对应DiskCacheStrategy.SOURCE,3对应DiskCacheStrategy.RESULT
         private int imageRadius;//图片每个圆角的大小
         private int blurValue;//高斯模糊值, 值越大模糊效果越大
-        /**
-         * @see {@link Builder#transformation(BitmapTransformation)}
-         */
-        @Deprecated
         private BitmapTransformation transformation;//glide用它来改变图形的形状
         private ImageView[] imageViews;
-        private boolean isCrossFade;//是否使用淡入淡出过渡动画
-        private boolean isCenterCrop;//是否将图片剪切为 CenterCrop
-        private boolean isCircle;//是否将图片剪切为圆形
         private boolean isClearMemory;//清理内存缓存
         private boolean isClearDiskCache;//清理本地缓存
+        private boolean isCropCenter;//裁剪居中
+        private boolean isCropCircle;
+        private boolean isCrossFade;//是否使用淡入淡出过渡动画
+        public DecodeFormat formate;
+        public boolean isFitCenter;
+        private int resizeY;
 
         private Builder() {
         }
@@ -184,18 +206,11 @@ public class ImageConfigImpl extends ImageConfig {
             return this;
         }
 
-        /**
-         * 给图片添加 Glide 独有的 BitmapTransformation
-         * <p>
-         * 因为 BitmapTransformation 是 Glide 独有的类, 所以如果 BitmapTransformation 出现在 {@link ImageConfigImpl} 中
-         * 会使 {@link ImageLoader} 难以切换为其他图片加载框架, 在 {@link ImageConfigImpl} 中只能配置基础类型和 Android 包里的类
-         * 此 API 会在后面的版本中被删除, 请使用其他 API 替代
-         *
-         * @param transformation {@link BitmapTransformation}
-         * @deprecated 请使用 {@link #isCircle()}, {@link #isCenterCrop()}, {@link #isImageRadius()} 替代
-         * 如果有其他自定义 BitmapTransformation 的需求, 请自行扩展 {@link BaseImageLoaderStrategy}
-         */
-        @Deprecated
+        public Builder isCrossFade(boolean isCrossFade) {
+            this.isCrossFade = isCrossFade;
+            return this;
+        }
+
         public Builder transformation(BitmapTransformation transformation) {
             this.transformation = transformation;
             return this;
@@ -203,21 +218,6 @@ public class ImageConfigImpl extends ImageConfig {
 
         public Builder imageViews(ImageView... imageViews) {
             this.imageViews = imageViews;
-            return this;
-        }
-
-        public Builder isCrossFade(boolean isCrossFade) {
-            this.isCrossFade = isCrossFade;
-            return this;
-        }
-
-        public Builder isCenterCrop(boolean isCenterCrop) {
-            this.isCenterCrop = isCenterCrop;
-            return this;
-        }
-
-        public Builder isCircle(boolean isCircle) {
-            this.isCircle = isCircle;
             return this;
         }
 
@@ -231,8 +231,39 @@ public class ImageConfigImpl extends ImageConfig {
             return this;
         }
 
-        public ImageConfigImpl build() {
-            return new ImageConfigImpl(this);
+        public Builder placeholderDrawble(Drawable placeholderDrawble) {
+            this.placeholderDrawble = placeholderDrawble;
+            return this;
+        }
+
+        public Builder resize(int resizeX, int resizeY) {
+            this.resizeX = resizeX;
+            this.resizeY = resizeY;
+            return this;
+        }
+
+        public Builder isCropCenter(boolean isCropCenter) {
+            this.isCropCenter = isCropCenter;
+            return this;
+        }
+
+        public Builder isCropCircle(boolean isCropCircle) {
+            this.isCropCircle = isCropCircle;
+            return this;
+        }
+
+        public Builder setDecodeFormate(DecodeFormat decodeFormate) {
+            formate = decodeFormate;
+            return this;
+        }
+
+        public Builder isFitCenter(boolean isFitCenter) {
+            this.isFitCenter = isFitCenter;
+            return this;
+        }
+
+        public CommonImageConfigImpl build() {
+            return new CommonImageConfigImpl(this);
         }
     }
 }

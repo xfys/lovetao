@@ -1,8 +1,10 @@
 package com.inner.lovetao.loginregister.mvp.ui.activity;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.ali.auth.third.core.MemberSDK;
@@ -12,6 +14,7 @@ import com.ali.auth.third.login.LoginService;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.loginregister.di.component.DaggerTBLoginActivityComponent;
 import com.inner.lovetao.loginregister.mvp.contract.TBLoginActivityContract;
 import com.inner.lovetao.loginregister.mvp.presenter.TBLoginActivityPresenter;
@@ -19,6 +22,8 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.LogUtils;
+
+import javax.inject.Inject;
 
 import butterknife.OnClick;
 
@@ -32,10 +37,9 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  */
 @Route(path = ArouterConfig.AC_TB_AUTH)
 public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> implements TBLoginActivityContract.View {
-    public int name = 1;
-    public long age = 2L;
-    public byte skdj = 3;
-    public String kkkk = "sdfsdf";
+
+    @Inject
+    Dialog mDialog;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -70,7 +74,8 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
         switch (view.getId()) {
             //淘宝登录
             case R.id.tv_tb_login:
-                toTBAuth();
+//                toTBAuth();
+                mPresenter.getTestData(0);
                 break;
             //用户协议
             case R.id.tv_user_agreement:
@@ -101,12 +106,12 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
 
     @Override
     public void showLoading() {
-
+        mDialog.show();
     }
 
     @Override
     public void hideLoading() {
-
+        mDialog.dismiss();
     }
 
     @Override
@@ -119,5 +124,15 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
     @Override
     public void killMyself() {
         finish();
+    }
+
+    @Override
+    public void getDatasu(TaoResponse<String> taoResponse) {
+        showMessage(taoResponse.getMessage());
+    }
+
+    @Override
+    public AppCompatActivity getActivity() {
+        return this;
     }
 }

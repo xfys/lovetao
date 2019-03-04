@@ -37,5 +37,6 @@ color_色值
   
   # 5. 带参数取值    在跳转过去的页面 注解  @Autowired(name = key)    int intNumber;  
 # 淘宝登陆SDK     http://baichuan.taobao.com/docs/doc.htm?spm=a219a.7386653.0.0.6ab6669acgkiTg&docType=1&articleId=107136&previewCode=670FC3B0EF08CC498F6943B01519C2A7
+#前台管理接口地址   http://47.105.249.19:8089/swagger-ui.html
                                                
                                      

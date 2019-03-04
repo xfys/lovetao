@@ -1,32 +1,14 @@
-/*
- * Copyright 2017 JessYan
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.jess.arms.http.imageloader.glide;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
-import com.jess.arms.http.imageloader.BaseImageLoaderStrategy;
 
 /**
- * ================================================
- * 如果你想具有配置 @{@link Glide} 的权利,则需要让 {@link BaseImageLoaderStrategy}
- * 的实现类也必须实现 {@link GlideAppliesOptions}
- * ================================================
+ * desc:
+ * Created by xcz
+ * on 2019/3/4.
  */
 public interface GlideAppliesOptions {
 
@@ -36,5 +18,5 @@ public interface GlideAppliesOptions {
      * @param context
      * @param builder {@link GlideBuilder} 此类被用来创建 Glide
      */
-    void applyGlideOptions(@NonNull Context context, @NonNull GlideBuilder builder);
+    void applyGlideOptions(Context context, GlideBuilder builder);
 }

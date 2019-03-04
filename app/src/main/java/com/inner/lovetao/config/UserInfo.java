@@ -8,6 +8,8 @@ import java.io.Serializable;
  * on 2019/1/29.
  */
 public class UserInfo implements Serializable {
+    public UserInfo() {
+    }
 
     public UserInfo(String nikeNmae, String phoneNumber, boolean alipayStatus, String cookies) {
         this.nikeNmae = nikeNmae;

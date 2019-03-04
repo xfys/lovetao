@@ -1,18 +1,3 @@
-/*
- * Copyright 2017 JessYan
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.jess.arms.http.imageloader;
 
 import android.content.Context;
@@ -24,11 +9,11 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- * ================================================
- * {@link ImageLoader} 使用策略模式和建造者模式,可以动态切换图片请求框架(比如说切换成 Picasso )
- * 当需要切换图片请求框架或图片请求框架升级后变更了 Api 时
- * 这里可以将影响范围降到最低,所以封装 {@link ImageLoader} 是为了屏蔽这个风险
- * ================================================
+ * desc: * {@link ImageLoader} 使用策略模式和建造者模式,可以动态切换图片请求框架(比如说切换成 Picasso )
+ * * 当需要切换图片请求框架或图片请求框架升级后变更了 Api 时
+ * * 这里可以将影响范围降到最低,所以封装 {@link ImageLoader} 是为了屏蔽这个风险
+ * Created by xcz
+ * on 2019/3/4.
  */
 @Singleton
 public final class ImageLoader {
@@ -39,6 +24,7 @@ public final class ImageLoader {
     @Inject
     public ImageLoader() {
     }
+
 
     /**
      * 加载图片
@@ -79,3 +65,4 @@ public final class ImageLoader {
         return mStrategy;
     }
 }
+

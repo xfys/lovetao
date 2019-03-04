@@ -105,7 +105,7 @@ public class GlobalConfigModule {
     }
 
     /**
-     * 提供 BaseUrl,默认使用 <"https://api.github.com/">
+     * 提供 BaseUrl
      *
      * @return
      */
@@ -118,7 +118,7 @@ public class GlobalConfigModule {
                 return httpUrl;
             }
         }
-        return mApiUrl == null ? HttpUrl.parse("https://api.github.com/") : mApiUrl;
+        return mApiUrl == null ? HttpUrl.parse("http://47.105.249.19:8089/") : mApiUrl;
     }
 
     /**

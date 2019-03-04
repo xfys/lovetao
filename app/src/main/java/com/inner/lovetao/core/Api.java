@@ -1,4 +1,4 @@
-package com.inner.lovetao.net;
+package com.inner.lovetao.core;
 
 /**
  * desc:
@@ -7,5 +7,5 @@ package com.inner.lovetao.net;
  */
 public interface Api {
     String MAIN = "main";
-    String MAIN_URL = "https://www.baidu.com/";
+    String MAIN_URL = "http://47.105.249.19:8089/";
 }

@@ -1,4 +1,19 @@
-package com.inner.lovetao.net;
+/*
+ * Copyright 2018 JessYan
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.inner.lovetao.core;
 
 import android.content.Context;
 import android.net.ParseException;
@@ -51,6 +66,8 @@ public class ResponseErrorListenerImpl implements ResponseErrorListener {
             msg = "请求地址不存在";
         } else if (httpException.code() == 403) {
             msg = "请求被服务器拒绝";
+        } else if (httpException.code() == 401) {
+            msg = "未授权";
         } else if (httpException.code() == 307) {
             msg = "请求被重定向到其他页面";
         } else {
