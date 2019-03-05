@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.inner.lovetao.R;
+import com.inner.lovetao.tab.bean.BannerBean;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.config.CommonImageConfigImpl;
@@ -31,16 +32,11 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
     @BindView(R.id.banner_indicator)
     BGABanner banner;
     private Context context;
-    private List<String> imgs = new ArrayList<String>() {{
-        add("https://img.g-banker.com/data/test/banner/M2LYIB3A_20180131144354.png");
-        add("https://img.g-banker.com/data/online/banner/TH934ALJ_20181212172151.jpg");
-        add("http://pic27.nipic.com/20130331/9252150_140012316365_2.jpg");
-        add("http://p2.so.qhimgs1.com/bdr/200_200_/t01b53912c4720a714e.jpg");
-        add("https://img.g-banker.com/data/test/banner/MCZHQDCE_20190115231806.jpg");
-        add("https://img.g-banker.com/data/test/banner/6IGMAEUF_20190115231825.jpg");
-    }};
+
     private AppComponent mAppComponent;
     private ImageLoader mImageLoader;
+    private List<BannerBean> datas;
+    private List<String> imgs = new ArrayList<>();
 
     public ChoiceBannerView(Context context) {
         this(context, null);
@@ -65,11 +61,18 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
         mImageLoader = mAppComponent.imageLoader();
     }
 
-    public void setData() {
-        banner.setAdapter(this);
-        banner.setDelegate(this);
-        banner.setData(R.layout.choice_banner_item_view, imgs, null);
-        banner.getViewPager().setPageMargin(-ArmsUtils.dip2px(context, 33));
+    public void setData(List<BannerBean> datas) {
+        if (datas != null) {
+            imgs.clear();
+            this.datas = datas;
+            for (BannerBean img : datas) {
+                imgs.add(img.getImgUrl());
+            }
+            banner.setAdapter(this);
+            banner.setDelegate(this);
+            banner.setData(R.layout.choice_banner_item_view, imgs, null);
+            banner.getViewPager().setPageMargin(-ArmsUtils.dip2px(context, 33));
+        }
     }
 
     @Override
@@ -86,6 +89,9 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
 
     @Override
     public void onBannerItemClick(BGABanner banner, View itemView, @Nullable String model, int position) {
-        ArmsUtils.makeText(context, "点击了" + position);
+        if (datas != null) {
+            //TODO：点击跳转链接
+            ArmsUtils.makeText(context, datas.get(position).getContentUrl());
+        }
     }
 }

@@ -42,8 +42,4 @@ public class TBLoginActivityModel extends BaseModel implements TBLoginActivityCo
         this.mApplication = null;
     }
 
-    @Override
-    public Observable<TaoResponse<List<BannerBean>>> sendTbInfo(int type) {
-        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getBanners(type);
-    }
 }

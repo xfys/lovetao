@@ -11,7 +11,7 @@ public interface ConfigInfo {
 
     interface ResponseCode {
         //成功获取数据
-        String Success = "0000";
+        String Success = "0";
         //未登录
         String notLogin = "0001";
         //未授权

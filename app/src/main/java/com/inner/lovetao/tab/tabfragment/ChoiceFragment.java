@@ -1,5 +1,6 @@
 package com.inner.lovetao.tab.tabfragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.inner.lovetao.R;
+import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.bean.ProductItemBean;
+import com.inner.lovetao.tab.contract.ChoicFragmentContract;
+import com.inner.lovetao.tab.di.component.DaggerChoiceFragmentComponent;
 import com.inner.lovetao.tab.mvp.ChoiceFragmentPresenter;
 import com.inner.lovetao.tab.view.ChoiceBannerView;
 import com.inner.lovetao.tab.view.RecommendTwoView;
@@ -19,12 +23,15 @@ import com.inner.lovetao.weight.LoadMoreFooterView;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
@@ -35,11 +42,13 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * Created by xcz
  * on 2019/1/22.
  */
-public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> {
+public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implements ChoicFragmentContract.View {
     @BindView(R.id.pull_to_refresh_layout)
     PtrFrameLayout ptrFrameLayout;
     @BindView(R.id.fm_recyclerView)
     RecyclerView recyclerView;
+    @Inject
+    Dialog mDialog;
     private List<ProductItemBean> datas = new ArrayList<>();
     private ChoiceBannerView bannerView;
     private HeaderAndFooterWrapper headerAndFooterWrapper;
@@ -53,6 +62,12 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> {
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
+        DaggerChoiceFragmentComponent //如找不到该类,请编译一下项目
+                .builder()
+                .appComponent(appComponent)
+                .view(this)
+                .build()
+                .inject(this);
 
     }
 
@@ -67,8 +82,8 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> {
     public void initData(@Nullable Bundle savedInstanceState) {
         initPullToRefresh();
         initRecycleView();
-        bannerView.setData();
         testAddProduct();
+        mPresenter.getBanner(1);
     }
 
 
@@ -85,8 +100,8 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 //下拉刷新回调
-
                 testAddProduct();
+                mPresenter.getBanner(1);
             }
         });
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -175,4 +190,27 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> {
     }
 
 
+    @Override
+    public void showMessage(@NonNull String message) {
+        ArmsUtils.makeText(getContext(), message);
+    }
+
+    @Override
+    public void showLoading() {
+        if (mDialog != null && !mDialog.isShowing()) {
+            mDialog.show();
+        }
+    }
+
+    @Override
+    public void hideLoading() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void getBannerDataSu(List<BannerBean> bannerBeanList) {
+        bannerView.setData(bannerBeanList);
+    }
 }

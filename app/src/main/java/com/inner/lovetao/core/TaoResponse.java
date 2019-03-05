@@ -48,4 +48,5 @@ public class TaoResponse<T> {
     public boolean isSuccess() {
         return ConfigInfo.ResponseCode.Success.equals(code);
     }
+
 }

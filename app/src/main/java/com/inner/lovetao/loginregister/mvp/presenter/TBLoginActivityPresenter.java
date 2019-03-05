@@ -49,25 +49,5 @@ public class TBLoginActivityPresenter extends BasePresenter<TBLoginActivityContr
         this.mApplication = null;
     }
 
-//    public void getTestData(int type) {
-//        mModel.sendTbInfo(type)
-//                .subscribeOn(Schedulers.io())
-//                .retryWhen(new RetryWithDelay(1, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
-//                .doOnSubscribe(disposable -> {
-//                    //显示loading
-//                    mRootView.showLoading();
-//                })
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .doFinally(() -> {
-//                    //隐藏对话框
-//                    mRootView.hideLoading();
-//                })
-//                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))//使用Rxlifecycle,使Disposable和Activity一起销毁
-//                .subscribe(new ErrorHandleSubscriber<TaoResponse<<>>>(mErrorHandler) {
-//                    @Override
-//                    public void onNext(TaoResponse<String> stringTaoResponse) {
-//                        mRootView.getDatasu(stringTaoResponse);
-//                    }
-//                });
-//    }
+
 }
