@@ -4,7 +4,9 @@ import android.app.Application;
 
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.tab.bean.BannerBean;
+import com.inner.lovetao.tab.bean.CategoryBean;
 import com.inner.lovetao.tab.contract.ChoicFragmentContract;
+import com.inner.lovetao.tab.contract.HomeFragmentContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
@@ -27,7 +29,7 @@ import me.jessyan.rxerrorhandler.handler.RetryWithDelay;
  * on 2019/1/22.
  */
 @ActivityScope
-public class ChoiceFragmentPresenter extends BasePresenter<ChoicFragmentContract.Model, ChoicFragmentContract.View> {
+public class HomeFragmentPresenter extends BasePresenter<HomeFragmentContract.Model, HomeFragmentContract.View> {
 
     @Inject
     RxErrorHandler mErrorHandler;
@@ -39,7 +41,7 @@ public class ChoiceFragmentPresenter extends BasePresenter<ChoicFragmentContract
     AppManager mAppManager;
 
     @Inject
-    public ChoiceFragmentPresenter(ChoicFragmentContract.Model model, ChoicFragmentContract.View rootView) {
+    public HomeFragmentPresenter(HomeFragmentContract.Model model, HomeFragmentContract.View rootView) {
         super(model, rootView);
     }
 
@@ -52,13 +54,13 @@ public class ChoiceFragmentPresenter extends BasePresenter<ChoicFragmentContract
         this.mApplication = null;
     }
 
+
+
     /**
-     * 获取首页banner
-     *
-     * @param type
+     * 获取首页条目信息
      */
-    public void getBanner(int type) {
-        mModel.getBannerData(type)
+    public void getCatgory() {
+        mModel.getCatgory()
                 .subscribeOn(Schedulers.io())
                 .retryWhen(new RetryWithDelay(1, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .doOnSubscribe(disposable -> {
@@ -71,17 +73,15 @@ public class ChoiceFragmentPresenter extends BasePresenter<ChoicFragmentContract
                     mRootView.hideLoading();
                 })
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))//使用Rxlifecycle,使Disposable和Activity一起销毁
-                .subscribe(new ErrorHandleSubscriber<TaoResponse<List<BannerBean>>>(mErrorHandler) {
+                .subscribe(new ErrorHandleSubscriber<TaoResponse<List<CategoryBean>>>(mErrorHandler) {
                     @Override
-                    public void onNext(TaoResponse<List<BannerBean>> response) {
+                    public void onNext(TaoResponse<List<CategoryBean>> response) {
                         if (response.isSuccess()) {
-                            mRootView.getBannerDataSu(response.getData());
+                            mRootView.getCatgoySu(response.getData());
                         } else {
                             mRootView.showMessage(response.getMessage());
                         }
                     }
                 });
     }
-
-
 }

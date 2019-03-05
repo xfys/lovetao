@@ -15,14 +15,20 @@ import android.widget.RelativeLayout;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.search.activity.SearchActivity;
+import com.inner.lovetao.tab.bean.CategoryBean;
+import com.inner.lovetao.tab.contract.HomeFragmentContract;
+import com.inner.lovetao.tab.di.component.DaggerHomeFragmentComponent;
+import com.inner.lovetao.tab.mvp.HomeFragmentPresenter;
 import com.inner.lovetao.tab.tabfragment.CategoryFragment;
 import com.inner.lovetao.tab.tabfragment.ChoiceFragment;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.AndroidLiuHaiUtils;
+import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.widget.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -32,7 +38,7 @@ import butterknife.OnClick;
  * Created by xcz
  * on 2019/1/15.
  */
-public class HomePageFragment extends BaseFragment {
+public class HomePageFragment extends BaseFragment<HomeFragmentPresenter> implements HomeFragmentContract.View {
 
 
     @BindView(R.id.iv_msg)
@@ -45,21 +51,19 @@ public class HomePageFragment extends BaseFragment {
     ViewPager viewPager;
     @BindView(R.id.head)
     RelativeLayout headLayout;
-    private String[] titles = {"精选", "男装", "女装", "童装", "玩具总动员", "电影", "视频", "剑姬"};
-    private ArrayList<Fragment> fragmentList = new ArrayList<Fragment>() {{
-        add(new ChoiceFragment());
-        add(new CategoryFragment());
-        add(new CategoryFragment());
-        add(new CategoryFragment());
-        add(new CategoryFragment());
-        add(new CategoryFragment());
-        add(new CategoryFragment());
-        add(new CategoryFragment());
-    }};
+    private String[] array;
+    private ArrayList<Fragment> fragmentList = new ArrayList<Fragment>();
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
-
+        //如找不到该类,请编译一下项目
+        DaggerHomeFragmentComponent //如找不到该类,请编译一下项目
+                .builder()
+                .appComponent(appComponent)
+                .view(this)
+                .build()
+                .inject(this);
+        ;
     }
 
     @Override
@@ -71,7 +75,8 @@ public class HomePageFragment extends BaseFragment {
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         initLiuHaiAdapter();
-        tabLayout.setViewPager(viewPager, titles, getActivity(), fragmentList);
+        mPresenter.getCatgory();
+
     }
 
     @Override
@@ -102,4 +107,26 @@ public class HomePageFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void getCatgoySu(List<CategoryBean> categoryList) {
+        List<String> list = new ArrayList<>();
+        fragmentList.clear();
+        fragmentList.add(new ChoiceFragment());
+        list.add("精选");
+        if (categoryList != null) {
+            for (CategoryBean bean : categoryList) {
+                list.add(bean.getName());
+                fragmentList.add(new CategoryFragment());
+            }
+        }
+        array = list.toArray(new String[list.size()]);
+        if (array != null && fragmentList != null) {
+            tabLayout.setViewPager(viewPager, array, getActivity(), fragmentList);
+        }
+    }
+
+    @Override
+    public void showMessage(@NonNull String message) {
+        ArmsUtils.makeText(getContext(), message);
+    }
 }

@@ -2,6 +2,7 @@ package com.inner.lovetao.tab.api;
 
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.tab.bean.BannerBean;
+import com.inner.lovetao.tab.bean.CategoryBean;
 
 import java.util.List;
 
@@ -25,4 +26,10 @@ public interface HomeApi {
      */
     @GET("api/aitao/banners")
     Observable<TaoResponse<List<BannerBean>>> getBanners(@Query("type") int type);
+
+    /**
+     * 获取首页条目
+     */
+    @GET("/api/aitao/category/getAll")
+    Observable<TaoResponse<List<CategoryBean>>> getCatgory();
 }
