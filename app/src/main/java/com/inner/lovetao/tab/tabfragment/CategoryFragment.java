@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.inner.lovetao.R;
-import com.inner.lovetao.tab.bean.ProductItemBean;
+import com.inner.lovetao.tab.bean.TestItemBean;
 import com.inner.lovetao.tab.mvp.CategoryFragmentPresenter;
 import com.inner.lovetao.weight.LoadMoreFooterView;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
@@ -50,7 +50,7 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> {
     TextView commonPrice;
     Unbinder unbinder;
 
-    private List<ProductItemBean> datas = new ArrayList<>();
+    private List<TestItemBean> datas = new ArrayList<>();
     private HeaderAndFooterWrapper wrapper;
     private LoadMoreFooterView footerView;
 
@@ -98,10 +98,10 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> {
     private void initRecycleView() {
         GridLayoutManager layoutManager = new GridLayoutManager(mContext, 2);
         recyclerView.setLayoutManager(layoutManager);
-        CommonAdapter<ProductItemBean> adapter = new CommonAdapter<ProductItemBean>(mContext, R.layout.item_goods_layout, datas) {
+        CommonAdapter<TestItemBean> adapter = new CommonAdapter<TestItemBean>(mContext, R.layout.item_goods_layout, datas) {
 
             @Override
-            protected void convert(ViewHolder holder, ProductItemBean productItemBean, int position) {
+            protected void convert(ViewHolder holder, TestItemBean productItemBean, int position) {
                 holder.setText(R.id.tv_product_name, productItemBean.getName());
                 holder.setText(R.id.tv_product_prise, productItemBean.getTbPrise());
                 holder.setText(R.id.tv_product_quan, productItemBean.getQuanPrise());
@@ -153,8 +153,8 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> {
      */
     private void testAddProduct() {
         for (int i = 0; i < 10; i++) {
-            ProductItemBean productItemBean = new ProductItemBean("耐克运动鞋复古限量版现实抢购最新款上架…", "淘宝价：1" + i, "已抢32478", "劵后价¥588", "¥400元劵");
-            datas.add(productItemBean);
+            TestItemBean testItemBean = new TestItemBean("耐克运动鞋复古限量版现实抢购最新款上架…", "淘宝价：1" + i, "已抢32478", "劵后价¥588", "¥400元劵");
+            datas.add(testItemBean);
         }
         wrapper.notifyDataSetChanged();
         pullToRefreshLayout.refreshComplete();

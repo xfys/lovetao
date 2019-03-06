@@ -100,7 +100,9 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
 
         @Override
         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-            mRootView.showMessage("网络链接失败");
+            if (mRootView!=null){
+                mRootView.showMessage("网络链接失败");
+            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 LogUtils.warnInfo(error.getDescription().toString());
             }
@@ -109,36 +111,48 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            mRootView.showProgress(100);
-            mRootView.changeTitle(view.getTitle());
+            if (mRootView!=null){
+                mRootView.showProgress(100);
+                mRootView.changeTitle(view.getTitle());
+            }
         }
     };
     private final WebChromeClient mWebChromeClient = new WebChromeClient() {
         @Override
         public void onReceivedTitle(WebView view, String title) {
-            mRootView.changeTitle(title);
+            if (mRootView!=null){
+                mRootView.changeTitle(title);
+            }
         }
 
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
-            mRootView.showProgress(newProgress);
+            if (mRootView!=null){
+                mRootView.showProgress(newProgress);
+            }
         }
 
         @Override
         public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-            mRootView.showJsAlert(message, result);
+            if (mRootView!=null){
+                mRootView.showJsAlert(message, result);
+            }
             return true;
         }
 
         @Override
         public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
-            mRootView.onJsConfirm(message, result);
+            if (mRootView!=null) {
+                mRootView.onJsConfirm(message, result);
+            }
             return true;
         }
 
         @Override
         public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
-            mRootView.onJsPrompt(message, defaultValue, result);
+            if (mRootView!=null){
+                mRootView.onJsPrompt(message, defaultValue, result);
+            }
             return true;
         }
     };

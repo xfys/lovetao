@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ConfigInfo;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.bean.FourAcBean;
 import com.inner.lovetao.tab.bean.ProductItemBean;
@@ -57,7 +58,7 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
     private boolean isRefreshing;//是否正在加载
     private boolean mPullDown = true;
     private boolean noMoredata;//是否已经没有更多
-    private int textIndex;
+    private int pageNum=1;
     private LoadMoreFooterView loadMoreFooterView;
     private RecommendTwoView recommendTwoView;
     private RecommendView recommendView;
@@ -88,6 +89,8 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         testAddProduct();
         mPresenter.getBanner(1);
         mPresenter.getFourAc();
+        mPresenter.getJingPinData(pageNum,5);
+testAddProduct();
     }
 
 
@@ -125,11 +128,11 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         CommonAdapter<ProductItemBean> adapter = new CommonAdapter<ProductItemBean>(mContext, R.layout.item_home_choice, datas) {
             @Override
             protected void convert(ViewHolder holder, ProductItemBean productItemBean, int position) {
-                holder.setText(R.id.tv_product_name, productItemBean.getName());
-                holder.setText(R.id.tv_product_prise, productItemBean.getTbPrise());
-                holder.setText(R.id.tv_product_quan, productItemBean.getQuanPrise());
-                holder.setText(R.id.tv_product_already_num, productItemBean.getAlready());
-                holder.setText(R.id.tv_product_quan_after, productItemBean.getQuanAferPrice());
+                holder.setText(R.id.tv_product_name, productItemBean.getTitle());
+                holder.setText(R.id.tv_product_prise, productItemBean.getZkFinalPrice());
+                holder.setText(R.id.tv_product_quan, productItemBean.getCouponStartFee());
+                holder.setText(R.id.tv_product_already_num, productItemBean.getZkFinalPrice());
+                holder.setText(R.id.tv_product_quan_after, productItemBean.getZkFinalPrice());
             }
         };
         headerAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
@@ -154,17 +157,10 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         if (!mPullDown) {
             return;
         }
-        datas.clear();
+        pageNum = 1;
+        mPresenter.getJingPinData(pageNum,5);
         noMoredata = false;
         isRefreshing = true;
-        textIndex = 0;
-        for (int i = 0; i <= 10; i++) {
-            ProductItemBean productItemBean = new ProductItemBean("耐克运动鞋复古限量版现实抢购最新款上架…", "淘宝价：1" + i, "已抢32478", "劵后价¥588", "¥400元劵");
-            datas.add(productItemBean);
-        }
-        headerAndFooterWrapper.notifyDataSetChanged();
-        isRefreshing = false;
-        ptrFrameLayout.refreshComplete();
     }
 
     /**
@@ -174,24 +170,11 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         if (noMoredata) {
             return;
         }
-        if (textIndex == 2) {
-            noMoredata = true;
-            loadMoreFooterView.showNoMoreState();
-        } else {
-            noMoredata = false;
-            loadMoreFooterView.showLoadingState();
-        }
         mPullDown = false;
-        textIndex++;
+        pageNum++;
         isRefreshing = true;
-        for (int i = 0; i <= 10; i++) {
-            ProductItemBean productItemBean = new ProductItemBean("耐克运动鞋复古限量版现实抢购最新款上架…", "淘宝价：1" + i, "已抢32478", "劵后价¥588", "¥400元劵");
-            datas.add(productItemBean);
-        }
-        headerAndFooterWrapper.notifyDataSetChanged();
-        isRefreshing = false;
-        mPullDown = true;
-        ptrFrameLayout.refreshComplete();
+        mPresenter.getJingPinData(pageNum,5);
+
     }
 
 
@@ -224,5 +207,23 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         if (fourAcBeanList != null) {
             recommendTwoView.setData(fourAcBeanList);
         }
+    }
+
+    @Override
+    public void getJPdataSu(List<ProductItemBean> jingPingList) {
+        if (jingPingList.size()< ConfigInfo.PAGE_SIZE){
+            noMoredata=true;
+        }
+        if (pageNum==1){
+            datas.clear();
+        }
+        if (jingPingList!=null){
+            datas.addAll(jingPingList);
+        }
+        headerAndFooterWrapper.notifyDataSetChanged();
+        isRefreshing = false;
+        mPullDown=true;
+        ptrFrameLayout.refreshComplete();
+
     }
 }

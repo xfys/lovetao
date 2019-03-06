@@ -4,6 +4,7 @@ import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.bean.CategoryBean;
 import com.inner.lovetao.tab.bean.FourAcBean;
+import com.inner.lovetao.tab.bean.ProductItemBean;
 
 import java.util.List;
 
@@ -39,4 +40,9 @@ public interface HomeApi {
      */
     @GET("/api/aitao/activity/getAll")
     Observable<TaoResponse<List<FourAcBean>>> getFourAc();
+    /**
+     * 获取活动列表
+     */
+    @GET("/api/aitao/activity/getCoupons")
+    Observable<TaoResponse<List<ProductItemBean>>> getActivityList(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("activityId") int activityId);
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.bean.FourAcBean;
+import com.inner.lovetao.tab.bean.ProductItemBean;
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
 
@@ -18,6 +19,7 @@ public interface ChoicFragmentContract {
 
         void getFourAcSu(List<FourAcBean> fourAcBeanList);
 
+        void getJPdataSu(List<ProductItemBean> jingPingList);
         Context getActivity();
     }
 
@@ -25,5 +27,7 @@ public interface ChoicFragmentContract {
         Observable<TaoResponse<List<BannerBean>>> getBannerData(int type);
 
         Observable<TaoResponse<List<FourAcBean>>> getFourAcData();
+
+        Observable<TaoResponse<List<ProductItemBean>>> getJingPinAcData(int pageNum,int pageSize,int activityId);
     }
 }

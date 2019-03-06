@@ -2,9 +2,11 @@ package com.inner.lovetao.tab.mvp;
 
 import android.app.Application;
 
+import com.inner.lovetao.config.ConfigInfo;
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.bean.FourAcBean;
+import com.inner.lovetao.tab.bean.ProductItemBean;
 import com.inner.lovetao.tab.contract.ChoicFragmentContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -112,5 +114,32 @@ public class ChoiceFragmentPresenter extends BasePresenter<ChoicFragmentContract
                     }
                 });
     }
-
+    /**
+     * 获取精品数据
+     */
+    public void getJingPinData(int pageNum,int activityId) {
+        mModel.getJingPinAcData(pageNum, ConfigInfo.PAGE_SIZE,activityId)
+                .subscribeOn(Schedulers.io())
+                .retryWhen(new RetryWithDelay(1, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .doOnSubscribe(disposable -> {
+                    //显示loading
+                    mRootView.showLoading();
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally(() -> {
+                    //隐藏对话框
+                    mRootView.hideLoading();
+                })
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))//使用Rxlifecycle,使Disposable和Activity一起销毁
+                .subscribe(new ErrorHandleSubscriber<TaoResponse<List<ProductItemBean>>>(mErrorHandler) {
+                    @Override
+                    public void onNext(TaoResponse<List<ProductItemBean>> response) {
+                        if (response.isSuccess()) {
+                            mRootView.getJPdataSu(response.getData());
+                        } else {
+                            mRootView.showMessage(response.getMessage());
+                        }
+                    }
+                });
+    }
 }
