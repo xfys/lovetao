@@ -3,6 +3,7 @@ package com.inner.lovetao.tab.api;
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.bean.CategoryBean;
+import com.inner.lovetao.tab.bean.FourAcBean;
 
 import java.util.List;
 
@@ -32,4 +33,10 @@ public interface HomeApi {
      */
     @GET("/api/aitao/category/getAll")
     Observable<TaoResponse<List<CategoryBean>>> getCatgory();
+
+    /**
+     * 获取首页四个推荐活动数据
+     */
+    @GET("/api/aitao/activity/getAll")
+    Observable<TaoResponse<List<FourAcBean>>> getFourAc();
 }

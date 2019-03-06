@@ -3,7 +3,7 @@ package com.inner.lovetao.tab.mvp.model;
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.tab.api.HomeApi;
 import com.inner.lovetao.tab.bean.BannerBean;
-import com.inner.lovetao.tab.bean.CategoryBean;
+import com.inner.lovetao.tab.bean.FourAcBean;
 import com.inner.lovetao.tab.contract.ChoicFragmentContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
@@ -31,5 +31,10 @@ public class ChoiceFragmentModel extends BaseModel implements ChoicFragmentContr
     @Override
     public Observable<TaoResponse<List<BannerBean>>> getBannerData(int type) {
         return mRepositoryManager.obtainRetrofitService(HomeApi.class).getBanners(type);
+    }
+
+    @Override
+    public Observable<TaoResponse<List<FourAcBean>>> getFourAcData() {
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getFourAc();
     }
 }

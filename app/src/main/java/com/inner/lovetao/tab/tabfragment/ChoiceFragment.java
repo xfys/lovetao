@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.tab.bean.BannerBean;
+import com.inner.lovetao.tab.bean.FourAcBean;
 import com.inner.lovetao.tab.bean.ProductItemBean;
 import com.inner.lovetao.tab.contract.ChoicFragmentContract;
 import com.inner.lovetao.tab.di.component.DaggerChoiceFragmentComponent;
@@ -58,6 +59,8 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
     private boolean noMoredata;//是否已经没有更多
     private int textIndex;
     private LoadMoreFooterView loadMoreFooterView;
+    private RecommendTwoView recommendTwoView;
+    private RecommendView recommendView;
 
 
     @Override
@@ -84,6 +87,7 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         initRecycleView();
         testAddProduct();
         mPresenter.getBanner(1);
+        mPresenter.getFourAc();
     }
 
 
@@ -102,6 +106,7 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
                 //下拉刷新回调
                 testAddProduct();
                 mPresenter.getBanner(1);
+                mPresenter.getFourAc();
             }
         });
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -131,9 +136,9 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         loadMoreFooterView = new LoadMoreFooterView(mContext);
         loadMoreFooterView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         bannerView = new ChoiceBannerView(mContext);
-        RecommendView recommendView = new RecommendView(mContext);
+        recommendView = new RecommendView(mContext);
         recommendView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        RecommendTwoView recommendTwoView = new RecommendTwoView(mContext);
+        recommendTwoView = new RecommendTwoView(mContext);
         headerAndFooterWrapper.addHeaderView(bannerView);
         headerAndFooterWrapper.addHeaderView(recommendView);
         headerAndFooterWrapper.addHeaderView(recommendTwoView);
@@ -212,5 +217,12 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
     @Override
     public void getBannerDataSu(List<BannerBean> bannerBeanList) {
         bannerView.setData(bannerBeanList);
+    }
+
+    @Override
+    public void getFourAcSu(List<FourAcBean> fourAcBeanList) {
+        if (fourAcBeanList != null) {
+            recommendTwoView.setData(fourAcBeanList);
+        }
     }
 }
