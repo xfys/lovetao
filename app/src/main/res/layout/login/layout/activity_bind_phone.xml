@@ -119,7 +119,7 @@
         android:layout_marginRight="@dimen/dp_26"
         android:background="@drawable/shape_settings_exit_bg"
         android:gravity="center"
-        android:text="@string/str_confirm"
+        android:text="@string/common_confirm"
         android:textColor="@color/white"
         android:textSize="@dimen/textSize16" />
 </LinearLayout>

@@ -43,7 +43,6 @@ android {
     }
     buildTypes {
         release {
-            debuggable true
             zipAlignEnabled true     //Zipalign优化
             minifyEnabled true     //混淆
             signingConfig signingConfigs.release

@@ -53,6 +53,7 @@ public class HomePageFragment extends BaseFragment<HomeFragmentPresenter> implem
     RelativeLayout headLayout;
     private String[] array;
     private ArrayList<Fragment> fragmentList = new ArrayList<Fragment>();
+    private List<String> list = new ArrayList<>();
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
@@ -109,12 +110,15 @@ public class HomePageFragment extends BaseFragment<HomeFragmentPresenter> implem
 
     @Override
     public void getCatgoySu(List<CategoryBean> categoryList) {
-        List<String> list = new ArrayList<>();
+        list.clear();
         fragmentList.clear();
-        fragmentList.add(new ChoiceFragment());
-        list.add("精选");
         if (categoryList != null) {
             for (CategoryBean bean : categoryList) {
+                if ("精选".equals(bean.getName())) {
+                    fragmentList.add(new ChoiceFragment());
+                    list.add(bean.getName());
+                    continue;
+                }
                 list.add(bean.getName());
                 fragmentList.add(new CategoryFragment());
             }

@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.di.scope.ActivityScope;
@@ -90,8 +92,7 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
     @Override
     public void onBannerItemClick(BGABanner banner, View itemView, @Nullable String model, int position) {
         if (datas != null) {
-            //TODO：点击跳转链接
-            ArmsUtils.makeText(context, datas.get(position).getContentUrl());
+            ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, datas.get(position).getContentUrl()).navigation(context);
         }
     }
 }

@@ -2,7 +2,8 @@
     <string name="app_name">爱淘优惠券</string>
     <string name="str_press_again">再按一次返回键关闭程序</string>
     <string name="common_cancel">取消</string>
-    <string name="str_confirm">确定</string>
+    <string name="common_confirm">确定</string>
+    <string name="common_alert">提示</string>
 
     <string name="search_hint">复制‘淘宝标题’查找优惠劵哦～</string>
     <string name="search_history">历史搜索</string>
@@ -86,4 +87,7 @@
     <string name="earnings_today_order">今日下单</string>
     <string name="earnings_order_money">下单金额</string>
     <string name="earnings_detail">收益明细</string>
+
+    <string name="ac_web">正在加载...</string>
+
 </resources>

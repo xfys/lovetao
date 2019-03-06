@@ -3,7 +3,7 @@ package com.inner.lovetao.tab.bean;
 import java.io.Serializable;
 
 /**
- * desc:
+ * desc:首页banner
  * Created by xcz
  * on 2019/3/4.
  */

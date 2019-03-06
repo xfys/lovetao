@@ -74,7 +74,7 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
         switch (view.getId()) {
             //淘宝登录
             case R.id.tv_tb_login:
-//                toTBAuth();
+                toTBAuth();
 //                mPresenter.getTestData(1);
                 break;
             //用户协议

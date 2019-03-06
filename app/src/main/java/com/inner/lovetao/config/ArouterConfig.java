@@ -26,8 +26,14 @@ public class ArouterConfig {
     public static final String AC_MINE_EARNING = "/mineassets/mvp/ui/activity/EarningsActivity";
     //收益明细
     public static final String AC_EARNING_DETAIL = "/mineassets/mvp/ui/activity/EarningsDetailActivity";
+    //webview
+    public static final String AC_WEBVIEW = "/webview/mvp/ui/activity/WebActivity";
 
     public static class Interceptor {
         public static final String LOGIN_INTERCEPT = "login_intercept";
+    }
+
+    public static class ParamKey {
+        public static final String STR_WEBVIEW_URL = "webview_url";
     }
 }

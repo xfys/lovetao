@@ -24,6 +24,7 @@
         <meta-data
             android:name="com.inner.lovetao.core.GlobalConfiguration"
             android:value="ConfigModule" />
+
         <activity
             android:name=".index.activity.SplashActivity"
             android:screenOrientation="portrait"
@@ -80,6 +81,10 @@
         <activity
             android:name=".mineassets.mvp.ui.activity.EarningsDetailActivity"
             android:label="@string/earnings_detail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".webview.mvp.ui.activity.WebActivity"
+            android:label="@string/ac_web"
             android:screenOrientation="portrait" />
         <activity
             android:name=".wxapi.WXEntryActivity"
