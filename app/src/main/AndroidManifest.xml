@@ -52,7 +52,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".channel.ui.activity.ShelvesActivity"
-            android:label="@string/shelves_title"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity

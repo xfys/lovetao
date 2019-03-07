@@ -51,11 +51,13 @@ public class RecommendView extends LinearLayout {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_first:
-                ARouter.getInstance().build(ArouterConfig.AC_SHELVES).navigation(context);
+                ARouter.getInstance().build(ArouterConfig.AC_SHELVES).withString(ArouterConfig.ParamKey.FROM_KEY, getResources().getString(R.string.home_choice_first_desc)).navigation(context);
                 break;
             case R.id.ll_second:
+                ARouter.getInstance().build(ArouterConfig.AC_SHELVES).withString(ArouterConfig.ParamKey.FROM_KEY, getResources().getString(R.string.home_choice_second_desc)).navigation(context);
                 break;
             case R.id.ll_third:
+                ARouter.getInstance().build(ArouterConfig.AC_SHELVES).withString(ArouterConfig.ParamKey.FROM_KEY, getResources().getString(R.string.home_choice_third_desc)).navigation(context);
                 break;
             case R.id.ll_fourth:
                 break;

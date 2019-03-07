@@ -88,7 +88,10 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
     public void initData(@Nullable Bundle savedInstanceState) {
         initPullToRefresh();
         initRecycleView();
-        ptrFrameLayout.autoLoadMore();
+        mPresenter.getBanner(1);
+        mPresenter.getJingPinData(pageNum, 5);
+        mPresenter.getFourAc();
+        addProduct();
     }
 
 
@@ -105,10 +108,10 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 //下拉刷新回调
-                addProduct();
                 mPresenter.getBanner(1);
                 mPresenter.getJingPinData(pageNum, 5);
                 mPresenter.getFourAc();
+                addProduct();
             }
         });
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
