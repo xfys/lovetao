@@ -44,7 +44,7 @@ android {
     buildTypes {
         release {
             zipAlignEnabled true     //Zipalign优化
-            minifyEnabled true     //混淆
+            minifyEnabled false     //混淆
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
