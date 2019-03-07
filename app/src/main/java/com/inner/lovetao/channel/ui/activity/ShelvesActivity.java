@@ -69,6 +69,8 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
 
     @Autowired(name = ArouterConfig.ParamKey.FROM_KEY)
     String title;
+    @Autowired(name = ArouterConfig.ParamKey.ACTIVITY_ID)
+    int activityId = -1;
 
     @Inject
     Dialog dialog;
@@ -201,6 +203,10 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
 
         } else if (getString(R.string.home_choice_third_desc).equals(title)) {
             mPresenter.getBigCoupon(pageNum);
+        } else if (!TextUtils.isEmpty(title)) {
+            if (activityId != -1) {
+                mPresenter.getAcData(pageNum, activityId);
+            }
         }
 
     }

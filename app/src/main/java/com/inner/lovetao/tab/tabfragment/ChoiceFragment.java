@@ -89,6 +89,7 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         initPullToRefresh();
         initRecycleView();
         mPresenter.getBanner(1);
+        mPresenter.getBanner(2);
         mPresenter.getJingPinData(pageNum, 5);
         mPresenter.getFourAc();
         addProduct();
@@ -109,6 +110,8 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
             public void onRefreshBegin(PtrFrameLayout frame) {
                 //下拉刷新回调
                 mPresenter.getBanner(1);
+                mPresenter.getBanner(2);
+                //精选好物
                 mPresenter.getJingPinData(pageNum, 5);
                 mPresenter.getFourAc();
                 addProduct();
@@ -210,8 +213,13 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
     }
 
     @Override
-    public void getBannerDataSu(List<BannerBean> bannerBeanList) {
-        bannerView.setData(bannerBeanList);
+    public void getBannerDataSu(int type, List<BannerBean> bannerBeanList) {
+        if (type == 1) {
+            bannerView.setData(bannerBeanList);
+        } else if (type == 2) {
+            recommendView.setData(bannerBeanList);
+        }
+
     }
 
     @Override

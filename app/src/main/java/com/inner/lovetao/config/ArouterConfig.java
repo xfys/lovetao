@@ -36,5 +36,6 @@ public class ArouterConfig {
     public static class ParamKey {
         public static final String STR_WEBVIEW_URL = "webview_url";
         public static final String FROM_KEY = "is_from";
+        public static final String ACTIVITY_ID = "activity_id";
     }
 }

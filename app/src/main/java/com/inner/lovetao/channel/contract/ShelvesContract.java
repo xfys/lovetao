@@ -33,5 +33,7 @@ public interface ShelvesContract {
         Observable<TaoResponse<List<ProductItemBean>>> getSale_99(int pageNum, int pageSize);
 
         Observable<TaoResponse<List<ProductItemBean>>> getBigSale(int pageNum, int pageSize);
+
+        Observable<TaoResponse<List<ProductItemBean>>> getAcData(int pageNum, int pageSize, int activityId);
     }
 }

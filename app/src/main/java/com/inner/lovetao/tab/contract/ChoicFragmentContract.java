@@ -15,11 +15,12 @@ import io.reactivex.Observable;
 
 public interface ChoicFragmentContract {
     interface View extends IView {
-        void getBannerDataSu(List<BannerBean> bannerBeanList);
+        void getBannerDataSu(int type, List<BannerBean> bannerBeanList);
 
         void getFourAcSu(List<FourAcBean> fourAcBeanList);
 
         void getJPdataSu(List<ProductItemBean> jingPingList);
+
         Context getActivity();
     }
 
@@ -28,6 +29,6 @@ public interface ChoicFragmentContract {
 
         Observable<TaoResponse<List<FourAcBean>>> getFourAcData();
 
-        Observable<TaoResponse<List<ProductItemBean>>> getJingPinAcData(int pageNum,int pageSize,int activityId);
+        Observable<TaoResponse<List<ProductItemBean>>> getJingPinAcData(int pageNum, int pageSize, int activityId);
     }
 }

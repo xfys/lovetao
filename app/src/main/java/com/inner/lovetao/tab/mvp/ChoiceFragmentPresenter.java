@@ -82,7 +82,7 @@ public class ChoiceFragmentPresenter extends BasePresenter<ChoicFragmentContract
                     @Override
                     public void onNext(TaoResponse<List<BannerBean>> response) {
                         if (response.isSuccess()) {
-                            mRootView.getBannerDataSu(response.getData());
+                            mRootView.getBannerDataSu(type, response.getData());
                         } else {
                             mRootView.showMessage(response.getMessage());
                         }

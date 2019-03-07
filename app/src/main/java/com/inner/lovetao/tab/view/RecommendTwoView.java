@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.tab.bean.FourAcBean;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.config.CommonImageConfigImpl;
@@ -69,16 +71,16 @@ public class RecommendTwoView extends LinearLayout {
         if (data != null && data.size() >= 4) {
             switch (view.getId()) {
                 case R.id.iv_recommend_first:
-                    ArmsUtils.makeText(context, data.get(0).getName());
+                    ARouter.getInstance().build(ArouterConfig.AC_SHELVES).withString(ArouterConfig.ParamKey.FROM_KEY, data.get(0).getName()).withInt(ArouterConfig.ParamKey.ACTIVITY_ID, data.get(0).getId()).navigation(context);
                     break;
                 case R.id.iv_recommend_second:
-                    ArmsUtils.makeText(context, data.get(1).getName());
+                    ARouter.getInstance().build(ArouterConfig.AC_SHELVES).withString(ArouterConfig.ParamKey.FROM_KEY, data.get(1).getName()).withInt(ArouterConfig.ParamKey.ACTIVITY_ID, data.get(1).getId()).navigation(context);
                     break;
                 case R.id.iv_recommend_third:
-                    ArmsUtils.makeText(context, data.get(2).getName());
+                    ARouter.getInstance().build(ArouterConfig.AC_SHELVES).withString(ArouterConfig.ParamKey.FROM_KEY, data.get(2).getName()).withInt(ArouterConfig.ParamKey.ACTIVITY_ID, data.get(2).getId()).navigation(context);
                     break;
                 case R.id.iv_recommend_fourth:
-                    ArmsUtils.makeText(context, data.get(3).getName());
+                    ARouter.getInstance().build(ArouterConfig.AC_SHELVES).withString(ArouterConfig.ParamKey.FROM_KEY, data.get(3).getName()).withInt(ArouterConfig.ParamKey.ACTIVITY_ID, data.get(3).getId()).navigation(context);
                     break;
             }
         }

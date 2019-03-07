@@ -57,4 +57,9 @@ public class ShelvesModel extends BaseModel implements ShelvesContract.Model {
     public Observable<TaoResponse<List<ProductItemBean>>> getBigSale(int pageNum, int pageSize) {
         return mRepositoryManager.obtainRetrofitService(HomeApi.class).getBigSaleCoupon(pageNum, pageSize);
     }
+
+    @Override
+    public Observable<TaoResponse<List<ProductItemBean>>> getAcData(int pageNum, int pageSize, int activityId) {
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getActivityList(pageNum, pageSize, activityId);
+    }
 }
