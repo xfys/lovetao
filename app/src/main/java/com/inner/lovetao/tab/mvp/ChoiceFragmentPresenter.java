@@ -55,6 +55,10 @@ public class ChoiceFragmentPresenter extends BasePresenter<ChoicFragmentContract
         this.mApplication = null;
     }
 
+    public ImageLoader getmImageLoader() {
+        return mImageLoader;
+    }
+
     /**
      * 获取首页banner
      *
@@ -114,11 +118,12 @@ public class ChoiceFragmentPresenter extends BasePresenter<ChoicFragmentContract
                     }
                 });
     }
+
     /**
      * 获取精品数据
      */
-    public void getJingPinData(int pageNum,int activityId) {
-        mModel.getJingPinAcData(pageNum, ConfigInfo.PAGE_SIZE,activityId)
+    public void getJingPinData(int pageNum, int activityId) {
+        mModel.getJingPinAcData(pageNum, ConfigInfo.PAGE_SIZE, activityId)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(new RetryWithDelay(1, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .doOnSubscribe(disposable -> {

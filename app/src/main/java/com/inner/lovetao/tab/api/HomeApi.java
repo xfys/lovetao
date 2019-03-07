@@ -45,4 +45,9 @@ public interface HomeApi {
      */
     @GET("/api/aitao/activity/getCoupons")
     Observable<TaoResponse<List<ProductItemBean>>> getActivityList(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("activityId") int activityId);
+    /**
+     * 根据条目获取商品列表
+     */
+    @GET("/api/aitao/coupons")
+    Observable<TaoResponse<List<ProductItemBean>>> getCoupons(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("categoryId") int categoryId);
 }

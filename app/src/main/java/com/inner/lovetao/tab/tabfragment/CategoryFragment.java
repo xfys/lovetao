@@ -5,12 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ConfigInfo;
 import com.inner.lovetao.tab.bean.CategoryBean;
 import com.inner.lovetao.tab.bean.ProductItemBean;
 import com.inner.lovetao.tab.contract.CategoryFragmentContract;
@@ -20,6 +22,7 @@ import com.inner.lovetao.weight.LoadMoreFooterView;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.http.config.CommonImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -57,6 +60,12 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
     private LoadMoreFooterView footerView;
     private CategoryBean categoryBean;
 
+    private boolean isRefreshing;//是否正在加载
+    private boolean mPullDown = true;
+    private boolean noMoredata;//是否已经没有更多
+    private int pageNum = 1;
+    private GridLayoutManager layoutManager;
+
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
         DaggerCategoryFragmentComponent //如找不到该类,请编译一下项目
@@ -76,7 +85,7 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
     public void initData(@Nullable Bundle savedInstanceState) {
         initPullToRefresh();
         initRecycleView();
-        testAddProduct();
+        pullToRefreshLayout.autoRefresh();
     }
 
     @Override
@@ -98,29 +107,57 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-                testAddProduct();
+                addProduct();
             }
         });
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && (layoutManager.findLastVisibleItemPosition() == layoutManager.getItemCount() - 1) && !isRefreshing && !noMoredata) {
+                    pullUpRequest();
+                }
             }
         });
     }
 
+    private void pullUpRequest() {
+        if (categoryBean == null) {
+            return;
+        }
+        if (noMoredata) {
+            return;
+        }
+        mPullDown = false;
+        pageNum++;
+        isRefreshing = true;
+        mPresenter.getProductList(pageNum, categoryBean.getId());
+    }
+
     private void initRecycleView() {
-        GridLayoutManager layoutManager = new GridLayoutManager(mContext, 2);
+        layoutManager = new GridLayoutManager(mContext, 2);
         recyclerView.setLayoutManager(layoutManager);
         CommonAdapter<ProductItemBean> adapter = new CommonAdapter<ProductItemBean>(mContext, R.layout.item_goods_layout, datas) {
 
             @Override
             protected void convert(ViewHolder holder, ProductItemBean productItemBean, int position) {
-//                holder.setText(R.id.tv_product_name, productItemBean.getName());
-//                holder.setText(R.id.tv_product_prise, productItemBean.getTbPrise());
-//                holder.setText(R.id.tv_product_quan, productItemBean.getQuanPrise());
-//                holder.setText(R.id.tv_product_already_num, productItemBean.getAlready());
-//                holder.setText(R.id.tv_product_quan_after, productItemBean.getQuanAferPrice());
+                if (productItemBean == null) {
+                    return;
+                }
+                if (mPresenter.getmImageLoader() != null && !TextUtils.isEmpty(productItemBean.getSmallImages())) {
+                    mPresenter.getmImageLoader().loadImage(mContext,
+                            CommonImageConfigImpl
+                                    .builder()
+                                    .imageRadius(ArmsUtils.dip2px(mContext, 2))
+                                    .url(productItemBean.getSmallImages())
+                                    .isCropCenter(false)
+                                    .imageView(holder.itemView.findViewById(R.id.iv_item_goods_pic))
+                                    .build());
+                }
+                holder.setText(R.id.tv_product_name, productItemBean.getTitle());
+                holder.setText(R.id.tv_product_prise, "淘宝价¥" + productItemBean.getZkFinalPrice());
+                holder.setText(R.id.tv_product_quan, productItemBean.getCouponStartFee());
+                holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponRemainCount()));
+                holder.setText(R.id.tv_product_quan_after, productItemBean.getCouponInfo());
             }
         };
 
@@ -163,12 +200,18 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
 
 
     /**
-     * 模拟下拉刷新
+     * 下拉刷新
      */
-    private void testAddProduct() {
-
-        wrapper.notifyDataSetChanged();
-        pullToRefreshLayout.refreshComplete();
+    private void addProduct() {
+        if (categoryBean != null) {
+            if (!mPullDown) {
+                return;
+            }
+            pageNum = 1;
+            mPresenter.getProductList(pageNum, categoryBean.getId());
+            noMoredata = false;
+            isRefreshing = true;
+        }
     }
 
 
@@ -179,6 +222,23 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
 
     @Override
     public void getProductdataSu(List<ProductItemBean> productList) {
-
+        if (productList == null) {
+            noMoredata = true;
+            pullToRefreshLayout.refreshComplete();
+            footerView.showNoMoreState();
+            return;
+        }
+        if (productList.size() < ConfigInfo.PAGE_SIZE) {
+            noMoredata = true;
+            footerView.showNoMoreState();
+        }
+        if (pageNum == 1) {
+            datas.clear();
+        }
+        datas.addAll(productList);
+        wrapper.notifyDataSetChanged();
+        isRefreshing = false;
+        mPullDown = true;
+        pullToRefreshLayout.refreshComplete();
     }
 }

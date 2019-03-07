@@ -19,6 +19,6 @@ public interface CategoryFragmentContract {
     }
 
     interface Model extends IModel {
-        Observable<TaoResponse<List<ProductItemBean>>> getProductData(int pageNum, int pageSize, int activityId);
+        Observable<TaoResponse<List<ProductItemBean>>> getProductData(int pageNum, int pageSize, int categoryId);
     }
 }

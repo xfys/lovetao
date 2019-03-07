@@ -59,7 +59,7 @@ public class ProductItemBean implements Serializable {
     private String itemUrl;
     private String pictUrl;
     private int volume;
-    private int sellerId;
+    private String sellerId;
     private String nick;
     private String title;
     private String zkFinalPrice;
@@ -228,11 +228,11 @@ public class ProductItemBean implements Serializable {
         this.volume = volume;
     }
 
-    public int getSellerId() {
+    public String getSellerId() {
         return sellerId;
     }
 
-    public void setSellerId(int sellerId) {
+    public void setSellerId(String sellerId) {
         this.sellerId = sellerId;
     }
 

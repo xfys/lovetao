@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="132dp"
         android:layout_marginBottom="@dimen/dp_13"
-        android:src="@color/color_E83F5C"/>
+      />
 
     <TextView
         android:id="@+id/tv_product_name"

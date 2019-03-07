@@ -20,7 +20,7 @@ public class ArouterConfig {
     public static final String AC_SUGGEST = "/settings/mvp/ui/activity/SuggestActivity";
     //关于我们
     public static final String AC_ABOUT_US = "/settings/mvp/ui/activity/AboutUsActivity";
-    //今日上新
+    //活动公共页面
     public static final String AC_SHELVES = "/channel/ui/activity/ShelvesActivity";
     //我的收益
     public static final String AC_MINE_EARNING = "/mineassets/mvp/ui/activity/EarningsActivity";

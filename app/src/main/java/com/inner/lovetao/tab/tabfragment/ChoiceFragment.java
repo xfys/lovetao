@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import com.inner.lovetao.weight.LoadMoreFooterView;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.http.config.CommonImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -86,11 +88,7 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
     public void initData(@Nullable Bundle savedInstanceState) {
         initPullToRefresh();
         initRecycleView();
-        testAddProduct();
-        mPresenter.getBanner(1);
-        mPresenter.getFourAc();
-        mPresenter.getJingPinData(pageNum, 5);
-        testAddProduct();
+        ptrFrameLayout.autoLoadMore();
     }
 
 
@@ -107,8 +105,9 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 //下拉刷新回调
-                testAddProduct();
+                addProduct();
                 mPresenter.getBanner(1);
+                mPresenter.getJingPinData(pageNum, 5);
                 mPresenter.getFourAc();
             }
         });
@@ -128,11 +127,21 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         CommonAdapter<ProductItemBean> adapter = new CommonAdapter<ProductItemBean>(mContext, R.layout.item_home_choice, datas) {
             @Override
             protected void convert(ViewHolder holder, ProductItemBean productItemBean, int position) {
+                if (mPresenter.getmImageLoader() != null && !TextUtils.isEmpty(productItemBean.getSmallImages())) {
+                    mPresenter.getmImageLoader().loadImage(mContext,
+                            CommonImageConfigImpl
+                                    .builder()
+                                    .imageRadius(ArmsUtils.dip2px(mContext, 2))
+                                    .url(productItemBean.getSmallImages())
+                                    .isCropCenter(false)
+                                    .imageView(holder.itemView.findViewById(R.id.iv_product))
+                                    .build());
+                }
                 holder.setText(R.id.tv_product_name, productItemBean.getTitle());
-                holder.setText(R.id.tv_product_prise, productItemBean.getZkFinalPrice());
+                holder.setText(R.id.tv_product_prise, "淘宝价¥" + productItemBean.getZkFinalPrice());
                 holder.setText(R.id.tv_product_quan, productItemBean.getCouponStartFee());
-                holder.setText(R.id.tv_product_already_num, productItemBean.getZkFinalPrice());
-                holder.setText(R.id.tv_product_quan_after, productItemBean.getZkFinalPrice());
+                holder.setText(R.id.tv_product_already_num, String.valueOf(productItemBean.getCouponRemainCount()));
+                holder.setText(R.id.tv_product_quan_after, productItemBean.getCouponInfo());
             }
         };
         headerAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
@@ -153,7 +162,7 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
     /**
      * 模拟下拉刷新
      */
-    private void testAddProduct() {
+    private void addProduct() {
         if (!mPullDown) {
             return;
         }
