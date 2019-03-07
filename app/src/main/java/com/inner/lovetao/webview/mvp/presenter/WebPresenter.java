@@ -80,6 +80,11 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
         // 创建WebViewChromeClient
         webView.setWebChromeClient(mWebChromeClient);
 //        webView.addJavascriptInterface(new WDScriptInterface(), "FFTest");
+        webView.setDownloadListener((url, userAgent, contentDisposition, mimetype, contentLength) -> {
+            if (mRootView != null) {
+                mRootView.downLoad(url);
+            }
+        });
     }
 
     private final WebViewClient mWebViewClient = new WebViewClient() {
@@ -87,6 +92,8 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             if (url.startsWith("lovetao://")) {
                 //TODO:自定义事件
+            } else if (url.startsWith("tbopen://")) {
+                return false;
             } else {
                 view.loadUrl(url);
             }
@@ -100,7 +107,7 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
 
         @Override
         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-            if (mRootView!=null){
+            if (mRootView != null) {
                 mRootView.showMessage("网络链接失败");
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -111,7 +118,7 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            if (mRootView!=null){
+            if (mRootView != null) {
                 mRootView.showProgress(100);
                 mRootView.changeTitle(view.getTitle());
             }
@@ -120,21 +127,21 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
     private final WebChromeClient mWebChromeClient = new WebChromeClient() {
         @Override
         public void onReceivedTitle(WebView view, String title) {
-            if (mRootView!=null){
+            if (mRootView != null) {
                 mRootView.changeTitle(title);
             }
         }
 
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
-            if (mRootView!=null){
+            if (mRootView != null) {
                 mRootView.showProgress(newProgress);
             }
         }
 
         @Override
         public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-            if (mRootView!=null){
+            if (mRootView != null) {
                 mRootView.showJsAlert(message, result);
             }
             return true;
@@ -142,7 +149,7 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
 
         @Override
         public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
-            if (mRootView!=null) {
+            if (mRootView != null) {
                 mRootView.onJsConfirm(message, result);
             }
             return true;
@@ -150,7 +157,7 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
 
         @Override
         public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
-            if (mRootView!=null){
+            if (mRootView != null) {
                 mRootView.onJsPrompt(message, defaultValue, result);
             }
             return true;

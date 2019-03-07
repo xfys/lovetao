@@ -11,12 +11,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.inner.lovetao.R;
-import com.inner.lovetao.tab.bean.TestItemBean;
+import com.inner.lovetao.tab.bean.CategoryBean;
+import com.inner.lovetao.tab.bean.ProductItemBean;
+import com.inner.lovetao.tab.contract.CategoryFragmentContract;
+import com.inner.lovetao.tab.di.component.DaggerCategoryFragmentComponent;
 import com.inner.lovetao.tab.mvp.CategoryFragmentPresenter;
 import com.inner.lovetao.weight.LoadMoreFooterView;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
@@ -26,7 +30,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
@@ -35,7 +38,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * <p>
  * Created by feihaokui on 2019-01-29.
  */
-public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> {
+public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> implements CategoryFragmentContract.View {
     @BindView(R.id.fm_recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.pull_to_refresh_layout)
@@ -48,15 +51,20 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> {
     TextView commonSales;
     @BindView(R.id.common_price)
     TextView commonPrice;
-    Unbinder unbinder;
 
-    private List<TestItemBean> datas = new ArrayList<>();
+    private List<ProductItemBean> datas = new ArrayList<>();
     private HeaderAndFooterWrapper wrapper;
     private LoadMoreFooterView footerView;
+    private CategoryBean categoryBean;
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
-
+        DaggerCategoryFragmentComponent //如找不到该类,请编译一下项目
+                .builder()
+                .appComponent(appComponent)
+                .view(this)
+                .build()
+                .inject(this);
     }
 
     @Override
@@ -73,7 +81,13 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> {
 
     @Override
     public void setData(@Nullable Object data) {
-
+        if (data != null) {
+            try {
+                categoryBean = (CategoryBean) data;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void initPullToRefresh() {
@@ -98,15 +112,15 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> {
     private void initRecycleView() {
         GridLayoutManager layoutManager = new GridLayoutManager(mContext, 2);
         recyclerView.setLayoutManager(layoutManager);
-        CommonAdapter<TestItemBean> adapter = new CommonAdapter<TestItemBean>(mContext, R.layout.item_goods_layout, datas) {
+        CommonAdapter<ProductItemBean> adapter = new CommonAdapter<ProductItemBean>(mContext, R.layout.item_goods_layout, datas) {
 
             @Override
-            protected void convert(ViewHolder holder, TestItemBean productItemBean, int position) {
-                holder.setText(R.id.tv_product_name, productItemBean.getName());
-                holder.setText(R.id.tv_product_prise, productItemBean.getTbPrise());
-                holder.setText(R.id.tv_product_quan, productItemBean.getQuanPrise());
-                holder.setText(R.id.tv_product_already_num, productItemBean.getAlready());
-                holder.setText(R.id.tv_product_quan_after, productItemBean.getQuanAferPrice());
+            protected void convert(ViewHolder holder, ProductItemBean productItemBean, int position) {
+//                holder.setText(R.id.tv_product_name, productItemBean.getName());
+//                holder.setText(R.id.tv_product_prise, productItemBean.getTbPrise());
+//                holder.setText(R.id.tv_product_quan, productItemBean.getQuanPrise());
+//                holder.setText(R.id.tv_product_already_num, productItemBean.getAlready());
+//                holder.setText(R.id.tv_product_quan_after, productItemBean.getQuanAferPrice());
             }
         };
 
@@ -152,12 +166,19 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> {
      * 模拟下拉刷新
      */
     private void testAddProduct() {
-        for (int i = 0; i < 10; i++) {
-            TestItemBean testItemBean = new TestItemBean("耐克运动鞋复古限量版现实抢购最新款上架…", "淘宝价：1" + i, "已抢32478", "劵后价¥588", "¥400元劵");
-            datas.add(testItemBean);
-        }
+
         wrapper.notifyDataSetChanged();
         pullToRefreshLayout.refreshComplete();
     }
 
+
+    @Override
+    public void showMessage(@NonNull String message) {
+        ArmsUtils.makeText(getContext(), message);
+    }
+
+    @Override
+    public void getProductdataSu(List<ProductItemBean> productList) {
+
+    }
 }

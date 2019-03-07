@@ -119,8 +119,10 @@ public class HomePageFragment extends BaseFragment<HomeFragmentPresenter> implem
                     list.add(bean.getName());
                     continue;
                 }
+                CategoryFragment categoryFragment = new CategoryFragment();
+                categoryFragment.setData(bean);
                 list.add(bean.getName());
-                fragmentList.add(new CategoryFragment());
+                fragmentList.add(categoryFragment);
             }
         }
         array = list.toArray(new String[list.size()]);

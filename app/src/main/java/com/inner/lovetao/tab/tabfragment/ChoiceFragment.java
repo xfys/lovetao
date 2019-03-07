@@ -58,7 +58,7 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
     private boolean isRefreshing;//是否正在加载
     private boolean mPullDown = true;
     private boolean noMoredata;//是否已经没有更多
-    private int pageNum=1;
+    private int pageNum = 1;
     private LoadMoreFooterView loadMoreFooterView;
     private RecommendTwoView recommendTwoView;
     private RecommendView recommendView;
@@ -89,8 +89,8 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         testAddProduct();
         mPresenter.getBanner(1);
         mPresenter.getFourAc();
-        mPresenter.getJingPinData(pageNum,5);
-testAddProduct();
+        mPresenter.getJingPinData(pageNum, 5);
+        testAddProduct();
     }
 
 
@@ -158,7 +158,7 @@ testAddProduct();
             return;
         }
         pageNum = 1;
-        mPresenter.getJingPinData(pageNum,5);
+        mPresenter.getJingPinData(pageNum, 5);
         noMoredata = false;
         isRefreshing = true;
     }
@@ -173,7 +173,7 @@ testAddProduct();
         mPullDown = false;
         pageNum++;
         isRefreshing = true;
-        mPresenter.getJingPinData(pageNum,5);
+        mPresenter.getJingPinData(pageNum, 5);
 
     }
 
@@ -211,18 +211,19 @@ testAddProduct();
 
     @Override
     public void getJPdataSu(List<ProductItemBean> jingPingList) {
-        if (jingPingList.size()< ConfigInfo.PAGE_SIZE){
-            noMoredata=true;
+        if (jingPingList.size() < ConfigInfo.PAGE_SIZE) {
+            noMoredata = true;
+            loadMoreFooterView.showNoMoreState();
         }
-        if (pageNum==1){
+        if (pageNum == 1) {
             datas.clear();
         }
-        if (jingPingList!=null){
+        if (jingPingList != null) {
             datas.addAll(jingPingList);
         }
         headerAndFooterWrapper.notifyDataSetChanged();
         isRefreshing = false;
-        mPullDown=true;
+        mPullDown = true;
         ptrFrameLayout.refreshComplete();
 
     }

@@ -1,6 +1,7 @@
 package com.inner.lovetao.webview.mvp.ui.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -156,6 +157,13 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
         builder.setCancelable(false);
         builder.create();
         builder.show();
+    }
+
+    @Override
+    public void downLoad(String url) {
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
     @Override
