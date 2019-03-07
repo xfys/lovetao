@@ -3,6 +3,7 @@ package com.inner.lovetao.channel.ui.activity;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -100,6 +101,7 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        initCommonViewColor(commonRecommend);
         if (!TextUtils.isEmpty(title) && mToolbarTitle != null) {
             mToolbarTitle.setText(title);
         }
@@ -150,10 +152,15 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
                                     .build());
                 }
                 holder.setText(R.id.tv_product_name, productItemBean.getTitle());
-                holder.setText(R.id.tv_product_prise, "淘宝价¥" + productItemBean.getZkFinalPrice());
-                holder.setText(R.id.tv_product_quan, productItemBean.getCouponStartFee());
-                holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponRemainCount()));
-                holder.setText(R.id.tv_product_quan_after, productItemBean.getCouponInfo());
+                ((TextView) holder.getView(R.id.tv_product_prise)).getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                if (productItemBean.isUserType()) {
+                    holder.setText(R.id.tv_product_prise, "天猫价¥" + productItemBean.getZkFinalPrice());
+                } else {
+                    holder.setText(R.id.tv_product_prise, "淘宝价¥" + productItemBean.getZkFinalPrice());
+                }
+                holder.setText(R.id.tv_product_quan, "¥" + productItemBean.getCouponAmount() + "元券");
+                holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponTotalCount() - productItemBean.getCouponRemainCount()));
+                holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount()));
             }
         };
 

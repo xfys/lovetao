@@ -1,6 +1,7 @@
 package com.inner.lovetao.tab.tabfragment;
 
 import android.app.Dialog;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ConfigInfo;
@@ -133,6 +135,9 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         CommonAdapter<ProductItemBean> adapter = new CommonAdapter<ProductItemBean>(mContext, R.layout.item_home_choice, datas) {
             @Override
             protected void convert(ViewHolder holder, ProductItemBean productItemBean, int position) {
+                if (productItemBean == null) {
+                    return;
+                }
                 if (mPresenter.getmImageLoader() != null && !TextUtils.isEmpty(productItemBean.getSmallImages())) {
                     mPresenter.getmImageLoader().loadImage(mContext,
                             CommonImageConfigImpl
@@ -144,10 +149,15 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
                                     .build());
                 }
                 holder.setText(R.id.tv_product_name, productItemBean.getTitle());
-                holder.setText(R.id.tv_product_prise, "淘宝价¥" + productItemBean.getZkFinalPrice());
-                holder.setText(R.id.tv_product_quan, productItemBean.getCouponStartFee());
-                holder.setText(R.id.tv_product_already_num, String.valueOf(productItemBean.getCouponRemainCount()));
-                holder.setText(R.id.tv_product_quan_after, productItemBean.getCouponInfo());
+                ((TextView) holder.getView(R.id.tv_product_prise)).getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                if (productItemBean.isUserType()) {
+                    holder.setText(R.id.tv_product_prise, "天猫价¥" + productItemBean.getZkFinalPrice());
+                } else {
+                    holder.setText(R.id.tv_product_prise, "淘宝价¥" + productItemBean.getZkFinalPrice());
+                }
+                holder.setText(R.id.tv_product_quan, "¥"+productItemBean.getCouponAmount()+"元券");
+                holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponTotalCount() - productItemBean.getCouponRemainCount()));
+                holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount()));
             }
         };
         headerAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
