@@ -28,6 +28,8 @@ public class ArouterConfig {
     public static final String AC_EARNING_DETAIL = "/mineassets/mvp/ui/activity/EarningsDetailActivity";
     //webview
     public static final String AC_WEBVIEW = "/webview/mvp/ui/activity/WebActivity";
+    //产品详情
+    public static final String AC_PRODUCT_DETAIL = "/product_detail/mvp/ui/activity/ProductDetailActivity";
 
     public static class Interceptor {
         public static final String LOGIN_INTERCEPT = "login_intercept";
@@ -37,5 +39,6 @@ public class ArouterConfig {
         public static final String STR_WEBVIEW_URL = "webview_url";
         public static final String FROM_KEY = "is_from";
         public static final String ACTIVITY_ID = "activity_id";
+        public static final String PRODUCT_DETAIL_NUMLID = "detail_numlid";
     }
 }

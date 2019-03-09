@@ -79,6 +79,7 @@ android {
                     'src/main/res/layout/login',
                     'src/main/res/layout/mineassets',
                     'src/main/res/layout/dialog',
+                    'src/main/res/layout/product',
                     'src/main/res'
             ])
         }

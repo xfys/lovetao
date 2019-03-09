@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.channel.contract.ShelvesContract;
 import com.inner.lovetao.channel.di.component.DaggerShelvesComponent;
@@ -30,6 +31,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.config.CommonImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
@@ -53,7 +55,7 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * Update by xcz
  */
 @Route(path = ArouterConfig.AC_SHELVES)
-public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements ShelvesContract.View {
+public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements ShelvesContract.View, MultiItemTypeAdapter.OnItemClickListener {
     @BindView(R.id.common_recommend)
     TextView commonRecommend;
     @BindView(R.id.common_newest)
@@ -163,7 +165,7 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
                 holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount()));
             }
         };
-
+        adapter.setOnItemClickListener(this);
         wrapper = new HeaderAndFooterWrapper(adapter);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         footerView = new LoadMoreFooterView(this);
@@ -315,5 +317,17 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
     @Override
     public Activity getActivity() {
         return this;
+    }
+
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        if (datas != null && datas.get(position) != null && !TextUtils.isEmpty(datas.get(position).getNumIid())) {
+            ARouter.getInstance().build(ArouterConfig.AC_PRODUCT_DETAIL).withString(ArouterConfig.ParamKey.PRODUCT_DETAIL_NUMLID, datas.get(position).getNumIid()).navigation(this);
+        }
+    }
+
+    @Override
+    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+        return false;
     }
 }

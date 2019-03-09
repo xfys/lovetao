@@ -13,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.config.ConfigInfo;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.bean.FourAcBean;
@@ -31,6 +33,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.config.CommonImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
@@ -48,7 +51,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * Created by xcz
  * on 2019/1/22.
  */
-public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implements ChoicFragmentContract.View {
+public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implements ChoicFragmentContract.View, MultiItemTypeAdapter.OnItemClickListener {
     @BindView(R.id.pull_to_refresh_layout)
     PtrFrameLayout ptrFrameLayout;
     @BindView(R.id.fm_recyclerView)
@@ -155,11 +158,12 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
                 } else {
                     holder.setText(R.id.tv_product_prise, "淘宝价¥" + productItemBean.getZkFinalPrice());
                 }
-                holder.setText(R.id.tv_product_quan, "¥"+productItemBean.getCouponAmount()+"元券");
+                holder.setText(R.id.tv_product_quan, "¥" + productItemBean.getCouponAmount() + "元券");
                 holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponTotalCount() - productItemBean.getCouponRemainCount()));
                 holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount()));
             }
         };
+        adapter.setOnItemClickListener(this);
         headerAndFooterWrapper = new HeaderAndFooterWrapper(adapter);
         loadMoreFooterView = new LoadMoreFooterView(mContext);
         loadMoreFooterView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -256,5 +260,18 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
         mPullDown = true;
         ptrFrameLayout.refreshComplete();
 
+    }
+
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        if (datas != null && datas.get(position) != null && !TextUtils.isEmpty(datas.get(position).getNumIid())) {
+            ARouter.getInstance().build(ArouterConfig.AC_PRODUCT_DETAIL).withString(ArouterConfig.ParamKey.PRODUCT_DETAIL_NUMLID, datas.get(position).getNumIid()).navigation(mContext);
+        }
+
+    }
+
+    @Override
+    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+        return false;
     }
 }

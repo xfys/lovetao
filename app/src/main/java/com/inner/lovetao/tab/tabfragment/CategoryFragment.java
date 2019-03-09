@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.config.ConfigInfo;
 import com.inner.lovetao.tab.bean.CategoryBean;
 import com.inner.lovetao.tab.bean.ProductItemBean;
@@ -26,6 +28,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.config.CommonImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
@@ -42,7 +45,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * <p>
  * Created by feihaokui on 2019-01-29.
  */
-public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> implements CategoryFragmentContract.View {
+public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> implements CategoryFragmentContract.View, MultiItemTypeAdapter.OnItemClickListener {
     @BindView(R.id.fm_recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.pull_to_refresh_layout)
@@ -166,7 +169,7 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
                 holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount()));
             }
         };
-
+        adapter.setOnItemClickListener(this);
         wrapper = new HeaderAndFooterWrapper(adapter);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         footerView = new LoadMoreFooterView(mContext);
@@ -246,5 +249,17 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
         isRefreshing = false;
         mPullDown = true;
         pullToRefreshLayout.refreshComplete();
+    }
+
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        if (datas != null && datas.get(position) != null && !TextUtils.isEmpty(datas.get(position).getNumIid())) {
+            ARouter.getInstance().build(ArouterConfig.AC_PRODUCT_DETAIL).withString(ArouterConfig.ParamKey.PRODUCT_DETAIL_NUMLID, datas.get(position).getNumIid()).navigation(mContext);
+        }
+    }
+
+    @Override
+    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+        return false;
     }
 }

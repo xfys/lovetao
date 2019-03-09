@@ -82,6 +82,9 @@
             android:label="@string/earnings_detail"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".product_detail.mvp.ui.activity.ProductDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".webview.mvp.ui.activity.WebActivity"
             android:label="@string/ac_web"
             android:screenOrientation="portrait" />

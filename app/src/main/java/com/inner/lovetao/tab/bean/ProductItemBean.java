@@ -44,7 +44,7 @@ public class ProductItemBean implements Serializable {
     private int couponSrcScene;
     private int couponType;
     private String couponActivityId;
-    private long numIid;
+    private String numIid;
     private int couponRemainCount;
     private int couponTotalCount;
     private long couponEndTime;
@@ -108,11 +108,11 @@ public class ProductItemBean implements Serializable {
         this.couponActivityId = couponActivityId;
     }
 
-    public long getNumIid() {
+    public String getNumIid() {
         return numIid;
     }
 
-    public void setNumIid(long numIid) {
+    public void setNumIid(String numIid) {
         this.numIid = numIid;
     }
 
