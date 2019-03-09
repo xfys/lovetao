@@ -30,60 +30,11 @@
         android:textSize="@dimen/textSize15"
         android:textStyle="bold" />
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/wlfare_recy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_12"
-        android:weightSum="4">
-
-        <TextView
-            android:id="@+id/tv_save_master"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@mipmap/icon_home_choice_fourth"
-            android:drawablePadding="@dimen/dp_7"
-            android:gravity="center"
-            android:text="@string/wlfare_save_tudi"
-            android:textColor="@color/color_666666"
-            android:textSize="@dimen/textSize12" />
-
-        <TextView
-            android:id="@+id/tv_evray_day_hb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@mipmap/icon_wlfare_hongbao"
-            android:drawablePadding="@dimen/dp_7"
-            android:gravity="center"
-            android:text="@string/home_choice_five_desc"
-            android:textColor="@color/color_666666"
-            android:textSize="@dimen/textSize12" />
-
-        <TextView
-            android:id="@+id/tv_coin_travel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@mipmap/icon_wlfare_coin_travel"
-            android:drawablePadding="@dimen/dp_7"
-            android:gravity="center"
-            android:text="@string/wlfare_coin_travel"
-            android:textColor="@color/color_666666"
-            android:textSize="@dimen/textSize12" />
-
-        <TextView
-            android:id="@+id/tv_make_money_center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@mipmap/icon_wlfare_make_money_center"
-            android:drawablePadding="@dimen/dp_7"
-            android:gravity="center"
-            android:text="@string/wlfare_make_money_center"
-            android:textColor="@color/color_666666"
-            android:textSize="@dimen/textSize12" />
-    </LinearLayout>
+        android:layout_marginTop="@dimen/dp_12"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -95,58 +46,9 @@
         android:textSize="@dimen/textSize15"
         android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_12"
-        android:weightSum="4">
-
-        <TextView
-            android:id="@+id/tv_alipay_hb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@mipmap/icon_wlfare_alipay_hb"
-            android:drawablePadding="@dimen/dp_7"
-            android:gravity="center"
-            android:text="@string/wlfare_alipay_hongbao"
-            android:textColor="@color/color_666666"
-            android:textSize="@dimen/textSize12" />
-
-        <TextView
-            android:id="@+id/tv_open_visa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@mipmap/icon_wlfare_open_visa"
-            android:drawablePadding="@dimen/dp_7"
-            android:gravity="center"
-            android:text="@string/wlfare_open_visa"
-            android:textColor="@color/color_666666"
-            android:textSize="@dimen/textSize12" />
-
-        <TextView
-            android:id="@+id/tv_want_browring"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@mipmap/icon_wlfare_want_brrowing"
-            android:drawablePadding="@dimen/dp_7"
-            android:gravity="center"
-            android:text="@string/wlfare_borrow_money"
-            android:textColor="@color/color_666666"
-            android:textSize="@dimen/textSize12" />
-
-        <TextView
-            android:id="@+id/tv_want_financing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@mipmap/icon_wlfare_want_financing"
-            android:drawablePadding="@dimen/dp_7"
-            android:gravity="center"
-            android:text="@string/wlfare_my_financing"
-            android:textColor="@color/color_666666"
-            android:textSize="@dimen/textSize12" />
-    </LinearLayout>
+   <android.support.v7.widget.RecyclerView
+       android:id="@+id/more_recy"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="@dimen/dp_12"/>
 </LinearLayout>
