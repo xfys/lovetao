@@ -1,5 +1,7 @@
 package com.inner.lovetao.product_detail.mvp.contract;
 
+import android.app.Activity;
+
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.product_detail.bean.ProductDetailBean;
 import com.jess.arms.mvp.IModel;
@@ -17,6 +19,8 @@ public interface ProductDetailContract {
     //对于经常使用的关于UI的方法可以定义到IView中,如显示隐藏进度条,和显示文字消息
     interface View extends IView {
         void getProductDetailSu(ProductDetailBean detailBean);
+
+        Activity getActivity();
 
     }
 

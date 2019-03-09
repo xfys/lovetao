@@ -7,7 +7,7 @@ import java.util.List;
  * Created by xcz
  * on 2019/3/9.
  */
-class ResultsBean {
+public class ResultsBean {
 
     /**
      * catLeafName : 低帮鞋
@@ -38,16 +38,16 @@ class ResultsBean {
     private String catName;
     private String itemUrl;
     private String materialLibType;
-    private String nick;
+    private String nick = "";
     private long numIid;
-    private String pictUrl;
+    private String pictUrl="";
     private String provcity;
-    private String reservePrice;
+    private String reservePrice="";
     private long sellerId;
-    private String title;
+    private String title = "";
     private int userType;
     private int volume;
-    private String zkFinalPrice;
+    private String zkFinalPrice = "";
     private List<String> smallImages;
 
     public String getCatLeafName() {

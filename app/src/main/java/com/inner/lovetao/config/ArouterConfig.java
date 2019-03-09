@@ -40,5 +40,6 @@ public class ArouterConfig {
         public static final String FROM_KEY = "is_from";
         public static final String ACTIVITY_ID = "activity_id";
         public static final String PRODUCT_DETAIL_NUMLID = "detail_numlid";
+        public static final String PRODUCT_ITEM_DETAIL = "product_item_bean";
     }
 }
