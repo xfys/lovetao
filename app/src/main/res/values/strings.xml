@@ -89,5 +89,6 @@
     <string name="earnings_detail">收益明细</string>
 
     <string name="ac_web">正在加载...</string>
+    <string name="ac_product_detail">商品详情</string>
 
 </resources>

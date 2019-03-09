@@ -322,7 +322,11 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
     @Override
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
         if (datas != null && datas.get(position) != null && !TextUtils.isEmpty(datas.get(position).getNumIid())) {
-            ARouter.getInstance().build(ArouterConfig.AC_PRODUCT_DETAIL).withString(ArouterConfig.ParamKey.PRODUCT_DETAIL_NUMLID, datas.get(position).getNumIid()).navigation(this);
+            ARouter.getInstance()
+                    .build(ArouterConfig.AC_PRODUCT_DETAIL)
+                    .withString(ArouterConfig.ParamKey.PRODUCT_DETAIL_NUMLID, datas.get(position).getNumIid())
+                    .withSerializable(ArouterConfig.ParamKey.PRODUCT_ITEM_DETAIL, datas.get(position))
+                    .navigation(this);
         }
     }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,11 +17,15 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="vertical">
-
-            <ImageView
+            <!--app:banner_transitionEffect="zoomFade"-->
+            <cn.bingoogolapple.bgabanner.BGABanner
+                android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="330dp"
-                android:background="@color/red" />
+                android:layout_height="210dp"
+                app:banner_pointAutoPlayAble="false"
+                app:banner_pointContainerBackground="@android:color/transparent"
+                app:banner_pointContainerLeftRightPadding="@dimen/dp_5"
+                app:banner_pointDrawable="@drawable/selector_product_banner" />
 
             <TextView
                 android:id="@+id/tv_after_coupon_price"
@@ -60,6 +65,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
@@ -125,6 +131,7 @@
                         android:textSize="@dimen/textSize14" />
 
                     <TextView
+                        android:id="@+id/tv_product_end_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
@@ -134,6 +141,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_product_get"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -152,6 +160,7 @@
                 android:background="@color/color_F8F8F8" />
 
             <TextView
+                android:id="@+id/tv_shop_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/dp_12"
@@ -228,6 +237,7 @@
             </RelativeLayout>
 
             <ImageView
+                android:id="@+id/iv_product_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginLeft="@dimen/dp_20"

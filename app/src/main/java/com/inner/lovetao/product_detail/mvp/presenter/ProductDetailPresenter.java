@@ -78,4 +78,8 @@ public class ProductDetailPresenter extends BasePresenter<ProductDetailContract.
                     }
                 });
     }
+
+    public ImageLoader getmImageLoader() {
+        return mImageLoader;
+    }
 }

@@ -83,6 +83,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".product_detail.mvp.ui.activity.ProductDetailActivity"
+            android:label="@string/ac_product_detail"
             android:screenOrientation="portrait" />
         <activity
             android:name=".webview.mvp.ui.activity.WebActivity"
