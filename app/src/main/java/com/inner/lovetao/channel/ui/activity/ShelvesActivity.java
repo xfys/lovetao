@@ -35,6 +35,7 @@ import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -162,7 +163,8 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
                 }
                 holder.setText(R.id.tv_product_quan, "¥" + productItemBean.getCouponAmount() + "元券");
                 holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponTotalCount() - productItemBean.getCouponRemainCount()));
-                holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount()));
+                BigDecimal b = new BigDecimal(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount());
+                holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue()));
             }
         };
         adapter.setOnItemClickListener(this);
