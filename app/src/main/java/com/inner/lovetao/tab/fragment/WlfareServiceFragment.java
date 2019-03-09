@@ -1,5 +1,6 @@
 package com.inner.lovetao.tab.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.inner.lovetao.R;
+import com.inner.lovetao.tab.contract.WlfareServiceFragmentContract;
+import com.inner.lovetao.tab.mvp.WlfareServiceFragmentPresenter;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 
@@ -18,11 +21,16 @@ import butterknife.OnClick;
  * Created by xcz
  * on 2019/1/15.
  */
-public class WlfareServiceFragment extends BaseFragment {
+public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPresenter> implements WlfareServiceFragmentContract.View {
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
-
+//        DaggerWlfareServiceFragmentComponent //如找不到该类,请编译一下项目
+//                .builder()
+//                .appComponent(appComponent)
+//                .view(this)
+//                .build()
+//                .inject(this);
     }
 
     @Override
@@ -69,6 +77,16 @@ public class WlfareServiceFragment extends BaseFragment {
             case R.id.tv_want_financing:
                 break;
         }
+
+    }
+
+    @Override
+    public void showMessage(@NonNull String message) {
+
+    }
+
+    @Override
+    public void launchActivity(@NonNull Intent intent) {
 
     }
 }
