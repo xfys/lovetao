@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.tab.contract.WlfareServiceFragmentContract;
+import com.inner.lovetao.tab.di.component.DaggerWlfareServiceFragmentComponent;
 import com.inner.lovetao.tab.mvp.WlfareServiceFragmentPresenter;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
@@ -25,12 +26,12 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
-//        DaggerWlfareServiceFragmentComponent //如找不到该类,请编译一下项目
-//                .builder()
-//                .appComponent(appComponent)
-//                .view(this)
-//                .build()
-//                .inject(this);
+        DaggerWlfareServiceFragmentComponent //如找不到该类,请编译一下项目
+                .builder()
+                .appComponent(appComponent)
+                .view(this)
+                .build()
+                .inject(this);
     }
 
     @Override

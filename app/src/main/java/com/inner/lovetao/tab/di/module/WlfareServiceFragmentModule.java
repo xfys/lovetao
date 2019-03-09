@@ -2,8 +2,11 @@ package com.inner.lovetao.tab.di.module;
 
 import android.app.Dialog;
 
+import com.inner.lovetao.tab.contract.HomeFragmentContract;
 import com.inner.lovetao.tab.contract.WlfareServiceFragmentContract;
 import com.inner.lovetao.tab.fragment.WlfareServiceFragment;
+import com.inner.lovetao.tab.mvp.model.HomeFragmentModel;
+import com.inner.lovetao.tab.mvp.model.WlfareServiceFragmentModel;
 import com.inner.lovetao.weight.dialog.ProgresDialog;
 import com.jess.arms.di.scope.ActivityScope;
 
@@ -19,7 +22,7 @@ import dagger.Provides;
 @Module
 public abstract class WlfareServiceFragmentModule {
     @Binds
-    abstract WlfareServiceFragmentContract.Model bindModel(WlfareServiceFragment model);
+    abstract WlfareServiceFragmentContract.Model bindModel(WlfareServiceFragmentModel model);
 
     @ActivityScope
     @Provides
