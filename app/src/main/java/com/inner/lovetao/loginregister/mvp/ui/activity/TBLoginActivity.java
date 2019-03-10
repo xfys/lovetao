@@ -12,9 +12,11 @@ import com.ali.auth.third.core.callback.LoginCallback;
 import com.ali.auth.third.core.model.Session;
 import com.ali.auth.third.login.LoginService;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.core.TaoResponse;
+import com.inner.lovetao.loginregister.bean.TbLoginBean;
 import com.inner.lovetao.loginregister.di.component.DaggerTBLoginActivityComponent;
 import com.inner.lovetao.loginregister.mvp.contract.TBLoginActivityContract;
 import com.inner.lovetao.loginregister.mvp.presenter.TBLoginActivityPresenter;
@@ -75,7 +77,6 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
             //淘宝登录
             case R.id.tv_tb_login:
                 toTBAuth();
-//                mPresenter.getTestData(1);
                 break;
             //用户协议
             case R.id.tv_user_agreement:
@@ -92,8 +93,15 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
         loginService.auth(new LoginCallback() {
             @Override
             public void onSuccess(Session session) {
+                TbLoginBean loginBean = new TbLoginBean();
+                loginBean.setNick(session.nick);
+                loginBean.setOpenId(session.openId);
+                loginBean.setOpenSid(session.openSid);
+                loginBean.setHeadPicUrl(session.avatarUrl);
+                mPresenter.syncUser(loginBean);
                 showMessage("授权成功");
-                LogUtils.debugInfo("TBAuth--->session:" + session.toString());
+                killMyself();
+                ARouter.getInstance().build(ArouterConfig.AC_BIND_PHONE).navigation(TBLoginActivity.this);
             }
 
             @Override
@@ -126,9 +134,10 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
         finish();
     }
 
+
     @Override
-    public void getDatasu(TaoResponse<String> taoResponse) {
-        showMessage(taoResponse.getMessage());
+    public void syncUserSu(TaoResponse<String> taoResponse) {
+        showMessage(taoResponse.toString());
     }
 
     @Override

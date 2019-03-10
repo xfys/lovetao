@@ -11,7 +11,6 @@ public class TaoResponse<T> {
     private String code;
     private String message;
     private T data;
-    private long serverTime;
 
     public String getCode() {
         return code;
@@ -37,16 +36,17 @@ public class TaoResponse<T> {
         this.data = data;
     }
 
-    public long getServerTime() {
-        return serverTime;
-    }
-
-    public void setServerTime(long serverTime) {
-        this.serverTime = serverTime;
-    }
 
     public boolean isSuccess() {
         return ConfigInfo.ResponseCode.Success.equals(code);
     }
 
+    @Override
+    public String toString() {
+        return "TaoResponse{" +
+                "code='" + code + '\'' +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

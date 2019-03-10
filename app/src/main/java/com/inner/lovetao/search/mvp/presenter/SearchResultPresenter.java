@@ -1,33 +1,45 @@
 package com.inner.lovetao.search.mvp.presenter;
 
-/*
- *
- *
- * 作 者 :YangFan
- *
- * 版 本 :1.0
- *
- * 创建日期 :2019/1/14      16:26
- *
- * 描 述 :搜索结果Presenter
- *
- * 修订日期 :
- */
+import android.app.Application;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.OnLifecycleEvent;
-
-import com.inner.lovetao.search.mvp.contract.SearchContract;
+import com.jess.arms.integration.AppManager;
+import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
+import com.jess.arms.http.imageloader.ImageLoader;
 
-public class SearchResultPresenter extends BasePresenter<SearchContract.Model, SearchContract.View> {
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
-    public SearchResultPresenter(SearchContract.Model model, SearchContract.View view) {
-        super(model, view);
+import javax.inject.Inject;
+
+import com.inner.lovetao.search.mvp.contract.SearchResultContract;
+
+
+/**
+ * desc:
+ * Created by xcz
+ */
+@ActivityScope
+public class SearchResultPresenter extends BasePresenter<SearchResultContract.Model, SearchResultContract.View> {
+    @Inject
+    RxErrorHandler mErrorHandler;
+    @Inject
+    Application mApplication;
+    @Inject
+    ImageLoader mImageLoader;
+    @Inject
+    AppManager mAppManager;
+
+    @Inject
+    public SearchResultPresenter(SearchResultContract.Model model, SearchResultContract.View rootView) {
+        super(model, rootView);
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    void onCreate() {
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.mErrorHandler = null;
+        this.mAppManager = null;
+        this.mImageLoader = null;
+        this.mApplication = null;
     }
 }

@@ -1,8 +1,8 @@
 package com.inner.lovetao.search.di.component;
 
-import com.inner.lovetao.search.activity.SearchActivity;
 import com.inner.lovetao.search.di.module.SearchModule;
 import com.inner.lovetao.search.mvp.contract.SearchContract;
+import com.inner.lovetao.search.mvp.ui.activity.SearchActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.di.scope.ActivityScope;
 

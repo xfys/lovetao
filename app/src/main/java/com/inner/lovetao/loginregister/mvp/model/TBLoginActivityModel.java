@@ -4,14 +4,12 @@ import android.app.Application;
 
 import com.google.gson.Gson;
 import com.inner.lovetao.core.TaoResponse;
+import com.inner.lovetao.loginregister.UserApi;
+import com.inner.lovetao.loginregister.bean.TbLoginBean;
 import com.inner.lovetao.loginregister.mvp.contract.TBLoginActivityContract;
-import com.inner.lovetao.tab.api.HomeApi;
-import com.inner.lovetao.tab.bean.BannerBean;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -42,4 +40,8 @@ public class TBLoginActivityModel extends BaseModel implements TBLoginActivityCo
         this.mApplication = null;
     }
 
+    @Override
+    public Observable<TaoResponse<String>> syncUser(TbLoginBean loginBean) {
+        return mRepositoryManager.obtainRetrofitService(UserApi.class).syncUser(loginBean);
+    }
 }

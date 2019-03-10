@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.inner.lovetao.R;
-import com.inner.lovetao.search.activity.SearchActivity;
+import com.inner.lovetao.search.mvp.ui.activity.SearchActivity;
 import com.inner.lovetao.tab.bean.CategoryBean;
 import com.inner.lovetao.tab.contract.HomeFragmentContract;
 import com.inner.lovetao.tab.di.component.DaggerHomeFragmentComponent;

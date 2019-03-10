@@ -1,4 +1,4 @@
-package com.inner.lovetao.search.activity;
+package com.inner.lovetao.search.mvp.ui.activity;
 
 /*
  *
@@ -14,6 +14,7 @@ package com.inner.lovetao.search.activity;
  * 修订日期 :
  */
 
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,10 +27,10 @@ import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.inner.lovetao.R;
-import com.inner.lovetao.search.bean.SearchHistoryItemBean;
-import com.inner.lovetao.search.bean.SearchHotItemBean;
 import com.inner.lovetao.search.adapter.SearchHistoryAdapter;
 import com.inner.lovetao.search.adapter.SearchHotAdapter;
+import com.inner.lovetao.search.bean.SearchHistoryItemBean;
+import com.inner.lovetao.search.bean.SearchHotItemBean;
 import com.inner.lovetao.search.di.component.DaggerSearchComponent;
 import com.inner.lovetao.search.mvp.contract.SearchContract;
 import com.inner.lovetao.search.mvp.presenter.SearchPresenter;

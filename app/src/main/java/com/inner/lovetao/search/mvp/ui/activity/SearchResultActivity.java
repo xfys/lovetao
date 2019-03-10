@@ -1,19 +1,6 @@
-package com.inner.lovetao.search.activity;
+package com.inner.lovetao.search.mvp.ui.activity;
 
-/*
- *
- *
- * 作 者 :YangFan
- *
- * 版 本 :1.0
- *
- * 创建日期 :2019/1/16      17:37
- *
- * 描 述 :搜索结果
- *
- * 修订日期 :
- */
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,16 +12,24 @@ import android.widget.LinearLayout;
 
 import com.inner.lovetao.R;
 import com.inner.lovetao.search.adapter.SearchResultAdapter;
-import com.inner.lovetao.search.mvp.presenter.SearchResultPresenter;
+import com.inner.lovetao.search.di.component.DaggerSearchResultComponent;
 import com.inner.lovetao.search.mvp.contract.SearchResultContract;
+import com.inner.lovetao.search.mvp.presenter.SearchResultPresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class SearchResultActivity extends BaseActivity<SearchResultPresenter> implements SearchResultContract.Model, SearchResultContract.View {
+import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+
+/**
+ * desc:
+ * Created by xcz
+ */
+public class SearchResultActivity extends BaseActivity<SearchResultPresenter> implements SearchResultContract.View {
     @BindView(R.id.ac_search_result_edt)
     EditText mEdit;
     @BindView(R.id.ac_search_result_rcy)
@@ -45,7 +40,12 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
-
+        DaggerSearchResultComponent //如找不到该类,请编译一下项目
+                .builder()
+                .appComponent(appComponent)
+                .view(this)
+                .build()
+                .inject(this);
     }
 
     @Override
@@ -60,11 +60,6 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         mRcy.setLayoutManager(manager);
         mRcy.setAdapter(mAdapter);
-    }
-
-    @Override
-    public void showMessage(@NonNull String message) {
-
     }
 
 
@@ -88,7 +83,19 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void showMessage(@NonNull String message) {
+        checkNotNull(message);
+        ArmsUtils.snackbarText(message);
+    }
+
+    @Override
+    public void launchActivity(@NonNull Intent intent) {
+        checkNotNull(intent);
+        ArmsUtils.startActivity(intent);
+    }
+
+    @Override
+    public void killMyself() {
+        finish();
     }
 }

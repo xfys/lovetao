@@ -4,18 +4,19 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.config.UserInfo;
 import com.inner.lovetao.config.UserInstance;
+import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.loginregister.TimeCount;
 import com.inner.lovetao.loginregister.di.component.DaggerBindPhoneActivityComponent;
 import com.inner.lovetao.loginregister.mvp.contract.BindPhoneActivityContract;
@@ -37,16 +38,7 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  */
 @Route(path = ArouterConfig.AC_BIND_PHONE)
 public class BindPhoneActivity extends BaseActivity<BindPhoneActivityPresenter> implements BindPhoneActivityContract.View, TimeCount.CountDownTimerListener {
-    @Autowired(name = "int")
-    public int intNumber;
-    @Autowired(name = "byte")
-    public byte byteNumber;
-    @Autowired(name = "long")
-    public long longNumber;
-    @Autowired(name = "string")
-    public String string;
-    @Autowired(name = "Serializable")
-    public UserInfo userInfo;
+
     /**
      * 输入的手机号
      */
@@ -97,12 +89,6 @@ public class BindPhoneActivity extends BaseActivity<BindPhoneActivityPresenter> 
         }
         timeCount = new TimeCount(60000, 1000);
         initListner();
-        if (userInfo != null) {
-            investCode.setText("" + intNumber + byteNumber + longNumber + string + userInfo.toString());
-        } else {
-            investCode.setText("" + intNumber + byteNumber + longNumber + string);
-        }
-
     }
 
     @Override
@@ -161,8 +147,10 @@ public class BindPhoneActivity extends BaseActivity<BindPhoneActivityPresenter> 
         switch (view.getId()) {
             //获取验证码
             case R.id.tv_get_verfiy_code:
-                if (timeCount != null) {
-                    timeCount.start();
+                if (TextUtils.isEmpty(phoneNumber.getText().toString().trim()) || phoneNumber.getText().toString().trim().length() != 11) {
+                    showMessage("请输入正确的手机号");
+                } else {
+                    mPresenter.getUserCode(phoneNumber.getText().toString().trim());
                 }
                 break;
             //确定
@@ -219,5 +207,19 @@ public class BindPhoneActivity extends BaseActivity<BindPhoneActivityPresenter> 
         timeCount.onFinish();
         timeCount.setCountDownTimerListener(null);
         timeCount = null;
+    }
+
+    @Override
+    public void getPhoneCodeSu(TaoResponse response) {
+        showMessage(response.toString());
+        if (timeCount != null) {
+            timeCount.start();
+        }
+        showMessage("验证码获取成功");
+    }
+
+    @Override
+    public void bindPhoneNumSu(TaoResponse response) {
+        showMessage(response.toString());
     }
 }
