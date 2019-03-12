@@ -90,5 +90,6 @@
 
     <string name="ac_web">正在加载...</string>
     <string name="ac_product_detail">商品详情</string>
+    <string name="search_please_input">请先输入</string>
 
 </resources>

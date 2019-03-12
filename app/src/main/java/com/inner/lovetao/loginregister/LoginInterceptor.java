@@ -37,6 +37,7 @@ public class LoginInterceptor implements IInterceptor {
                 case ArouterConfig.AC_EARNING_DETAIL:
                 case ArouterConfig.AC_WEBVIEW:
                 case ArouterConfig.AC_PRODUCT_DETAIL:
+                case ArouterConfig.AC_SEARCH_RESULT:
                     callback.onContinue(postcard);
                     break;
                 //默认需要登录

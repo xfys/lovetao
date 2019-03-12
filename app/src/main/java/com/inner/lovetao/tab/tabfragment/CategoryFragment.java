@@ -16,6 +16,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.config.ConfigInfo;
+import com.inner.lovetao.config.RefreshConfig;
 import com.inner.lovetao.tab.bean.CategoryBean;
 import com.inner.lovetao.tab.bean.ProductItemBean;
 import com.inner.lovetao.tab.contract.CategoryFragmentContract;
@@ -69,6 +70,8 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
     private boolean noMoredata;//是否已经没有更多
     private int pageNum = 1;
     private GridLayoutManager layoutManager;
+    private String sortName;
+    private String sortOrder;
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
@@ -87,6 +90,8 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        sortName = RefreshConfig.SORT_RECOMMEND;
+        sortOrder = RefreshConfig.SORT_ASCENDING;
         initPullToRefresh();
         initRecycleView();
         pullToRefreshLayout.autoRefresh();
@@ -122,19 +127,6 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
                 }
             }
         });
-    }
-
-    private void pullUpRequest() {
-        if (categoryBean == null) {
-            return;
-        }
-        if (noMoredata) {
-            return;
-        }
-        mPullDown = false;
-        pageNum++;
-        isRefreshing = true;
-        mPresenter.getProductList(pageNum, categoryBean.getId());
     }
 
     private void initRecycleView() {
@@ -184,15 +176,24 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.common_recommend:
+                sortName = RefreshConfig.SORT_RECOMMEND;
                 initCommonViewColor(commonRecommend);
                 break;
             case R.id.common_newest:
+                sortName = RefreshConfig.SORT_NEWEST;
                 initCommonViewColor(commonNewest);
                 break;
             case R.id.common_sales:
+                sortName = RefreshConfig.SORT_SALES;
                 initCommonViewColor(commonSales);
                 break;
             case R.id.common_price:
+                sortName = RefreshConfig.SORT_PRICE;
+                if(TextUtils.equals(sortOrder,RefreshConfig.SORT_ASCENDING)){
+                    sortOrder = RefreshConfig.SORT_DESCENDING;
+                }else {
+                    sortOrder = RefreshConfig.SORT_ASCENDING;
+                }
                 initCommonViewColor(commonPrice);
                 break;
         }
@@ -217,9 +218,44 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
                 return;
             }
             pageNum = 1;
-            mPresenter.getProductList(pageNum, categoryBean.getId());
+            getData(sortName);
             noMoredata = false;
             isRefreshing = true;
+        }
+    }
+
+    private void pullUpRequest() {
+        if (categoryBean == null) {
+            return;
+        }
+        if (noMoredata) {
+            return;
+        }
+        mPullDown = false;
+        pageNum++;
+        isRefreshing = true;
+        getData(sortName);
+    }
+
+    private void getData(String name) {
+        if (categoryBean != null) {
+            switch (name) {
+                case RefreshConfig.SORT_RECOMMEND:
+                    mPresenter.getProductList(pageNum, categoryBean.getId());
+                    break;
+                case RefreshConfig.SORT_NEWEST:
+                    mPresenter.getProductSortList(pageNum, categoryBean.getId(),RefreshConfig.SORT_NEWEST);
+                    break;
+                case RefreshConfig.SORT_SALES:
+                    mPresenter.getProductSortList(pageNum, categoryBean.getId(),RefreshConfig.SORT_SALES);
+                    break;
+                case RefreshConfig.SORT_PRICE:
+                    mPresenter.getProductSortsList(pageNum, categoryBean.getId(),RefreshConfig.SORT_PRICE,sortOrder);
+                    break;
+                default:
+                    mPresenter.getProductList(pageNum, categoryBean.getId());
+                    break;
+            }
         }
     }
 

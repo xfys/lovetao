@@ -19,14 +19,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.search.adapter.SearchHistoryAdapter;
 import com.inner.lovetao.search.adapter.SearchHotAdapter;
 import com.inner.lovetao.search.bean.SearchHistoryItemBean;
@@ -99,13 +102,24 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
 
     }
 
-    @OnClick({R.id.ac_search_tv_search, R.id.ac_search_iv_delete})
+    @OnClick({R.id.ac_search_tv_search, R.id.ac_search_iv_delete,R.id.ac_search_iv_back})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ac_search_tv_search:// 搜索
+                if (mEdit != null && !TextUtils.isEmpty(mEdit.getText())) {
+                    ARouter.getInstance().build(ArouterConfig.AC_SEARCH_RESULT)
+                            .withString(ArouterConfig.ParamKey.FROM_KEY, String.valueOf(mEdit.getText()))
+                            .navigation(this);
+                } else {
+                    showMessage(getResources().getString(R.string.search_please_input));
+                }
+
                 break;
             case R.id.ac_search_iv_delete:
                 mHistoryAdapter.cleanData();
+                break;
+            case R.id.ac_search_iv_back:
+                finish();
                 break;
             default:
                 break;
