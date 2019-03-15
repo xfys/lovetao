@@ -3,8 +3,8 @@ package com.inner.lovetao.loginregister.mvp.presenter;
 import android.app.Application;
 import android.text.TextUtils;
 
+import com.inner.lovetao.config.UserInfo;
 import com.inner.lovetao.core.TaoResponse;
-import com.inner.lovetao.loginregister.bean.TbLoginBean;
 import com.inner.lovetao.loginregister.mvp.contract.BindPhoneActivityContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -73,7 +73,7 @@ public class BindPhoneActivityPresenter extends BasePresenter<BindPhoneActivityC
                     @Override
                     public void onNext(TaoResponse response) {
                         if (response.isSuccess()) {
-                            mRootView.getPhoneCodeSu(response);
+                            mRootView.getPhoneCodeSu();
                         } else {
                             mRootView.showMessage(response.getMessage());
                         }
@@ -84,8 +84,8 @@ public class BindPhoneActivityPresenter extends BasePresenter<BindPhoneActivityC
     /**
      * 绑定用户
      */
-    public void bindUserPhone(String phone, String verifyCode, String InvitationCode, TbLoginBean loginBean) {
-        mModel.bindPhone(phone, verifyCode, InvitationCode, loginBean)
+    public void bindUserPhone(String phone, String verifyCode, String InvitationCode, String nike, String imgUrl, String openId, String sid) {
+        mModel.bindPhone(phone, verifyCode, InvitationCode, nike, imgUrl, openId, sid)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(new RetryWithDelay(1, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .doOnSubscribe(disposable -> {
@@ -98,11 +98,11 @@ public class BindPhoneActivityPresenter extends BasePresenter<BindPhoneActivityC
                     mRootView.hideLoading();
                 })
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))//使用Rxlifecycle,使Disposable和Activity一起销毁
-                .subscribe(new ErrorHandleSubscriber<TaoResponse>(mErrorHandler) {
+                .subscribe(new ErrorHandleSubscriber<TaoResponse<UserInfo>>(mErrorHandler) {
                     @Override
-                    public void onNext(TaoResponse response) {
+                    public void onNext(TaoResponse<UserInfo> response) {
                         if (response.isSuccess()) {
-                            mRootView.bindPhoneNumSu(response);
+                            mRootView.bindPhoneNumSu(response.getData());
                         } else {
                             mRootView.showMessage(response.getMessage());
                         }

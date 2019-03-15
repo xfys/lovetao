@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.BannerType;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.contract.WlfareServiceFragmentContract;
 import com.inner.lovetao.tab.di.component.DaggerWlfareServiceFragmentComponent;
@@ -25,13 +26,11 @@ import com.jess.arms.utils.ArmsUtils;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
-import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -71,8 +70,8 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         initRecycleView();
-        mPresenter.getBannerList(5);
-        mPresenter.getBannerList(6);
+        mPresenter.getBannerList(BannerType.WLF_VIP.getType());
+        mPresenter.getBannerList(BannerType.WLF_MORE.getType());
 
     }
 
@@ -83,11 +82,11 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
 
             @Override
             protected void convert(ViewHolder holder, BannerBean bannerBean, int position) {
-                if(bannerBean == null){
+                if (bannerBean == null) {
                     return;
                 }
-                holder.setText(R.id.tv_first,bannerBean.getTitle());
-                if(mPresenter.getmImageLoader() != null && !TextUtils.isEmpty(bannerBean.getImgUrl())){
+                holder.setText(R.id.tv_first, bannerBean.getTitle());
+                if (mPresenter.getmImageLoader() != null && !TextUtils.isEmpty(bannerBean.getImgUrl())) {
                     mPresenter.getmImageLoader().loadImage(mContext, CommonImageConfigImpl
                             .builder()
                             .imageRadius(ArmsUtils.dip2px(mContext, 2))
@@ -101,10 +100,10 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
         wldapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                if(!TextUtils.isEmpty(mWlDatas.get(position).getContentUrl())){
+                if (!TextUtils.isEmpty(mWlDatas.get(position).getContentUrl())) {
                     ARouter.getInstance()
                             .build(ArouterConfig.AC_WEBVIEW)
-                            .withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL,mWlDatas.get(position).getContentUrl())
+                            .withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, mWlDatas.get(position).getContentUrl())
                             .navigation(mContext);
                 }
             }
@@ -117,16 +116,16 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
         mRecyWlfare.setAdapter(wldapter);
 
 
-        mRecymore.setLayoutManager(new GridLayoutManager(mContext ,4));
+        mRecymore.setLayoutManager(new GridLayoutManager(mContext, 4));
         moredapter = new CommonAdapter<BannerBean>(mContext, R.layout.item_choice_banner, mMoreDatas) {
 
             @Override
             protected void convert(ViewHolder holder, BannerBean bannerBean, int position) {
-                if(bannerBean == null){
+                if (bannerBean == null) {
                     return;
                 }
-                holder.setText(R.id.tv_first,bannerBean.getTitle());
-                if(mPresenter.getmImageLoader() != null && !TextUtils.isEmpty(bannerBean.getImgUrl())){
+                holder.setText(R.id.tv_first, bannerBean.getTitle());
+                if (mPresenter.getmImageLoader() != null && !TextUtils.isEmpty(bannerBean.getImgUrl())) {
                     mPresenter.getmImageLoader().loadImage(mContext, CommonImageConfigImpl
                             .builder()
                             .imageRadius(ArmsUtils.dip2px(mContext, 2))
@@ -140,10 +139,10 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
         moredapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                if(!TextUtils.isEmpty(mMoreDatas.get(position).getContentUrl())){
+                if (!TextUtils.isEmpty(mMoreDatas.get(position).getContentUrl())) {
                     ARouter.getInstance()
                             .build(ArouterConfig.AC_WEBVIEW)
-                            .withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL,mMoreDatas.get(position).getContentUrl())
+                            .withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, mMoreDatas.get(position).getContentUrl())
                             .navigation(mContext);
                 }
             }
@@ -175,11 +174,11 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
 
     @Override
     public void getBannerDataSu(int type, List<BannerBean> bannerBeanList) {
-        if(5==type){
+        if (5 == type) {
             mWlDatas.clear();
             mWlDatas.addAll(bannerBeanList);
             wldapter.notifyDataSetChanged();
-        }else {
+        } else {
             mMoreDatas.clear();
             mMoreDatas.addAll(bannerBeanList);
             moredapter.notifyDataSetChanged();

@@ -17,6 +17,7 @@ package com.inner.lovetao.core;
 
 import android.content.Context;
 
+import com.inner.lovetao.config.UserInstance;
 import com.jess.arms.http.GlobalHttpHandler;
 
 import okhttp3.Interceptor;
@@ -73,13 +74,15 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
         /* 如果需要再请求服务器之前做一些操作, 则重新返回一个做过操作的的 Request 如增加 Header, 不做操作则直接返回参数 request
         return chain.request().newBuilder().header("token", tokenId)
                               .build(); */
-        return chain.request().newBuilder()
-                .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+        Request.Builder builder = chain.request().newBuilder();
+        builder.addHeader("Content-Type", "application/json; charset=UTF-8")
                 .addHeader("Accept-Encoding", "gzip, deflate")
                 .addHeader("Connection", "keep-alive")
-                .addHeader("Accept", "*/*")
-                .addHeader("Cookie", "add cookies here")
-                .build();
+                .addHeader("Accept", "*/*");
+        if (UserInstance.getInstance().isLogin(context)) {
+            builder.addHeader("userId", String.valueOf(UserInstance.getInstance().getUserInfo(context).getId()));
+        }
+        return builder.build();
 
     }
 }

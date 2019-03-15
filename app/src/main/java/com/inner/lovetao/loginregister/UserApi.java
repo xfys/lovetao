@@ -39,9 +39,20 @@ public interface UserApi {
      */
     @FormUrlEncoded
     @POST("/api/aitao/phone/binding")
-    Observable<TaoResponse> bindPhone(@Field("phone") String phone,
-                                      @Field("verifyCode") String verifyCode,
-                                      @Field("InvitationCode") String InvitationCode,
-                                      @Body TbLoginBean loginBean
+    Observable<TaoResponse<UserInfo>> bindPhone(@Field("phone") String phone,
+                                                @Field("verifyCode") String verifyCode,
+                                                @Field("InvitationCode") String InvitationCode,
+                                                @Field("headPicUrl") String headPicUrl,
+                                                @Field("nick") String nick,
+                                                @Field("openId") String openId,
+                                                @Field("openSid") String openSid
     );
+
+    /**
+     * @param content
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("/api/aitao/add/feedback")
+    Observable<TaoResponse<Boolean>> suggest(@Field("content") String content);
 }

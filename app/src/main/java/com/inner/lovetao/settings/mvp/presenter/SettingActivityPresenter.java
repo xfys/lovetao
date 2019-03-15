@@ -2,16 +2,15 @@ package com.inner.lovetao.settings.mvp.presenter;
 
 import android.app.Application;
 
-import com.jess.arms.integration.AppManager;
+import com.inner.lovetao.settings.mvp.contract.SettingActivityContract;
 import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
-
-import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+import com.jess.arms.integration.AppManager;
+import com.jess.arms.mvp.BasePresenter;
 
 import javax.inject.Inject;
 
-import com.inner.lovetao.settings.mvp.contract.SettingActivityContract;
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
 
 /**
@@ -43,4 +42,9 @@ public class SettingActivityPresenter extends BasePresenter<SettingActivityContr
         this.mImageLoader = null;
         this.mApplication = null;
     }
+
+    public ImageLoader getmImageLoader() {
+        return mImageLoader;
+    }
+
 }

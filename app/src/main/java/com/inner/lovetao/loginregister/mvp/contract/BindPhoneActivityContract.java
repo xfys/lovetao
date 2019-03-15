@@ -1,7 +1,7 @@
 package com.inner.lovetao.loginregister.mvp.contract;
 
+import com.inner.lovetao.config.UserInfo;
 import com.inner.lovetao.core.TaoResponse;
-import com.inner.lovetao.loginregister.bean.TbLoginBean;
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
 
@@ -16,9 +16,9 @@ import io.reactivex.Observable;
 public interface BindPhoneActivityContract {
     //对于经常使用的关于UI的方法可以定义到IView中,如显示隐藏进度条,和显示文字消息
     interface View extends IView {
-        void getPhoneCodeSu(TaoResponse response);
+        void getPhoneCodeSu();
 
-        void bindPhoneNumSu(TaoResponse response);
+        void bindPhoneNumSu(UserInfo userInfo);
 
     }
 
@@ -26,9 +26,9 @@ public interface BindPhoneActivityContract {
     interface Model extends IModel {
         Observable<TaoResponse> getPhoneCode(String phone);
 
-        Observable<TaoResponse> bindPhone(String phone,
-                                          String verifyCode,
-                                          String InvitationCode,
-                                          TbLoginBean loginBean);
+        Observable<TaoResponse<UserInfo>> bindPhone(String phone,
+                                                    String verifyCode,
+                                                    String InvitationCode,
+                                                    String nike, String imgUrl, String openId, String sid);
     }
 }

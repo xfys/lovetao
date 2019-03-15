@@ -74,7 +74,7 @@ public class SuggestActivity extends BaseActivity<SuggestPresenter> implements S
                 if (TextUtils.isEmpty(editSuggest.getText().toString())) {
                     showMessage(getString(R.string.suggest_toast));
                 } else {
-                    showMessage(editSuggest.getText().toString());
+                    mPresenter.suggestCommit(editSuggest.getText().toString().trim());
                 }
                 break;
         }
@@ -96,5 +96,11 @@ public class SuggestActivity extends BaseActivity<SuggestPresenter> implements S
     @Override
     public void killMyself() {
         finish();
+    }
+
+    @Override
+    public void suggestSu() {
+        showMessage(getString(R.string.ac_suggest_toast));
+        killMyself();
     }
 }

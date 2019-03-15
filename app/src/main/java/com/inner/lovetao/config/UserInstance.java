@@ -62,7 +62,7 @@ public class UserInstance {
      * @param context
      */
     public void clearUserInfo(Context context) {
-        DataHelper.saveDeviceData(context, ConfigInfo.USER_INFO, null);
+        DataHelper.clearShareprefrence(context);
     }
 
 }

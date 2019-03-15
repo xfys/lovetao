@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.BannerType;
 import com.inner.lovetao.config.ConfigInfo;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.bean.FourAcBean;
@@ -94,8 +95,8 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
     public void initData(@Nullable Bundle savedInstanceState) {
         initPullToRefresh();
         initRecycleView();
-        mPresenter.getBanner(1);
-        mPresenter.getBanner(2);
+        mPresenter.getBanner(BannerType.HOME_BANNER.getType());
+        mPresenter.getBanner(BannerType.HMOE_NAVIGATION.getType());
         mPresenter.getJingPinData(pageNum, 5);
         mPresenter.getFourAc();
         addProduct();
@@ -115,8 +116,8 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 //下拉刷新回调
-                mPresenter.getBanner(1);
-                mPresenter.getBanner(2);
+                mPresenter.getBanner(BannerType.HOME_BANNER.getType());
+                mPresenter.getBanner(BannerType.HMOE_NAVIGATION.getType());
                 //精选好物
                 mPresenter.getJingPinData(pageNum, 5);
                 mPresenter.getFourAc();

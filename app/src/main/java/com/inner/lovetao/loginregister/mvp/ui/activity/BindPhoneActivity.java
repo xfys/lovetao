@@ -14,10 +14,9 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.UserInfo;
 import com.inner.lovetao.config.UserInstance;
-import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.loginregister.TimeCount;
-import com.inner.lovetao.loginregister.bean.TbLoginBean;
 import com.inner.lovetao.loginregister.di.component.DaggerBindPhoneActivityComponent;
 import com.inner.lovetao.loginregister.mvp.contract.BindPhoneActivityContract;
 import com.inner.lovetao.loginregister.mvp.presenter.BindPhoneActivityPresenter;
@@ -156,12 +155,12 @@ public class BindPhoneActivity extends BaseActivity<BindPhoneActivityPresenter> 
             //确定
             case R.id.tv_confirm:
                 if (!TextUtils.isEmpty(phoneNumber.getText().toString().trim()) && !TextUtils.isEmpty(verfiyCode.getText().toString().trim()) && UserInstance.getInstance().isLogin(this)) {
-                    TbLoginBean loginBean = new TbLoginBean();
-                    loginBean.setNick(UserInstance.getInstance().getUserInfo(this).getNick());
-                    loginBean.setHeadPicUrl(UserInstance.getInstance().getUserInfo(this).getHeadPicUrl());
-                    loginBean.setOpenSid(UserInstance.getInstance().getUserInfo(this).getOpenSid());
-                    loginBean.setOpenId(UserInstance.getInstance().getUserInfo(this).getOpenId());
-                    mPresenter.bindUserPhone(phoneNumber.getText().toString().trim(), verfiyCode.getText().toString().trim(), investCode.getText().toString(), loginBean);
+                    mPresenter.bindUserPhone(phoneNumber.getText().toString().trim(), verfiyCode.getText().toString().trim(), investCode.getText().toString(),
+                            UserInstance.getInstance().getUserInfo(this).getNick(),
+                            UserInstance.getInstance().getUserInfo(this).getHeadPicUrl(),
+                            UserInstance.getInstance().getUserInfo(this).getOpenId(),
+                            UserInstance.getInstance().getUserInfo(this).getOpenSid()
+                    );
                 } else {
                     showMessage("请输入手机号或验证码");
                 }
@@ -218,8 +217,7 @@ public class BindPhoneActivity extends BaseActivity<BindPhoneActivityPresenter> 
     }
 
     @Override
-    public void getPhoneCodeSu(TaoResponse response) {
-        showMessage(response.toString());
+    public void getPhoneCodeSu() {
         if (timeCount != null) {
             timeCount.start();
         }
@@ -227,7 +225,12 @@ public class BindPhoneActivity extends BaseActivity<BindPhoneActivityPresenter> 
     }
 
     @Override
-    public void bindPhoneNumSu(TaoResponse response) {
-        showMessage(response.toString());
+    public void bindPhoneNumSu(UserInfo userInfo) {
+        if (userInfo != null) {
+            showMessage("绑定成功");
+            killMyself();
+            UserInstance.getInstance().setUserInfo(this, userInfo);
+        }
+
     }
 }

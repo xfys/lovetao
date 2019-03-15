@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.BannerType;
 import com.inner.lovetao.config.UserInfo;
 import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.share.ShareUtils;
@@ -81,7 +82,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         initPullToRefresh();
-        mPresenter.getBanner(4);
+        mPresenter.getBanner(BannerType.MINE_PROMOTION.getType());
     }
 
     private void initPullToRefresh() {
@@ -136,7 +137,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
                 ARouter.getInstance().build(ArouterConfig.AC_ABOUT_US).navigation(mContext);
                 break;
             case R.id.iv_photo:
-                ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);
+//                ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);
                 break;
             case R.id.iv_ads:
                 if (bannerBean != null && !TextUtils.isEmpty(bannerBean.getContentUrl())) {
@@ -151,7 +152,6 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
     public void onStart() {
         super.onStart();
         userInfo = UserInstance.getInstance().getUserInfo(mContext);
-
         setUserInfo();
     }
 
