@@ -3,6 +3,7 @@ package com.inner.lovetao.tab.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,20 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.UserInfo;
+import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.share.ShareUtils;
+import com.inner.lovetao.tab.bean.BannerBean;
+import com.inner.lovetao.tab.contract.MineFragmentContract;
+import com.inner.lovetao.tab.di.component.DaggerMineFragmentComponent;
+import com.inner.lovetao.tab.mvp.MineFragmentPresenter;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.http.config.CommonImageConfigImpl;
+import com.jess.arms.utils.ArmsUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -28,7 +39,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * Created by xcz
  * on 2019/1/15.
  */
-public class MineFragment extends BaseFragment {
+public class MineFragment extends BaseFragment<MineFragmentPresenter> implements MineFragmentContract.View {
 
     @BindView(R.id.pull_to_refresh_layout)
     PtrFrameLayout ptrFrameLayout;
@@ -46,10 +57,19 @@ public class MineFragment extends BaseFragment {
     LinearLayout mHaveWithdrawal;
     @BindView(R.id.ll_can_withdrawal)
     LinearLayout mCanWithdrawal;
+    @BindView(R.id.iv_ads)
+    ImageView ivAds;
+    private UserInfo userInfo;
+    private BannerBean bannerBean;
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
-
+        DaggerMineFragmentComponent //如找不到该类,请编译一下项目
+                .builder()
+                .appComponent(appComponent)
+                .view(this)
+                .build()
+                .inject(this);
     }
 
     @Override
@@ -61,6 +81,7 @@ public class MineFragment extends BaseFragment {
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         initPullToRefresh();
+        mPresenter.getBanner(4);
     }
 
     private void initPullToRefresh() {
@@ -84,7 +105,7 @@ public class MineFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.iv_setting, R.id.ll_mine_earnings, R.id.ll_mine_order, R.id.ll_mine_collect, R.id.ll_mine_getVolume, R.id.ll_mine_disciple, R.id.ll_invite_money, R.id.ll_call_service, R.id.ll_suggest, R.id.ll_praise, R.id.ll_about_us, R.id.iv_photo})
+    @OnClick({R.id.iv_setting, R.id.ll_mine_earnings, R.id.ll_mine_order, R.id.ll_mine_collect, R.id.ll_mine_getVolume, R.id.ll_mine_disciple, R.id.ll_invite_money, R.id.ll_call_service, R.id.ll_suggest, R.id.ll_praise, R.id.ll_about_us, R.id.iv_photo, R.id.iv_ads})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_setting:
@@ -117,8 +138,62 @@ public class MineFragment extends BaseFragment {
             case R.id.iv_photo:
                 ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);
                 break;
+            case R.id.iv_ads:
+                if (bannerBean != null && !TextUtils.isEmpty(bannerBean.getContentUrl())) {
+                    ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, bannerBean.getContentUrl()).navigation(mContext);
+                }
+                break;
         }
     }
 
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        userInfo = UserInstance.getInstance().getUserInfo(mContext);
+
+        setUserInfo();
+    }
+
+    private void setUserInfo() {
+        if (userInfo != null && !TextUtils.isEmpty(userInfo.getNick()) && !TextUtils.isEmpty(userInfo.getHeadPicUrl())) {
+            tvMineName.setText(userInfo.getNick());
+            mPresenter.getmImageLoader().loadImage(mContext,
+                    CommonImageConfigImpl
+                            .builder()
+                            .isCropCenter(true)
+                            .isCropCircle(true)
+                            .url(userInfo.getHeadPicUrl())
+                            .imageView(ivPhoto)
+                            .build());
+        } else {
+            tvMineName.setText("未登录");
+            ivPhoto.setImageResource(R.mipmap.icon_mine_photo);
+        }
+
+
+    }
+
+    @Override
+    public void getBannerDataSu(List<BannerBean> bannerBeanList) {
+        if (bannerBeanList != null && bannerBeanList.size() > 0) {
+            bannerBean = bannerBeanList.get(0);
+            if (bannerBean != null) {
+                mPresenter.getmImageLoader().loadImage(mContext,
+                        CommonImageConfigImpl
+                                .builder()
+                                .imageRadius(ArmsUtils.dip2px(mContext, 6))
+                                .url(bannerBean.getImgUrl())
+                                .isCropCenter(false)
+                                .imageView(ivAds)
+                                .build());
+            }
+        }
+
+    }
+
+    @Override
+    public void showMessage(@NonNull String message) {
+
+    }
 }

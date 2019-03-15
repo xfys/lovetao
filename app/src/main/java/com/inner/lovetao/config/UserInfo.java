@@ -8,60 +8,134 @@ import java.io.Serializable;
  * on 2019/1/29.
  */
 public class UserInfo implements Serializable {
-    public UserInfo() {
+
+
+    /**
+     * id : 1
+     * phone : null
+     * verifyCode : null
+     * nick : tb148670_99
+     * headPicUrl : https://wwc.alicdn.com/avatar/getAvatar.do?userIdStr=P8cYPG*IXmkLPk7zPCNLPklzvCPIXH8YvFlhMFkuvmvT&width=160&height=160&type=sns
+     * openId : AAFCVxkEAHuBUNAB21WElbRi
+     * openSid : ca47aacc2c246f9021b92a0326b1e6b5ce0c53ebf81f4d014e522e29e8bd9ef093173446fa468f9cd63a28d3af060cbd
+     * topAccessToken : null
+     * topAuthCode : null
+     * realName : null
+     * aliPayAccount : null
+     * createTime : 1552618475000
+     * updateTime : 1552618475000
+     * state : true
+     * invitationCode : null
+     * shareCode : null
+     */
+
+    private int id;
+    private String phone;
+    private String verifyCode;
+    private String nick;
+    private String headPicUrl;
+    private String openId;
+    private String openSid;
+    private String realName;
+    private String aliPayAccount;
+    private boolean state;
+    private String invitationCode;
+    private String shareCode;
+
+    public int getId() {
+        return id;
     }
 
-    public UserInfo(String nikeNmae, String phoneNumber, boolean alipayStatus, String cookies) {
-        this.nikeNmae = nikeNmae;
-        this.phoneNumber = phoneNumber;
-        this.alipayStatus = alipayStatus;
-        this.cookies = cookies;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    private String nikeNmae;
-    private String phoneNumber;
-    private boolean alipayStatus;
-    private String cookies;
-
-    public String getNikeNmae() {
-        return nikeNmae;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setNikeNmae(String nikeNmae) {
-        this.nikeNmae = nikeNmae;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public Object getVerifyCode() {
+        return verifyCode;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setVerifyCode(String verifyCode) {
+        this.verifyCode = verifyCode;
     }
 
-    public boolean isAlipayStatus() {
-        return alipayStatus;
+    public String getNick() {
+        return nick;
     }
 
-    public void setAlipayStatus(boolean alipayStatus) {
-        this.alipayStatus = alipayStatus;
+    public void setNick(String nick) {
+        this.nick = nick;
     }
 
-    public String getCookies() {
-        return cookies;
+    public String getHeadPicUrl() {
+        return headPicUrl;
     }
 
-    public void setCookies(String cookies) {
-        this.cookies = cookies;
+    public void setHeadPicUrl(String headPicUrl) {
+        this.headPicUrl = headPicUrl;
     }
 
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "nikeNmae='" + nikeNmae + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", alipayStatus=" + alipayStatus +
-                ", cookies='" + cookies + '\'' +
-                '}';
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
+
+    public String getOpenSid() {
+        return openSid;
+    }
+
+    public void setOpenSid(String openSid) {
+        this.openSid = openSid;
+    }
+
+
+    public Object getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public Object getAliPayAccount() {
+        return aliPayAccount;
+    }
+
+    public void setAliPayAccount(String aliPayAccount) {
+        this.aliPayAccount = aliPayAccount;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public Object getInvitationCode() {
+        return invitationCode;
+    }
+
+    public void setInvitationCode(String invitationCode) {
+        this.invitationCode = invitationCode;
+    }
+
+    public Object getShareCode() {
+        return shareCode;
+    }
+
+    public void setShareCode(String shareCode) {
+        this.shareCode = shareCode;
     }
 }

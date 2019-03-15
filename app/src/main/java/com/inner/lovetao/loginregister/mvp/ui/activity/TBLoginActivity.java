@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.ali.auth.third.core.MemberSDK;
@@ -15,6 +16,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.UserInfo;
+import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.loginregister.bean.TbLoginBean;
 import com.inner.lovetao.loginregister.di.component.DaggerTBLoginActivityComponent;
@@ -99,9 +102,6 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
                 loginBean.setOpenSid(session.openSid);
                 loginBean.setHeadPicUrl(session.avatarUrl);
                 mPresenter.syncUser(loginBean);
-                showMessage("授权成功");
-                killMyself();
-                ARouter.getInstance().build(ArouterConfig.AC_BIND_PHONE).navigation(TBLoginActivity.this);
             }
 
             @Override
@@ -136,8 +136,15 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
 
 
     @Override
-    public void syncUserSu(TaoResponse<String> taoResponse) {
-        showMessage(taoResponse.toString());
+    public void syncUserSu(TaoResponse<UserInfo> taoResponse) {
+        showMessage("授权成功");
+        killMyself();
+        if (taoResponse != null && taoResponse.getData() != null) {
+            UserInstance.getInstance().setUserInfo(this, taoResponse.getData());
+            if (TextUtils.isEmpty(taoResponse.getData().getPhone())) {
+                ARouter.getInstance().build(ArouterConfig.AC_BIND_PHONE).navigation(TBLoginActivity.this);
+            }
+        }
     }
 
     @Override

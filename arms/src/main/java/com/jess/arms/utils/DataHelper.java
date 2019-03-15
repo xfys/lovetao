@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -125,19 +126,22 @@ public class DataHelper {
         if (mSharedPreferences == null) {
             mSharedPreferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         }
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {   //Device为自定义类
-            // 创建对象输出流，并封装字节流
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            // 将对象写入字节流
-            oos.writeObject(device);
-            // 将字节流编码成base64的字符串
-            String oAuth_Base64 = new String(Base64.encode(baos
-                    .toByteArray(), Base64.DEFAULT));
-            mSharedPreferences.edit().putString(key, oAuth_Base64).apply();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (device instanceof Serializable) {
+            SharedPreferences.Editor editor = mSharedPreferences.edit();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            try {   //Device为自定义类
+                // 创建对象输出流，并封装字节流
+                ObjectOutputStream oos = new ObjectOutputStream(baos);
+                oos.writeObject(device);//把对象写到流里
+                String temp = new String(Base64.encode(baos.toByteArray(), Base64.DEFAULT));
+                editor.putString(key, temp);
+                editor.commit();
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else {
             return false;
         }
     }

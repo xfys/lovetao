@@ -1,5 +1,6 @@
 package com.inner.lovetao.loginregister;
 
+import com.inner.lovetao.config.UserInfo;
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.loginregister.bean.TbLoginBean;
 
@@ -20,7 +21,7 @@ public interface UserApi {
      * @return
      */
     @POST("/api/aitao/add/user")
-    Observable<TaoResponse<String>> syncUser(@Body TbLoginBean loginBean);
+    Observable<TaoResponse<UserInfo>> syncUser(@Body TbLoginBean loginBean);
 
     /**
      * 获取手机验证码

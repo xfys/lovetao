@@ -27,22 +27,11 @@ public class TbLoginBean implements Serializable {
      * verifyCode : string
      */
 
-    private String aliPayAccount;
     private String headPicUrl;
     private String nick;
     private String openId;
     private String openSid;
-    private String topAccessToken;
-    private String topAuthCode;
 
-
-    public String getAliPayAccount() {
-        return aliPayAccount;
-    }
-
-    public void setAliPayAccount(String aliPayAccount) {
-        this.aliPayAccount = aliPayAccount;
-    }
 
     public String getHeadPicUrl() {
         return headPicUrl;
@@ -76,20 +65,5 @@ public class TbLoginBean implements Serializable {
         this.openSid = openSid;
     }
 
-    public String getTopAccessToken() {
-        return topAccessToken;
-    }
-
-    public void setTopAccessToken(String topAccessToken) {
-        this.topAccessToken = topAccessToken;
-    }
-
-    public String getTopAuthCode() {
-        return topAuthCode;
-    }
-
-    public void setTopAuthCode(String topAuthCode) {
-        this.topAuthCode = topAuthCode;
-    }
 }
 

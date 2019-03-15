@@ -29,7 +29,7 @@ public class UserInstance {
      * @return true:已登录 false：未登录
      */
     public boolean isLogin(Context context) {
-        if (getUserInfo(context) != null && !TextUtils.isEmpty(getUserInfo(context).getCookies())) {
+        if (getUserInfo(context) != null && !TextUtils.isEmpty(getUserInfo(context).getOpenId())) {
             return true;
         } else {
             return false;

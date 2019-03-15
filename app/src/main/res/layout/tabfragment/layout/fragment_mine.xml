@@ -22,19 +22,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <include layout="@layout/head_mine_login"/>
+                <include layout="@layout/head_mine_login" />
 
                 <ImageView
+                    android:id="@+id/iv_ads"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_120"
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_marginRight="@dimen/dp_15"
-                    android:src="@color/color_E83F5C"
                     android:paddingTop="@dimen/dp_18"
-                    android:paddingBottom="@dimen/dp_18" />
+                    android:paddingBottom="@dimen/dp_18"
+                    android:scaleType="fitXY" />
 
 
-                <include layout="@layout/head_mine_function"/>
+                <include layout="@layout/head_mine_function" />
 
             </LinearLayout>
 

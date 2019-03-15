@@ -1,16 +1,17 @@
-package com.inner.lovetao.loginregister.mvp.presenter;
+package com.inner.lovetao.tab.mvp;
 
 import android.app.Application;
 
-import com.inner.lovetao.config.UserInfo;
 import com.inner.lovetao.core.TaoResponse;
-import com.inner.lovetao.loginregister.bean.TbLoginBean;
-import com.inner.lovetao.loginregister.mvp.contract.TBLoginActivityContract;
+import com.inner.lovetao.tab.bean.BannerBean;
+import com.inner.lovetao.tab.contract.MineFragmentContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.RxLifecycleUtils;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -20,14 +21,14 @@ import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay;
 
-
 /**
  * desc:
  * Created by xcz
- * on 2019/01/28
+ * on 2019/1/22.
  */
 @ActivityScope
-public class TBLoginActivityPresenter extends BasePresenter<TBLoginActivityContract.Model, TBLoginActivityContract.View> {
+public class MineFragmentPresenter extends BasePresenter<MineFragmentContract.Model, MineFragmentContract.View> {
+
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -38,7 +39,7 @@ public class TBLoginActivityPresenter extends BasePresenter<TBLoginActivityContr
     AppManager mAppManager;
 
     @Inject
-    public TBLoginActivityPresenter(TBLoginActivityContract.Model model, TBLoginActivityContract.View rootView) {
+    public MineFragmentPresenter(MineFragmentContract.Model model, MineFragmentContract.View rootView) {
         super(model, rootView);
     }
 
@@ -51,11 +52,17 @@ public class TBLoginActivityPresenter extends BasePresenter<TBLoginActivityContr
         this.mApplication = null;
     }
 
+    public ImageLoader getmImageLoader() {
+        return mImageLoader;
+    }
+
     /**
-     * 同步用户数据
+     * 获取首页banner
+     *
+     * @param type
      */
-    public void syncUser(TbLoginBean loginBean) {
-        mModel.syncUser(loginBean)
+    public void getBanner(int type) {
+        mModel.getBannerData(type)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(new RetryWithDelay(1, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .doOnSubscribe(disposable -> {
@@ -68,16 +75,17 @@ public class TBLoginActivityPresenter extends BasePresenter<TBLoginActivityContr
                     mRootView.hideLoading();
                 })
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))//使用Rxlifecycle,使Disposable和Activity一起销毁
-                .subscribe(new ErrorHandleSubscriber<TaoResponse<UserInfo>>(mErrorHandler) {
+                .subscribe(new ErrorHandleSubscriber<TaoResponse<List<BannerBean>>>(mErrorHandler) {
                     @Override
-                    public void onNext(TaoResponse<UserInfo> response) {
+                    public void onNext(TaoResponse<List<BannerBean>> response) {
                         if (response.isSuccess()) {
-                            mRootView.syncUserSu(response);
+                            mRootView.getBannerDataSu(response.getData());
                         } else {
                             mRootView.showMessage(response.getMessage());
                         }
                     }
                 });
     }
+
 
 }
