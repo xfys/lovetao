@@ -9,6 +9,7 @@ public interface ConfigInfo {
     String FIRST_INSTALL = "first_install";
     String USER_INFO = "user_info";
     int PAGE_SIZE = 10;
+    String HISTORY_EDIT = "search_his";
 
     interface ResponseCode {
         //成功获取数据

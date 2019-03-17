@@ -16,6 +16,7 @@ package com.inner.lovetao.search.mvp.presenter;
 
 import android.app.Application;
 
+import com.inner.lovetao.config.ConfigInfo;
 import com.inner.lovetao.search.bean.SearchHistoryItemBean;
 import com.inner.lovetao.search.bean.SearchHotItemBean;
 import com.inner.lovetao.search.mvp.contract.SearchContract;
@@ -23,6 +24,7 @@ import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
+import com.jess.arms.utils.DataHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,22 +60,22 @@ public class SearchPresenter extends BasePresenter<SearchContract.Model, SearchC
     }
 
     public void getHistoryData() {
-        List<SearchHistoryItemBean> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            SearchHistoryItemBean bean = new SearchHistoryItemBean();
-            bean.setDesc("历史");
-            list.add(bean);
-        }
+        List<SearchHistoryItemBean> list = DataHelper.getDeviceData(mApplication.getBaseContext(), ConfigInfo.HISTORY_EDIT);
         mRootView.RefreshHistoryData(list);
     }
 
     public void getHotData() {
         List<SearchHotItemBean> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            SearchHotItemBean bean = new SearchHotItemBean();
-            bean.setDesc("热搜");
-            list.add(bean);
-        }
+        list.add(new SearchHotItemBean("防护喷雾9.9元"));
+        list.add(new SearchHotItemBean("内裤 女"));
+        list.add(new SearchHotItemBean("蓝牙耳机"));
+        list.add(new SearchHotItemBean("面膜"));
+        list.add(new SearchHotItemBean("零食"));
+        list.add(new SearchHotItemBean("小白鞋"));
+        list.add(new SearchHotItemBean("行李箱 女"));
+        list.add(new SearchHotItemBean("俏美人"));
+        list.add(new SearchHotItemBean("小米手机9"));
+        list.add(new SearchHotItemBean("上衣"));
         mRootView.RefreshHotData(list);
     }
 }

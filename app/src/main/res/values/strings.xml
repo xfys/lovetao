@@ -95,5 +95,7 @@
     <string name="ac_contact_service">联系客服</string>
     <string name="str_wx_gzh">微信公众号</string>
     <string name="ac_save_2_code">保存手机二维码到手机</string>
+    <string name="ac_my_student">我的徒弟</string>
+    <string name="ac_mine_collection">我的收藏</string>
 
 </resources>

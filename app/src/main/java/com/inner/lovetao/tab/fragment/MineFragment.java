@@ -123,6 +123,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
             case R.id.ll_mine_getVolume:
                 break;
             case R.id.ll_mine_disciple:
+                showMessage("敬请期待");
                 break;
             case R.id.ll_invite_money:
                 ShareUtils.getInstance().share(mContext, "https://www.baidu.com/", "测试", "test", null);
@@ -134,6 +135,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
                 ARouter.getInstance().build(ArouterConfig.AC_SUGGEST).navigation(mContext);
                 break;
             case R.id.ll_praise:
+                showMessage("敬请期待");
                 break;
             case R.id.ll_about_us:
                 ARouter.getInstance().build(ArouterConfig.AC_ABOUT_US).navigation(mContext);
@@ -198,6 +200,6 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
 
     @Override
     public void showMessage(@NonNull String message) {
-
+        ArmsUtils.makeText(mContext, message);
     }
 }

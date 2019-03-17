@@ -16,6 +16,10 @@ package com.inner.lovetao.search.bean;
 
 public class SearchHotItemBean {
 
+    public SearchHotItemBean(String desc) {
+        this.desc = desc;
+    }
+
     private String desc;
 
     public String getDesc() {

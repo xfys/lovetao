@@ -3,102 +3,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.inner.lovetao">
 
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
 
-<application
-    android:name=".LoveTaoApplication"
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
-    android:theme="@style/AppTheme"
-    tools:replace="android:allowBackup">
-    <!-- arms 配置 -->
-    <meta-data
-        android:name="com.inner.lovetao.core.GlobalConfiguration"
-        android:value="ConfigModule" />
-
-    <activity
-        android:name=".index.activity.SplashActivity"
-        android:screenOrientation="portrait"
-        android:theme="@style/LaunchTheme">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity
-        android:name=".index.activity.GuildActivity"
-        android:screenOrientation="portrait"
-        android:theme="@style/GuildeTheme" />
-    <activity
-        android:name=".home.activity.MainActivity"
-        android:launchMode="singleTask"
-        android:screenOrientation="portrait"
-        android:windowSoftInputMode="adjustPan" />
-    <activity
-        android:name=".search.mvp.ui.activity.SearchActivity"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".search.mvp.ui.activity.SearchResultActivity"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".channel.ui.activity.ShelvesActivity"
-        android:launchMode="singleTask"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".settings.mvp.ui.activity.SettingActivity"
-        android:label="@string/settings_set"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".loginregister.mvp.ui.activity.TBLoginActivity"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".loginregister.mvp.ui.activity.BindPhoneActivity"
-        android:label="@string/bind_phone_num_title"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".settings.mvp.ui.activity.SuggestActivity"
-        android:label="@string/ac_suggest"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".settings.mvp.ui.activity.AboutUsActivity"
-        android:label="@string/ac_about_us"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".mineassets.mvp.ui.activity.EarningsActivity"
-        android:label="@string/mine_earnings"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".mineassets.mvp.ui.activity.EarningsDetailActivity"
-        android:label="@string/earnings_detail"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".product_detail.mvp.ui.activity.ProductDetailActivity"
-        android:label="@string/ac_product_detail"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".webview.mvp.ui.activity.WebActivity"
-        android:label="@string/ac_web"
-        android:screenOrientation="portrait" />
-    <activity
-        android:name=".wxapi.WXEntryActivity"
-        android:exported="true"
+    <application
+        android:name=".LoveTaoApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:launchMode="singleTask"
-        android:taskAffinity="net.sourceforge.simcpux" />
-    <activity
-        android:name=".settings.mvp.ui.activity.ContactServiceActivity"
-        android:label="@string/ac_contact_service"
-        android:screenOrientation="portrait" />
-</application>
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
+        <!-- arms 配置 -->
+        <meta-data
+            android:name="com.inner.lovetao.core.GlobalConfiguration"
+            android:value="ConfigModule" />
+
+        <activity
+            android:name=".index.activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/LaunchTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".index.activity.GuildActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/GuildeTheme" />
+        <activity
+            android:name=".home.activity.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".search.mvp.ui.activity.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".search.mvp.ui.activity.SearchResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".channel.ui.activity.ShelvesActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".settings.mvp.ui.activity.SettingActivity"
+            android:label="@string/settings_set"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".loginregister.mvp.ui.activity.TBLoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".loginregister.mvp.ui.activity.BindPhoneActivity"
+            android:label="@string/bind_phone_num_title"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".settings.mvp.ui.activity.SuggestActivity"
+            android:label="@string/ac_suggest"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".settings.mvp.ui.activity.AboutUsActivity"
+            android:label="@string/ac_about_us"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mineassets.mvp.ui.activity.EarningsActivity"
+            android:label="@string/mine_earnings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mineassets.mvp.ui.activity.EarningsDetailActivity"
+            android:label="@string/earnings_detail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".product_detail.mvp.ui.activity.ProductDetailActivity"
+            android:label="@string/ac_product_detail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".webview.mvp.ui.activity.WebActivity"
+            android:label="@string/ac_web"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:taskAffinity="net.sourceforge.simcpux" />
+        <activity
+            android:name=".settings.mvp.ui.activity.ContactServiceActivity"
+            android:label="@string/ac_contact_service"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mineassets.mvp.ui.activity.MineCollectionActivity"
+            android:label="@string/ac_mine_collection"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mineassets.mvp.ui.activity.MyStudentActivity"
+            android:label="@string/ac_my_student"
+            android:screenOrientation="portrait" />
+    </application>
 
 </manifest>
