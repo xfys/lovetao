@@ -34,11 +34,11 @@ public class CategoryFragmentModel extends BaseModel implements CategoryFragment
 
     @Override
     public Observable<TaoResponse<List<ProductItemBean>>> getProductSortData(int pageNum, int pageSize, int categoryId, String sortName) {
-        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getSortCoupons(pageNum, pageSize, categoryId,sortName);
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getCoupons(pageNum, pageSize, categoryId,sortName);
     }
 
     @Override
     public Observable<TaoResponse<List<ProductItemBean>>> getProductSortsData(int pageNum, int pageSize, int categoryId, String sortName, String sortOrder) {
-        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getSortsCoupons(pageNum, pageSize, categoryId,sortName,sortOrder);
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getCoupons(pageNum, pageSize, categoryId,sortName,sortOrder);
     }
 }

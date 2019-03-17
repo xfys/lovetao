@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -102,6 +103,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         mEdit.setText(title);
+        initCommonViewColor(commonRecommend);
         sortName = RefreshConfig.SORT_RECOMMEND;
         sortOrder = RefreshConfig.SORT_ASCENDING;
         initPullToRefresh();
@@ -174,23 +176,32 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
     }
 
 
-    @OnClick({R.id.ac_search_result_iv_back, R.id.common_recommend, R.id.common_newest, R.id.common_sales, R.id.common_price})
+    @OnClick({R.id.ac_search_result_iv_back, R.id.common_recommend, R.id.common_newest, R.id.common_sales, R.id.common_price,R.id.ac_search_result_tv_search})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ac_search_result_iv_back:
                 killMyself();
                 break;
+            case R.id.ac_search_result_tv_search:
+                title = String.valueOf(mEdit.getText());
+                sortName = RefreshConfig.SORT_RECOMMEND;
+                initCommonViewColor(commonRecommend);
+                pullToRefreshLayout.autoRefresh();
+                break;
             case R.id.common_recommend://推荐
                 sortName = RefreshConfig.SORT_RECOMMEND;
                 initCommonViewColor(commonRecommend);
+                pullToRefreshLayout.autoRefresh();
                 break;
             case R.id.common_newest://最新
                 sortName = RefreshConfig.SORT_NEWEST;
                 initCommonViewColor(commonNewest);
+                pullToRefreshLayout.autoRefresh();
                 break;
             case R.id.common_sales://销量
                 sortName = RefreshConfig.SORT_SALES;
                 initCommonViewColor(commonSales);
+                pullToRefreshLayout.autoRefresh();
                 break;
             case R.id.common_price://价格
                 sortName = RefreshConfig.SORT_PRICE;
@@ -200,6 +211,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
                     sortOrder = RefreshConfig.SORT_ASCENDING;
                 }
                 initCommonViewColor(commonPrice);
+                pullToRefreshLayout.autoRefresh();
                 break;
             default:
                 break;
@@ -319,7 +331,6 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
         commonSales.setTextColor(getResources().getColor(R.color.color_444444));
         commonRecommend.setTextColor(getResources().getColor(R.color.color_444444));
         view.setTextColor(getResources().getColor(R.color.color_E83F5C));
-        pullToRefreshLayout.autoRefresh();
     }
 
 }

@@ -48,6 +48,18 @@ public interface HomeApi {
     Observable<TaoResponse<List<ProductItemBean>>> getActivityList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("activityId") int activityId);
 
     /**
+     * 获取活动列表+排序
+     */
+    @GET("/api/aitao/activity/getCoupons")
+    Observable<TaoResponse<List<ProductItemBean>>> getActivityList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("activityId") int activityId,@Query("sortName") String sortName);
+
+    /**
+     * 获取活动列表+排序(升序和降序)
+     */
+    @GET("/api/aitao/activity/getCoupons")
+    Observable<TaoResponse<List<ProductItemBean>>> getActivityList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("activityId") int activityId,@Query("sortName") String sortName,@Query("sortName") String sortOrder);
+
+    /**
      * 根据条目获取商品列表
      */
     @GET("/api/aitao/coupons")
@@ -57,13 +69,13 @@ public interface HomeApi {
      * 根据条目+排序获取商品列表
      */
     @GET("/api/aitao/coupons")
-    Observable<TaoResponse<List<ProductItemBean>>> getSortCoupons(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("categoryId") int categoryId, @Query("sortName") String sortName);
+    Observable<TaoResponse<List<ProductItemBean>>> getCoupons(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("categoryId") int categoryId, @Query("sortName") String sortName);
 
     /**
      * 根据条目+排序(升序和降序)获取商品列表
      */
     @GET("/api/aitao/coupons")
-    Observable<TaoResponse<List<ProductItemBean>>> getSortsCoupons(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("categoryId") int categoryId, @Query("sortName") String sortName, @Query("sortOrder") String sortOrder);
+    Observable<TaoResponse<List<ProductItemBean>>> getCoupons(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("categoryId") int categoryId, @Query("sortName") String sortName, @Query("sortOrder") String sortOrder);
 
     /**
      * 获取今日特卖列表
@@ -75,13 +87,13 @@ public interface HomeApi {
      * 根据条目+排序获取今日特卖列表
      */
     @GET("/api/aitao/coupons")
-    Observable<TaoResponse<List<ProductItemBean>>> getSortTodaySale(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName);
+    Observable<TaoResponse<List<ProductItemBean>>> getTodaySale(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName);
 
     /**
      * 根据条目+排序(升序和降序)获取今日特卖列表
      */
     @GET("/api/aitao/coupons")
-    Observable<TaoResponse<List<ProductItemBean>>> getSortsTodaySale(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName, @Query("sortOrder") String sortOrder);
+    Observable<TaoResponse<List<ProductItemBean>>> getTodaySale(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName, @Query("sortOrder") String sortOrder);
 
 
     /**
@@ -95,13 +107,13 @@ public interface HomeApi {
      * 根据条目+排序获取9.9特卖列表
      */
     @GET("/api/aitao/coupons")
-    Observable<TaoResponse<List<ProductItemBean>>> getSortSale99(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName);
+    Observable<TaoResponse<List<ProductItemBean>>> getSale99(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName);
 
     /**
      * 根据条目+排序(升序和降序)获取9.9特卖列表
      */
     @GET("/api/aitao/coupons")
-    Observable<TaoResponse<List<ProductItemBean>>> getSortsSale99(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName, @Query("sortOrder") String sortOrder);
+    Observable<TaoResponse<List<ProductItemBean>>> getSale99(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName, @Query("sortOrder") String sortOrder);
 
 
     /**
@@ -114,13 +126,13 @@ public interface HomeApi {
      * 根据条目+排序获取大额券列表
      */
     @GET("/api/aitao/coupons")
-    Observable<TaoResponse<List<ProductItemBean>>> getSortBigSaleCoupon(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName);
+    Observable<TaoResponse<List<ProductItemBean>>> getBigSaleCoupon(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName);
 
     /**
      * 根据条目+排序(升序和降序)获取大额券列表
      */
     @GET("/api/aitao/coupons")
-    Observable<TaoResponse<List<ProductItemBean>>> getSortsBigSaleCoupon(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName, @Query("sortOrder") String sortOrder);
+    Observable<TaoResponse<List<ProductItemBean>>> getBigSaleCoupon(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("sortName") String sortName, @Query("sortOrder") String sortOrder);
 
     /**
      * 根据模糊搜索获取商品列表
@@ -132,7 +144,7 @@ public interface HomeApi {
      * 根据模糊搜索+排序获取商品列表
      */
     @GET("/api/aitao/coupons")
-    Observable<TaoResponse<List<ProductItemBean>>> getSearchSortCoupons(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("title") String title, @Query("sortName") String sortName);
+    Observable<TaoResponse<List<ProductItemBean>>> getSearchCoupons(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("title") String title, @Query("sortName") String sortName);
 
 
     /**
