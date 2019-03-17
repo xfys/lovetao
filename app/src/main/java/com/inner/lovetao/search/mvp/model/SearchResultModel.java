@@ -41,7 +41,7 @@ public class SearchResultModel extends BaseModel implements SearchResultContract
 
     @Override
     public Observable<TaoResponse<List<ProductItemBean>>> getSearchSortData(int pageNum, int pageSize, String title, String sort) {
-        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getSearchSortCoupons(pageNum, pageSize, title,sort);
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getSearchCoupons(pageNum, pageSize, title,sort);
     }
 
     @Override

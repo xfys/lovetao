@@ -23,11 +23,14 @@
 
         <EditText
             android:id="@+id/ac_search_result_edt"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="@dimen/dp_30"
+            android:layout_weight="1"
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_marginRight="@dimen/dp_27"
             android:background="@drawable/shape_ac_search_edt_bg"
+            android:drawableLeft="@mipmap/icon_home_search"
+            android:drawablePadding="@dimen/dp_6"
             android:hint="@string/search"
             android:imeOptions="flagNoExtractUi|actionGo"
             android:inputType="textNoSuggestions"
@@ -36,6 +39,17 @@
             android:textColor="@color/color_444444"
             android:textColorHint="@color/color_B1B5B8"
             android:textSize="@dimen/textSize14" />
+
+
+        <TextView
+            android:id="@+id/ac_search_result_tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingRight="@dimen/dp_16"
+            android:text="@string/search"
+            android:textColor="@color/color_E83F5C"
+            android:textSize="@dimen/textSize15" />
     </LinearLayout>
 
     <include layout="@layout/rank_shelves" />

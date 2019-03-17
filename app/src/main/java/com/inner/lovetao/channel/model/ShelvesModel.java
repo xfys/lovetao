@@ -49,8 +49,28 @@ public class ShelvesModel extends BaseModel implements ShelvesContract.Model {
     }
 
     @Override
+    public Observable<TaoResponse<List<ProductItemBean>>> getTodaySale(int pageNum, int pageSize, String sortName) {
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getTodaySale(pageNum, pageSize,sortName);
+    }
+
+    @Override
+    public Observable<TaoResponse<List<ProductItemBean>>> getTodaySale(int pageNum, int pageSize, String sortName, String sortOrder) {
+        return  mRepositoryManager.obtainRetrofitService(HomeApi.class).getTodaySale(pageNum, pageSize,sortName,sortOrder);
+    }
+
+    @Override
     public Observable<TaoResponse<List<ProductItemBean>>> getSale_99(int pageNum, int pageSize) {
         return mRepositoryManager.obtainRetrofitService(HomeApi.class).getSale99(pageNum, pageSize);
+    }
+
+    @Override
+    public Observable<TaoResponse<List<ProductItemBean>>> getSale_99(int pageNum, int pageSize, String sortName) {
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getSale99(pageNum, pageSize,sortName);
+    }
+
+    @Override
+    public Observable<TaoResponse<List<ProductItemBean>>> getSale_99(int pageNum, int pageSize, String sortName, String sortOrder) {
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getSale99(pageNum, pageSize,sortName,sortOrder);
     }
 
     @Override
@@ -59,7 +79,27 @@ public class ShelvesModel extends BaseModel implements ShelvesContract.Model {
     }
 
     @Override
+    public Observable<TaoResponse<List<ProductItemBean>>> getBigSale(int pageNum, int pageSize, String sortName) {
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getBigSaleCoupon(pageNum, pageSize,sortName);
+    }
+
+    @Override
+    public Observable<TaoResponse<List<ProductItemBean>>> getBigSale(int pageNum, int pageSize, String sortName, String sortOrder) {
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getBigSaleCoupon(pageNum, pageSize,sortName,sortOrder);
+    }
+
+    @Override
     public Observable<TaoResponse<List<ProductItemBean>>> getAcData(int pageNum, int pageSize, int activityId) {
         return mRepositoryManager.obtainRetrofitService(HomeApi.class).getActivityList(pageNum, pageSize, activityId);
+    }
+
+    @Override
+    public Observable<TaoResponse<List<ProductItemBean>>> getAcData(int pageNum, int pageSize, int activityId, String sortName) {
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getActivityList(pageNum, pageSize, activityId,sortName);
+    }
+
+    @Override
+    public Observable<TaoResponse<List<ProductItemBean>>> getAcData(int pageNum, int pageSize, int activityId, String sortName, String sortorder) {
+        return mRepositoryManager.obtainRetrofitService(HomeApi.class).getActivityList(pageNum, pageSize, activityId,sortName,sortorder);
     }
 }

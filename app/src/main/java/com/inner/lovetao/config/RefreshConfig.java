@@ -11,7 +11,7 @@ public class RefreshConfig {
      */
     public static final String SORT_RECOMMEND = "recommend";//推荐
     public static final String SORT_NEWEST = "coupon_start_time";//最新
-    public static final String SORT_SALES = "coupon_amount";//销量
+    public static final String SORT_SALES = "volume";//销量
     public static final String SORT_PRICE = "zk_final_price";//价格
     /**
      * sortOrder

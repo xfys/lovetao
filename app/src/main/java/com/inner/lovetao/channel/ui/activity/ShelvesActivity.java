@@ -23,6 +23,7 @@ import com.inner.lovetao.channel.di.component.DaggerShelvesComponent;
 import com.inner.lovetao.channel.presenter.ShelvesPresenter;
 import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.config.ConfigInfo;
+import com.inner.lovetao.config.RefreshConfig;
 import com.inner.lovetao.tab.bean.ProductItemBean;
 import com.inner.lovetao.weight.LoadMoreFooterView;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
@@ -86,6 +87,8 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
     private boolean noMoredata;//是否已经没有更多
     private int pageNum = 1;
     private List<ProductItemBean> datas = new ArrayList<>();
+    private String sortName;
+    private String sortOrder;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -108,6 +111,8 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
         if (!TextUtils.isEmpty(title) && mToolbarTitle != null) {
             mToolbarTitle.setText(title);
         }
+        sortName = RefreshConfig.SORT_RECOMMEND;
+        sortOrder = RefreshConfig.SORT_ASCENDING;
         initPullToRefresh();
         initRecycleView();
         pullToRefreshLayout.autoRefresh();
@@ -207,16 +212,16 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
 
     private void getData() {
         if (getString(R.string.home_choice_first_desc).equals(title)) {
-            mPresenter.getTodayData(pageNum);
+            mPresenter.getTodayData(pageNum,sortName,sortOrder);
 
         } else if (getString(R.string.home_choice_second_desc).equals(title)) {
-            mPresenter.getSale99(pageNum);
+            mPresenter.getSale99(pageNum,sortName,sortOrder);
 
         } else if (getString(R.string.home_choice_third_desc).equals(title)) {
-            mPresenter.getBigCoupon(pageNum);
+            mPresenter.getBigCoupon(pageNum,sortName,sortOrder);
         } else if (!TextUtils.isEmpty(title)) {
             if (activityId != -1) {
-                mPresenter.getAcData(pageNum, activityId);
+                mPresenter.getAcData(pageNum, activityId,sortName,sortOrder);
             }
         }
 
@@ -272,16 +277,29 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.common_recommend:
+                sortName = RefreshConfig.SORT_RECOMMEND;
                 initCommonViewColor(commonRecommend);
+                pullToRefreshLayout.autoRefresh();
                 break;
             case R.id.common_newest:
+                sortName = RefreshConfig.SORT_NEWEST;
                 initCommonViewColor(commonNewest);
+                pullToRefreshLayout.autoRefresh();
                 break;
             case R.id.common_sales:
+                sortName = RefreshConfig.SORT_SALES;
                 initCommonViewColor(commonSales);
+                pullToRefreshLayout.autoRefresh();
                 break;
             case R.id.common_price:
+                sortName = RefreshConfig.SORT_PRICE;
+                if(TextUtils.equals(sortOrder,RefreshConfig.SORT_ASCENDING)){
+                    sortOrder = RefreshConfig.SORT_DESCENDING;
+                }else {
+                    sortOrder = RefreshConfig.SORT_ASCENDING;
+                }
                 initCommonViewColor(commonPrice);
+                pullToRefreshLayout.autoRefresh();
                 break;
         }
     }

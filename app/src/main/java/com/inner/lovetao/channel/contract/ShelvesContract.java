@@ -29,11 +29,19 @@ public interface ShelvesContract {
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
     interface Model extends IModel {
         Observable<TaoResponse<List<ProductItemBean>>> getTodaySale(int pageNum, int pageSize);
+        Observable<TaoResponse<List<ProductItemBean>>> getTodaySale(int pageNum, int pageSize,String sortName);
+        Observable<TaoResponse<List<ProductItemBean>>> getTodaySale(int pageNum, int pageSize,String sortName,String sortOrder);
 
         Observable<TaoResponse<List<ProductItemBean>>> getSale_99(int pageNum, int pageSize);
+        Observable<TaoResponse<List<ProductItemBean>>> getSale_99(int pageNum, int pageSize,String sortName);
+        Observable<TaoResponse<List<ProductItemBean>>> getSale_99(int pageNum, int pageSize,String sortName,String sortOrder);
 
         Observable<TaoResponse<List<ProductItemBean>>> getBigSale(int pageNum, int pageSize);
+        Observable<TaoResponse<List<ProductItemBean>>> getBigSale(int pageNum, int pageSize,String sortName);
+        Observable<TaoResponse<List<ProductItemBean>>> getBigSale(int pageNum, int pageSize,String sortName,String sortOrder);
 
         Observable<TaoResponse<List<ProductItemBean>>> getAcData(int pageNum, int pageSize, int activityId);
+        Observable<TaoResponse<List<ProductItemBean>>> getAcData(int pageNum, int pageSize, int activityId,String sortName);
+        Observable<TaoResponse<List<ProductItemBean>>> getAcData(int pageNum, int pageSize, int activityId,String sortName,String sortorder);
     }
 }
