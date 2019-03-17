@@ -112,6 +112,10 @@
             android:name=".settings.mvp.ui.activity.MessageActivity"
             android:label="@string/ac_message"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".mineassets.mvp.ui.activity.MyOrderActivity"
+            android:label="@string/mine_order"
+            android:screenOrientation="portrait" />
 
     </application>
 

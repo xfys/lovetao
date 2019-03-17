@@ -20,6 +20,7 @@ import com.inner.lovetao.product_detail.bean.ResultsBean;
 import com.inner.lovetao.product_detail.di.component.DaggerProductDetailComponent;
 import com.inner.lovetao.product_detail.mvp.contract.ProductDetailContract;
 import com.inner.lovetao.product_detail.mvp.presenter.ProductDetailPresenter;
+import com.inner.lovetao.share.ShareUtils;
 import com.inner.lovetao.tab.bean.ProductItemBean;
 import com.inner.lovetao.utils.CommonUtils;
 import com.jess.arms.base.BaseActivity;
@@ -240,6 +241,9 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailPresenter> 
                 break;
             //推广
             case R.id.tv_product_get_coupons:
+                if (itemBean != null && !TextUtils.isEmpty(itemBean.getItemUrl())) {
+                    ShareUtils.getInstance().share(this, itemBean.getItemUrl(), resultBean.getCatLeafName(), resultBean.getTitle(), null);
+                }
                 break;
             //领券购买
             case R.id.tv_product_to_buy:
