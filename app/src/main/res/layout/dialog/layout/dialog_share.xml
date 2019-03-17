@@ -34,7 +34,8 @@
         android:drawableTop="@mipmap/ic_share_qq"
         android:drawablePadding="@dimen/dp_8"
         android:gravity="center"
-        android:text="QQ好友" />
+        android:text="QQ好友"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tv_share_weibo"
@@ -44,6 +45,7 @@
         android:drawableTop="@mipmap/ic_share_weibo"
         android:drawablePadding="@dimen/dp_8"
         android:gravity="center"
-        android:text="微博" />
+        android:text="微博"
+        android:visibility="gone" />
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.inner.lovetao.loginregister;
 import com.inner.lovetao.config.UserInfo;
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.loginregister.bean.TbLoginBean;
+import com.inner.lovetao.settings.request_bean.SuggestRequest;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
@@ -52,7 +53,6 @@ public interface UserApi {
      * @param content
      * @return
      */
-    @FormUrlEncoded
     @POST("/api/aitao/add/feedback")
-    Observable<TaoResponse<Boolean>> suggest(@Field("content") String content);
+    Observable<TaoResponse<Boolean>> suggest(@Body SuggestRequest request);
 }

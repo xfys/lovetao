@@ -92,5 +92,8 @@
     <string name="ac_product_detail">商品详情</string>
     <string name="search_please_input">请先输入</string>
     <string name="ac_suggest_toast">提交成功，非常感谢您的意见</string>
+    <string name="ac_contact_service">联系客服</string>
+    <string name="str_wx_gzh">微信公众号</string>
+    <string name="ac_save_2_code">保存手机二维码到手机</string>
 
 </resources>

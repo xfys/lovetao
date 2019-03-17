@@ -127,6 +127,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
                 ShareUtils.getInstance().share(mContext, "https://www.baidu.com/", "测试", "test", null);
                 break;
             case R.id.ll_call_service:
+                ARouter.getInstance().build(ArouterConfig.AC_CONTACT_SERVICE).navigation(mContext);
                 break;
             case R.id.ll_suggest:
                 ARouter.getInstance().build(ArouterConfig.AC_SUGGEST).navigation(mContext);
@@ -137,7 +138,9 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
                 ARouter.getInstance().build(ArouterConfig.AC_ABOUT_US).navigation(mContext);
                 break;
             case R.id.iv_photo:
-//                ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);
+                if (!UserInstance.getInstance().isLogin(mContext)) {
+                    ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);
+                }
                 break;
             case R.id.iv_ads:
                 if (bannerBean != null && !TextUtils.isEmpty(bannerBean.getContentUrl())) {

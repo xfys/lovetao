@@ -75,7 +75,7 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
         return chain.request().newBuilder().header("token", tokenId)
                               .build(); */
         Request.Builder builder = chain.request().newBuilder();
-        builder.addHeader("Content-Type", "application/json; charset=UTF-8")
+        builder.header("Content-Type", "application/json; charset=UTF-8")
                 .addHeader("Accept-Encoding", "gzip, deflate")
                 .addHeader("Connection", "keep-alive")
                 .addHeader("Accept", "*/*");

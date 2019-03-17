@@ -32,6 +32,8 @@ public class ArouterConfig {
     public static final String AC_PRODUCT_DETAIL = "/product_detail/mvp/ui/activity/ProductDetailActivity";
     //搜索结果
     public static final String AC_SEARCH_RESULT = "/search/mvp/ui/activity/SearchResultActivity";
+    //联系客服
+    public static final String AC_CONTACT_SERVICE = "/settings/mvp/ui/activity/ContactServiceActivity";
 
     public static class Interceptor {
         public static final String LOGIN_INTERCEPT = "login_intercept";

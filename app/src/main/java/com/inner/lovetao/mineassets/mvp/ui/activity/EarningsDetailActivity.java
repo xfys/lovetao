@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
@@ -15,7 +14,6 @@ import com.inner.lovetao.mineassets.di.component.DaggerEarningsDetailComponent;
 import com.inner.lovetao.mineassets.mvp.bean.EarningsDetailBean;
 import com.inner.lovetao.mineassets.mvp.contract.EarningsDetailContract;
 import com.inner.lovetao.mineassets.mvp.presenter.EarningsDetailPresenter;
-import com.inner.lovetao.weight.LoadMoreFooterView;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
@@ -49,7 +47,7 @@ public class EarningsDetailActivity extends BaseActivity<EarningsDetailPresenter
 
     private List<EarningsDetailBean> datas = new ArrayList<>();
     private HeaderAndFooterWrapper wrapper;
-    private LoadMoreFooterView footerView;
+//    private LoadMoreFooterView footerView;
 
 
     @Override
@@ -106,10 +104,10 @@ public class EarningsDetailActivity extends BaseActivity<EarningsDetailPresenter
         };
 
         wrapper = new HeaderAndFooterWrapper(adapter);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        footerView = new LoadMoreFooterView(this);
-        footerView.setLayoutParams(layoutParams);
-        wrapper.addFootView(footerView);
+//        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        footerView = new LoadMoreFooterView(this);
+//        footerView.setLayoutParams(layoutParams);
+//        wrapper.addFootView(footerView);
         recyclerView.setAdapter(wrapper);
         wrapper.notifyDataSetChanged();
     }
@@ -119,10 +117,10 @@ public class EarningsDetailActivity extends BaseActivity<EarningsDetailPresenter
      */
     private void testAddProduct() {
         datas.clear();
-        for (int i = 0; i < 10; i++) {
-            EarningsDetailBean detailBean = new EarningsDetailBean("徒弟购物收益", "2019-01-12 12:00:00", "+0.88元");
-            datas.add(detailBean);
-        }
+//        for (int i = 0; i < 10; i++) {
+//            EarningsDetailBean detailBean = new EarningsDetailBean("徒弟购物收益", "2019-01-12 12:00:00", "+0.88元");
+//            datas.add(detailBean);
+//        }
         wrapper.notifyDataSetChanged();
         pullToRefreshLayout.refreshComplete();
     }

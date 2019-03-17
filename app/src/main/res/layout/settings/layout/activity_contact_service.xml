@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <ImageView
+        android:id="@+id/tv_erweima"
+        android:layout_width="102dp"
+        android:layout_height="102dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_40"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon_wechat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_4"
+        android:text="@string/str_wx_gzh"
+        android:textColor="@color/color_444444"
+        android:textSize="@dimen/textSize14" />
+
+    <TextView
+        android:id="@+id/tv_save_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_27"
+        android:layout_marginTop="@dimen/dp_52"
+        android:layout_marginRight="@dimen/dp_27"
+        android:background="@drawable/shape_contact_service_layout_bg"
+        android:gravity="center"
+        android:padding="@dimen/dp_12"
+        android:text="@string/ac_save_2_code"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize15" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_27"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="专属客服微信：aitao_quan"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14" />
+
+        <TextView
+            android:id="@+id/tv_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:text="复制"
+            android:textColor="@color/color_E83F5C"
+            android:textSize="@dimen/textSize14" />
+
+    </LinearLayout>
+
+</LinearLayout>

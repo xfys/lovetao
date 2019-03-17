@@ -11,9 +11,11 @@ import android.widget.EditText;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.settings.di.component.DaggerSuggestComponent;
 import com.inner.lovetao.settings.mvp.contract.SuggestContract;
 import com.inner.lovetao.settings.mvp.presenter.SuggestPresenter;
+import com.inner.lovetao.settings.request_bean.SuggestRequest;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -74,7 +76,10 @@ public class SuggestActivity extends BaseActivity<SuggestPresenter> implements S
                 if (TextUtils.isEmpty(editSuggest.getText().toString())) {
                     showMessage(getString(R.string.suggest_toast));
                 } else {
-                    mPresenter.suggestCommit(editSuggest.getText().toString().trim());
+                    SuggestRequest suggestRequest = new SuggestRequest();
+                    suggestRequest.content = editSuggest.getText().toString().trim();
+                    suggestRequest.userId = UserInstance.getInstance().getUserInfo(this).getId() + "";
+                    mPresenter.suggestCommit(suggestRequest);
                 }
                 break;
         }

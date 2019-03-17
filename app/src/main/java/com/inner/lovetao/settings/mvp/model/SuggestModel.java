@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.loginregister.UserApi;
 import com.inner.lovetao.settings.mvp.contract.SuggestContract;
+import com.inner.lovetao.settings.request_bean.SuggestRequest;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
@@ -40,7 +41,7 @@ public class SuggestModel extends BaseModel implements SuggestContract.Model {
     }
 
     @Override
-    public Observable<TaoResponse<Boolean>> suggest(String content) {
+    public Observable<TaoResponse<Boolean>> suggest(SuggestRequest content) {
         return mRepositoryManager.obtainRetrofitService(UserApi.class).suggest(content);
     }
 }

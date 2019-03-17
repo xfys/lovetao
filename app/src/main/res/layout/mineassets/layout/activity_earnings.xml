@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_16"
             android:layout_marginTop="@dimen/dp_43"
-            android:text="¥230.00"
+            android:text="¥0.00"
             android:textColor="@color/white"
             android:textSize="@dimen/textSize24" />
 
@@ -85,7 +85,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dp_4"
                     android:gravity="center"
-                    android:text="¥21"
+                    android:text="¥0.00"
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSize14" />
 
@@ -121,7 +121,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dp_4"
                     android:gravity="center"
-                    android:text="¥21"
+                    android:text="¥0.00"
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSize14" />
 
@@ -213,14 +213,15 @@
                      android:textSize="@dimen/textSize14"
                      android:textColor="@color/color_707477"
                      android:layout_gravity="center_horizontal"/>
+
                  <TextView
                      android:id="@+id/tv_today_order"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="1"
-                     android:textSize="@dimen/textSize14"
+                     android:layout_gravity="center_horizontal"
+                     android:text="0"
                      android:textColor="@color/color_444444"
-                     android:layout_gravity="center_horizontal"/>
+                     android:textSize="@dimen/textSize14" />
 
              </LinearLayout>
 
@@ -244,14 +245,15 @@
                      android:textSize="@dimen/textSize14"
                      android:textColor="@color/color_707477"
                      android:layout_gravity="center_horizontal"/>
+
                  <TextView
                      android:id="@+id/tv_today_money"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="¥123.00"
-                     android:textSize="@dimen/textSize14"
+                     android:layout_gravity="center_horizontal"
+                     android:text="¥0.00"
                      android:textColor="@color/color_444444"
-                     android:layout_gravity="center_horizontal"/>
+                     android:textSize="@dimen/textSize14" />
 
              </LinearLayout>
 
@@ -307,14 +309,15 @@
                     android:textSize="@dimen/textSize14"
                     android:textColor="@color/color_707477"
                     android:layout_gravity="center_horizontal"/>
+
                 <TextView
                     android:id="@+id/tv_mouth_order"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
-                    android:textSize="@dimen/textSize14"
+                    android:layout_gravity="center_horizontal"
+                    android:text="0"
                     android:textColor="@color/color_444444"
-                    android:layout_gravity="center_horizontal"/>
+                    android:textSize="@dimen/textSize14" />
 
             </LinearLayout>
 
@@ -338,14 +341,15 @@
                     android:textSize="@dimen/textSize14"
                     android:textColor="@color/color_707477"
                     android:layout_gravity="center_horizontal"/>
+
                 <TextView
                     android:id="@+id/tv_mouth_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="¥123.00"
-                    android:textSize="@dimen/textSize14"
+                    android:layout_gravity="center_horizontal"
+                    android:text="¥0.00"
                     android:textColor="@color/color_444444"
-                    android:layout_gravity="center_horizontal"/>
+                    android:textSize="@dimen/textSize14" />
 
             </LinearLayout>
 

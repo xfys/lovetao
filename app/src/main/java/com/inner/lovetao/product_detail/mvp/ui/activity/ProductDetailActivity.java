@@ -186,6 +186,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailPresenter> 
     }
 
     private void setData(ResultsBean resultBean) {
+
         if (itemBean != null) {
             if (resultBean.getSmallImages() != null) {
                 banner.setAdapter(this);
@@ -230,6 +231,9 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailPresenter> 
         switch (view.getId()) {
             //领
             case R.id.tv_product_get:
+                if (itemBean != null && !TextUtils.isEmpty(itemBean.getItemUrl())) {
+                    CommonUtils.openTb(this, itemBean.getCouponClickUrl());
+                }
                 break;
             //收藏
             case R.id.tv_product_save:
@@ -239,6 +243,9 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailPresenter> 
                 break;
             //领券购买
             case R.id.tv_product_to_buy:
+                if (itemBean != null && !TextUtils.isEmpty(itemBean.getItemUrl())) {
+                    CommonUtils.openTb(this, itemBean.getCouponClickUrl());
+                }
                 break;
         }
     }

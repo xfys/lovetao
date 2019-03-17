@@ -2,8 +2,10 @@ package com.inner.lovetao.settings.mvp.presenter;
 
 import android.app.Application;
 
+import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.core.TaoResponse;
 import com.inner.lovetao.settings.mvp.contract.SuggestContract;
+import com.inner.lovetao.settings.request_bean.SuggestRequest;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
@@ -52,7 +54,8 @@ public class SuggestPresenter extends BasePresenter<SuggestContract.Model, Sugge
     /**
      * 提交建议
      */
-    public void suggestCommit(String content) {
+    public void suggestCommit(SuggestRequest content) {
+
         mModel.suggest(content)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(new RetryWithDelay(1, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
