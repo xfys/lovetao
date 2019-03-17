@@ -30,6 +30,7 @@ import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.ConfigInfo;
 import com.inner.lovetao.search.adapter.SearchHistoryAdapter;
 import com.inner.lovetao.search.adapter.SearchHotAdapter;
 import com.inner.lovetao.search.bean.SearchHistoryItemBean;
@@ -39,7 +40,10 @@ import com.inner.lovetao.search.mvp.contract.SearchContract;
 import com.inner.lovetao.search.mvp.presenter.SearchPresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.DataHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -54,6 +58,8 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
     RecyclerView mRcyHot;
     private SearchHistoryAdapter mHistoryAdapter;
     private SearchHotAdapter mHotAdapter;
+    private List<SearchHistoryItemBean> hisList;
+    private List<SearchHotItemBean> hotList;
 
 
     @Override
@@ -90,19 +96,26 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
         mRcyHot.setAdapter(mHotAdapter);
         mPresenter.getHistoryData();
         mPresenter.getHotData();
+        mHistoryAdapter.setOnItemClickListener((view, viewType, data, position) -> {
+            ARouter.getInstance().build(ArouterConfig.AC_SEARCH_RESULT)
+                    .withString(ArouterConfig.ParamKey.FROM_KEY, hisList.get(position).getDesc())
+                    .navigation(this);
+        });
+        mHotAdapter.setOnItemClickListener((view, viewType, data, position) -> {
+            ARouter.getInstance().build(ArouterConfig.AC_SEARCH_RESULT)
+                    .withString(ArouterConfig.ParamKey.FROM_KEY, hotList.get(position).getDesc())
+                    .navigation(this);
+            saveHistory(hotList.get(position).getDesc());
+        });
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
 
     @Override
     public void showMessage(@NonNull String message) {
-
+        ArmsUtils.makeText(this, message);
     }
 
-    @OnClick({R.id.ac_search_tv_search, R.id.ac_search_iv_delete,R.id.ac_search_iv_back})
+    @OnClick({R.id.ac_search_tv_search, R.id.ac_search_iv_delete, R.id.ac_search_iv_back})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ac_search_tv_search:// 搜索
@@ -110,6 +123,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
                     ARouter.getInstance().build(ArouterConfig.AC_SEARCH_RESULT)
                             .withString(ArouterConfig.ParamKey.FROM_KEY, String.valueOf(mEdit.getText()))
                             .navigation(this);
+                    saveHistory(String.valueOf(mEdit.getText()));
                 } else {
                     showMessage(getResources().getString(R.string.search_please_input));
                 }
@@ -117,6 +131,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
                 break;
             case R.id.ac_search_iv_delete:
                 mHistoryAdapter.cleanData();
+                DataHelper.saveDeviceData(this, ConfigInfo.HISTORY_EDIT, hisList);
                 break;
             case R.id.ac_search_iv_back:
                 finish();
@@ -126,13 +141,35 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
         }
     }
 
+    private void saveHistory(String text) {
+        List<SearchHistoryItemBean> list = DataHelper.getDeviceData(this, ConfigInfo.HISTORY_EDIT);
+        if (list != null) {
+            if (list.size() > 10) {
+                list.remove(list.size() - 1);
+            }
+        } else {
+            list = new ArrayList<>();
+        }
+        list.add(0, new SearchHistoryItemBean(text));
+        DataHelper.saveDeviceData(this, ConfigInfo.HISTORY_EDIT, list);
+        mPresenter.getHistoryData();
+    }
+
     @Override
     public void RefreshHistoryData(List<SearchHistoryItemBean> list) {
+        this.hisList = list;
         mHistoryAdapter.setData(list);
     }
 
     @Override
     public void RefreshHotData(List<SearchHotItemBean> list) {
+        this.hotList = list;
         mHotAdapter.setData(list);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
     }
 }

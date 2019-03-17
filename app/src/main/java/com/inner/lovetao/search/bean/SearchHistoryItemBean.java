@@ -14,7 +14,12 @@ package com.inner.lovetao.search.bean;
  * 修订日期 :
  */
 
-public class SearchHistoryItemBean {
+import java.io.Serializable;
+
+public class SearchHistoryItemBean implements Serializable {
+    public SearchHistoryItemBean(String desc) {
+        this.desc = desc;
+    }
 
     private String desc;
 
