@@ -4,17 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.settings.di.component.DaggerMessageComponent;
+import com.inner.lovetao.settings.mvp.contract.MessageContract;
+import com.inner.lovetao.settings.mvp.presenter.MessagePresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
-import com.inner.lovetao.settings.di.component.DaggerMessageComponent;
-import com.inner.lovetao.settings.mvp.contract.MessageContract;
-import com.inner.lovetao.settings.mvp.presenter.MessagePresenter;
-
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import in.srain.cube.views.ptr.PtrFrameLayout;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
@@ -23,7 +29,15 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * desc:
  * Created by xcz
  */
+@Route(path = ArouterConfig.AC_MESSAGE)
 public class MessageActivity extends BaseActivity<MessagePresenter> implements MessageContract.View {
+
+    @BindView(R.id.ac_recyclerView)
+    RecyclerView acRecyclerView;
+    @BindView(R.id.pull_to_refresh_layout)
+    PtrFrameLayout pullToRefreshLayout;
+    @BindView(R.id.ac_msg_tv_empty)
+    TextView acMsgTvEmpty;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -42,7 +56,8 @@ public class MessageActivity extends BaseActivity<MessagePresenter> implements M
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-
+        pullToRefreshLayout.setVisibility(View.GONE);
+        acMsgTvEmpty.setVisibility(View.VISIBLE);
     }
 
     @Override

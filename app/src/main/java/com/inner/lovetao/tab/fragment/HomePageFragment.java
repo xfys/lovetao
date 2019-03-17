@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
+import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.search.mvp.ui.activity.SearchActivity;
 import com.inner.lovetao.tab.bean.CategoryBean;
 import com.inner.lovetao.tab.contract.HomeFragmentContract;
@@ -31,7 +33,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * desc:首页fragment
@@ -75,6 +79,7 @@ public class HomePageFragment extends BaseFragment<HomeFragmentPresenter> implem
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        vMsgHave.setVisibility(View.GONE);
         initLiuHaiAdapter();
         mPresenter.getCatgory();
 
@@ -85,11 +90,14 @@ public class HomePageFragment extends BaseFragment<HomeFragmentPresenter> implem
 
     }
 
-    @OnClick(R.id.edit_home_search)
+    @OnClick({R.id.edit_home_search, R.id.iv_msg})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.edit_home_search:
                 startActivity(new Intent(getActivity(), SearchActivity.class));
+                break;
+            case R.id.iv_msg:
+                ARouter.getInstance().build(ArouterConfig.AC_MESSAGE).navigation(mContext);
                 break;
         }
 

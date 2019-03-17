@@ -36,6 +36,8 @@ public class ArouterConfig {
     public static final String AC_CONTACT_SERVICE = "/settings/mvp/ui/activity/ContactServiceActivity";
     //我的订单
     public static final String AC_MY_ORDER = "/mineassets/mvp/ui/activity/MyOrderActivity";
+    //消息
+    public static final String AC_MESSAGE = "/settings/mvp/ui/activity/MessageActivity";
 
     public static class Interceptor {
         public static final String LOGIN_INTERCEPT = "login_intercept";

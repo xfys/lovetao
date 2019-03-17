@@ -99,6 +99,10 @@
         android:name=".settings.mvp.ui.activity.ContactServiceActivity"
         android:label="@string/ac_contact_service"
         android:screenOrientation="portrait" />
+    <activity
+        android:name=".settings.mvp.ui.activity.MessageActivity"
+        android:label="@string/ac_message"
+        android:screenOrientation="portrait" />
 </application>
 
 </manifest>
