@@ -161,7 +161,7 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
                 } else {
                     holder.setText(R.id.tv_product_prise, "淘宝价¥" + productItemBean.getZkFinalPrice());
                 }
-                holder.setText(R.id.tv_product_quan, "¥" + productItemBean.getCouponAmount() + "元券");
+                holder.setText(R.id.tv_product_quan, String.valueOf(productItemBean.getCouponAmount()));
                 holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponTotalCount() - productItemBean.getCouponRemainCount()));
                 BigDecimal b = new BigDecimal(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount());
                 holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue()));

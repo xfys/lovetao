@@ -95,10 +95,10 @@
         android:label="@string/app_name"
         android:launchMode="singleTask"
         android:taskAffinity="net.sourceforge.simcpux" />
-    <activity android:name=".settings.mvp.ui.activity.ContactServiceActivity"
+    <activity
+        android:name=".settings.mvp.ui.activity.ContactServiceActivity"
         android:label="@string/ac_contact_service"
-        android:screenOrientation="portrait"
-        />
+        android:screenOrientation="portrait" />
 </application>
 
 </manifest>

@@ -5,10 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
-import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.home.mvp.MainContract;
 import com.inner.lovetao.home.mvp.MainPresenter;
 import com.inner.lovetao.tab.fragment.HomePageFragment;
@@ -62,11 +60,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                     setStatusBarMode(true);
                     break;
                 case 2:
-                    if (UserInstance.getInstance().isLogin(this)) {
-                        setStatusBarMode(false);
-                    } else {
-                        ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(this);
-                    }
+                    setStatusBarMode(false);
                     break;
             }
         });

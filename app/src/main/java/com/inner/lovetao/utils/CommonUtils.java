@@ -7,6 +7,7 @@ import android.net.Uri;
 
 import com.jess.arms.utils.ArmsUtils;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 /**
@@ -53,4 +54,18 @@ public class CommonUtils {
         }
 
     }
+
+    /**
+     * 金额加逗号
+     */
+    public static String formatStr(String str) {
+        try {
+            Double number = Double.parseDouble(str);
+            DecimalFormat df = new DecimalFormat("#,##0.00");
+            return df.format(number);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
 }

@@ -116,6 +116,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
                 ARouter.getInstance().build(ArouterConfig.AC_MINE_EARNING).navigation(mContext);
                 break;
             case R.id.ll_mine_order:
+                ARouter.getInstance().build(ArouterConfig.AC_MY_ORDER).navigation(mContext);
                 break;
             case R.id.ll_mine_collect:
                 break;

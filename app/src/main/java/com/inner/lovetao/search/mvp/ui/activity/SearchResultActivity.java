@@ -136,7 +136,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
                 } else {
                     holder.setText(R.id.tv_product_prise, "淘宝价¥" + productItemBean.getZkFinalPrice());
                 }
-                holder.setText(R.id.tv_product_quan, "¥" + productItemBean.getCouponAmount() + "元券");
+                holder.setText(R.id.tv_product_quan, String.valueOf(productItemBean.getCouponAmount()));
                 holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponTotalCount() - productItemBean.getCouponRemainCount()));
                 BigDecimal b = new BigDecimal(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount());
                 holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue()));
@@ -194,9 +194,9 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
                 break;
             case R.id.common_price://价格
                 sortName = RefreshConfig.SORT_PRICE;
-                if(TextUtils.equals(sortOrder,RefreshConfig.SORT_ASCENDING)){
+                if (TextUtils.equals(sortOrder, RefreshConfig.SORT_ASCENDING)) {
                     sortOrder = RefreshConfig.SORT_DESCENDING;
-                }else {
+                } else {
                     sortOrder = RefreshConfig.SORT_ASCENDING;
                 }
                 initCommonViewColor(commonPrice);
@@ -255,19 +255,19 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
         if (!TextUtils.isEmpty(title)) {
             switch (name) {
                 case RefreshConfig.SORT_RECOMMEND:
-                    mPresenter.getSearchData(pageNum,title);
+                    mPresenter.getSearchData(pageNum, title);
                     break;
                 case RefreshConfig.SORT_NEWEST:
-                    mPresenter.getSearchDataForSort(pageNum,title,RefreshConfig.SORT_NEWEST);
+                    mPresenter.getSearchDataForSort(pageNum, title, RefreshConfig.SORT_NEWEST);
                     break;
                 case RefreshConfig.SORT_SALES:
-                    mPresenter.getSearchDataForSort(pageNum,title,RefreshConfig.SORT_SALES);
+                    mPresenter.getSearchDataForSort(pageNum, title, RefreshConfig.SORT_SALES);
                     break;
                 case RefreshConfig.SORT_PRICE:
-                    mPresenter.getSearchDataForSorts(pageNum,title,RefreshConfig.SORT_PRICE,sortOrder);
+                    mPresenter.getSearchDataForSorts(pageNum, title, RefreshConfig.SORT_PRICE, sortOrder);
                     break;
                 default:
-                    mPresenter.getSearchData(pageNum,title);
+                    mPresenter.getSearchData(pageNum, title);
                     break;
             }
         }

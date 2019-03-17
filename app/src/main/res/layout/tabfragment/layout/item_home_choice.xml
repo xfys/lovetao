@@ -79,16 +79,43 @@
                     android:textStyle="bold"
                     tools:text="劵后价¥588" />
 
-                <TextView
-                    android:id="@+id/tv_product_quan"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:padding="4dp"
-                    android:textColor="@color/color_E83F5C"
-                    android:textSize="@dimen/textSize14"
-                    android:textStyle="bold"
-                    tools:text="¥400元劵" />
+                    android:background="@mipmap/icon_product_quan"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_18">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize6" />
+
+                    <TextView
+                        android:id="@+id/tv_product_quan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="@dimen/dp_2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize10"
+                        android:textStyle="bold"
+                        tools:text="40" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_2"
+                        android:text="元券"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize6" />
+                </LinearLayout>
+
 
             </RelativeLayout>
 

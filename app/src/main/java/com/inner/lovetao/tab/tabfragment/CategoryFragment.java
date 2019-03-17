@@ -156,7 +156,7 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
                 } else {
                     holder.setText(R.id.tv_product_prise, "淘宝价¥" + productItemBean.getZkFinalPrice());
                 }
-                holder.setText(R.id.tv_product_quan, "¥" + productItemBean.getCouponAmount() + "元券");
+                holder.setText(R.id.tv_product_quan, String.valueOf(productItemBean.getCouponAmount()));
                 holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponTotalCount() - productItemBean.getCouponRemainCount()));
                 holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount()));
             }
@@ -189,9 +189,9 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
                 break;
             case R.id.common_price:
                 sortName = RefreshConfig.SORT_PRICE;
-                if(TextUtils.equals(sortOrder,RefreshConfig.SORT_ASCENDING)){
+                if (TextUtils.equals(sortOrder, RefreshConfig.SORT_ASCENDING)) {
                     sortOrder = RefreshConfig.SORT_DESCENDING;
-                }else {
+                } else {
                     sortOrder = RefreshConfig.SORT_ASCENDING;
                 }
                 initCommonViewColor(commonPrice);
@@ -244,13 +244,13 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
                     mPresenter.getProductList(pageNum, categoryBean.getId());
                     break;
                 case RefreshConfig.SORT_NEWEST:
-                    mPresenter.getProductSortList(pageNum, categoryBean.getId(),RefreshConfig.SORT_NEWEST);
+                    mPresenter.getProductSortList(pageNum, categoryBean.getId(), RefreshConfig.SORT_NEWEST);
                     break;
                 case RefreshConfig.SORT_SALES:
-                    mPresenter.getProductSortList(pageNum, categoryBean.getId(),RefreshConfig.SORT_SALES);
+                    mPresenter.getProductSortList(pageNum, categoryBean.getId(), RefreshConfig.SORT_SALES);
                     break;
                 case RefreshConfig.SORT_PRICE:
-                    mPresenter.getProductSortsList(pageNum, categoryBean.getId(),RefreshConfig.SORT_PRICE,sortOrder);
+                    mPresenter.getProductSortsList(pageNum, categoryBean.getId(), RefreshConfig.SORT_PRICE, sortOrder);
                     break;
                 default:
                     mPresenter.getProductList(pageNum, categoryBean.getId());

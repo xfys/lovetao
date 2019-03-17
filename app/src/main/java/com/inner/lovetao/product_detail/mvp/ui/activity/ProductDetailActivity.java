@@ -195,7 +195,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailPresenter> 
             }
 
 
-            tvAfterCouponPrice.setText(String.valueOf(Double.parseDouble(itemBean.getZkFinalPrice()) - itemBean.getCouponAmount()));
+            tvAfterCouponPrice.setText("劵后价" + CommonUtils.formatStr(String.valueOf(Double.parseDouble(itemBean.getZkFinalPrice()) - itemBean.getCouponAmount())));
             if (itemBean.isUserType()) {
                 tvTbPrice.setText("天猫价¥" + itemBean.getZkFinalPrice());
             } else {
