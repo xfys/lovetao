@@ -108,6 +108,11 @@
             android:name=".mineassets.mvp.ui.activity.MyStudentActivity"
             android:label="@string/ac_my_student"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".settings.mvp.ui.activity.MessageActivity"
+            android:label="@string/ac_message"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
