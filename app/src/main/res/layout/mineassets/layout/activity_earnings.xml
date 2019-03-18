@@ -90,12 +90,12 @@
                     android:textSize="@dimen/textSize14" />
 
             </LinearLayout>
-            
+
             <View
                 android:layout_width="1px"
                 android:layout_height="@dimen/dp_25"
-                android:background="@color/white"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical"
+                android:background="@color/white" />
 
             <LinearLayout
                 android:id="@+id/ll_have_withdrawal"
@@ -130,8 +130,8 @@
             <View
                 android:layout_width="1px"
                 android:layout_height="@dimen/dp_25"
-                android:background="@color/white"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical"
+                android:background="@color/white" />
 
             <LinearLayout
                 android:id="@+id/ll_can_withdrawal"
@@ -157,7 +157,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dp_4"
                     android:gravity="center"
-                    android:text="¥21"
+                    android:text="¥0.00"
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSize14" />
 
@@ -170,94 +170,94 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_100"
-        android:background="@drawable/shape_item_shadow_oval"
         android:layout_marginLeft="@dimen/dp_16"
-        android:layout_marginRight="@dimen/dp_16">
+        android:layout_marginRight="@dimen/dp_16"
+        android:background="@drawable/shape_item_shadow_oval">
 
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_earnings_today"
             android:layout_marginLeft="@dimen/dp_8"
-            android:layout_marginTop="@dimen/dp_8"/>
+            android:layout_marginTop="@dimen/dp_8"
+            android:src="@mipmap/icon_earnings_today" />
 
         <TextView
             android:id="@+id/tv_earnings_today"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="今日"
-            android:textColor="@color/color_444444"
-            android:textSize="@dimen/textSize14"
             android:layout_marginLeft="@dimen/dp_30"
             android:layout_marginTop="@dimen/dp_6"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="今日"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14" />
 
-         <LinearLayout
-             android:layout_below="@+id/tv_earnings_today"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_earnings_today"
+            android:orientation="horizontal">
 
-             <LinearLayout
-                 android:layout_width="0dp"
-                 android:layout_height="wrap_content"
-                 android:layout_weight="1"
-                 android:orientation="vertical"
-                 android:layout_gravity="center_vertical">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="@string/earnings_today_order"
-                     android:textSize="@dimen/textSize14"
-                     android:textColor="@color/color_707477"
-                     android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/earnings_today_order"
+                    android:textColor="@color/color_707477"
+                    android:textSize="@dimen/textSize14" />
 
-                 <TextView
-                     android:id="@+id/tv_today_order"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center_horizontal"
-                     android:text="0"
-                     android:textColor="@color/color_444444"
-                     android:textSize="@dimen/textSize14" />
+                <TextView
+                    android:id="@+id/tv_today_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="0"
+                    android:textColor="@color/color_444444"
+                    android:textSize="@dimen/textSize14" />
 
-             </LinearLayout>
+            </LinearLayout>
 
-             <View
-                 android:layout_width="1px"
-                 android:layout_height="@dimen/dp_30"
-                 android:background="@color/color_EEEEEE"
-                 android:layout_gravity="center_vertical"/>
+            <View
+                android:layout_width="1px"
+                android:layout_height="@dimen/dp_30"
+                android:layout_gravity="center_vertical"
+                android:background="@color/color_EEEEEE" />
 
-             <LinearLayout
-                 android:layout_width="0dp"
-                 android:layout_height="wrap_content"
-                 android:layout_weight="1"
-                 android:orientation="vertical"
-                 android:layout_gravity="center_vertical">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="@string/earnings_order_money"
-                     android:textSize="@dimen/textSize14"
-                     android:textColor="@color/color_707477"
-                     android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/earnings_order_money"
+                    android:textColor="@color/color_707477"
+                    android:textSize="@dimen/textSize14" />
 
-                 <TextView
-                     android:id="@+id/tv_today_money"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center_horizontal"
-                     android:text="¥0.00"
-                     android:textColor="@color/color_444444"
-                     android:textSize="@dimen/textSize14" />
+                <TextView
+                    android:id="@+id/tv_today_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="¥0.00"
+                    android:textColor="@color/color_444444"
+                    android:textSize="@dimen/textSize14" />
 
-             </LinearLayout>
+            </LinearLayout>
 
-         </LinearLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -265,50 +265,50 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_100"
-        android:background="@drawable/shape_item_shadow_oval"
         android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_18"
         android:layout_marginRight="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_18">
+        android:background="@drawable/shape_item_shadow_oval">
 
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_earnings_mouth"
             android:layout_marginLeft="@dimen/dp_8"
-            android:layout_marginTop="@dimen/dp_8"/>
+            android:layout_marginTop="@dimen/dp_8"
+            android:src="@mipmap/icon_earnings_mouth" />
 
         <TextView
             android:id="@+id/tv_earnings_mouth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="本月"
-            android:textColor="@color/color_444444"
-            android:textSize="@dimen/textSize14"
             android:layout_marginLeft="@dimen/dp_30"
             android:layout_marginTop="@dimen/dp_6"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="本月"
+            android:textColor="@color/color_444444"
+            android:textSize="@dimen/textSize14" />
 
         <LinearLayout
-            android:layout_below="@+id/tv_earnings_mouth"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/tv_earnings_mouth"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:text="@string/earnings_today_order"
-                    android:textSize="@dimen/textSize14"
                     android:textColor="@color/color_707477"
-                    android:layout_gravity="center_horizontal"/>
+                    android:textSize="@dimen/textSize14" />
 
                 <TextView
                     android:id="@+id/tv_mouth_order"
@@ -324,23 +324,23 @@
             <View
                 android:layout_width="1px"
                 android:layout_height="@dimen/dp_30"
-                android:background="@color/color_EEEEEE"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical"
+                android:background="@color/color_EEEEEE" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:text="@string/earnings_order_money"
-                    android:textSize="@dimen/textSize14"
                     android:textColor="@color/color_707477"
-                    android:layout_gravity="center_horizontal"/>
+                    android:textSize="@dimen/textSize14" />
 
                 <TextView
                     android:id="@+id/tv_mouth_money"
@@ -361,30 +361,30 @@
         android:id="@+id/rl_earnings_detail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_55"
-        android:background="@color/white"
-        android:layout_marginTop="@dimen/dp_18">
+        android:layout_marginTop="@dimen/dp_18"
+        android:background="@color/white">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_earnings_detail"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dp_16"
-            android:layout_centerVertical="true"/>
+            android:src="@mipmap/icon_earnings_detail" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/earnings_detail"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dp_35"
-            android:layout_centerVertical="true"/>
+            android:text="@string/earnings_detail" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_earnings_back"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/dp_16"
-            android:layout_centerVertical="true"/>
+            android:src="@mipmap/icon_earnings_back" />
 
     </RelativeLayout>
 
