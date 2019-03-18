@@ -13,6 +13,15 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.baichuan.android.trade.AlibcTrade;
+import com.alibaba.baichuan.android.trade.callback.AlibcTradeCallback;
+import com.alibaba.baichuan.android.trade.model.AlibcShowParams;
+import com.alibaba.baichuan.android.trade.model.OpenType;
+import com.alibaba.baichuan.android.trade.page.AlibcBasePage;
+import com.alibaba.baichuan.android.trade.page.AlibcPage;
+import com.alibaba.baichuan.trade.biz.AlibcConstants;
+import com.alibaba.baichuan.trade.biz.context.AlibcTradeResult;
+import com.inner.lovetao.BuildConfig;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.product_detail.bean.ProductDetailBean;
@@ -27,6 +36,10 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.config.CommonImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.LogUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -232,8 +245,8 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailPresenter> 
         switch (view.getId()) {
             //领
             case R.id.tv_product_get:
-                if (itemBean != null && !TextUtils.isEmpty(itemBean.getItemUrl())) {
-                    CommonUtils.openTb(this, itemBean.getCouponClickUrl());
+                if (itemBean != null && !TextUtils.isEmpty(itemBean.getCouponClickUrl())) {
+                    toTb();
                 }
                 break;
             //收藏
@@ -241,17 +254,41 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailPresenter> 
                 break;
             //推广
             case R.id.tv_product_get_coupons:
-                if (itemBean != null && !TextUtils.isEmpty(itemBean.getItemUrl())) {
+                if (itemBean != null && !TextUtils.isEmpty(itemBean.getCouponClickUrl())) {
                     ShareUtils.getInstance().share(this, itemBean.getItemUrl(), resultBean.getCatLeafName(), resultBean.getTitle(), null);
                 }
                 break;
             //领券购买
             case R.id.tv_product_to_buy:
-                if (itemBean != null && !TextUtils.isEmpty(itemBean.getItemUrl())) {
-                    CommonUtils.openTb(this, itemBean.getCouponClickUrl());
+                if (itemBean != null && !TextUtils.isEmpty(itemBean.getCouponClickUrl())) {
+                    toTb();
                 }
                 break;
         }
+    }
+
+    private void toTb() {
+        //提供给三方传递配置参数
+        Map<String, String> exParams = new HashMap<>();
+        exParams.put(AlibcConstants.ISV_CODE, BuildConfig.VERSION_NAME);
+        //实例化URL打开page
+        AlibcBasePage page = new AlibcPage(itemBean.getCouponClickUrl());
+        //设置页面打开方式
+        AlibcShowParams showParams = new AlibcShowParams(OpenType.Native, false);
+        //使用百川sdk提供默认的Activity打开detail
+        AlibcTrade.show(this, page, showParams, null, exParams,
+                new AlibcTradeCallback() {
+                    @Override
+                    public void onTradeSuccess(AlibcTradeResult alibcTradeResult) {
+                        LogUtils.debugInfo("成功");
+
+                    }
+
+                    @Override
+                    public void onFailure(int i, String s) {
+                        LogUtils.debugInfo("Alibab---->code" + i + "<--->" + s);
+                    }
+                });
     }
 
 

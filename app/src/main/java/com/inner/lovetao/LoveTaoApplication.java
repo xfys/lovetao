@@ -3,6 +3,8 @@ package com.inner.lovetao;
 import com.ali.auth.third.core.MemberSDK;
 import com.ali.auth.third.core.callback.InitResultCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.alibaba.baichuan.android.trade.AlibcTradeSDK;
+import com.alibaba.baichuan.android.trade.callback.AlibcTradeInitCallback;
 import com.inner.lovetao.share.ShareUtils;
 import com.jess.arms.base.BaseApplication;
 import com.jess.arms.utils.LogUtils;
@@ -53,6 +55,20 @@ public class LoveTaoApplication extends BaseApplication {
             @Override
             public void onSuccess() {
                 LogUtils.debugInfo("TBAuthInit--->Success");
+            }
+        });
+        AlibcTradeSDK.asyncInit(this, new AlibcTradeInitCallback() {
+            @Override
+            public void onSuccess() {
+                //初始化成功，设置相关的全局配置参数
+
+                // ...
+            }
+
+            @Override
+            public void onFailure(int code, String msg) {
+                //初始化失败，可以根据code和msg判断失败原因，详情参见错误说明
+                LogUtils.debugInfo("TBAuthInit--->code:" + code + ";  msg:" + msg);
             }
         });
     }
