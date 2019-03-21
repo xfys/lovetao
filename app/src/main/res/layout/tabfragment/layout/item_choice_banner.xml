@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -18,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
-        android:text="@string/home_choice_first_desc"
         android:textColor="@color/color_666666"
-        android:textSize="@dimen/textSize12" />
+        android:textSize="@dimen/textSize12"
+        tools:text="@string/home_choice_first_desc" />
 </LinearLayout>

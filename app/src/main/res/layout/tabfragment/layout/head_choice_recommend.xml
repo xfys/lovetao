@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -16,8 +17,8 @@
 
         <ImageView
             android:id="@+id/iv_first"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_42"
+            android:layout_height="@dimen/dp_42"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:src="@mipmap/icon_home_choice_first" />
@@ -42,8 +43,8 @@
 
         <ImageView
             android:id="@+id/iv_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_42"
+            android:layout_height="@dimen/dp_42"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:src="@mipmap/icon_home_choice_second" />
@@ -68,8 +69,8 @@
 
         <ImageView
             android:id="@+id/iv_third"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_42"
+            android:layout_height="@dimen/dp_42"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:src="@mipmap/icon_home_choice_third" />
@@ -94,11 +95,10 @@
 
         <ImageView
             android:id="@+id/iv_fourth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_42"
+            android:layout_height="@dimen/dp_42"
             android:layout_gravity="center"
-            android:layout_marginBottom="4dp"
-            android:src="@mipmap/icon_home_choice_fourth" />
+            android:layout_marginBottom="4dp" />
 
         <TextView
             android:id="@+id/tv_fourth"
@@ -106,9 +106,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
-            android:text="@string/home_choice_fourth_desc"
             android:textColor="@color/color_666666"
-            android:textSize="@dimen/textSize12" />
+            android:textSize="@dimen/textSize12"
+            tools:text="@string/home_choice_fourth_desc" />
     </LinearLayout>
 
     <LinearLayout
@@ -120,11 +120,10 @@
 
         <ImageView
             android:id="@+id/iv_five"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_42"
+            android:layout_height="@dimen/dp_42"
             android:layout_gravity="center"
-            android:layout_marginBottom="4dp"
-            android:src="@mipmap/icon_home_choice_five" />
+            android:layout_marginBottom="4dp" />
 
         <TextView
             android:id="@+id/tv_five"
@@ -132,9 +131,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
-            android:text="@string/home_choice_five_desc"
             android:textColor="@color/color_666666"
-            android:textSize="@dimen/textSize12" />
+            android:textSize="@dimen/textSize12"
+            tools:text="@string/home_choice_five_desc" />
     </LinearLayout>
 
 </LinearLayout>

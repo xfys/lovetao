@@ -89,7 +89,7 @@ public class RecommendView extends LinearLayout {
                         CommonImageConfigImpl
                                 .builder()
                                 .url(data.get(1).getImgUrl())
-                                .imageView(ivFour)
+                                .imageView(ivFive)
                                 .build());
             }
 

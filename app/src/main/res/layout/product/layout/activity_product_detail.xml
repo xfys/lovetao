@@ -27,7 +27,7 @@
                 <cn.bingoogolapple.bgabanner.BGABanner
                     android:id="@+id/banner"
                     android:layout_width="match_parent"
-                    android:layout_height="210dp"
+                    android:layout_height="250dp"
                     app:banner_pointAutoPlayAble="false"
                     app:banner_pointContainerBackground="@android:color/transparent"
                     app:banner_pointContainerLeftRightPadding="@dimen/dp_5"
@@ -75,6 +75,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
+                    android:ellipsize="end"
+                    android:maxLines="2"
                     android:paddingLeft="@dimen/dp_12"
                     android:paddingRight="@dimen/dp_12"
                     android:textColor="@color/color_444444"
@@ -245,9 +247,10 @@
                 <ImageView
                     android:id="@+id/iv_product_bottom"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_20"
-                    android:layout_marginRight="@dimen/dp_20" />
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:scaleType="centerInside" />
 
                 <View
                     android:layout_width="match_parent"
@@ -286,9 +289,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:text="推广赚钱"
                 android:textColor="@color/color_444444"
-                android:textSize="@dimen/textSize15"
-                tools:text="¥12.00\n推广赚钱" />
+                android:textSize="@dimen/textSize15" />
 
             <TextView
                 android:id="@+id/tv_product_to_buy"

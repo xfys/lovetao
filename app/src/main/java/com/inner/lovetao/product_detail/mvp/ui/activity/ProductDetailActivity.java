@@ -209,8 +209,6 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailPresenter> 
                 banner.setDelegate(this);
                 banner.setData(R.layout.product_banner_item_view, resultBean.getSmallImages(), null);
             }
-
-
             tvAfterCouponPrice.setText("劵后价" + CommonUtils.formatStr(String.valueOf(Double.parseDouble(itemBean.getZkFinalPrice()) - itemBean.getCouponAmount())));
             if (itemBean.isUserType()) {
                 tvTbPrice.setText("天猫价¥" + itemBean.getZkFinalPrice());
@@ -236,7 +234,6 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailPresenter> 
                                 .imageView(ivProductBottom)
                                 .build());
             }
-            tvProductGetCoupons.setText("¥" + resultBean.getZkFinalPrice() + "\n推广赚钱");
         }
 
 

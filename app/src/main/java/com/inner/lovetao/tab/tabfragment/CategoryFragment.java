@@ -22,6 +22,7 @@ import com.inner.lovetao.tab.bean.ProductItemBean;
 import com.inner.lovetao.tab.contract.CategoryFragmentContract;
 import com.inner.lovetao.tab.di.component.DaggerCategoryFragmentComponent;
 import com.inner.lovetao.tab.mvp.CategoryFragmentPresenter;
+import com.inner.lovetao.utils.CommonUtils;
 import com.inner.lovetao.weight.LoadMoreFooterView;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
@@ -158,7 +159,7 @@ public class CategoryFragment extends BaseFragment<CategoryFragmentPresenter> im
                 }
                 holder.setText(R.id.tv_product_quan, String.valueOf(productItemBean.getCouponAmount()));
                 holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponTotalCount() - productItemBean.getCouponRemainCount()));
-                holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount()));
+                holder.setText(R.id.tv_product_quan_after, "劵后价¥" + CommonUtils.formatStr(String.valueOf(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount())));
             }
         };
         adapter.setOnItemClickListener(this);

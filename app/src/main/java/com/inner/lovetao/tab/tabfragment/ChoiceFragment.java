@@ -27,6 +27,7 @@ import com.inner.lovetao.tab.mvp.ChoiceFragmentPresenter;
 import com.inner.lovetao.tab.view.ChoiceBannerView;
 import com.inner.lovetao.tab.view.RecommendTwoView;
 import com.inner.lovetao.tab.view.RecommendView;
+import com.inner.lovetao.utils.CommonUtils;
 import com.inner.lovetao.weight.LoadMoreFooterView;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseFragment;
@@ -162,7 +163,7 @@ public class ChoiceFragment extends BaseFragment<ChoiceFragmentPresenter> implem
                 holder.setText(R.id.tv_product_quan, String.valueOf(productItemBean.getCouponAmount()));
                 holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponTotalCount() - productItemBean.getCouponRemainCount()));
                 BigDecimal b = new BigDecimal(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount());
-                holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue()));
+                holder.setText(R.id.tv_product_quan_after, "劵后价¥" + CommonUtils.formatStr(String.valueOf(b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue())));
                 holder.setOnClickListener(R.id.rl_product, v -> {
                     ARouter.getInstance()
                             .build(ArouterConfig.AC_PRODUCT_DETAIL)

@@ -25,6 +25,7 @@ import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.config.ConfigInfo;
 import com.inner.lovetao.config.RefreshConfig;
 import com.inner.lovetao.tab.bean.ProductItemBean;
+import com.inner.lovetao.utils.CommonUtils;
 import com.inner.lovetao.weight.LoadMoreFooterView;
 import com.inner.lovetao.weight.PullToRefreshDefaultHeader;
 import com.jess.arms.base.BaseActivity;
@@ -169,7 +170,7 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
                 holder.setText(R.id.tv_product_quan, String.valueOf(productItemBean.getCouponAmount()));
                 holder.setText(R.id.tv_product_already_num, "已抢" + String.valueOf(productItemBean.getCouponTotalCount() - productItemBean.getCouponRemainCount()));
                 BigDecimal b = new BigDecimal(Double.parseDouble(productItemBean.getZkFinalPrice()) - productItemBean.getCouponAmount());
-                holder.setText(R.id.tv_product_quan_after, "劵后价¥" + String.valueOf(b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue()));
+                holder.setText(R.id.tv_product_quan_after, "劵后价¥" + CommonUtils.formatStr(String.valueOf(b.setScale(2, BigDecimal.ROUND_DOWN).doubleValue())));
             }
         };
         adapter.setOnItemClickListener(this);
@@ -212,16 +213,16 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
 
     private void getData() {
         if (getString(R.string.home_choice_first_desc).equals(title)) {
-            mPresenter.getTodayData(pageNum,sortName,sortOrder);
+            mPresenter.getTodayData(pageNum, sortName, sortOrder);
 
         } else if (getString(R.string.home_choice_second_desc).equals(title)) {
-            mPresenter.getSale99(pageNum,sortName,sortOrder);
+            mPresenter.getSale99(pageNum, sortName, sortOrder);
 
         } else if (getString(R.string.home_choice_third_desc).equals(title)) {
-            mPresenter.getBigCoupon(pageNum,sortName,sortOrder);
+            mPresenter.getBigCoupon(pageNum, sortName, sortOrder);
         } else if (!TextUtils.isEmpty(title)) {
             if (activityId != -1) {
-                mPresenter.getAcData(pageNum, activityId,sortName,sortOrder);
+                mPresenter.getAcData(pageNum, activityId, sortName, sortOrder);
             }
         }
 
@@ -293,9 +294,9 @@ public class ShelvesActivity extends BaseActivity<ShelvesPresenter> implements S
                 break;
             case R.id.common_price:
                 sortName = RefreshConfig.SORT_PRICE;
-                if(TextUtils.equals(sortOrder,RefreshConfig.SORT_ASCENDING)){
+                if (TextUtils.equals(sortOrder, RefreshConfig.SORT_ASCENDING)) {
                     sortOrder = RefreshConfig.SORT_DESCENDING;
-                }else {
+                } else {
                     sortOrder = RefreshConfig.SORT_ASCENDING;
                 }
                 initCommonViewColor(commonPrice);
