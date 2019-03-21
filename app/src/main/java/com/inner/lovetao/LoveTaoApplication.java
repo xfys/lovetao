@@ -1,5 +1,8 @@
 package com.inner.lovetao;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 import com.ali.auth.third.core.MemberSDK;
 import com.ali.auth.third.core.callback.InitResultCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -8,6 +11,9 @@ import com.alibaba.baichuan.android.trade.callback.AlibcTradeInitCallback;
 import com.inner.lovetao.share.ShareUtils;
 import com.jess.arms.base.BaseApplication;
 import com.jess.arms.utils.LogUtils;
+
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.update.BmobUpdateAgent;
 
 /**
  * desc: Application
@@ -21,8 +27,24 @@ public class LoveTaoApplication extends BaseApplication {
         initARouter();
         initTBAuth();
         initWX();
+        initBomb();
     }
 
+    /**
+     * 初始化Bomb
+     */
+    private void initBomb() {
+        //第一：默认初始化
+        Bmob.initialize(this, BuildConfig.BOMB_APP_ID);
+        //init Bomb (update)
+        BmobUpdateAgent.initAppVersion();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(base);
+    }
 
     @Override
     public void onTerminate() {

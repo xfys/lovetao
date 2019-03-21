@@ -2,15 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.inner.lovetao">
-
+    <!--允许联网 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--获取sd卡写的权限，用于文件上传和下载-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--获取wifi网络状态的信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!--允许读取手机状态 用于创建BmobInstallation-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!--<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
 
     <application
@@ -24,7 +31,24 @@
         <meta-data
             android:name="com.inner.lovetao.core.GlobalConfiguration"
             android:value="ConfigModule" />
+        <!-- Bomb 配置 -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.inner.lovetao"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.inner.lovetao.BmobContentProvider" />
 
+        <meta-data
+            android:name="BMOB_CHANNEL"
+            android:value="bomb" />
+        <!-- Bomb 配置 -->
         <activity
             android:name=".index.activity.SplashActivity"
             android:screenOrientation="portrait"
@@ -116,7 +140,10 @@
             android:name=".mineassets.mvp.ui.activity.MyOrderActivity"
             android:label="@string/mine_order"
             android:screenOrientation="portrait" />
-
+        <!--Bomb更新-->
+        <activity
+            android:name="cn.bmob.v3.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
     </application>
 
 </manifest>

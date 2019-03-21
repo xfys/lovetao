@@ -1,5 +1,6 @@
 package com.inner.lovetao.home.activity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,11 +18,13 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.widget.tabview.TabView;
 import com.jess.arms.widget.tabview.TabViewChild;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.bmob.v3.update.BmobUpdateAgent;
 
 @Route(path = ArouterConfig.AC_MAIN)
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.Model, MainContract.View {
@@ -62,6 +65,22 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 case 2:
                     setStatusBarMode(false);
                     break;
+            }
+        });
+        initUpdate();
+    }
+
+    /**
+     * 初始化Bomb更新
+     */
+    private void initUpdate() {
+        BmobUpdateAgent.setUpdateOnlyWifi(false);
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(aBoolean -> {
+            if (aBoolean) {
+                BmobUpdateAgent.update(this);
+            } else {
+                showMessage("请开启写入到磁盘权限");
             }
         });
     }

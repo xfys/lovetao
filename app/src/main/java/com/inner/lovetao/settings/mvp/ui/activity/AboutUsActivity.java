@@ -3,6 +3,7 @@ package com.inner.lovetao.settings.mvp.ui.activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -13,6 +14,8 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import cn.bmob.v3.update.BmobUpdateAgent;
 
 /**
  * desc:关于我们
@@ -40,5 +43,14 @@ public class AboutUsActivity extends BaseActivity {
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         tvVersion.setText("版本号： v" + BuildConfig.VERSION_NAME);
+    }
+
+    @OnClick({R.id.tv_version})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_version:
+                BmobUpdateAgent.forceUpdate(this);
+                break;
+        }
     }
 }

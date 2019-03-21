@@ -25,6 +25,7 @@ android {
         ndk {
             abiFilters "armeabi", "x86"//过滤除 armeabi 和 x86 以外的 so 文件
         }
+        multiDexEnabled true
     }
     signingConfigs {
         release {
@@ -42,7 +43,8 @@ android {
         }
     }
     buildTypes {
-        release {
+        debug {
+            debuggable true
             zipAlignEnabled true     //Zipalign优化
             minifyEnabled false     //混淆
             signingConfig signingConfigs.release
@@ -50,8 +52,9 @@ android {
 
             buildConfigField "String", "WX_APP_ID", "\"${project.WX_APP_ID}\""
             buildConfigField "String", "WX_APP_AppSecret", "\"${project.WX_APP_AppSecret}\""
+            buildConfigField "String", "BOMB_APP_ID", "\"${project.BOMB_APP_ID}\""
         }
-        debug {
+        release {
             debuggable true
             matchingFallbacks = ['release', 'debug']
             applicationIdSuffix ".dev"
@@ -62,9 +65,11 @@ android {
 
             buildConfigField "String", "WX_APP_ID", "\"${project.WX_APP_ID}\""
             buildConfigField "String", "WX_APP_AppSecret", "\"${project.WX_APP_AppSecret}\""
+            buildConfigField "String", "BOMB_APP_ID", "\"${project.BOMB_APP_ID}\""
         }
     }
     sourceSets {
+        main.jniLibs.srcDirs = ['libs']
         main {
             jniLibs.srcDir(['libs'])
             res.srcDirs([
@@ -110,12 +115,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api project(':arms')
     implementation rootProject.ext.dependencies["eventbus"]
+    implementation rootProject.ext.dependencies["multidex"]
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     implementation rootProject.ext.dependencies["progressmanager"]
     implementation rootProject.ext.dependencies["retrofit-url-manager"]
@@ -158,4 +164,6 @@ dependencies {
     //##############################################################################
     //微信分享
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //Bomb
+    implementation 'cn.bmob.android:bmob-sdk:3.7.0'
 }
