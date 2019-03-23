@@ -18,10 +18,10 @@ package com.jess.arms.base;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
 
 import com.jess.arms.integration.EventBusManager;
 
+import androidx.annotation.Nullable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 

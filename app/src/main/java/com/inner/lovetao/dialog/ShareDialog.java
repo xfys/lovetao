@@ -2,7 +2,6 @@ package com.inner.lovetao.dialog;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDialog;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -10,6 +9,7 @@ import android.view.WindowManager;
 
 import com.inner.lovetao.R;
 
+import androidx.appcompat.app.AppCompatDialog;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 

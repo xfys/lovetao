@@ -1,7 +1,6 @@
 package com.inner.lovetao.weight;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -10,6 +9,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.inner.lovetao.R;
+
+import androidx.annotation.Nullable;
 
 /**
  * desc:

@@ -2,8 +2,6 @@ package com.inner.lovetao.wxapi;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.inner.lovetao.share.ShareUtils;
 import com.jess.arms.base.BaseActivity;
@@ -13,6 +11,9 @@ import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * desc:微信分享回调

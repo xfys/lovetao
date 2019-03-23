@@ -2,8 +2,6 @@ package com.inner.lovetao.mineassets.mvp.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
@@ -14,6 +12,9 @@ import com.inner.lovetao.mineassets.mvp.presenter.MyOrderPresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 

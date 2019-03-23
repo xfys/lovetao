@@ -22,10 +22,10 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.utils.ArmsUtils;
 
@@ -34,6 +34,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import androidx.annotation.Nullable;
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Action;
@@ -154,7 +155,7 @@ public final class AppManager {
                 if (DEPENDENCY_SUPPORT_DESIGN) {
                     Activity activity = getCurrentActivity() == null ? getTopActivity() : getCurrentActivity();
                     View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
-                    Snackbar.make(view, message, isLong ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(view, message, isLong ? BaseTransientBottomBar.LENGTH_LONG : BaseTransientBottomBar.LENGTH_SHORT).show();
                 } else {
                     ArmsUtils.makeText(mApplication, message);
                 }

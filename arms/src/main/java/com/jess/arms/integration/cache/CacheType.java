@@ -18,10 +18,11 @@ package com.jess.arms.integration.cache;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
-import android.support.v4.app.Fragment;
 
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.integration.RepositoryManager;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * ================================================

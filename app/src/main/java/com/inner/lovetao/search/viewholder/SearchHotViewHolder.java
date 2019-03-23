@@ -14,7 +14,6 @@ package com.inner.lovetao.search.viewholder;
  * 修订日期 :
  */
 
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,6 +21,7 @@ import com.inner.lovetao.R;
 import com.inner.lovetao.search.bean.SearchHotItemBean;
 import com.jess.arms.base.BaseHolder;
 
+import androidx.annotation.NonNull;
 import butterknife.BindView;
 
 public class SearchHotViewHolder extends BaseHolder<SearchHotItemBean> {

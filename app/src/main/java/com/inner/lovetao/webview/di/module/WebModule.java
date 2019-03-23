@@ -1,13 +1,10 @@
 package com.inner.lovetao.webview.di.module;
 
-import com.jess.arms.di.scope.ActivityScope;
+import com.inner.lovetao.webview.mvp.contract.WebContract;
+import com.inner.lovetao.webview.mvp.model.WebModel;
 
 import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
-
-import com.inner.lovetao.webview.mvp.contract.WebContract;
-import com.inner.lovetao.webview.mvp.model.WebModel;
 
 
 /**

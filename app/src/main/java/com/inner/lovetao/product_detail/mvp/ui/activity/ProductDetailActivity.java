@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,12 +14,12 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.baichuan.android.trade.AlibcTrade;
 import com.alibaba.baichuan.android.trade.callback.AlibcTradeCallback;
+import com.alibaba.baichuan.android.trade.constants.AlibcConstants;
 import com.alibaba.baichuan.android.trade.model.AlibcShowParams;
 import com.alibaba.baichuan.android.trade.model.OpenType;
+import com.alibaba.baichuan.android.trade.model.TradeResult;
 import com.alibaba.baichuan.android.trade.page.AlibcBasePage;
 import com.alibaba.baichuan.android.trade.page.AlibcPage;
-import com.alibaba.baichuan.trade.biz.AlibcConstants;
-import com.alibaba.baichuan.trade.biz.context.AlibcTradeResult;
 import com.inner.lovetao.BuildConfig;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
@@ -38,13 +36,14 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.config.CommonImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
-import com.jess.arms.utils.LogUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bingoogolapple.bgabanner.BGABanner;
@@ -290,14 +289,13 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailPresenter> 
         AlibcTrade.show(this, page, showParams, null, exParams,
                 new AlibcTradeCallback() {
                     @Override
-                    public void onTradeSuccess(AlibcTradeResult alibcTradeResult) {
-                        LogUtils.debugInfo("成功");
+                    public void onTradeSuccess(TradeResult tradeResult) {
 
                     }
 
                     @Override
                     public void onFailure(int i, String s) {
-                        LogUtils.debugInfo("Alibab---->code" + i + "<--->" + s);
+
                     }
                 });
     }

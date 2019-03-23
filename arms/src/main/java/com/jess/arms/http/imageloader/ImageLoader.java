@@ -1,12 +1,13 @@
 package com.jess.arms.http.imageloader;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 
 import com.jess.arms.utils.Preconditions;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import androidx.annotation.Nullable;
 
 /**
  * desc: * {@link ImageLoader} 使用策略模式和建造者模式,可以动态切换图片请求框架(比如说切换成 Picasso )

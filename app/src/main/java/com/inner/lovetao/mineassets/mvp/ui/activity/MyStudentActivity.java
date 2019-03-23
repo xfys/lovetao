@@ -2,19 +2,17 @@ package com.inner.lovetao.mineassets.mvp.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.inner.lovetao.R;
+import com.inner.lovetao.mineassets.di.component.DaggerMyStudentComponent;
+import com.inner.lovetao.mineassets.mvp.contract.MyStudentContract;
+import com.inner.lovetao.mineassets.mvp.presenter.MyStudentPresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
-import com.inner.lovetao.mineassets.di.component.DaggerMyStudentComponent;
-import com.inner.lovetao.mineassets.mvp.contract.MyStudentContract;
-import com.inner.lovetao.mineassets.mvp.presenter.MyStudentPresenter;
-
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 

@@ -15,7 +15,6 @@
  */
 package com.jess.arms.http;
 
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.bumptech.glide.Priority;
@@ -30,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
 import okhttp3.Call;
 import okhttp3.Request;
 import okhttp3.Response;

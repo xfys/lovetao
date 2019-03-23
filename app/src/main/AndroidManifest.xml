@@ -33,7 +33,7 @@
             android:value="ConfigModule" />
         <!-- Bomb 配置 -->
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="com.inner.lovetao"
             android:exported="false"
             android:grantUriPermissions="true">

@@ -30,11 +30,11 @@
         android:textSize="@dimen/textSize15"
         android:textStyle="bold" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/wlfare_recy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_12"/>
+        android:layout_marginTop="@dimen/dp_12" />
 
     <TextView
         android:layout_width="match_parent"
@@ -46,9 +46,9 @@
         android:textSize="@dimen/textSize15"
         android:textStyle="bold" />
 
-   <android.support.v7.widget.RecyclerView
-       android:id="@+id/more_recy"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginTop="@dimen/dp_12"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/more_recy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12" />
 </LinearLayout>

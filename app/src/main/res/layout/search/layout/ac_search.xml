@@ -82,7 +82,7 @@
             android:src="@mipmap/icon_search_delete" />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ac_search_rcy_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
         android:textColor="@color/color_444444"
         android:textSize="@dimen/textSize15" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ac_search_rcy_hot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

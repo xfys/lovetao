@@ -3,9 +3,7 @@ package com.inner.lovetao.tab.mvp;
 import android.app.Application;
 
 import com.inner.lovetao.core.TaoResponse;
-import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.bean.CategoryBean;
-import com.inner.lovetao.tab.contract.ChoicFragmentContract;
 import com.inner.lovetao.tab.contract.HomeFragmentContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -53,7 +51,6 @@ public class HomeFragmentPresenter extends BasePresenter<HomeFragmentContract.Mo
         this.mImageLoader = null;
         this.mApplication = null;
     }
-
 
 
     /**

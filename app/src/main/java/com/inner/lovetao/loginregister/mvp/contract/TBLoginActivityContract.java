@@ -1,6 +1,5 @@
 package com.inner.lovetao.loginregister.mvp.contract;
 
-import android.support.v7.app.AppCompatActivity;
 
 import com.inner.lovetao.config.UserInfo;
 import com.inner.lovetao.core.TaoResponse;
@@ -8,6 +7,7 @@ import com.inner.lovetao.loginregister.bean.TbLoginBean;
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 
 

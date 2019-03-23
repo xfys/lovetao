@@ -1,8 +1,6 @@
 package com.inner.lovetao.settings.mvp.ui.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +11,8 @@ import com.inner.lovetao.config.ArouterConfig;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bmob.v3.update.BmobUpdateAgent;

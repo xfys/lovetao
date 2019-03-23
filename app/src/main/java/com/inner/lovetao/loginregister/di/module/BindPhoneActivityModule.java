@@ -1,13 +1,10 @@
 package com.inner.lovetao.loginregister.di.module;
 
-import com.jess.arms.di.scope.ActivityScope;
+import com.inner.lovetao.loginregister.mvp.contract.BindPhoneActivityContract;
+import com.inner.lovetao.loginregister.mvp.model.BindPhoneActivityModel;
 
 import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
-
-import com.inner.lovetao.loginregister.mvp.contract.BindPhoneActivityContract;
-import com.inner.lovetao.loginregister.mvp.model.BindPhoneActivityModel;
 
 
 /**

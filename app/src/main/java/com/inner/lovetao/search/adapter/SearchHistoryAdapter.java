@@ -15,7 +15,6 @@ package com.inner.lovetao.search.adapter;
  */
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.inner.lovetao.R;
@@ -23,6 +22,8 @@ import com.inner.lovetao.search.bean.SearchHistoryItemBean;
 import com.inner.lovetao.search.viewholder.SearchHistoryViewHolder;
 import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;
+
+import androidx.annotation.NonNull;
 
 public class SearchHistoryAdapter extends DefaultAdapter<SearchHistoryItemBean> {
 

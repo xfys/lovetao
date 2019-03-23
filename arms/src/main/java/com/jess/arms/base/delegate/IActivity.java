@@ -1,26 +1,8 @@
-/*
- * Copyright 2017 JessYan
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.jess.arms.base.delegate;
 
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
 
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.BaseFragment;
@@ -28,6 +10,9 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.integration.ActivityLifecycle;
 import com.jess.arms.integration.cache.Cache;
 import com.jess.arms.integration.cache.LruCache;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * ================================================
@@ -82,11 +67,11 @@ public interface IActivity {
     void initData(@Nullable Bundle savedInstanceState);
 
     /**
-     * 这个 Activity 是否会使用 Fragment,框架会根据这个属性判断是否注册 {@link FragmentManager.FragmentLifecycleCallbacks}
+     * 这个 Activity 是否会使用 Fragment,框架会根据这个属性判断是否注册 {@link androidx.fragment.app.FragmentManager}
      * 如果返回{@code false},那意味着这个 Activity 不需要绑定 Fragment,那你再在这个 Activity 中绑定继承于 {@link BaseFragment} 的 Fragment 将不起任何作用
-     * @see ActivityLifecycle#registerFragmentCallbacks (Fragment 的注册过程)
      *
      * @return
+     * @see ActivityLifecycle#registerFragmentCallbacks (Fragment 的注册过程)
      */
     boolean useFragment();
 }

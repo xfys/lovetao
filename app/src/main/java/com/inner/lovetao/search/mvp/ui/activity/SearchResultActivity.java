@@ -3,10 +3,6 @@ package com.inner.lovetao.search.mvp.ui.activity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +36,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -176,7 +175,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresenter> im
     }
 
 
-    @OnClick({R.id.ac_search_result_iv_back, R.id.common_recommend, R.id.common_newest, R.id.common_sales, R.id.common_price,R.id.ac_search_result_tv_search})
+    @OnClick({R.id.ac_search_result_iv_back, R.id.common_recommend, R.id.common_newest, R.id.common_sales, R.id.common_price, R.id.ac_search_result_tv_search})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ac_search_result_iv_back:

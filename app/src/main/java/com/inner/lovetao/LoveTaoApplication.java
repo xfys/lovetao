@@ -1,7 +1,6 @@
 package com.inner.lovetao;
 
 import android.content.Context;
-import android.support.multidex.MultiDex;
 
 import com.ali.auth.third.core.MemberSDK;
 import com.ali.auth.third.core.callback.InitResultCallback;
@@ -12,6 +11,7 @@ import com.inner.lovetao.share.ShareUtils;
 import com.jess.arms.base.BaseApplication;
 import com.jess.arms.utils.LogUtils;
 
+import androidx.multidex.MultiDex;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.update.BmobUpdateAgent;
 
