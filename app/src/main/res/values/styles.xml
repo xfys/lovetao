@@ -26,18 +26,6 @@
         <item name="android:textColor">@color/toolbar_menu</item>
     </style>
 
-    <style name="LaunchTheme" parent="@style/Theme.AppCompat.Light">
-        <item name="android:background">@mipmap/icon_splash</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-    </style>
-
-    <style name="GuildeTheme" parent="@style/Theme.AppCompat.Light">
-        <item name="android:background">@color/white</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-    </style>
-
 
     <style name="BannerDefaultStyle">
         <!-- 自定义属性在styles.xml中不需要命名空间,直接用属性名就可以了 -->

@@ -56,8 +56,7 @@
         <!-- Bomb 配置 -->
         <activity
             android:name=".index.activity.SplashActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/LaunchTheme">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -66,8 +65,7 @@
         </activity>
         <activity
             android:name=".index.activity.GuildActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/GuildeTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".home.activity.MainActivity"
             android:launchMode="singleTask"

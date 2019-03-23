@@ -45,7 +45,7 @@ public class GuildActivity extends BaseActivity {
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         guildeBanner.setData(null,
-                ImageView.ScaleType.FIT_CENTER,
+                ImageView.ScaleType.FIT_XY,
                 R.mipmap.ic_guide_one,
                 R.mipmap.ic_guide_two,
                 R.mipmap.ic_guide_three);
