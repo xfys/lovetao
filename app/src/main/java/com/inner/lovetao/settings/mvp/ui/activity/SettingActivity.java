@@ -83,7 +83,6 @@ public class SettingActivity extends BaseActivity<SettingActivityPresenter> impl
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        setStatusBarMode(false);
         if (getLine() != null) {
             getLine().setVisibility(View.GONE);
         }
