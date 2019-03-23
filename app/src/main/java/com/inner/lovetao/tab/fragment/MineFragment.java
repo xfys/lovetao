@@ -147,7 +147,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
                 break;
             case R.id.iv_ads:
                 if (bannerBean != null && !TextUtils.isEmpty(bannerBean.getContentUrl())) {
-                    if (bannerBean.getLoginState() == 0) {
+                    if (bannerBean.getLoginState() == 1) {
                         if (UserInstance.getInstance().isLogin(mContext)) {
                             ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, bannerBean.getContentUrl()).navigation(mContext);
                         } else {

@@ -114,7 +114,7 @@ public class RecommendView extends LinearLayout {
                 break;
             case R.id.ll_fourth:
                 if (data != null) {
-                    if (data.get(0).getLoginState() == 0) {
+                    if (data.get(0).getLoginState() == 1) {
                         if (UserInstance.getInstance().isLogin(context)) {
                             ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, data.get(0).getContentUrl()).navigation(context);
                         } else {
@@ -128,7 +128,7 @@ public class RecommendView extends LinearLayout {
                 break;
             case R.id.ll_five:
                 if (data != null) {
-                    if (data.get(1).getLoginState() == 0) {
+                    if (data.get(1).getLoginState() == 1) {
                         if (UserInstance.getInstance().isLogin(context)) {
                             ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, data.get(1).getContentUrl()).navigation(context);
                         } else {

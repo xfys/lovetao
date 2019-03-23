@@ -102,7 +102,7 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 if (!TextUtils.isEmpty(mWlDatas.get(position).getContentUrl())) {
-                    if (mWlDatas.get(position).getLoginState() == 0) {
+                    if (mWlDatas.get(position).getLoginState() == 1) {
                         if (UserInstance.getInstance().isLogin(mContext)) {
                             ARouter.getInstance()
                                     .build(ArouterConfig.AC_WEBVIEW)
@@ -154,7 +154,7 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 if (!TextUtils.isEmpty(mMoreDatas.get(position).getContentUrl())) {
-                    if (mMoreDatas.get(position).getLoginState() == 0) {
+                    if (mMoreDatas.get(position).getLoginState() == 1) {
                         if (UserInstance.getInstance().isLogin(mContext)) {
                             ARouter.getInstance()
                                     .build(ArouterConfig.AC_WEBVIEW)

@@ -93,7 +93,7 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
     @Override
     public void onBannerItemClick(BGABanner banner, View itemView, @Nullable String model, int position) {
         if (datas != null) {
-            if (datas.get(position).getLoginState() == 0) {
+            if (datas.get(position).getLoginState() == 1) {
                 if (UserInstance.getInstance().isLogin(context)) {
                     ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, datas.get(position).getContentUrl()).navigation(context);
                 } else {
