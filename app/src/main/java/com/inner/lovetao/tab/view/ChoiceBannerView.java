@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.di.scope.ActivityScope;
@@ -92,7 +93,16 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
     @Override
     public void onBannerItemClick(BGABanner banner, View itemView, @Nullable String model, int position) {
         if (datas != null) {
-            ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, datas.get(position).getContentUrl()).navigation(context);
+            if (datas.get(position).getLoginState() == 0) {
+                if (UserInstance.getInstance().isLogin(context)) {
+                    ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, datas.get(position).getContentUrl()).navigation(context);
+                } else {
+                    ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(context);
+                }
+            } else {
+                ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, datas.get(position).getContentUrl()).navigation(context);
+            }
+
         }
     }
 }

@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.config.BannerType;
+import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.contract.WlfareServiceFragmentContract;
 import com.inner.lovetao.tab.di.component.DaggerWlfareServiceFragmentComponent;
@@ -101,10 +102,23 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 if (!TextUtils.isEmpty(mWlDatas.get(position).getContentUrl())) {
-                    ARouter.getInstance()
-                            .build(ArouterConfig.AC_WEBVIEW)
-                            .withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, mWlDatas.get(position).getContentUrl())
-                            .navigation(mContext);
+                    if (mWlDatas.get(position).getLoginState() == 0) {
+                        if (UserInstance.getInstance().isLogin(mContext)) {
+                            ARouter.getInstance()
+                                    .build(ArouterConfig.AC_WEBVIEW)
+                                    .withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, mWlDatas.get(position).getContentUrl())
+                                    .navigation(mContext);
+                        } else {
+                            ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);
+                        }
+
+                    } else {
+                        ARouter.getInstance()
+                                .build(ArouterConfig.AC_WEBVIEW)
+                                .withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, mWlDatas.get(position).getContentUrl())
+                                .navigation(mContext);
+                    }
+
                 }
             }
 
@@ -140,10 +154,22 @@ public class WlfareServiceFragment extends BaseFragment<WlfareServiceFragmentPre
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 if (!TextUtils.isEmpty(mMoreDatas.get(position).getContentUrl())) {
-                    ARouter.getInstance()
-                            .build(ArouterConfig.AC_WEBVIEW)
-                            .withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, mMoreDatas.get(position).getContentUrl())
-                            .navigation(mContext);
+                    if (mMoreDatas.get(position).getLoginState() == 0) {
+                        if (UserInstance.getInstance().isLogin(mContext)) {
+                            ARouter.getInstance()
+                                    .build(ArouterConfig.AC_WEBVIEW)
+                                    .withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, mMoreDatas.get(position).getContentUrl())
+                                    .navigation(mContext);
+                        } else {
+                            ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);
+                        }
+
+                    } else {
+                        ARouter.getInstance()
+                                .build(ArouterConfig.AC_WEBVIEW)
+                                .withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, mMoreDatas.get(position).getContentUrl())
+                                .navigation(mContext);
+                    }
                 }
             }
 

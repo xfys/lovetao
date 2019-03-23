@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.config.UserInstance;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.config.CommonImageConfigImpl;
@@ -113,12 +114,29 @@ public class RecommendView extends LinearLayout {
                 break;
             case R.id.ll_fourth:
                 if (data != null) {
-                    ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, data.get(0).getContentUrl()).navigation(context);
+                    if (data.get(0).getLoginState() == 0) {
+                        if (UserInstance.getInstance().isLogin(context)) {
+                            ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, data.get(0).getContentUrl()).navigation(context);
+                        } else {
+                            ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(context);
+                        }
+                    } else {
+                        ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, data.get(0).getContentUrl()).navigation(context);
+                    }
+
                 }
                 break;
             case R.id.ll_five:
                 if (data != null) {
-                    ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, data.get(1).getContentUrl()).navigation(context);
+                    if (data.get(1).getLoginState() == 0) {
+                        if (UserInstance.getInstance().isLogin(context)) {
+                            ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, data.get(1).getContentUrl()).navigation(context);
+                        } else {
+                            ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(context);
+                        }
+                    } else {
+                        ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, data.get(1).getContentUrl()).navigation(context);
+                    }
                 }
                 break;
         }
