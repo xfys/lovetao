@@ -70,7 +70,16 @@
             android:name=".home.activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="lovetao" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".search.mvp.ui.activity.SearchActivity"
             android:screenOrientation="portrait" />

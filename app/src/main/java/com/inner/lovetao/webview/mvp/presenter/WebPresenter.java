@@ -1,6 +1,7 @@
 package com.inner.lovetao.webview.mvp.presenter;
 
 import android.app.Application;
+import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.webkit.JsPromptResult;
@@ -13,6 +14,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.google.gson.Gson;
+import com.inner.lovetao.config.UserInstance;
+import com.inner.lovetao.webview.js_bean.ShareBean;
 import com.inner.lovetao.webview.mvp.contract.WebContract;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -40,6 +44,9 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
     ImageLoader mImageLoader;
     @Inject
     AppManager mAppManager;
+    @Inject
+    Gson mGson;
+    private WebView webview;
 
     @Inject
     public WebPresenter(WebContract.Model model, WebContract.View rootView) {
@@ -53,6 +60,7 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
         this.mAppManager = null;
         this.mImageLoader = null;
         this.mApplication = null;
+        this.mGson = null;
     }
 
     public void setWebviewSettings(WebSettings webSettings) {
@@ -75,6 +83,7 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
     }
 
     public void setWebClient(WebView webView) {
+        this.webview = webView;
         //设置WebViewClient
         webView.setWebViewClient(mWebViewClient);
         // 创建WebViewChromeClient
@@ -90,14 +99,40 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
     private final WebViewClient mWebViewClient = new WebViewClient() {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url.startsWith("lovetao://")) {
-                //TODO:自定义事件
-            } else if (url.startsWith("tbopen://")) {
+            //假定传入进来的 url = lovetao://webview?action=1&data={"shareUrl":"","title":"题目","content":"内容","shareImg":""}
+
+            Uri uri = Uri.parse(url);
+            // 如果url的协议 = 预先约定的 js 协议
+            // 就解析往下解析参数
+            if (uri.getScheme().equals("lovetao")) {
+                // 如果 authority  = 预先约定协议里的 webview，即代表都符合约定的协议
+                // 所以拦截url,下面JS开始调用Android需要的方法
+                if (uri.getAuthority().equals("webview")) {
+                    //  步骤3：
+                    // 执行JS所需要调用的逻辑
+                    // 可以在协议上带有参数并传递到Android上
+                    String action = uri.getQueryParameter("action");
+                    String data = uri.getQueryParameter("data");
+                    switch (Integer.valueOf(action)) {
+                        case 1:
+                            if (mGson != null) {
+                                ShareBean shareBean = mGson.fromJson(data, ShareBean.class);
+                                mRootView.share(shareBean);
+                            }
+                            break;
+                    }
+
+                }
+                return true;
+            } else if (uri.getScheme().equals("tbopen")) {
                 return false;
-            } else {
+            } else if (uri.getScheme().equals("http") || uri.getScheme().equals("https")) {
                 view.loadUrl(url);
+                return true;
+            } else {
+                return super.shouldOverrideUrlLoading(view, url);
             }
-            return true;
+
         }
 
         @Override
@@ -121,6 +156,9 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
             if (mRootView != null) {
                 mRootView.showProgress(100);
                 mRootView.changeTitle(view.getTitle());
+            }
+            if (webview != null) {
+                loginSuccess(webview);
             }
         }
     };
@@ -163,4 +201,12 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
             return true;
         }
     };
+
+    public void loginSuccess(WebView webView) {
+        if (UserInstance.getInstance().isLogin(webView.getContext())) {
+            String id = UserInstance.getInstance().getUserInfo(webView.getContext()).getId();
+            String invitationCode = UserInstance.getInstance().getUserInfo(webView.getContext()).getInvitationCode();
+            webView.loadUrl("javascript:loginSuccess(\"" + id + "\",\"" + invitationCode + "\")");
+        }
+    }
 }

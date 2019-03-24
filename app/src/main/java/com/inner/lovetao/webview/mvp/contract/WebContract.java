@@ -3,6 +3,7 @@ package com.inner.lovetao.webview.mvp.contract;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 
+import com.inner.lovetao.webview.js_bean.ShareBean;
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
 
@@ -27,6 +28,8 @@ public interface WebContract {
         void onJsPrompt(String message, String defaultValue, JsPromptResult result);
 
         void downLoad(String url);
+
+        void share(ShareBean shareBean);
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存

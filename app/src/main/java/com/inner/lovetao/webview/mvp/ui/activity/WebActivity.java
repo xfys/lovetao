@@ -15,7 +15,9 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
+import com.inner.lovetao.share.ShareUtils;
 import com.inner.lovetao.webview.di.component.DaggerWebComponent;
+import com.inner.lovetao.webview.js_bean.ShareBean;
 import com.inner.lovetao.webview.mvp.contract.WebContract;
 import com.inner.lovetao.webview.mvp.presenter.WebPresenter;
 import com.jess.arms.base.BaseActivity;
@@ -164,6 +166,12 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
         Uri uri = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+    }
+
+    @Override
+    public void share(ShareBean shareBean) {
+        if (shareBean == null) return;
+        ShareUtils.getInstance().share(this, shareBean.getShareUrl(), shareBean.getTitle(), shareBean.getContent(), shareBean.getShareImg());
     }
 
     @Override
