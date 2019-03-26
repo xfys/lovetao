@@ -14,6 +14,7 @@ import com.jess.arms.utils.LogUtils;
 import androidx.multidex.MultiDex;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.update.BmobUpdateAgent;
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * desc: Application
@@ -28,6 +29,15 @@ public class LoveTaoApplication extends BaseApplication {
         initTBAuth();
         initWX();
         initBomb();
+        initJpush();
+    }
+
+    /**
+     * 初始化极光
+     */
+    private void initJpush() {
+        JPushInterface.setDebugMode(BuildConfig.DEBUG);
+        JPushInterface.init(this);
     }
 
     /**

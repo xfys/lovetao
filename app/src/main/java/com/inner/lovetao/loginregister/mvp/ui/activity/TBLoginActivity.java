@@ -2,6 +2,7 @@ package com.inner.lovetao.loginregister.mvp.ui.activity;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -31,6 +32,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.OnClick;
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
@@ -144,6 +147,8 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
             if (TextUtils.isEmpty(taoResponse.getData().getPhone())) {
                 ARouter.getInstance().build(ArouterConfig.AC_BIND_PHONE).navigation(TBLoginActivity.this);
             }
+            // 调用 Handler 来异步设置别名
+            mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, taoResponse.getData().getId()));
         }
     }
 
@@ -151,4 +156,43 @@ public class TBLoginActivity extends BaseActivity<TBLoginActivityPresenter> impl
     public AppCompatActivity getActivity() {
         return this;
     }
+
+    private static final int MSG_SET_ALIAS = 1001;
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case MSG_SET_ALIAS:
+                    LogUtils.debugInfo(TAG, "Set alias in handler.");
+                    // 调用 JPush 接口来设置别名。
+                    JPushInterface.setAliasAndTags(getApplicationContext(),
+                            (String) msg.obj,
+                            null,
+                            mAliasCallback);
+                    break;
+                default:
+                    LogUtils.debugInfo(TAG, "Unhandled msg - " + msg.what);
+            }
+        }
+    };
+    private final TagAliasCallback mAliasCallback = (code, alias, tags) -> {
+        String logs;
+        switch (code) {
+            case 0:
+                logs = "Set tag and alias success";
+                LogUtils.debugInfo(TAG, logs);
+                // 建议这里往 SharePreference 里写一个成功设置的状态。成功设置一次后，以后不必再次设置了。
+                break;
+            case 6002:
+                logs = "Failed to set alias and tags due to timeout. Try again after 60s.";
+                LogUtils.debugInfo(TAG, logs);
+                // 延迟 60 秒来调用 Handler 设置别名
+                mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_SET_ALIAS, alias), 1000 * 60);
+                break;
+            default:
+                logs = "Failed with errorCode = " + code;
+                LogUtils.debugInfo(TAG, logs);
+        }
+    };
 }

@@ -23,8 +23,14 @@ android {
             }
         }
         ndk {
-            abiFilters "armeabi", "x86"//过滤除 armeabi 和 x86 以外的 so 文件
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
         }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: "com.inner.lovetao",
+                JPUSH_APPKEY : "${project.JPUSH_APP_KEY}",
+                //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL: "bmob", //暂时填写默认值即可.
+        ]
         multiDexEnabled true
     }
     signingConfigs {
@@ -43,7 +49,8 @@ android {
         }
     }
     buildTypes {
-        release {
+        debug {
+            debuggable true
             zipAlignEnabled true     //Zipalign优化
             minifyEnabled false     //混淆
             signingConfig signingConfigs.release
@@ -53,7 +60,7 @@ android {
             buildConfigField "String", "WX_APP_AppSecret", "\"${project.WX_APP_AppSecret}\""
             buildConfigField "String", "BOMB_APP_ID", "\"${project.BOMB_APP_ID}\""
         }
-        debug {
+        release {
             debuggable true
             matchingFallbacks = ['release', 'debug']
             applicationIdSuffix ".dev"
@@ -170,4 +177,7 @@ dependencies {
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     //Bomb
     implementation 'cn.bmob.android:bmob-sdk:3.7.0'
+    //Jpush
+    implementation 'cn.jiguang.sdk:jpush:3.1.6'  // 此处以JPush 3.1.6 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:1.2.5'  // 此处以JCore 1.2.5 版本为例。
 }
