@@ -86,4 +86,8 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <style name="AlibcLoginTheme" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
 </resources>

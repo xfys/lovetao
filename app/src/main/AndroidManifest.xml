@@ -276,7 +276,12 @@
         <!--Bomb更新-->
         <activity
             android:name="cn.bmob.v3.update.UpdateDialogActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--设置淘宝登录页面Activity的样式-->
+        <activity
+            android:name="com.ali.auth.third.ui.LoginActivity"
+            android:theme="@style/AlibcLoginTheme"
+            tools:replace="android:theme" />
     </application>
 
 </manifest>

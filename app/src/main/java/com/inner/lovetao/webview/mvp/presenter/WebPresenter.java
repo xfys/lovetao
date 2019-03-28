@@ -24,6 +24,8 @@ import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.LogUtils;
 
+import java.net.URLDecoder;
+
 import javax.inject.Inject;
 
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
@@ -97,11 +99,21 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
     }
 
     private final WebViewClient mWebViewClient = new WebViewClient() {
+
+        private String urlStr;
+
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             //假定传入进来的 url = lovetao://webview?action=1&data={"shareUrl":"","title":"题目","content":"内容","shareImg":""}
+            LogUtils.debugInfo(url);
+            try {
+                url = url.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
+                urlStr = URLDecoder.decode(url, "UTF-8");
+            } catch (Exception e) {
 
-            Uri uri = Uri.parse(url);
+            }
+            LogUtils.debugInfo(urlStr);
+            Uri uri = Uri.parse(urlStr);
             // 如果url的协议 = 预先约定的 js 协议
             // 就解析往下解析参数
             if (uri.getScheme().equals("lovetao")) {
@@ -112,12 +124,20 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
                     // 执行JS所需要调用的逻辑
                     // 可以在协议上带有参数并传递到Android上
                     String action = uri.getQueryParameter("action");
-                    String data = uri.getQueryParameter("data");
                     switch (Integer.valueOf(action)) {
                         case 1:
                             if (mGson != null) {
-                                ShareBean shareBean = mGson.fromJson(data, ShareBean.class);
-                                mRootView.share(shareBean);
+                                String data;
+                                try {
+                                    data = urlStr.split("data=")[1];
+                                    if (data.startsWith("{") && data.endsWith("}")) {
+                                        ShareBean shareBean = mGson.fromJson(data, ShareBean.class);
+                                        mRootView.share(shareBean);
+                                    }
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
                             break;
                     }

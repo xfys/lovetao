@@ -15,7 +15,6 @@ import com.inner.lovetao.config.ArouterConfig;
 import com.inner.lovetao.config.BannerType;
 import com.inner.lovetao.config.UserInfo;
 import com.inner.lovetao.config.UserInstance;
-import com.inner.lovetao.share.ShareUtils;
 import com.inner.lovetao.tab.bean.BannerBean;
 import com.inner.lovetao.tab.contract.MineFragmentContract;
 import com.inner.lovetao.tab.di.component.DaggerMineFragmentComponent;
@@ -126,7 +125,11 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
                 showMessage("敬请期待");
                 break;
             case R.id.ll_invite_money:
-                ShareUtils.getInstance().share(mContext, "https://www.baidu.com/", "测试", "test", null);
+                if (UserInstance.getInstance().isLogin(mContext)) {
+                    ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, "http://140.143.8.96:8080/h5/#/invite/index").navigation(mContext);
+                } else {
+                    ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);
+                }
                 break;
             case R.id.ll_call_service:
                 ARouter.getInstance().build(ArouterConfig.AC_CONTACT_SERVICE).navigation(mContext);
@@ -135,7 +138,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
                 ARouter.getInstance().build(ArouterConfig.AC_SUGGEST).navigation(mContext);
                 break;
             case R.id.ll_praise:
-                showMessage("敬请期待");
+                ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, "http://140.143.8.96:8080/h5/#/invite/index").navigation(mContext);
                 break;
             case R.id.ll_about_us:
                 ARouter.getInstance().build(ArouterConfig.AC_ABOUT_US).navigation(mContext);
