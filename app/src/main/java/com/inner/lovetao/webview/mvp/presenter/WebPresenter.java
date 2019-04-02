@@ -140,6 +140,7 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
                                     e.printStackTrace();
                                 }
                             }
+                            break;
                             //跳转到支付宝
                         case 2:
                             if (mGson != null) {
