@@ -7,8 +7,6 @@
         android:id="@+id/iv_banner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/dp_17"
-        android:layout_marginRight="@dimen/dp_17"
         android:background="@drawable/shape_choice_banner_item_oval"
         android:scaleType="fitXY" />
 

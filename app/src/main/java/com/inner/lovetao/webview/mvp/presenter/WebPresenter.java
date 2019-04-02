@@ -4,6 +4,7 @@ import android.app.Application;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
+import android.text.TextUtils;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.SslErrorHandler;
@@ -137,6 +138,15 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
 
                                 } catch (Exception e) {
                                     e.printStackTrace();
+                                }
+                            }
+                            //跳转到支付宝
+                        case 2:
+                            if (mGson != null) {
+                                String data = uri.getQueryParameter("data");
+                                if (!TextUtils.isEmpty(data)) {
+                                    mRootView.openAliPay(data);
+
                                 }
                             }
                             break;

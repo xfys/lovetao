@@ -74,7 +74,6 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
             banner.setAdapter(this);
             banner.setDelegate(this);
             banner.setData(R.layout.choice_banner_item_view, imgs, null);
-            banner.getViewPager().setPageMargin(-ArmsUtils.dip2px(context, 33));
         }
     }
 
@@ -83,7 +82,6 @@ public class ChoiceBannerView extends LinearLayout implements BGABanner.Delegate
         mImageLoader.loadImage(itemView.getContext(),
                 CommonImageConfigImpl
                         .builder()
-                        .imageRadius(ArmsUtils.dip2px(context, 6))
                         .url(model)
                         .isCropCenter(false)
                         .imageView(itemView.findViewById(R.id.iv_banner))

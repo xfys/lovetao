@@ -1,6 +1,8 @@
 package com.inner.lovetao.webview.mvp.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,6 +25,7 @@ import com.inner.lovetao.webview.mvp.presenter.WebPresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.DeviceUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -172,6 +175,25 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
     public void share(ShareBean shareBean) {
         if (shareBean == null) return;
         ShareUtils.getInstance().share(this, shareBean.getShareUrl(), shareBean.getTitle(), shareBean.getContent(), shareBean.getShareImg());
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public void openAliPay(String data) {
+        DeviceUtils.copyTextToBoard(this, data);
+        showMessage("已复制到黏贴版");
+        try {
+            PackageManager packageManager = this.getApplicationContext().getPackageManager();
+            Intent intent = packageManager.getLaunchIntentForPackage("com.eg.android.AlipayGphone");
+            startActivity(intent);
+        } catch (Exception e) {
+            String url = "https://ds.alipay.com/?from=mobileweb";
+            webView.loadUrl(url);
+        }
     }
 
     @Override
