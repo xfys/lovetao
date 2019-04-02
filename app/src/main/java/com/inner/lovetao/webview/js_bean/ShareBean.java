@@ -18,7 +18,7 @@ public class ShareBean implements Serializable {
     private String shareUrl;
     private String title;
     private String content;
-    private String shareImg;
+    private String shareImg = "http://pnw1j1d9g.bkt.clouddn.com/108-108.png";
 
     public String getShareUrl() {
         return shareUrl;

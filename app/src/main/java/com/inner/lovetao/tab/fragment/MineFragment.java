@@ -122,11 +122,11 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
             case R.id.ll_mine_getVolume:
                 break;
             case R.id.ll_mine_disciple:
-                showMessage("敬请期待");
+
                 break;
             case R.id.ll_invite_money:
                 if (UserInstance.getInstance().isLogin(mContext)) {
-                    ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, "http://140.143.8.96:8080/h5/#/invite/index").navigation(mContext);
+                    ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, "http://www.17itao.com/h5/#/invite/index").navigation(mContext);
                 } else {
                     ARouter.getInstance().build(ArouterConfig.AC_TB_AUTH).navigation(mContext);
                 }
@@ -138,7 +138,8 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
                 ARouter.getInstance().build(ArouterConfig.AC_SUGGEST).navigation(mContext);
                 break;
             case R.id.ll_praise:
-                ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, "http://140.143.8.96:8080/h5/#/invite/index").navigation(mContext);
+                showMessage("敬请期待");
+//                ARouter.getInstance().build(ArouterConfig.AC_WEBVIEW).withString(ArouterConfig.ParamKey.STR_WEBVIEW_URL, "http://140.143.8.96:8080/h5/#/invite/index").navigation(mContext);
                 break;
             case R.id.ll_about_us:
                 ARouter.getInstance().build(ArouterConfig.AC_ABOUT_US).navigation(mContext);
