@@ -141,7 +141,7 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
                                 }
                             }
                             break;
-                            //跳转到支付宝
+                        //跳转到支付宝
                         case 2:
                             if (mGson != null) {
                                 String data = uri.getQueryParameter("data");
@@ -237,7 +237,9 @@ public class WebPresenter extends BasePresenter<WebContract.Model, WebContract.V
         if (UserInstance.getInstance().isLogin(webView.getContext())) {
             String id = UserInstance.getInstance().getUserInfo(webView.getContext()).getId();
             String invitationCode = UserInstance.getInstance().getUserInfo(webView.getContext()).getInvitationCode();
-            webView.loadUrl("javascript:loginSuccess(\"" + id + "\",\"" + invitationCode + "\")");
+            String shareCode = UserInstance.getInstance().getUserInfo(webView.getContext()).getShareCode();
+//            webView.loadUrl("javascript:loginSuccess(\"" + id + "\",\"" + invitationCode + "\")");
+            webView.loadUrl("javascript:loginSuccess(\"" + id + "\",\"" + invitationCode + "\",\"" + shareCode + "\")");
         }
     }
 }

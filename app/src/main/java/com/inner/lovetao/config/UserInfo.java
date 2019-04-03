@@ -131,7 +131,7 @@ public class UserInfo implements Serializable {
         this.invitationCode = invitationCode;
     }
 
-    public Object getShareCode() {
+    public String getShareCode() {
         return shareCode;
     }
 
