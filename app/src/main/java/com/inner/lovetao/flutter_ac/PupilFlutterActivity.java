@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -35,8 +34,7 @@ public class PupilFlutterActivity extends BaseActivity {
     public static final String AndroidToFlutterCHANNEL = "com.tao.to_flutter/plugin";
 
 
-    @BindView(R.id.params)
-    TextView textView;
+    //
     @BindView(R.id.rl_flutter)
     FrameLayout frameLayout;
 
@@ -66,7 +64,7 @@ public class PupilFlutterActivity extends BaseActivity {
         if (!TextUtils.isEmpty(params)) {
             Toast.makeText(this, "" + params, Toast.LENGTH_SHORT).show();
 
-            textView.setText("flutter 传参:" + params);
+//            textView.setText("flutter 传参:" + params);
 
         }
 
