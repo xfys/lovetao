@@ -122,7 +122,7 @@ public class MineFragment extends BaseFragment<MineFragmentPresenter> implements
             case R.id.ll_mine_getVolume:
                 break;
             case R.id.ll_mine_disciple:
-
+                ARouter.getInstance().build(ArouterConfig.AC_FLUTTER).navigation(mContext);
                 break;
             case R.id.ll_invite_money:
                 if (UserInstance.getInstance().isLogin(mContext)) {

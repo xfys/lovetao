@@ -1,1 +1,6 @@
 include ':app', ':arms', ':ptr-lib'
+setBinding(new Binding([gradle: this]))                                 // new
+evaluate(new File(                                                      // new
+        settingsDir.parentFile,                                               // new
+        'tao_flutter/.android/include_flutter.groovy'                      // new
+))

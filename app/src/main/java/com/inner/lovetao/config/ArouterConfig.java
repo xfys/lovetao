@@ -38,6 +38,8 @@ public class ArouterConfig {
     public static final String AC_MY_ORDER = "/mineassets/mvp/ui/activity/MyOrderActivity";
     //消息
     public static final String AC_MESSAGE = "/settings/mvp/ui/activity/MessageActivity";
+    //收徒flutter页面
+    public static final String AC_FLUTTER = "/flutter_ac/PupilFlutterActivity";
 
     public static class Interceptor {
         public static final String LOGIN_INTERCEPT = "login_intercept";
