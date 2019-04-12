@@ -23,7 +23,7 @@ android {
             }
         }
         ndk {
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            abiFilters "armeabi-v7a", "x86"
         }
         manifestPlaceholders = [
                 JPUSH_PKGNAME: "com.inner.lovetao",
@@ -59,6 +59,9 @@ android {
             buildConfigField "String", "WX_APP_ID", "\"${project.WX_APP_ID}\""
             buildConfigField "String", "WX_APP_AppSecret", "\"${project.WX_APP_AppSecret}\""
             buildConfigField "String", "BOMB_APP_ID", "\"${project.BOMB_APP_ID}\""
+            ndk {
+                abiFilters "armeabi-v7a", "x86"
+            }
         }
         release {
             debuggable true
@@ -72,6 +75,9 @@ android {
             buildConfigField "String", "WX_APP_ID", "\"${project.WX_APP_ID}\""
             buildConfigField "String", "WX_APP_AppSecret", "\"${project.WX_APP_AppSecret}\""
             buildConfigField "String", "BOMB_APP_ID", "\"${project.BOMB_APP_ID}\""
+            ndk {
+                abiFilters "armeabi-v7a"
+            }
         }
     }
     sourceSets {

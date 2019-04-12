@@ -282,6 +282,9 @@
             android:name="com.ali.auth.third.ui.LoginActivity"
             android:theme="@style/AlibcLoginTheme"
             tools:replace="android:theme" />
+        <activity
+            android:name=".flutter_ac.PupilFlutterActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
