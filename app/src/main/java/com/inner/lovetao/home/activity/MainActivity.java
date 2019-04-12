@@ -27,7 +27,7 @@ import butterknife.BindView;
 import cn.bmob.v3.update.BmobUpdateAgent;
 
 @Route(path = ArouterConfig.AC_MAIN)
-public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.Model, MainContract.View {
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
 
     private long mExitTime;
     @BindView(R.id.tab_view)

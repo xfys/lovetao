@@ -49,7 +49,8 @@ android {
         }
     }
     buildTypes {
-        release {
+        debug {
+            debuggable true
             zipAlignEnabled true     //Zipalign优化
             minifyEnabled false     //混淆
             signingConfig signingConfigs.release
@@ -59,7 +60,7 @@ android {
             buildConfigField "String", "WX_APP_AppSecret", "\"${project.WX_APP_AppSecret}\""
             buildConfigField "String", "BOMB_APP_ID", "\"${project.BOMB_APP_ID}\""
         }
-        debug {
+        release {
             debuggable true
             matchingFallbacks = ['release', 'debug']
             applicationIdSuffix ".dev"
