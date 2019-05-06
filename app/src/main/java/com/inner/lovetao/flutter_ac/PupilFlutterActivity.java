@@ -6,6 +6,9 @@ import android.text.TextUtils;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
@@ -13,8 +16,6 @@ import com.inner.lovetao.home.activity.MainActivity;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import butterknife.BindView;
 import io.flutter.facade.Flutter;
 import io.flutter.plugin.common.EventChannel;
@@ -57,7 +58,7 @@ public class PupilFlutterActivity extends BaseActivity {
     }
 
     private void initFlutter() {
-        flutterView = Flutter.createView(this, getLifecycle(), "route2");
+        flutterView = Flutter.createView(this, getLifecycle(), "/route2");
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         frameLayout.addView(flutterView, layoutParams);
         String params = getIntent().getStringExtra("test");

@@ -1,17 +1,13 @@
 package com.inner.lovetao.loginregister.di.component;
 
-import dagger.BindsInstance;
-import dagger.Component;
-
-import com.inner.lovetao.loginregister.mvp.ui.activity.BindPhoneActivity;
-import com.jess.arms.di.component.AppComponent;
-
 import com.inner.lovetao.loginregister.di.module.BindPhoneActivityModule;
 import com.inner.lovetao.loginregister.mvp.contract.BindPhoneActivityContract;
-
+import com.inner.lovetao.loginregister.mvp.ui.activity.BindPhoneActivity;
+import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.di.scope.ActivityScope;
 
-
+import dagger.BindsInstance;
+import dagger.Component;
 /**
  * desc:
  * Created by xcz
