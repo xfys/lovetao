@@ -1,13 +1,10 @@
 package com.inner.lovetao.settings.di.module;
 
-import com.jess.arms.di.scope.ActivityScope;
+import com.inner.lovetao.settings.mvp.contract.ContactServiceContract;
+import com.inner.lovetao.settings.mvp.model.ContactServiceModel;
 
 import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
-
-import com.inner.lovetao.settings.mvp.contract.ContactServiceContract;
-import com.inner.lovetao.settings.mvp.model.ContactServiceModel;
 
 
 /**

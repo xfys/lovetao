@@ -1,13 +1,10 @@
 package com.inner.lovetao.settings.di.module;
 
-import com.jess.arms.di.scope.ActivityScope;
+import com.inner.lovetao.settings.mvp.contract.SuggestContract;
+import com.inner.lovetao.settings.mvp.model.SuggestModel;
 
 import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
-
-import com.inner.lovetao.settings.mvp.contract.SuggestContract;
-import com.inner.lovetao.settings.mvp.model.SuggestModel;
 
 
 /**
