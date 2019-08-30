@@ -8,8 +8,10 @@ package com.inner.lovetao;
 public class MyTest {
     private void testName() {
 
-        System.out.println("ceshi"+"test"+"text");String name="12";
+        System.out.println("ceshi" + "test" + "text");
+        String name = "12";
         String aaaa = "12212";
+
 
 
     }
