@@ -3,14 +3,12 @@ package com.inner.lovetao.webview.mvp.model;
 import android.app.Application;
 
 import com.google.gson.Gson;
+import com.inner.lovetao.webview.mvp.contract.WebContract;
+import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
 
-import com.jess.arms.di.scope.ActivityScope;
-
 import javax.inject.Inject;
-
-import com.inner.lovetao.webview.mvp.contract.WebContract;
 
 
 /**
@@ -35,5 +33,12 @@ public class WebModel extends BaseModel implements WebContract.Model {
         super.onDestroy();
         this.mGson = null;
         this.mApplication = null;
+    }
+
+    /**
+     *
+     */
+    public void getName(){
+        System.out.println("ceshi"+"jdkjfks");
     }
 }
