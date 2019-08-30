@@ -7,6 +7,7 @@ package com.inner.lovetao;
  */
 public class MyTest {
     private void testName() {
-        System.out.println("ceshi"+"test"+"text");
+
+        System.out.println("ceshi"+"test"+"text");String name="12";
     }
 }
