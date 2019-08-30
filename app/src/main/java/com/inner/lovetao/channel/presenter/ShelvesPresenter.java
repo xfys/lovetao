@@ -61,14 +61,14 @@ public class ShelvesPresenter extends BasePresenter<ShelvesContract.Model, Shelv
      *
      * @param pageNum
      */
-    public void getTodayData(int pageNum,String sortName,String sortOrder) {
+    public void getTodayData(int pageNum, String sortName, String sortOrder) {
         Observable<TaoResponse<List<ProductItemBean>>> todaySale = null;
-        if(TextUtils.equals(RefreshConfig.SORT_RECOMMEND,sortName)){
+        if (TextUtils.equals(RefreshConfig.SORT_RECOMMEND, sortName)) {
             todaySale = mModel.getTodaySale(pageNum, ConfigInfo.PAGE_SIZE);
-        }else if(TextUtils.equals(RefreshConfig.SORT_NEWEST,sortName)||TextUtils.equals(RefreshConfig.SORT_SALES,sortName)){
-            todaySale = mModel.getTodaySale(pageNum, ConfigInfo.PAGE_SIZE,sortName);
-        }else if(TextUtils.equals(RefreshConfig.SORT_PRICE,sortName)){
-            todaySale = mModel.getTodaySale(pageNum, ConfigInfo.PAGE_SIZE,sortName,sortOrder);
+        } else if (TextUtils.equals(RefreshConfig.SORT_NEWEST, sortName) || TextUtils.equals(RefreshConfig.SORT_SALES, sortName)) {
+            todaySale = mModel.getTodaySale(pageNum, ConfigInfo.PAGE_SIZE, sortName);
+        } else if (TextUtils.equals(RefreshConfig.SORT_PRICE, sortName)) {
+            todaySale = mModel.getTodaySale(pageNum, ConfigInfo.PAGE_SIZE, sortName, sortOrder);
         }
         todaySale
                 .subscribeOn(Schedulers.io())
@@ -100,14 +100,14 @@ public class ShelvesPresenter extends BasePresenter<ShelvesContract.Model, Shelv
      *
      * @param pageNum
      */
-    public void getSale99(int pageNum,String sortName,String sortOrder) {
+    public void getSale99(int pageNum, String sortName, String sortOrder) {
         Observable<TaoResponse<List<ProductItemBean>>> sale_99 = null;
-        if(TextUtils.equals(RefreshConfig.SORT_RECOMMEND,sortName)){
+        if (TextUtils.equals(RefreshConfig.SORT_RECOMMEND, sortName)) {
             sale_99 = mModel.getSale_99(pageNum, ConfigInfo.PAGE_SIZE);
-        }else if(TextUtils.equals(RefreshConfig.SORT_NEWEST,sortName)||TextUtils.equals(RefreshConfig.SORT_SALES,sortName)){
-            sale_99 = mModel.getSale_99(pageNum, ConfigInfo.PAGE_SIZE,sortName);
-        }else if(TextUtils.equals(RefreshConfig.SORT_PRICE,sortName)){
-            sale_99 = mModel.getSale_99(pageNum, ConfigInfo.PAGE_SIZE,sortName,sortOrder);
+        } else if (TextUtils.equals(RefreshConfig.SORT_NEWEST, sortName) || TextUtils.equals(RefreshConfig.SORT_SALES, sortName)) {
+            sale_99 = mModel.getSale_99(pageNum, ConfigInfo.PAGE_SIZE, sortName);
+        } else if (TextUtils.equals(RefreshConfig.SORT_PRICE, sortName)) {
+            sale_99 = mModel.getSale_99(pageNum, ConfigInfo.PAGE_SIZE, sortName, sortOrder);
         }
         sale_99
                 .subscribeOn(Schedulers.io())
@@ -139,14 +139,14 @@ public class ShelvesPresenter extends BasePresenter<ShelvesContract.Model, Shelv
      *
      * @param pageNum
      */
-    public void getBigCoupon(int pageNum,String sortName,String sortOrder) {
+    public void getBigCoupon(int pageNum, String sortName, String sortOrder) {
         Observable<TaoResponse<List<ProductItemBean>>> bigSale = null;
-        if(TextUtils.equals(RefreshConfig.SORT_RECOMMEND,sortName)){
+        if (TextUtils.equals(RefreshConfig.SORT_RECOMMEND, sortName)) {
             bigSale = mModel.getBigSale(pageNum, ConfigInfo.PAGE_SIZE);
-        }else if(TextUtils.equals(RefreshConfig.SORT_NEWEST,sortName)||TextUtils.equals(RefreshConfig.SORT_SALES,sortName)){
-            bigSale = mModel.getBigSale(pageNum, ConfigInfo.PAGE_SIZE,sortName);
-        }else if(TextUtils.equals(RefreshConfig.SORT_PRICE,sortName)){
-            bigSale = mModel.getBigSale(pageNum, ConfigInfo.PAGE_SIZE,sortName,sortOrder);
+        } else if (TextUtils.equals(RefreshConfig.SORT_NEWEST, sortName) || TextUtils.equals(RefreshConfig.SORT_SALES, sortName)) {
+            bigSale = mModel.getBigSale(pageNum, ConfigInfo.PAGE_SIZE, sortName);
+        } else if (TextUtils.equals(RefreshConfig.SORT_PRICE, sortName)) {
+            bigSale = mModel.getBigSale(pageNum, ConfigInfo.PAGE_SIZE, sortName, sortOrder);
         }
 
         bigSale.subscribeOn(Schedulers.io())
@@ -176,14 +176,14 @@ public class ShelvesPresenter extends BasePresenter<ShelvesContract.Model, Shelv
     /**
      * 获取活动数据
      */
-    public void getAcData(int pageNum, int activityId,String sortName,String sortOrder) {
+    public void getAcData(int pageNum, int activityId, String sortName, String sortOrder) {
         Observable<TaoResponse<List<ProductItemBean>>> acData = null;
-        if(TextUtils.equals(RefreshConfig.SORT_RECOMMEND,sortName)){
+        if (TextUtils.equals(RefreshConfig.SORT_RECOMMEND, sortName)) {
             acData = mModel.getAcData(pageNum, ConfigInfo.PAGE_SIZE, activityId);
-        }else if(TextUtils.equals(RefreshConfig.SORT_NEWEST,sortName)||TextUtils.equals(RefreshConfig.SORT_SALES,sortName)){
-            acData = mModel.getAcData(pageNum, ConfigInfo.PAGE_SIZE, activityId,sortName);
-        }else if(TextUtils.equals(RefreshConfig.SORT_PRICE,sortName)){
-            acData = mModel.getAcData(pageNum, ConfigInfo.PAGE_SIZE,activityId,sortName,sortOrder);
+        } else if (TextUtils.equals(RefreshConfig.SORT_NEWEST, sortName) || TextUtils.equals(RefreshConfig.SORT_SALES, sortName)) {
+            acData = mModel.getAcData(pageNum, ConfigInfo.PAGE_SIZE, activityId, sortName);
+        } else if (TextUtils.equals(RefreshConfig.SORT_PRICE, sortName)) {
+            acData = mModel.getAcData(pageNum, ConfigInfo.PAGE_SIZE, activityId, sortName, sortOrder);
         }
         acData
                 .subscribeOn(Schedulers.io())

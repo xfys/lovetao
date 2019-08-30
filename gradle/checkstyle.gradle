@@ -1,7 +1,7 @@
 apply plugin: 'checkstyle'
 
 checkstyle {
-    toolVersion = 8.13
+    toolVersion = 8.23
     configFile = rootProject.file('checkstyle.xml')
     ignoreFailures = false
     showViolations = true

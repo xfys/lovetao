@@ -13,6 +13,10 @@ import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
@@ -27,9 +31,6 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.DeviceUtils;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import butterknife.BindView;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
@@ -70,7 +71,7 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
     public void initData(@Nullable Bundle savedInstanceState) {
         if (webView != null) {
             mPresenter.setWebviewSettings(webView.getSettings());
-            webView.requestFocus();//使页面获得焦点
+            webView.requestFocus(); //使页面获得焦点
             mPresenter.setWebClient(webView);
             if (!TextUtils.isEmpty(url)) {
                 webView.loadUrl(url);
@@ -109,7 +110,9 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
     public void showProgress(int newProgress) {
         webProgress.setVisibility(View.VISIBLE);
         webProgress.setProgress(newProgress * 100);
-        if (newProgress == 100) webProgress.setVisibility(View.GONE);
+        if (newProgress == 100) {
+            webProgress.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -173,7 +176,9 @@ public class WebActivity extends BaseActivity<WebPresenter> implements WebContra
 
     @Override
     public void share(ShareBean shareBean) {
-        if (shareBean == null) return;
+        if (shareBean == null) {
+            return;
+        }
         ShareUtils.getInstance().share(this, shareBean.getShareUrl(), shareBean.getTitle(), shareBean.getContent(), shareBean.getShareImg());
     }
 
