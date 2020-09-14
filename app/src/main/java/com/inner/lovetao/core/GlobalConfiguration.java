@@ -46,14 +46,11 @@ public class GlobalConfiguration implements ConfigModule {
                             .serializeNulls()//支持序列化null的参数
                             .enableComplexMapKeySerialization();//支持将序列化key为object的map,默认只能序列化key为string的map
                 })
-                .okhttpConfiguration(new ClientModule.OkhttpConfiguration() {
-                    @Override
-                    public void configOkhttp(Context context, OkHttpClient.Builder builder) {
-                        builder.sslSocketFactory(SSLSocketClient.getSSLSocketFactory(), SSLSocketClient.getTrustManager());
-                        builder.hostnameVerifier(SSLSocketClient.getHostnameVerifier());
-                        //让 Retrofit 同时支持多个 BaseUrl 以及动态改变 BaseUrl.
-                        RetrofitUrlManager.getInstance().with(builder);
-                    }
+                .okhttpConfiguration((context12, builder1) -> {
+                    builder1.sslSocketFactory(SSLSocketClient.getSSLSocketFactory(), SSLSocketClient.getTrustManager());
+                    builder1.hostnameVerifier(SSLSocketClient.getHostnameVerifier());
+                    //让 Retrofit 同时支持多个 BaseUrl 以及动态改变 BaseUrl.
+                    RetrofitUrlManager.getInstance().with(builder1);
                 })
                 .rxCacheConfiguration((context1, rxCacheBuilder) -> {//这里可以自己自定义配置RxCache的参数
                     rxCacheBuilder.useExpiredDataIfLoaderNotAvailable(false);

@@ -59,9 +59,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <provider
-            android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.inner.lovetao.BmobContentProvider" />
+
 
         <meta-data
             android:name="BMOB_CHANNEL"
@@ -273,10 +271,6 @@
             android:name=".mineassets.mvp.ui.activity.MyOrderActivity"
             android:label="@string/mine_order"
             android:screenOrientation="portrait" />
-        <!--Bomb更新-->
-        <activity
-            android:name="cn.bmob.v3.update.UpdateDialogActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!--设置淘宝登录页面Activity的样式-->
         <activity
             android:name="com.ali.auth.third.ui.LoginActivity"

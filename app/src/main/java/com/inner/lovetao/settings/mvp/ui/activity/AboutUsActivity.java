@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.BuildConfig;
 import com.inner.lovetao.R;
@@ -11,11 +14,8 @@ import com.inner.lovetao.config.ArouterConfig;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.OnClick;
-import cn.bmob.v3.update.BmobUpdateAgent;
 
 /**
  * desc:关于我们
@@ -49,7 +49,6 @@ public class AboutUsActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_version:
-                BmobUpdateAgent.forceUpdate(this);
                 break;
         }
     }

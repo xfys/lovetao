@@ -6,6 +6,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.inner.lovetao.R;
 import com.inner.lovetao.config.ArouterConfig;
@@ -18,8 +21,6 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -51,7 +52,8 @@ public class SuggestActivity extends BaseActivity<SuggestPresenter> implements S
 
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
-        return R.layout.activity_suggest; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
+        //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
+        return R.layout.activity_suggest;
     }
 
     @Override
@@ -81,6 +83,8 @@ public class SuggestActivity extends BaseActivity<SuggestPresenter> implements S
                     suggestRequest.userId = UserInstance.getInstance().getUserInfo(this).getId() + "";
                     mPresenter.suggestCommit(suggestRequest);
                 }
+                break;
+            default:
                 break;
         }
 

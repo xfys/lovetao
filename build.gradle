@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:3.5.3'
         //Gradle Android Maven plugin
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         //Gradle Bintray Plugin
@@ -17,7 +17,6 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-
 
 
 allprojects {
@@ -36,9 +35,6 @@ allprojects {
         maven {
             url "http://repo.baichuan-android.taobao.com/content/repositories/BaichuanRepo-staged/"
         }
-        //Bmob的maven仓库地址--必填
-        maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
-        maven { url'http://maven.aliyun.com/nexus/content/groups/public/'}
     }
 }
 
